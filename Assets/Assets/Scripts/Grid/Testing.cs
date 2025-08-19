@@ -4,6 +4,7 @@ using LibraryCodes;
 public class Testing : MonoBehaviour
 {
     private Grid grid;
+    private BattleSystem BattleSystem;
 
     private void Start()
     {
@@ -12,11 +13,12 @@ public class Testing : MonoBehaviour
 
     private void Update()
     {
+
         //if (Input.GetMouseButtonDown(0))
         //{
         //    grid.SetValue(UtilityMovement.GetMouseWorldPosition(), 56);
         //}
-        
+
         //if (Input.GetMouseButtonDown(1))
         //{
         //   Debug.Log(grid.GetValue(UtilityMovement.GetMouseWorldPosition()));
