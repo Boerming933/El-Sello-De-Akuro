@@ -42,16 +42,21 @@
     <UnityVersion>6000.0.47f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Users\artha\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.1.2\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\artha\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.1.3\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="D:\Program Files(x86)\6000.0.47f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="D:\Program Files(x86)\6000.0.47f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
     <Analyzer Include="D:\Program Files(x86)\6000.0.47f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Assets\Scripts\Grid\MapManager.cs" />
     <Compile Include="Assets\Assets\Scripts\BattleSystem\BattleSystem.cs" />
+    <Compile Include="Assets\Assets\Scripts\BattleSystem\Enemy\Enemy IA.cs" />
     <Compile Include="Assets\Assets\Scripts\Grid\Grid.cs" />
     <Compile Include="Assets\Assets\Scripts\Grid\Testing.cs" />
     <Compile Include="Assets\Assets\Scripts\Library\Utility.cs" />
+    <Compile Include="Assets\Assets\Scripts\Grid\OverlayTile.cs" />
+    <Compile Include="Assets\Assets\Scripts\BattleSystem\Enemy\PlayerTile.cs" />
+    <Compile Include="Assets\Assets\Scripts\BattleSystem\Enemy\Pathfinder Enemy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Backyard - Free\Readme.txt" />

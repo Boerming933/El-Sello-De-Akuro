@@ -8,7 +8,7 @@ public class Testing : MonoBehaviour
 
     private void Start()
     {
-        grid = new Grid(44, 44, 1f, new Vector3(-18f, -10f));
+        //grid = new Grid(44, 44, 1f, new Vector3(-18f, -10f));
     }
 
     private void Update()
