@@ -15,7 +15,7 @@ D:/Proyectos/Unity/TechProofRPG
 -logFile
 Logs/AssetImportWorker2.log
 -srvPort
-53401
+63633
 -job-worker-count
 7
 -background-job-worker-count
@@ -59,14 +59,14 @@ D:/Proyectos/Unity/TechProofRPG
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [13464]  Target information:
+Player connection [22684]  Target information:
 
-Player connection [13464]  * "[IP] 192.168.100.158 [Port] 0 [Flags] 2 [Guid] 2865054261 [EditorId] 2865054261 [Version] 1048832 [Id] WindowsEditor(7,Matias) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [22684]  * "[IP] 192.168.100.158 [Port] 0 [Flags] 2 [Guid] 3410536291 [EditorId] 3410536291 [Version] 1048832 [Id] WindowsEditor(7,Matias) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [13464]  * "[IP] 192.168.100.156 [Port] 0 [Flags] 2 [Guid] 2865054261 [EditorId] 2865054261 [Version] 1048832 [Id] WindowsEditor(7,Matias) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [22684]  * "[IP] 192.168.100.156 [Port] 0 [Flags] 2 [Guid] 3410536291 [EditorId] 3410536291 [Version] 1048832 [Id] WindowsEditor(7,Matias) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [13464] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [13464] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [22684] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [22684] Host joined alternative multi-casting on [225.0.0.222:34997]...
 JobSystem: Creating JobQueue using job-worker-count value 7
 Input System module state changed to: Initialized.
 [Physics::Module] Initialized fallback backend.
@@ -78,7 +78,7 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
-Refreshing native plugins compatible for Editor in 1.67 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 2.60 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 6000.0.47f1 (2ad1ed33fd3b)
 [Subsystems] Discovering subsystems at path D:/Program Files(x86)/6000.0.47f1/Editor/Data/Resources/UnitySubsystems
@@ -94,43 +94,43 @@ Initialize mono
 Mono path[0] = 'D:/Program Files(x86)/6000.0.47f1/Editor/Data/Managed'
 Mono path[1] = 'D:/Program Files(x86)/6000.0.47f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'D:/Program Files(x86)/6000.0.47f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56228
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56912
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: D:/Program Files(x86)/6000.0.47f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.175077 seconds.
-- Loaded All Assemblies, in 11.318 seconds
+Registered in 0.001539 seconds.
+- Loaded All Assemblies, in  0.334 seconds
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.272 seconds
-Domain Reload Profiling: 11591ms
-	BeginReloadAssembly (8529ms)
+- Finished resetting the current domain, in  0.273 seconds
+Domain Reload Profiling: 607ms
+	BeginReloadAssembly (136ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (704ms)
-	RebuildNativeTypeToScriptingClass (8ms)
-	initialDomainReloadingComplete (205ms)
-	LoadAllAssembliesAndSetupDomain (1872ms)
-		LoadAssemblies (8529ms)
+	RebuildCommonClasses (32ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (35ms)
+	LoadAllAssembliesAndSetupDomain (122ms)
+		LoadAssemblies (135ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (1869ms)
-			TypeCache.Refresh (1868ms)
-				TypeCache.ScanAssembly (1450ms)
+		AnalyzeDomain (120ms)
+			TypeCache.Refresh (119ms)
+				TypeCache.ScanAssembly (107ms)
 			BuildScriptInfoCaches (0ms)
 			ResolveRequiredComponents (0ms)
-	FinalizeReload (273ms)
+	FinalizeReload (274ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (238ms)
+		SetupLoadedEditorAssemblies (235ms)
 			LogAssemblyErrors (0ms)
 			InitializePlatformSupportModulesInManaged (18ms)
 			SetLoadedEditorAssemblies (4ms)
 			BeforeProcessingInitializeOnLoad (44ms)
-			ProcessInitializeOnLoadAttributes (119ms)
-			ProcessInitializeOnLoadMethodAttributes (54ms)
+			ProcessInitializeOnLoadAttributes (127ms)
+			ProcessInitializeOnLoadMethodAttributes (40ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -139,273 +139,263 @@ Domain Reload Profiling: 11591ms
 Worker process is ready to serve import requests
 Import Worker Mode flag is 0x00
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in 14.496 seconds
-Refreshing native plugins compatible for Editor in 1.53 ms, found 4 plugins.
+- Loaded All Assemblies, in  0.620 seconds
+Refreshing native plugins compatible for Editor in 1.38 ms, found 4 plugins.
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.570 seconds
-Domain Reload Profiling: 16065ms
-	BeginReloadAssembly (141ms)
+- Finished resetting the current domain, in  0.771 seconds
+Domain Reload Profiling: 1390ms
+	BeginReloadAssembly (134ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (4ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (22ms)
-	RebuildCommonClasses (26ms)
+	RebuildCommonClasses (28ms)
 	RebuildNativeTypeToScriptingClass (8ms)
 	initialDomainReloadingComplete (25ms)
-	LoadAllAssembliesAndSetupDomain (14295ms)
-		LoadAssemblies (13986ms)
+	LoadAllAssembliesAndSetupDomain (424ms)
+		LoadAssemblies (318ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (398ms)
-			TypeCache.Refresh (341ms)
-				TypeCache.ScanAssembly (329ms)
-			BuildScriptInfoCaches (47ms)
+		AnalyzeDomain (192ms)
+			TypeCache.Refresh (140ms)
+				TypeCache.ScanAssembly (129ms)
+			BuildScriptInfoCaches (41ms)
 			ResolveRequiredComponents (8ms)
-	FinalizeReload (1570ms)
+	FinalizeReload (771ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1065ms)
+		SetupLoadedEditorAssemblies (668ms)
 			LogAssemblyErrors (0ms)
 			InitializePlatformSupportModulesInManaged (2ms)
-			SetLoadedEditorAssemblies (6ms)
-			BeforeProcessingInitializeOnLoad (150ms)
-			ProcessInitializeOnLoadAttributes (480ms)
-			ProcessInitializeOnLoadMethodAttributes (427ms)
+			SetLoadedEditorAssemblies (5ms)
+			BeforeProcessingInitializeOnLoad (136ms)
+			ProcessInitializeOnLoadAttributes (445ms)
+			ProcessInitializeOnLoadMethodAttributes (77ms)
 			AfterProcessingInitializeOnLoad (1ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (4ms)
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Refreshing native plugins compatible for Editor in 2.18 ms, found 4 plugins.
+		AwakeInstancesAfterBackupRestoration (5ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
+Refreshing native plugins compatible for Editor in 2.08 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 206 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6674 unused Assets / (3.8 MB). Loaded Objects now: 7372.
-Memory consumption went from 178.3 MB to 174.5 MB.
-Total: 7.603800 ms (FindLiveObjects: 0.428600 ms CreateObjectMapping: 0.673000 ms MarkObjects: 4.662900 ms  DeleteObjects: 1.837100 ms)
+Unloading 6679 unused Assets / (4.1 MB). Loaded Objects now: 7377.
+Memory consumption went from 178.4 MB to 174.2 MB.
+Total: 6.006700 ms (FindLiveObjects: 0.515000 ms CreateObjectMapping: 0.444400 ms MarkObjects: 3.633100 ms  DeleteObjects: 1.411700 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 499048.627850 seconds.
-  path: Assets/Settings/UniversalRP.asset
-  artifactKey: Guid(681886c5eb7344803b6206f758bf0b1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Settings/UniversalRP.asset using Guid(681886c5eb7344803b6206f758bf0b1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '910a3316ce45b604f98c2ad003aa3cfb') in 0.0349004 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000023 seconds.
-  path: Assets/Backyard - Free/backyard_7.asset
-  artifactKey: Guid(0c0cbe7be1606f84f9ba45a99d8be255) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Backyard - Free/backyard_7.asset using Guid(0c0cbe7be1606f84f9ba45a99d8be255) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b2dec1a8a0b0d423dc6a50bc5c5558f5') in 0.0691826 seconds
+  Time since last request: 516107.673147 seconds.
+  path: Assets/LawlessGames/Tactics Toolkit Pathfinding/Images/watertile.png
+  artifactKey: Guid(e64fd1901ba7ce0469b5433c2ad14f4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/LawlessGames/Tactics Toolkit Pathfinding/Images/watertile.png using Guid(e64fd1901ba7ce0469b5433c2ad14f4c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '0560fc480bdaf605491dd6c2e3ee6915') in 0.0763211 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000022 seconds.
-  path: Assets/Scenes/SampleScene.unity
-  artifactKey: Guid(8c9cfa26abfee488c85f1582747f6a02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/SampleScene.unity using Guid(8c9cfa26abfee488c85f1582747f6a02) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '379892488dafb73c82b5906ae091d00f') in 0.0005741 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000022 seconds.
-  path: Assets/Backyard - Free/backyard_51.asset
-  artifactKey: Guid(d069ba915ea59f844ba597ef2a11d357) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Backyard - Free/backyard_51.asset using Guid(d069ba915ea59f844ba597ef2a11d357) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c8c65f1e28bd1827154ab2dce449910a') in 0.0122556 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000012 seconds.
-  path: Assets/Backyard - Free/backyard_48.asset
-  artifactKey: Guid(e6abe2ad6720fee4291a30bcc273fc5f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Backyard - Free/backyard_48.asset using Guid(e6abe2ad6720fee4291a30bcc273fc5f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '5e9585f58c263bba03545d4e304643fb') in 0.0094978 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000011 seconds.
-  path: Assets/DefaultVolumeProfile.asset
-  artifactKey: Guid(3f9215ea0144899419cfbc0957140d3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/DefaultVolumeProfile.asset using Guid(3f9215ea0144899419cfbc0957140d3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '1e3ee85287093c2e01e2184a29fd3edf') in 0.0009667 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000012 seconds.
-  path: Assets/InputSystem_Actions.inputactions
-  artifactKey: Guid(2bcd2660ca9b64942af0de543d8d7100) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/InputSystem_Actions.inputactions using Guid(2bcd2660ca9b64942af0de543d8d7100) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '1526cf67c1d1aaa9a72597cdbc7bb0b0') in 0.0038594 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 19
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Backyard - Free/backyard_9.asset
-  artifactKey: Guid(65a99f0974cbc724cac63afd74973f24) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Backyard - Free/backyard_9.asset using Guid(65a99f0974cbc724cac63afd74973f24) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '49fd87d3e7ff145b4bedd97962a774de') in 0.0137207 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000012 seconds.
-  path: Assets/Backyard - Free/backyard_5.asset
-  artifactKey: Guid(5fea02705d532254d9796f862491c63c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Backyard - Free/backyard_5.asset using Guid(5fea02705d532254d9796f862491c63c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b0df227a0455dd1ec36b1a08abeef3f1') in 0.0145369 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000014 seconds.
-  path: Assets/Backyard - Free/backyard_34.asset
-  artifactKey: Guid(b99505653544bd6428be14eb55c1000e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Backyard - Free/backyard_34.asset using Guid(b99505653544bd6428be14eb55c1000e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '3286bc415c49f889806e526da834579c') in 0.0106349 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Backyard - Free/backyard_3.asset
-  artifactKey: Guid(9542f8f2e1ec52b438b03910141be06a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Backyard - Free/backyard_3.asset using Guid(9542f8f2e1ec52b438b03910141be06a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '97d6d4434267ef72c7e69e8e433daa9c') in 0.0127898 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000014 seconds.
-  path: Assets/Backyard - Free/backyard_44.asset
-  artifactKey: Guid(1777c8f64d9d8da4099aff71e4eaf4ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Backyard - Free/backyard_44.asset using Guid(1777c8f64d9d8da4099aff71e4eaf4ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '019b3475d214c878a3b90d44fd176a5f') in 0.0108225 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000027 seconds.
-  path: Assets/Backyard - Free/backyard_0.asset
-  artifactKey: Guid(1702e678b28686b43a8f14b9e124f851) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Backyard - Free/backyard_0.asset using Guid(1702e678b28686b43a8f14b9e124f851) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '32ad77a86d2dc4779e27cba7c1ce2b7f') in 0.0097371 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000018 seconds.
-  path: Assets/Settings/Lit2DSceneTemplate.scenetemplate
-  artifactKey: Guid(d03ed43fc9d8a4f2e9fa70c1c7916eb9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Settings/Lit2DSceneTemplate.scenetemplate using Guid(d03ed43fc9d8a4f2e9fa70c1c7916eb9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '05916363aecc207023dda6006c825dde') in 0.0499145 seconds
+  Time since last request: 0.000016 seconds.
+  path: Assets/LawlessGames/Tactics Toolkit Pathfinding/Images/Characters.png
+  artifactKey: Guid(cc8cb170ff11da442bedd0e9e3be0e9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/LawlessGames/Tactics Toolkit Pathfinding/Images/Characters.png using Guid(cc8cb170ff11da442bedd0e9e3be0e9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '71baca1b0fb790fbeb62a067b56bfc4b') in 0.0194747 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 5
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Backyard - Free/backyard_2.asset
-  artifactKey: Guid(5743d93312030d047baf7e5e8341c199) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Backyard - Free/backyard_2.asset using Guid(5743d93312030d047baf7e5e8341c199) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '5b8284cd7af775baad594032c57ec59f') in 0.0140221 seconds
+  Time since last request: 0.000017 seconds.
+  path: Assets/LawlessGames/Tactics Toolkit Pathfinding/Images/SelectedTile.png
+  artifactKey: Guid(08972de6d8aa08a4283230e0d4323bec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/LawlessGames/Tactics Toolkit Pathfinding/Images/SelectedTile.png using Guid(08972de6d8aa08a4283230e0d4323bec) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b63d6dfe0ba2b8551950dfb5239801a3') in 0.0148247 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000014 seconds.
-  path: Assets/Backyard - Free/backyard_35.asset
-  artifactKey: Guid(d6aadbec9607d334fadb8ba36cdef33b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Backyard - Free/backyard_35.asset using Guid(d6aadbec9607d334fadb8ba36cdef33b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b4a1d9b953aca275f02ce8be7cb852df') in 0.0093822 seconds
+  Time since last request: 0.000017 seconds.
+  path: Assets/LawlessGames/Tactics Toolkit Pathfinding/Images/Cursor.png
+  artifactKey: Guid(0f79a0cb264a90240a733aac72892a14) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/LawlessGames/Tactics Toolkit Pathfinding/Images/Cursor.png using Guid(0f79a0cb264a90240a733aac72892a14) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '6be034f4feb5af6b2b53e60cacfb3c80') in 0.0120991 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000014 seconds.
-  path: Assets/Backyard - Free/backyard_29.asset
-  artifactKey: Guid(18860a985d09ad446aea376f28dfc97f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Backyard - Free/backyard_29.asset using Guid(18860a985d09ad446aea376f28dfc97f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ad315814db67b9291d44061265e831e0') in 0.0090276 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+  Time since last request: 0.000016 seconds.
+  path: Assets/LawlessGames/Tactics Toolkit Pathfinding/Images/Arrows.png
+  artifactKey: Guid(61cca9f2aed1edc438fec21aee27a1d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/LawlessGames/Tactics Toolkit Pathfinding/Images/Arrows.png using Guid(61cca9f2aed1edc438fec21aee27a1d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '66b2a2e250bee29aca6b290d50789dca') in 0.0318594 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 14
 
 ========================================================================
 Received Import Request.
-  Time since last request: 2237.765138 seconds.
-  path: ProjectSettings/TagManager.asset
-  artifactKey: Guid(00000000000000003000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing ProjectSettings/TagManager.asset using Guid(00000000000000003000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '77f9dd6f28fd7527787506f1412fa193') in 0.0015236 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 47.695968 seconds.
-  path: ProjectSettings/TagManager.asset
-  artifactKey: Guid(00000000000000003000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing ProjectSettings/TagManager.asset using Guid(00000000000000003000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'a7822f5a525657ba31ea834987649076') in 0.0007664 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 248.077777 seconds.
-  path: Assets/Assets/Scripts/Grid
-  artifactKey: Guid(5b4f48e001ab23d4a9aeafe843a7b62e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/Scripts/Grid using Guid(5b4f48e001ab23d4a9aeafe843a7b62e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '9dcff78cefe28604c6604123ce56eb5e') in 0.0006266 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 2.501463 seconds.
-  path: Assets/Assets/Scripts/BattleSystem
-  artifactKey: Guid(b735aafd250511943aeb3a26dd102b89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/Scripts/BattleSystem using Guid(b735aafd250511943aeb3a26dd102b89) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '61ab3a1236e2523aa4ea8a005ac69807') in 0.0004105 seconds
+  Time since last request: 142.310102 seconds.
+  path: Assets/Assets/Scripts/BattleSystem/Enemy/OverlayTile.cs
+  artifactKey: Guid(f50f37c59245c9140a0c7c522520ce89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Scripts/BattleSystem/Enemy/OverlayTile.cs using Guid(f50f37c59245c9140a0c7c522520ce89) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '66b75bb1bd87ba1ddc04a36fb862a777') in 0.0005509 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
 ========================================================================
 Received Prepare
-Refreshing native plugins compatible for Editor in 1.25 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 1.17 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6663 unused Assets / (3.8 MB). Loaded Objects now: 7384.
-Memory consumption went from 150.8 MB to 146.9 MB.
-Total: 7.627400 ms (FindLiveObjects: 0.484100 ms CreateObjectMapping: 0.296800 ms MarkObjects: 5.495400 ms  DeleteObjects: 1.350300 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 28.772957 seconds.
-  path: Assets/Assets/Scripts/BattleSystem/Pahtinfinding Players.cs
-  artifactKey: Guid(cae4142f269981e4bb3b4d76d480b600) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/Scripts/BattleSystem/Pahtinfinding Players.cs using Guid(cae4142f269981e4bb3b4d76d480b600) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'f1e1ee04ae33fa89073bc2bb66c2dc28') in 0.0049953 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 1.29 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6661 unused Assets / (3.5 MB). Loaded Objects now: 7383.
-Memory consumption went from 150.8 MB to 147.2 MB.
-Total: 6.151900 ms (FindLiveObjects: 0.385300 ms CreateObjectMapping: 0.274100 ms MarkObjects: 4.122700 ms  DeleteObjects: 1.368600 ms)
+Unloading 6666 unused Assets / (4.1 MB). Loaded Objects now: 7400.
+Memory consumption went from 150.9 MB to 146.8 MB.
+Total: 6.004100 ms (FindLiveObjects: 0.393100 ms CreateObjectMapping: 0.263800 ms MarkObjects: 4.001000 ms  DeleteObjects: 1.345400 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 ========================================================================
 Received Prepare
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.585 seconds
-Refreshing native plugins compatible for Editor in 1.31 ms, found 4 plugins.
+- Loaded All Assemblies, in  0.609 seconds
+Refreshing native plugins compatible for Editor in 1.15 ms, found 4 plugins.
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.700 seconds
-Domain Reload Profiling: 1288ms
+- Finished resetting the current domain, in  0.792 seconds
+Domain Reload Profiling: 1403ms
 	BeginReloadAssembly (176ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (10ms)
+		DisableScriptedObjects (13ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (43ms)
-	RebuildCommonClasses (32ms)
+		CreateAndSetChildDomain (41ms)
+	RebuildCommonClasses (31ms)
 	RebuildNativeTypeToScriptingClass (9ms)
-	initialDomainReloadingComplete (18ms)
-	LoadAllAssembliesAndSetupDomain (353ms)
-		LoadAssemblies (302ms)
+	initialDomainReloadingComplete (20ms)
+	LoadAllAssembliesAndSetupDomain (373ms)
+		LoadAssemblies (316ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (139ms)
-			TypeCache.Refresh (5ms)
+		AnalyzeDomain (144ms)
+			TypeCache.Refresh (8ms)
 				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (123ms)
+			BuildScriptInfoCaches (125ms)
 			ResolveRequiredComponents (8ms)
+	FinalizeReload (793ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (624ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (2ms)
+			SetLoadedEditorAssemblies (8ms)
+			BeforeProcessingInitializeOnLoad (152ms)
+			ProcessInitializeOnLoadAttributes (415ms)
+			ProcessInitializeOnLoadMethodAttributes (46ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (9ms)
+Refreshing native plugins compatible for Editor in 1.21 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6677 unused Assets / (5.1 MB). Loaded Objects now: 7402.
+Memory consumption went from 153.9 MB to 148.7 MB.
+Total: 9.206200 ms (FindLiveObjects: 0.753000 ms CreateObjectMapping: 0.492800 ms MarkObjects: 5.553100 ms  DeleteObjects: 2.405900 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.061 seconds
+Refreshing native plugins compatible for Editor in 1.15 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.780 seconds
+Domain Reload Profiling: 1843ms
+	BeginReloadAssembly (306ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (23ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (60ms)
+	RebuildCommonClasses (49ms)
+	RebuildNativeTypeToScriptingClass (17ms)
+	initialDomainReloadingComplete (34ms)
+	LoadAllAssembliesAndSetupDomain (656ms)
+		LoadAssemblies (531ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (295ms)
+			TypeCache.Refresh (13ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (260ms)
+			ResolveRequiredComponents (16ms)
+	FinalizeReload (781ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (619ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (2ms)
+			SetLoadedEditorAssemblies (6ms)
+			BeforeProcessingInitializeOnLoad (136ms)
+			ProcessInitializeOnLoadAttributes (425ms)
+			ProcessInitializeOnLoadMethodAttributes (49ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (11ms)
+Refreshing native plugins compatible for Editor in 1.44 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6677 unused Assets / (4.1 MB). Loaded Objects now: 7404.
+Memory consumption went from 153.9 MB to 149.7 MB.
+Total: 5.634300 ms (FindLiveObjects: 0.391600 ms CreateObjectMapping: 0.263900 ms MarkObjects: 3.586200 ms  DeleteObjects: 1.391000 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 331.580664 seconds.
+  path: Assets/Assets/Maps/Ciudad_Plateada_HGSS.jpg
+  artifactKey: Guid(7d953b695abb66640a4648fe752ee077) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Maps/Ciudad_Plateada_HGSS.jpg using Guid(7d953b695abb66640a4648fe752ee077) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'f99dc89cc720881741658e0063f9a54c') in 0.0697329 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.637684 seconds.
+  path: Assets/Assets/Maps/Tileset
+  artifactKey: Guid(bc538bd32e749f04995ac5d06db8e03c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Maps/Tileset using Guid(bc538bd32e749f04995ac5d06db8e03c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '70954b70c11adbb57cf0273d655086fb') in 0.0004966 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.055972 seconds.
+  path: Assets/Assets/Maps/Tileset/OverlayTile.prefab
+  artifactKey: Guid(e716efb2b108d554883ad8da3489160e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Maps/Tileset/OverlayTile.prefab using Guid(e716efb2b108d554883ad8da3489160e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '391befb1187aa7b026f56119e09a01f0') in 0.3236189 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 9
+
+========================================================================
+Received Import Request.
+  Time since last request: 23.094224 seconds.
+  path: Assets/Assets/Maps/Tileset/OverlayTile.prefab
+  artifactKey: Guid(e716efb2b108d554883ad8da3489160e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Maps/Tileset/OverlayTile.prefab using Guid(e716efb2b108d554883ad8da3489160e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'faa15daabe00002ebea2c0eea7a1f392') in 0.0209954 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 9
+
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.069 seconds
+Refreshing native plugins compatible for Editor in 1.15 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.701 seconds
+Domain Reload Profiling: 1771ms
+	BeginReloadAssembly (343ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (40ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (65ms)
+	RebuildCommonClasses (32ms)
+	RebuildNativeTypeToScriptingClass (11ms)
+	initialDomainReloadingComplete (37ms)
+	LoadAllAssembliesAndSetupDomain (646ms)
+		LoadAssemblies (561ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (268ms)
+			TypeCache.Refresh (13ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (235ms)
+			ResolveRequiredComponents (15ms)
 	FinalizeReload (701ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
@@ -413,1726 +403,258 @@ Domain Reload Profiling: 1288ms
 			LogAssemblyErrors (0ms)
 			InitializePlatformSupportModulesInManaged (2ms)
 			SetLoadedEditorAssemblies (6ms)
-			BeforeProcessingInitializeOnLoad (128ms)
+			BeforeProcessingInitializeOnLoad (124ms)
 			ProcessInitializeOnLoadAttributes (384ms)
-			ProcessInitializeOnLoadMethodAttributes (41ms)
-			AfterProcessingInitializeOnLoad (1ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (9ms)
-Refreshing native plugins compatible for Editor in 1.19 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6672 unused Assets / (3.9 MB). Loaded Objects now: 7385.
-Memory consumption went from 153.8 MB to 149.9 MB.
-Total: 5.643300 ms (FindLiveObjects: 0.391100 ms CreateObjectMapping: 0.277800 ms MarkObjects: 3.612000 ms  DeleteObjects: 1.361500 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 1.14 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6662 unused Assets / (3.8 MB). Loaded Objects now: 7386.
-Memory consumption went from 153.9 MB to 150.1 MB.
-Total: 5.644300 ms (FindLiveObjects: 0.401600 ms CreateObjectMapping: 0.276600 ms MarkObjects: 3.629000 ms  DeleteObjects: 1.336500 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 20.201637 seconds.
-  path: Assets/Assets/Scripts/BattleSystem/Enemy IA.cs
-  artifactKey: Guid(3c01b8fb4b5f09d4db3e4f521b938d37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/Scripts/BattleSystem/Enemy IA.cs using Guid(3c01b8fb4b5f09d4db3e4f521b938d37) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '5b746402f3b1bd2ccaffc35cecf5a0fe') in 0.0118103 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.628 seconds
-Refreshing native plugins compatible for Editor in 1.23 ms, found 4 plugins.
-Native extension for WindowsStandalone target not found
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.791 seconds
-Domain Reload Profiling: 1421ms
-	BeginReloadAssembly (170ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (10ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (41ms)
-	RebuildCommonClasses (25ms)
-	RebuildNativeTypeToScriptingClass (9ms)
-	initialDomainReloadingComplete (21ms)
-	LoadAllAssembliesAndSetupDomain (404ms)
-		LoadAssemblies (315ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (177ms)
-			TypeCache.Refresh (9ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (156ms)
-			ResolveRequiredComponents (8ms)
-	FinalizeReload (791ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (629ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (2ms)
-			SetLoadedEditorAssemblies (6ms)
-			BeforeProcessingInitializeOnLoad (151ms)
-			ProcessInitializeOnLoadAttributes (425ms)
 			ProcessInitializeOnLoadMethodAttributes (44ms)
 			AfterProcessingInitializeOnLoad (1ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
 		AwakeInstancesAfterBackupRestoration (10ms)
-Refreshing native plugins compatible for Editor in 1.43 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 1.24 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6673 unused Assets / (4.1 MB). Loaded Objects now: 7388.
-Memory consumption went from 153.8 MB to 149.6 MB.
-Total: 6.587000 ms (FindLiveObjects: 0.773900 ms CreateObjectMapping: 0.241000 ms MarkObjects: 3.811200 ms  DeleteObjects: 1.759800 ms)
+Unloading 6677 unused Assets / (4.0 MB). Loaded Objects now: 7437.
+Memory consumption went from 156.6 MB to 152.6 MB.
+Total: 6.058100 ms (FindLiveObjects: 0.413800 ms CreateObjectMapping: 0.289400 ms MarkObjects: 3.810000 ms  DeleteObjects: 1.543600 ms)
 
 Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 32.906534 seconds.
-  path: Assets/Assets/Scripts/BattleSystem/Enemy IA.cs
-  artifactKey: Guid(3c01b8fb4b5f09d4db3e4f521b938d37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/Scripts/BattleSystem/Enemy IA.cs using Guid(3c01b8fb4b5f09d4db3e4f521b938d37) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '38676f7952115b9e05efc342d4309283') in 0.0050743 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 2.86 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6662 unused Assets / (3.6 MB). Loaded Objects now: 7388.
-Memory consumption went from 153.9 MB to 150.3 MB.
-Total: 8.598700 ms (FindLiveObjects: 0.479800 ms CreateObjectMapping: 0.443000 ms MarkObjects: 5.974800 ms  DeleteObjects: 1.699100 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 1.15 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6663 unused Assets / (3.7 MB). Loaded Objects now: 7389.
-Memory consumption went from 153.9 MB to 150.2 MB.
-Total: 5.850400 ms (FindLiveObjects: 0.383700 ms CreateObjectMapping: 0.274200 ms MarkObjects: 3.891500 ms  DeleteObjects: 1.300000 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 176.092618 seconds.
-  path: Assets/Assets/Scripts/BattleSystem/OverlayTile.cs
-  artifactKey: Guid(f50f37c59245c9140a0c7c522520ce89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/Scripts/BattleSystem/OverlayTile.cs using Guid(f50f37c59245c9140a0c7c522520ce89) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '23c0f65936c3015da9b1db643bad4195') in 0.0091091 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
 ========================================================================
 Received Prepare
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.592 seconds
-Refreshing native plugins compatible for Editor in 1.15 ms, found 4 plugins.
+- Loaded All Assemblies, in  1.115 seconds
+Refreshing native plugins compatible for Editor in 1.21 ms, found 4 plugins.
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.735 seconds
-Domain Reload Profiling: 1329ms
-	BeginReloadAssembly (172ms)
+- Finished resetting the current domain, in  0.717 seconds
+Domain Reload Profiling: 1834ms
+	BeginReloadAssembly (331ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (10ms)
+		DisableScriptedObjects (26ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (71ms)
+	RebuildCommonClasses (52ms)
+	RebuildNativeTypeToScriptingClass (18ms)
+	initialDomainReloadingComplete (38ms)
+	LoadAllAssembliesAndSetupDomain (679ms)
+		LoadAssemblies (560ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (298ms)
+			TypeCache.Refresh (17ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (261ms)
+			ResolveRequiredComponents (14ms)
+	FinalizeReload (717ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (576ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (2ms)
+			SetLoadedEditorAssemblies (7ms)
+			BeforeProcessingInitializeOnLoad (131ms)
+			ProcessInitializeOnLoadAttributes (391ms)
+			ProcessInitializeOnLoadMethodAttributes (44ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (11ms)
+Refreshing native plugins compatible for Editor in 1.17 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6677 unused Assets / (4.0 MB). Loaded Objects now: 7439.
+Memory consumption went from 156.5 MB to 152.5 MB.
+Total: 5.629000 ms (FindLiveObjects: 0.404200 ms CreateObjectMapping: 0.285800 ms MarkObjects: 3.585500 ms  DeleteObjects: 1.352300 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.579 seconds
+Refreshing native plugins compatible for Editor in 1.44 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.756 seconds
+Domain Reload Profiling: 1338ms
+	BeginReloadAssembly (168ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (12ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (40ms)
-	RebuildCommonClasses (25ms)
+	RebuildCommonClasses (26ms)
 	RebuildNativeTypeToScriptingClass (9ms)
-	initialDomainReloadingComplete (20ms)
-	LoadAllAssembliesAndSetupDomain (368ms)
-		LoadAssemblies (303ms)
+	initialDomainReloadingComplete (18ms)
+	LoadAllAssembliesAndSetupDomain (360ms)
+		LoadAssemblies (286ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
 		AnalyzeDomain (153ms)
 			TypeCache.Refresh (7ms)
 				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (135ms)
+			BuildScriptInfoCaches (134ms)
 			ResolveRequiredComponents (8ms)
-	FinalizeReload (736ms)
+	FinalizeReload (757ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (592ms)
+		SetupLoadedEditorAssemblies (604ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (2ms)
+			SetLoadedEditorAssemblies (7ms)
+			BeforeProcessingInitializeOnLoad (140ms)
+			ProcessInitializeOnLoadAttributes (412ms)
+			ProcessInitializeOnLoadMethodAttributes (42ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (10ms)
+Refreshing native plugins compatible for Editor in 1.32 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6677 unused Assets / (4.2 MB). Loaded Objects now: 7441.
+Memory consumption went from 156.4 MB to 152.2 MB.
+Total: 5.984100 ms (FindLiveObjects: 0.463700 ms CreateObjectMapping: 0.289700 ms MarkObjects: 3.717700 ms  DeleteObjects: 1.511000 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.568 seconds
+Refreshing native plugins compatible for Editor in 1.21 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.764 seconds
+Domain Reload Profiling: 1334ms
+	BeginReloadAssembly (171ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (14ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (39ms)
+	RebuildCommonClasses (25ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (21ms)
+	LoadAllAssembliesAndSetupDomain (345ms)
+		LoadAssemblies (288ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (143ms)
+			TypeCache.Refresh (5ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (128ms)
+			ResolveRequiredComponents (8ms)
+	FinalizeReload (764ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (625ms)
 			LogAssemblyErrors (0ms)
 			InitializePlatformSupportModulesInManaged (2ms)
 			SetLoadedEditorAssemblies (6ms)
-			BeforeProcessingInitializeOnLoad (131ms)
-			ProcessInitializeOnLoadAttributes (406ms)
-			ProcessInitializeOnLoadMethodAttributes (46ms)
-			AfterProcessingInitializeOnLoad (1ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (10ms)
-Refreshing native plugins compatible for Editor in 2.20 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6674 unused Assets / (3.6 MB). Loaded Objects now: 7391.
-Memory consumption went from 153.8 MB to 150.2 MB.
-Total: 6.552500 ms (FindLiveObjects: 0.744900 ms CreateObjectMapping: 0.381800 ms MarkObjects: 3.836700 ms  DeleteObjects: 1.587600 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 1.50 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6664 unused Assets / (3.8 MB). Loaded Objects now: 7392.
-Memory consumption went from 153.9 MB to 150.2 MB.
-Total: 7.060900 ms (FindLiveObjects: 0.420100 ms CreateObjectMapping: 0.291800 ms MarkObjects: 4.769800 ms  DeleteObjects: 1.577800 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 30.335027 seconds.
-  path: Assets/Assets/Scripts/BattleSystem/Pathfinder Enemy.cs
-  artifactKey: Guid(f467a9c137baa5c48bd0fb97c3ecf1cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/Scripts/BattleSystem/Pathfinder Enemy.cs using Guid(f467a9c137baa5c48bd0fb97c3ecf1cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '567ea9580782f0e43f732e99e5150015') in 0.0082286 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.615 seconds
-Refreshing native plugins compatible for Editor in 1.20 ms, found 4 plugins.
-Native extension for WindowsStandalone target not found
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.783 seconds
-Domain Reload Profiling: 1401ms
-	BeginReloadAssembly (163ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (10ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (38ms)
-	RebuildCommonClasses (25ms)
-	RebuildNativeTypeToScriptingClass (9ms)
-	initialDomainReloadingComplete (17ms)
-	LoadAllAssembliesAndSetupDomain (403ms)
-		LoadAssemblies (300ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (186ms)
-			TypeCache.Refresh (11ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (164ms)
-			ResolveRequiredComponents (8ms)
-	FinalizeReload (784ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (639ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (2ms)
-			SetLoadedEditorAssemblies (5ms)
-			BeforeProcessingInitializeOnLoad (144ms)
-			ProcessInitializeOnLoadAttributes (439ms)
-			ProcessInitializeOnLoadMethodAttributes (47ms)
-			AfterProcessingInitializeOnLoad (1ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (10ms)
-Refreshing native plugins compatible for Editor in 1.65 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6675 unused Assets / (3.8 MB). Loaded Objects now: 7394.
-Memory consumption went from 153.8 MB to 150.0 MB.
-Total: 5.893200 ms (FindLiveObjects: 0.396000 ms CreateObjectMapping: 0.440900 ms MarkObjects: 3.705000 ms  DeleteObjects: 1.350400 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 5.930717 seconds.
-  path: Assets/Assets/Scripts/BattleSystem/Pathfinder Enemy.cs
-  artifactKey: Guid(f467a9c137baa5c48bd0fb97c3ecf1cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/Scripts/BattleSystem/Pathfinder Enemy.cs using Guid(f467a9c137baa5c48bd0fb97c3ecf1cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c8833f1aef1b15e2fd8160bcf5cefed3') in 0.0048051 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 1.98 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6664 unused Assets / (3.1 MB). Loaded Objects now: 7394.
-Memory consumption went from 153.9 MB to 150.9 MB.
-Total: 9.495400 ms (FindLiveObjects: 0.554100 ms CreateObjectMapping: 0.435600 ms MarkObjects: 6.699600 ms  DeleteObjects: 1.804500 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 403.633233 seconds.
-  path: Assets/Assets/Scripts/BattleSystem/Pathfinder Enemy.cs
-  artifactKey: Guid(f467a9c137baa5c48bd0fb97c3ecf1cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/Scripts/BattleSystem/Pathfinder Enemy.cs using Guid(f467a9c137baa5c48bd0fb97c3ecf1cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'cece8582e4b64014e7a51a4edb0c94bc') in 0.0070228 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 11.565131 seconds.
-  path: Assets/Assets/Scripts/BattleSystem/Enemy
-  artifactKey: Guid(47c6f5b19653f6f45b7b18de74af88d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/Scripts/BattleSystem/Enemy using Guid(47c6f5b19653f6f45b7b18de74af88d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ba93d16b7b0d9f3db0f5ab7e546644cf') in 0.0004225 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.175774 seconds.
-  path: Assets/Assets/Scripts/BattleSystem/Enemy IA.cs
-  artifactKey: Guid(3c01b8fb4b5f09d4db3e4f521b938d37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/Scripts/BattleSystem/Enemy IA.cs using Guid(3c01b8fb4b5f09d4db3e4f521b938d37) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '6b21999290bed8fc947dbb8b60ac00cd') in 0.0004465 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 1.19 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6664 unused Assets / (3.8 MB). Loaded Objects now: 7394.
-Memory consumption went from 153.9 MB to 150.1 MB.
-Total: 6.245700 ms (FindLiveObjects: 0.444900 ms CreateObjectMapping: 0.282700 ms MarkObjects: 4.082000 ms  DeleteObjects: 1.435300 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 1.16 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6665 unused Assets / (3.8 MB). Loaded Objects now: 7395.
-Memory consumption went from 153.9 MB to 150.2 MB.
-Total: 6.017100 ms (FindLiveObjects: 0.777900 ms CreateObjectMapping: 0.409500 ms MarkObjects: 3.590200 ms  DeleteObjects: 1.238900 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 9.463088 seconds.
-  path: Assets/Assets/Scripts/BattleSystem/Enemy/PlayerTile.cs
-  artifactKey: Guid(f8676e176e16ca841830d1f52650b147) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/Scripts/BattleSystem/Enemy/PlayerTile.cs using Guid(f8676e176e16ca841830d1f52650b147) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '68a70b30f490ef576815e7fffbcec265') in 0.0125387 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 2.13 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6665 unused Assets / (3.3 MB). Loaded Objects now: 7395.
-Memory consumption went from 153.9 MB to 150.6 MB.
-Total: 8.159700 ms (FindLiveObjects: 0.505900 ms CreateObjectMapping: 0.472700 ms MarkObjects: 5.434100 ms  DeleteObjects: 1.745600 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 25.937652 seconds.
-  path: Assets/Assets/Scripts/BattleSystem/Enemy/Pathfinder Enemy.cs
-  artifactKey: Guid(f467a9c137baa5c48bd0fb97c3ecf1cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/Scripts/BattleSystem/Enemy/Pathfinder Enemy.cs using Guid(f467a9c137baa5c48bd0fb97c3ecf1cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'd7acc300c6b055295b042393be589b44') in 0.0037312 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 2.16 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6665 unused Assets / (3.7 MB). Loaded Objects now: 7395.
-Memory consumption went from 153.9 MB to 150.2 MB.
-Total: 9.352900 ms (FindLiveObjects: 0.815600 ms CreateObjectMapping: 0.675900 ms MarkObjects: 6.005400 ms  DeleteObjects: 1.854700 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 98.207192 seconds.
-  path: Assets/Assets/Scripts/BattleSystem/Enemy/Pathfinder Enemy.cs
-  artifactKey: Guid(f467a9c137baa5c48bd0fb97c3ecf1cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/Scripts/BattleSystem/Enemy/Pathfinder Enemy.cs using Guid(f467a9c137baa5c48bd0fb97c3ecf1cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '74c538d5aa95d71778c75f5e540e6b73') in 0.0045279 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 2.21 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6665 unused Assets / (2.1 MB). Loaded Objects now: 7395.
-Memory consumption went from 153.9 MB to 151.9 MB.
-Total: 314.045300 ms (FindLiveObjects: 0.637100 ms CreateObjectMapping: 0.528600 ms MarkObjects: 311.059300 ms  DeleteObjects: 1.818100 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 63.947838 seconds.
-  path: Assets/Assets/Scripts/BattleSystem/Enemy/PlayerTile.cs
-  artifactKey: Guid(f8676e176e16ca841830d1f52650b147) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/Scripts/BattleSystem/Enemy/PlayerTile.cs using Guid(f8676e176e16ca841830d1f52650b147) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '3775eb4adbe15695e2241949512c105c') in 0.005956 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 2.00 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6665 unused Assets / (3.1 MB). Loaded Objects now: 7395.
-Memory consumption went from 153.9 MB to 150.9 MB.
-Total: 8.299300 ms (FindLiveObjects: 0.524200 ms CreateObjectMapping: 0.325500 ms MarkObjects: 5.610700 ms  DeleteObjects: 1.837600 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 1.79 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6665 unused Assets / (4.3 MB). Loaded Objects now: 7395.
-Memory consumption went from 153.9 MB to 149.7 MB.
-Total: 8.304700 ms (FindLiveObjects: 0.460100 ms CreateObjectMapping: 0.350400 ms MarkObjects: 5.081500 ms  DeleteObjects: 2.410900 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 312.321366 seconds.
-  path: Assets/Assets/Scripts/Grid/Grid.cs
-  artifactKey: Guid(0135e3db91213724c9093b749397c6ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/Scripts/Grid/Grid.cs using Guid(0135e3db91213724c9093b749397c6ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'f6373fd6326556ab953ed2b18485278e') in 0.0088804 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.829260 seconds.
-  path: Assets/Assets/Scripts/Grid/Testing.cs
-  artifactKey: Guid(1fde6c8d4cbb826449721ab96fd3e46e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/Scripts/Grid/Testing.cs using Guid(1fde6c8d4cbb826449721ab96fd3e46e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '7cd646d3387d6958bca40e53be08c5f0') in 0.0004474 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 1.69 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6665 unused Assets / (3.6 MB). Loaded Objects now: 7395.
-Memory consumption went from 153.9 MB to 150.3 MB.
-Total: 6.828300 ms (FindLiveObjects: 0.433800 ms CreateObjectMapping: 0.463500 ms MarkObjects: 4.328600 ms  DeleteObjects: 1.601100 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 22.963543 seconds.
-  path: Assets/Assets/Scripts/Grid/Testing.cs
-  artifactKey: Guid(1fde6c8d4cbb826449721ab96fd3e46e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/Scripts/Grid/Testing.cs using Guid(1fde6c8d4cbb826449721ab96fd3e46e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '0777a8cd6f0203047a592cf168559653') in 0.0052109 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 1.15 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6666 unused Assets / (3.7 MB). Loaded Objects now: 7396.
-Memory consumption went from 153.9 MB to 150.3 MB.
-Total: 5.516300 ms (FindLiveObjects: 0.395100 ms CreateObjectMapping: 0.267000 ms MarkObjects: 3.578200 ms  DeleteObjects: 1.275400 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 5.918268 seconds.
-  path: Assets/Assets/Scripts/Grid/MapManager.cs
-  artifactKey: Guid(1f21f20d9560481499525725224ce989) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/Scripts/Grid/MapManager.cs using Guid(1f21f20d9560481499525725224ce989) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'bb45908aa8cbc50bf3d97b5339a9397e') in 0.0026774 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.585 seconds
-Refreshing native plugins compatible for Editor in 1.24 ms, found 4 plugins.
-Native extension for WindowsStandalone target not found
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.726 seconds
-Domain Reload Profiling: 1314ms
-	BeginReloadAssembly (173ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (10ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (38ms)
-	RebuildCommonClasses (27ms)
-	RebuildNativeTypeToScriptingClass (10ms)
-	initialDomainReloadingComplete (19ms)
-	LoadAllAssembliesAndSetupDomain (358ms)
-		LoadAssemblies (300ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (150ms)
-			TypeCache.Refresh (7ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (131ms)
-			ResolveRequiredComponents (8ms)
-	FinalizeReload (726ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (588ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (2ms)
-			SetLoadedEditorAssemblies (5ms)
-			BeforeProcessingInitializeOnLoad (135ms)
-			ProcessInitializeOnLoadAttributes (401ms)
-			ProcessInitializeOnLoadMethodAttributes (43ms)
-			AfterProcessingInitializeOnLoad (1ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (10ms)
-Refreshing native plugins compatible for Editor in 1.23 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6677 unused Assets / (3.8 MB). Loaded Objects now: 7398.
-Memory consumption went from 153.7 MB to 149.9 MB.
-Total: 5.797500 ms (FindLiveObjects: 0.472600 ms CreateObjectMapping: 0.255300 ms MarkObjects: 3.616900 ms  DeleteObjects: 1.451600 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 104.147734 seconds.
-  path: Assets/Assets/Scripts/Grid/MapManager.cs
-  artifactKey: Guid(1f21f20d9560481499525725224ce989) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/Scripts/Grid/MapManager.cs using Guid(1f21f20d9560481499525725224ce989) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '6f4897ce39290a8e7a1d7af7fc4b2681') in 0.0036377 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  5.012 seconds
-Refreshing native plugins compatible for Editor in 1.25 ms, found 4 plugins.
-Native extension for WindowsStandalone target not found
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.473 seconds
-Domain Reload Profiling: 6488ms
-	BeginReloadAssembly (651ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (27ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (55ms)
-	RebuildCommonClasses (95ms)
-	RebuildNativeTypeToScriptingClass (11ms)
-	initialDomainReloadingComplete (21ms)
-	LoadAllAssembliesAndSetupDomain (4236ms)
-		LoadAssemblies (4530ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (219ms)
-			TypeCache.Refresh (9ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (188ms)
-			ResolveRequiredComponents (17ms)
-	FinalizeReload (1474ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (932ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (2ms)
-			SetLoadedEditorAssemblies (8ms)
-			BeforeProcessingInitializeOnLoad (210ms)
-			ProcessInitializeOnLoadAttributes (638ms)
-			ProcessInitializeOnLoadMethodAttributes (71ms)
-			AfterProcessingInitializeOnLoad (3ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (22ms)
-Refreshing native plugins compatible for Editor in 2.81 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6677 unused Assets / (3.8 MB). Loaded Objects now: 7400.
-Memory consumption went from 153.8 MB to 150.0 MB.
-Total: 9.526000 ms (FindLiveObjects: 0.569000 ms CreateObjectMapping: 0.506400 ms MarkObjects: 6.723400 ms  DeleteObjects: 1.725800 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.624 seconds
-Refreshing native plugins compatible for Editor in 1.12 ms, found 4 plugins.
-Native extension for WindowsStandalone target not found
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.712 seconds
-Domain Reload Profiling: 1339ms
-	BeginReloadAssembly (216ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (25ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (53ms)
-	RebuildCommonClasses (25ms)
-	RebuildNativeTypeToScriptingClass (9ms)
-	initialDomainReloadingComplete (18ms)
-	LoadAllAssembliesAndSetupDomain (358ms)
-		LoadAssemblies (294ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (152ms)
-			TypeCache.Refresh (7ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (133ms)
-			ResolveRequiredComponents (8ms)
-	FinalizeReload (712ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (573ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (2ms)
-			SetLoadedEditorAssemblies (5ms)
-			BeforeProcessingInitializeOnLoad (126ms)
-			ProcessInitializeOnLoadAttributes (394ms)
+			BeforeProcessingInitializeOnLoad (139ms)
+			ProcessInitializeOnLoadAttributes (432ms)
 			ProcessInitializeOnLoadMethodAttributes (45ms)
 			AfterProcessingInitializeOnLoad (1ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
 		AwakeInstancesAfterBackupRestoration (10ms)
-Refreshing native plugins compatible for Editor in 1.34 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 1.46 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6677 unused Assets / (3.8 MB). Loaded Objects now: 7402.
-Memory consumption went from 153.8 MB to 150.0 MB.
-Total: 5.819100 ms (FindLiveObjects: 0.435800 ms CreateObjectMapping: 0.279100 ms MarkObjects: 3.699200 ms  DeleteObjects: 1.403600 ms)
+Unloading 6677 unused Assets / (3.8 MB). Loaded Objects now: 7443.
+Memory consumption went from 156.5 MB to 152.7 MB.
+Total: 6.261300 ms (FindLiveObjects: 0.566600 ms CreateObjectMapping: 0.391600 ms MarkObjects: 3.858600 ms  DeleteObjects: 1.443400 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 ========================================================================
-Received Import Request.
-  Time since last request: 7375.214462 seconds.
-  path: Assets/DefaultVolumeProfile.asset
-  artifactKey: Guid(3f9215ea0144899419cfbc0957140d3f) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/DefaultVolumeProfile.asset using Guid(3f9215ea0144899419cfbc0957140d3f) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '9cf325da508ffff89ba099a404e78d80') in 0.2691466 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000023 seconds.
-  path: Assets/Backyard - Free/backyard_50.asset
-  artifactKey: Guid(ca9ad521e0c868249a180897bbfc2f6e) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_50.asset using Guid(ca9ad521e0c868249a180897bbfc2f6e) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'b071808d5655fe46c9fab9550590e17c') in 0.0597878 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000029 seconds.
-  path: Assets/Backyard - Free/backyard_10.asset
-  artifactKey: Guid(1037b6991302026408cb23da04f58fc6) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_10.asset using Guid(1037b6991302026408cb23da04f58fc6) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '5f49ac7986baf4430749e2d14c43ff74') in 0.0186336 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000014 seconds.
-  path: Assets/Backyard - Free/backyard_58.asset
-  artifactKey: Guid(9acac3a4be326bd4688a85920209e76d) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_58.asset using Guid(9acac3a4be326bd4688a85920209e76d) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '47a492fb97195cc4be2c6fca8d4cd8e6') in 0.0170607 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000018 seconds.
-  path: Assets/Backyard - Free/backyard_8.asset
-  artifactKey: Guid(a1fcf7ee425944b4f9e69ca8734e28c1) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_8.asset using Guid(a1fcf7ee425944b4f9e69ca8734e28c1) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '64f190945576225418dc59e2a731c7a6') in 0.0230139 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000015 seconds.
-  path: Assets/Backyard - Free/backyard_67.asset
-  artifactKey: Guid(2ea8e0bcdc49fba41859d1d9bc6b7b3c) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_67.asset using Guid(2ea8e0bcdc49fba41859d1d9bc6b7b3c) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '187107f212a3f2de9aec28813b7d4e5b') in 0.0157719 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Backyard - Free/backyard_68.asset
-  artifactKey: Guid(378440a0d520a7b41b228b326d38a90c) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_68.asset using Guid(378440a0d520a7b41b228b326d38a90c) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'fd9d52cced58366f05afc9665b11653d') in 0.0173309 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Backyard - Free/backyard_64.asset
-  artifactKey: Guid(d89231a49d539c640a32a8286dc217c1) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_64.asset using Guid(d89231a49d539c640a32a8286dc217c1) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '30adc2b3c055d5a36f5fcbc7e8e3bca0') in 0.0226324 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000019 seconds.
-  path: Assets/Backyard - Free/backyard_16.asset
-  artifactKey: Guid(6470d47cf6d2117489bd4d9baa3d03d6) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_16.asset using Guid(6470d47cf6d2117489bd4d9baa3d03d6) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '334582d44ac6e25aa22260e8b217fb40') in 0.015773 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000034 seconds.
-  path: Assets/Backyard - Free/backyard.png
-  artifactKey: Guid(01842c69a0801d74382f6f4ed41ec4bf) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard.png using Guid(01842c69a0801d74382f6f4ed41ec4bf) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'd045af0af100bbdf7797559b38839e77') in 0.2191055 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 93
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000022 seconds.
-  path: Assets/Settings/UniversalRP.asset
-  artifactKey: Guid(681886c5eb7344803b6206f758bf0b1c) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Settings/UniversalRP.asset using Guid(681886c5eb7344803b6206f758bf0b1c) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'b13c2285265e1ec8ae63e1eed7640f84') in 0.0659374 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000024 seconds.
-  path: Assets/Backyard - Free/backyard_84.asset
-  artifactKey: Guid(3d4c4719f16afad4f89135ceb2240395) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_84.asset using Guid(3d4c4719f16afad4f89135ceb2240395) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'd36bd0fbb2d1f379088e1e4388d4149c') in 0.0164394 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Backyard - Free/backyard_66.asset
-  artifactKey: Guid(f3e99c6f6898c244188bbfd941f6e0b8) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_66.asset using Guid(f3e99c6f6898c244188bbfd941f6e0b8) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'c91fe8fc44cf5fd202d1350fdc60fcbb') in 0.0229662 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000012 seconds.
-  path: Assets/Backyard - Free/backyard_72.asset
-  artifactKey: Guid(cc5dd2ca2616f384aa43b3db24307b46) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_72.asset using Guid(cc5dd2ca2616f384aa43b3db24307b46) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '1d1a0771639861c122cb390088fb71de') in 0.0176361 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000015 seconds.
-  path: Assets/Backyard - Free/backyard_52.asset
-  artifactKey: Guid(27b0379b31f200f4ebf9c60ccf8496dc) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_52.asset using Guid(27b0379b31f200f4ebf9c60ccf8496dc) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'b9321fdc1f786fdbff3e124ffcbddae6') in 0.0154509 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Backyard - Free/backyard_83.asset
-  artifactKey: Guid(6688becb42a7fb046bc42166bae04afe) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_83.asset using Guid(6688becb42a7fb046bc42166bae04afe) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '58fccfa438336635ee9d14d09aea807a') in 0.0172187 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_16.png
-  artifactKey: Guid(907154f6a6b649f418d7ea4178693403) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_16.png using Guid(907154f6a6b649f418d7ea4178693403) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'a4a917057e2137d6043d1cc6256e711e') in 0.0232241 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000019 seconds.
-  path: Assets/Backyard - Free/backyard_19.asset
-  artifactKey: Guid(8df4b2ff740b3fa4bafc6a1e77fd62f3) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_19.asset using Guid(8df4b2ff740b3fa4bafc6a1e77fd62f3) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '3e1bafb86f1bb9bf32164ff4456848a1') in 0.0179088 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000027 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_14.png
-  artifactKey: Guid(6baf1dd5f5bf82d48a7feeb586e70e89) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_14.png using Guid(6baf1dd5f5bf82d48a7feeb586e70e89) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '89a2d771db886755b2f33b579be929b6') in 0.0253515 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000014 seconds.
-  path: Assets/Backyard - Free/backyard_23.asset
-  artifactKey: Guid(be27f8aff169d2e4e9a8ffa15d2cf215) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_23.asset using Guid(be27f8aff169d2e4e9a8ffa15d2cf215) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '46215677612453356a078c5fa0889120') in 0.0112318 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000016 seconds.
-  path: Assets/Backyard - Free/backyard_24.asset
-  artifactKey: Guid(1b1f79e5fc3c93342b3bb2997087f5f7) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_24.asset using Guid(1b1f79e5fc3c93342b3bb2997087f5f7) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '8b4160630e06a5dc34498c57719192b3') in 0.0156934 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000015 seconds.
-  path: Assets/Backyard - Free/backyard_40.asset
-  artifactKey: Guid(bfcd3c8138b99574fbcf3db4769ed388) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_40.asset using Guid(bfcd3c8138b99574fbcf3db4769ed388) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'ac87f3060cfe9dec4716fd20b006b2ea') in 0.0161178 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000016 seconds.
-  path: Assets/Backyard - Free/backyard_45.asset
-  artifactKey: Guid(7a6a5824e852c574c8940a382cd8bd1d) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_45.asset using Guid(7a6a5824e852c574c8940a382cd8bd1d) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '58f8efe749b0761ed968a88d6cc9f41d') in 0.015809 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000014 seconds.
-  path: Assets/Backyard - Free/backyard_22.asset
-  artifactKey: Guid(c20d3f62007cf0b4f8d5da2a084176d7) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_22.asset using Guid(c20d3f62007cf0b4f8d5da2a084176d7) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '3957de9c037cb05ffdbe8bba8f76a3ce') in 0.016555 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000015 seconds.
-  path: Assets/Backyard - Free/backyard_73.asset
-  artifactKey: Guid(cf0f8c01529f71a44b317dc73fd6bee6) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_73.asset using Guid(cf0f8c01529f71a44b317dc73fd6bee6) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'd08115f7db0879f97c90e868965a56d9') in 0.0166719 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000023 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_08.png
-  artifactKey: Guid(cd4b9e5d5e4660345a592a3519575b75) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_08.png using Guid(cd4b9e5d5e4660345a592a3519575b75) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '4a34137c41dd3124ec33b41993a21902') in 0.0218929 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000014 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_10.png
-  artifactKey: Guid(abc41e6a37abfe447bd7940b10ada078) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_10.png using Guid(abc41e6a37abfe447bd7940b10ada078) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '665a0166afcc6b4aa7410f1fbce728b7') in 0.0208477 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_26.png
-  artifactKey: Guid(e9f8d282542b69741bebfa05a2002388) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_26.png using Guid(e9f8d282542b69741bebfa05a2002388) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '641aba8cbb933d4ff5ef3a398ab51e75') in 0.0214434 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_34.png
-  artifactKey: Guid(01ece7451bc2fe245bd10a7fcd132f74) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_34.png using Guid(01ece7451bc2fe245bd10a7fcd132f74) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'b80a9fec0efc325e5fc46910c4355852') in 0.0266544 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000012 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_38.png
-  artifactKey: Guid(aa80801e523985e4b9cc2dbc3143cd93) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_38.png using Guid(aa80801e523985e4b9cc2dbc3143cd93) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '575615f6125a2968ab7fd4bfd900999d') in 0.0236048 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000012 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_19.png
-  artifactKey: Guid(0b1eaa0a6e89d354dbea566e1312be7c) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_19.png using Guid(0b1eaa0a6e89d354dbea566e1312be7c) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '1d797af8e1bc841a83020c460ad56f65') in 0.0208326 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000027 seconds.
-  path: Assets/Backyard - Free/backyard_30.asset
-  artifactKey: Guid(3099e1a67d7249b4cb19c5e3093de6a3) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_30.asset using Guid(3099e1a67d7249b4cb19c5e3093de6a3) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '00d99d9ab76bd77aa136cb0834c522d8') in 0.0151547 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_30.png
-  artifactKey: Guid(672693817c97ec148834d2eee80677ce) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_30.png using Guid(672693817c97ec148834d2eee80677ce) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '5f47e4c5f4cab3cd7ef8c5643ed88a4c') in 0.0216431 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000017 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_40.png
-  artifactKey: Guid(7f32256e6c318bb4d9e99238e581f360) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_40.png using Guid(7f32256e6c318bb4d9e99238e581f360) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '4a7a6b26203d268a4a2fbf19419832be') in 0.0264377 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000012 seconds.
-  path: Assets/Backyard - Free/backyard_37.asset
-  artifactKey: Guid(573ef6ed723eb6642b29fedefb2c0a0d) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_37.asset using Guid(573ef6ed723eb6642b29fedefb2c0a0d) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '9247d168d42c98401a18a500f1088bed') in 0.0164833 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000015 seconds.
-  path: Assets/Backyard - Free/backyard_86.asset
-  artifactKey: Guid(4e0c498e7a5cf6e42bb3863d56813300) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_86.asset using Guid(4e0c498e7a5cf6e42bb3863d56813300) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '9b882b7086f8882147873c4cf6c0f27e') in 0.0224564 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000015 seconds.
-  path: Assets/Backyard - Free/backyard_3.asset
-  artifactKey: Guid(9542f8f2e1ec52b438b03910141be06a) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_3.asset using Guid(9542f8f2e1ec52b438b03910141be06a) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '1a65af8c02760509ef36abd230a8d1b8') in 0.0144117 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Backyard - Free/backyard_63.asset
-  artifactKey: Guid(a2e316c8ee3269446903eb65131bea49) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_63.asset using Guid(a2e316c8ee3269446903eb65131bea49) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '4df7d5b8717b01f7cfdf1c19a6d5abba') in 0.0221957 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000018 seconds.
-  path: Assets/Backyard - Free/backyard_55.asset
-  artifactKey: Guid(c103d13834c1c1b4bac35cd46d327185) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_55.asset using Guid(c103d13834c1c1b4bac35cd46d327185) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '8d7ab337b6114245757f28c4f5427051') in 0.0162432 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_09.png
-  artifactKey: Guid(d7aa5d4e4508d8f4a9a23867b772fcc3) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_09.png using Guid(d7aa5d4e4508d8f4a9a23867b772fcc3) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '89f83419117322b959bd5058184d4677') in 0.0217411 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_44.png
-  artifactKey: Guid(ca06cd90188934c4fbeb0b34419822b5) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_44.png using Guid(ca06cd90188934c4fbeb0b34419822b5) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '62babe1d0af71935d84b2cca7f75a512') in 0.0222511 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_58.png
-  artifactKey: Guid(82ce83036d4857d4399350c3e19e3dc8) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_58.png using Guid(82ce83036d4857d4399350c3e19e3dc8) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '8311c05242603964fc2dbc85c861b65f') in 0.0214618 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_65.png
-  artifactKey: Guid(fd006a5012332a440a42b89c9e457c5c) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_65.png using Guid(fd006a5012332a440a42b89c9e457c5c) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'f2c8dfc93051d1b1522639cada0ef6d4') in 0.0273889 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_45.png
-  artifactKey: Guid(d0e84f09195e0934b82910e173b46cc5) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_45.png using Guid(d0e84f09195e0934b82910e173b46cc5) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '36ed9e396014c19e99a6ae08aeaad177') in 0.0211341 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_57.png
-  artifactKey: Guid(0275f67ff74f50b4d8d82f7244732ff6) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_57.png using Guid(0275f67ff74f50b4d8d82f7244732ff6) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '21c1affa7006cd4890252414d5a2fbed') in 0.0254573 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000015 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_60.png
-  artifactKey: Guid(1be9866399d849743a6f123a3994d4e9) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_60.png using Guid(1be9866399d849743a6f123a3994d4e9) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '18091fef9d17e0b93b30743ff7f074f8') in 0.0202954 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000022 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_63.png
-  artifactKey: Guid(bf3ab3a00fde90a4494c61d65ad029ee) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_63.png using Guid(bf3ab3a00fde90a4494c61d65ad029ee) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '5b977a11168bc02e6fad4a72feaaf3e1') in 0.0216266 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_24.png
-  artifactKey: Guid(99fc28874c327594b9c63c34e154b55c) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_24.png using Guid(99fc28874c327594b9c63c34e154b55c) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'd427c310557ebdcf668f491dc27810e8') in 0.0225896 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000014 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_17.png
-  artifactKey: Guid(2cb5b3997015e3448be0b1e6c527e44d) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_17.png using Guid(2cb5b3997015e3448be0b1e6c527e44d) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '26baf32c155976d47c712872fe485088') in 0.0216822 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000012 seconds.
-  path: Assets/Backyard - Free/backyard_56.asset
-  artifactKey: Guid(f5441394c3a31b141a810f2088c708be) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_56.asset using Guid(f5441394c3a31b141a810f2088c708be) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '21e218dac8773225efcce2265cb40bce') in 0.0191629 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_23.png
-  artifactKey: Guid(0ed29ad20079cf04aa2ee03495b4cd48) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_23.png using Guid(0ed29ad20079cf04aa2ee03495b4cd48) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '70f7cafa0e2907837afd09ad911c9d73') in 0.0212283 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000014 seconds.
-  path: Assets/Backyard - Free/backyard_43.asset
-  artifactKey: Guid(8f83840dc55c0784b9859af2c3f87940) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_43.asset using Guid(8f83840dc55c0784b9859af2c3f87940) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'b36ee56aa6fd452ef683144752c11c51') in 0.0128384 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000016 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_69.png
-  artifactKey: Guid(9e7139d7efb31ac4db817260f4bde6b1) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_69.png using Guid(9e7139d7efb31ac4db817260f4bde6b1) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '93750ba30db7dc2ec0cfde4cbc679489') in 0.0214279 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_85.png
-  artifactKey: Guid(e42a29bfc90633e45b6191ed90a4812e) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_85.png using Guid(e42a29bfc90633e45b6191ed90a4812e) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '2174f3de259ba478a927ccfdefbc68e0') in 0.0279296 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000012 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_78.png
-  artifactKey: Guid(a8dd380600893a344bded38f6f49b61f) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_78.png using Guid(a8dd380600893a344bded38f6f49b61f) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '72fd211c531fb4fc70ecbf66053b8ce0') in 0.0208007 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000012 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_81.png
-  artifactKey: Guid(710fe9f06962c934f95a6b2261b4944c) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_81.png using Guid(710fe9f06962c934f95a6b2261b4944c) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '792f1821ac5c0c4abc3e5bf48b947853') in 0.0203155 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000014 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_76.png
-  artifactKey: Guid(47664fd621bff4940b33b4b6176c3f33) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_76.png using Guid(47664fd621bff4940b33b4b6176c3f33) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '97ab702fa1d3f304f86f7eaa43c9d80b') in 0.0208959 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_71.png
-  artifactKey: Guid(3046121ca4a0f9340865f3b5c28e79a2) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_71.png using Guid(3046121ca4a0f9340865f3b5c28e79a2) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '9cdfdf64e4def70c6377ccdce9168706') in 0.0221304 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_73.png
-  artifactKey: Guid(474f3a4a4243b4b42bcabd4d7bb8ca25) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_73.png using Guid(474f3a4a4243b4b42bcabd4d7bb8ca25) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '185da507a237b2d418b5f54f5b1d0ab6') in 0.0299802 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000017 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_86.png
-  artifactKey: Guid(1cdb1cb2052a68243bef8ea022f8ac35) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_86.png using Guid(1cdb1cb2052a68243bef8ea022f8ac35) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'bd6baa1a326fa46b42006b81acaea1ea') in 0.0212136 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000022 seconds.
-  path: Assets/Backyard - Free/backyard_61.asset
-  artifactKey: Guid(1f493059ca663d4428c3ddf064e5dcec) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_61.asset using Guid(1f493059ca663d4428c3ddf064e5dcec) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '836b07b68a9afe0abcf6c7a197f5e489') in 0.02156 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000014 seconds.
-  path: Assets/Backyard - Free/backyard_70.asset
-  artifactKey: Guid(5dd4e7006c65ec846be70e77cccd0b26) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_70.asset using Guid(5dd4e7006c65ec846be70e77cccd0b26) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'ba528198fb9edfdee87f9ad2e1dd6183') in 0.0160375 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000016 seconds.
-  path: Assets/Backyard - Free/backyard_81.asset
-  artifactKey: Guid(b8307880e3fd48348a9f423cef4b8c65) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_81.asset using Guid(b8307880e3fd48348a9f423cef4b8c65) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '7a4cde06119447357ce95c7260f5bc30') in 0.0175819 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000014 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_50.png
-  artifactKey: Guid(bc2e3d80eb9fefe4ba3e101f7d1bd66c) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_50.png using Guid(bc2e3d80eb9fefe4ba3e101f7d1bd66c) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '5b17225f70c4d1cc321d7f88aa411e5b') in 0.0223502 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000014 seconds.
-  path: Assets/Backyard - Free/backyard_42.asset
-  artifactKey: Guid(de307db61cc010544bb945eef125d170) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_42.asset using Guid(de307db61cc010544bb945eef125d170) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '27091fe5f83da805d89c1bd935a6923b') in 0.0172621 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_27.png
-  artifactKey: Guid(9820de1909d46a147b2e7eaca4cd6753) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_27.png using Guid(9820de1909d46a147b2e7eaca4cd6753) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '287f384a025619743ed971cf8fad66d5') in 0.023752 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000018 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_89.png
-  artifactKey: Guid(e4f5b4cb5a11d49449e7ca80969aed85) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_89.png using Guid(e4f5b4cb5a11d49449e7ca80969aed85) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'df152ad6f20d35710e03d439d216bfe1') in 0.0249018 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000024 seconds.
-  path: Assets/Assets/Scripts/Grid/Testing.cs
-  artifactKey: Guid(1fde6c8d4cbb826449721ab96fd3e46e) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Assets/Scripts/Grid/Testing.cs using Guid(1fde6c8d4cbb826449721ab96fd3e46e) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '917266e7360052c96c275cc854bcfe02') in 0.0171195 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Free 32x32 Isometric Tileset Pack/Tile Palette/Palette Tiles/Free Isometric Pack Spritesheet_2.asset
-  artifactKey: Guid(15b6972f7cfb521429db087609cb86b0) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Free 32x32 Isometric Tileset Pack/Tile Palette/Palette Tiles/Free Isometric Pack Spritesheet_2.asset using Guid(15b6972f7cfb521429db087609cb86b0) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '2b89674d27f35b3c4e73c6f8025d5e3a') in 0.0180722 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000014 seconds.
-  path: Assets/Assets/Scripts/Grid/Grid.cs
-  artifactKey: Guid(0135e3db91213724c9093b749397c6ea) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Assets/Scripts/Grid/Grid.cs using Guid(0135e3db91213724c9093b749397c6ea) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'e313577652e41b3d418e3b0f5ed71381') in 0.0090373 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000014 seconds.
-  path: Assets/Free 32x32 Isometric Tileset Pack/Textures/Free Isometric Pack Spritesheet.png
-  artifactKey: Guid(b9322abd4f2aaad4c979c052daa67961) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Free 32x32 Isometric Tileset Pack/Textures/Free Isometric Pack Spritesheet.png using Guid(b9322abd4f2aaad4c979c052daa67961) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'c262b7fbc8d3560edfbcdb3c672519c4') in 0.0374426 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 14
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000011 seconds.
-  path: Assets/Settings/Scenes/URP2DSceneTemplate.unity
-  artifactKey: Guid(2cda990e2423bbf4892e6590ba056729) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Settings/Scenes/URP2DSceneTemplate.unity using Guid(2cda990e2423bbf4892e6590ba056729) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'a181eb3381f17dbc4060771cef7bd37a') in 0.015074 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000018 seconds.
-  path: Assets/Assets/Sprites/Vaporeon/134.png
-  artifactKey: Guid(f91f66e86a298c448bdc44790320ad68) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Assets/Sprites/Vaporeon/134.png using Guid(f91f66e86a298c448bdc44790320ad68) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'bbe38a0ed37275fff01957ee4ec94814') in 0.0386262 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 18
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000015 seconds.
-  path: Assets/Assets/Scripts/BattleSystem/BattleSystem.cs
-  artifactKey: Guid(3c38d1391c25cdf459b531835e5f1a9e) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Assets/Scripts/BattleSystem/BattleSystem.cs using Guid(3c38d1391c25cdf459b531835e5f1a9e) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'cc8efeca12fd8bf6187d5598b8cfa9ec') in 0.0085518 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000020 seconds.
-  path: Assets/Free 32x32 Isometric Tileset Pack/Tile Palette/Palette Tiles/Free Isometric Pack Spritesheet_3.asset
-  artifactKey: Guid(91dad2b8d5696a2439d7a1ff685022bc) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Free 32x32 Isometric Tileset Pack/Tile Palette/Palette Tiles/Free Isometric Pack Spritesheet_3.asset using Guid(91dad2b8d5696a2439d7a1ff685022bc) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '6736647a4278c043574118d0e85ff7d8') in 0.0157473 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000015 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_88.png
-  artifactKey: Guid(4385a494ddd086c468943b352deb1554) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_88.png using Guid(4385a494ddd086c468943b352deb1554) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'aa417afbd2b99cdefc15ffa667af298f') in 0.0232728 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Free 32x32 Isometric Tileset Pack/Tile Palette/Palette Tiles/Free Isometric Pack Spritesheet_0.asset
-  artifactKey: Guid(5c7edb569040af94e99c4c3e119f1367) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Free 32x32 Isometric Tileset Pack/Tile Palette/Palette Tiles/Free Isometric Pack Spritesheet_0.asset using Guid(5c7edb569040af94e99c4c3e119f1367) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '9614fd653ebafaa660291f7ee1223133') in 0.0161365 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000015 seconds.
-  path: Assets/Backyard - Free/backyard_49.asset
-  artifactKey: Guid(752726de5d413b1478f6d609d541e8c1) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_49.asset using Guid(752726de5d413b1478f6d609d541e8c1) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'f75f21e16f339c5824f2e79a99ffb5a0') in 0.0164297 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000015 seconds.
-  path: Assets/Backyard - Free/backyard_41.asset
-  artifactKey: Guid(c9c12ac201867d047a18d022c9b30c52) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_41.asset using Guid(c9c12ac201867d047a18d022c9b30c52) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '96135a85b1202da3c126bc01c44749af') in 0.0110783 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000015 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_25.png
-  artifactKey: Guid(80e81e7ae0024564c94c590585ff469d) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_25.png using Guid(80e81e7ae0024564c94c590585ff469d) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '5eeecd8c8e41f9dd5e625475b2ce7c0c') in 0.0205283 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_21.png
-  artifactKey: Guid(f1ac63a9f734a9b478a0a8b4c07e39e5) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_21.png using Guid(f1ac63a9f734a9b478a0a8b4c07e39e5) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'c989815ef3847da5984bc610c343dd4b') in 0.0214044 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000016 seconds.
-  path: Assets/Backyard - Free/backyard_89.asset
-  artifactKey: Guid(d9af1f8b2628c6f4bb4047e37ee31dc5) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_89.asset using Guid(d9af1f8b2628c6f4bb4047e37ee31dc5) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '732ae53d97293c944302d745b3a7e0f3') in 0.0162804 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000024 seconds.
-  path: Assets/Assets/Scripts/BattleSystem/Enemy/Pathfinder Enemy.cs
-  artifactKey: Guid(f467a9c137baa5c48bd0fb97c3ecf1cb) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Assets/Scripts/BattleSystem/Enemy/Pathfinder Enemy.cs using Guid(f467a9c137baa5c48bd0fb97c3ecf1cb) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'e77b2321295aad1f056dbe1b735e20fa') in 0.01443 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000016 seconds.
-  path: Assets/Free 32x32 Isometric Tileset Pack/Tile Palette/Palette Tiles/Free Isometric Pack Spritesheet_6.asset
-  artifactKey: Guid(e15829af497aabd4497fbee6de1f1981) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Free 32x32 Isometric Tileset Pack/Tile Palette/Palette Tiles/Free Isometric Pack Spritesheet_6.asset using Guid(e15829af497aabd4497fbee6de1f1981) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '04ee60653dfc648739904c6db8f91148') in 0.0168939 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Assets/Scripts/BattleSystem/Enemy/PlayerTile.cs
-  artifactKey: Guid(f8676e176e16ca841830d1f52650b147) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Assets/Scripts/BattleSystem/Enemy/PlayerTile.cs using Guid(f8676e176e16ca841830d1f52650b147) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'ed48cfba970ab172c88296565ba21661') in 0.0136685 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000015 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_66.png
-  artifactKey: Guid(dfe6785ab150cd045aad2155d94cdc9b) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_66.png using Guid(dfe6785ab150cd045aad2155d94cdc9b) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'b80057ea0f68914620734e51544f10e9') in 0.0222774 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000014 seconds.
-  path: Assets/Backyard - Free/backyard_17.asset
-  artifactKey: Guid(2e9345409ec335a43b96f7326dd3a2f7) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_17.asset using Guid(2e9345409ec335a43b96f7326dd3a2f7) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'b39e09d787b42084708b3c17b8949dbb') in 0.0178664 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000014 seconds.
-  path: Assets/Backyard - Free/backyard_54.asset
-  artifactKey: Guid(b3c1bd7fcd51f5a40bc146a3e986e837) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_54.asset using Guid(b3c1bd7fcd51f5a40bc146a3e986e837) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'bfa825f6792efe8864297f17e07884b8') in 0.0158122 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000014 seconds.
-  path: Assets/Backyard - Free/backyard_44.asset
-  artifactKey: Guid(1777c8f64d9d8da4099aff71e4eaf4ca) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_44.asset using Guid(1777c8f64d9d8da4099aff71e4eaf4ca) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '41f5a100a5830e1069d2018473b2f43e') in 0.0168723 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000017 seconds.
-  path: Assets/Backyard - Free/backyard_82.asset
-  artifactKey: Guid(c902ca0f2198a4246a73592412697a07) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_82.asset using Guid(c902ca0f2198a4246a73592412697a07) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'a555cec71cda03b5ba79a644c0266a18') in 0.0163245 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000022 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_05.png
-  artifactKey: Guid(3173b0d7c57b66641b25fb5cd893ecc5) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_05.png using Guid(3173b0d7c57b66641b25fb5cd893ecc5) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'b96fc49216978e7e69eaf27ffd054cf4') in 0.0236234 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_82.png
-  artifactKey: Guid(b7f413274354389469cd9c3b39f0d401) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_82.png using Guid(b7f413274354389469cd9c3b39f0d401) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '474cf24dacd1f6ed0270e62e224b9ff5') in 0.0253521 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Free 32x32 Isometric Tileset Pack/Tile Palette/Free Isometric Pack Palette.prefab
-  artifactKey: Guid(d01bbee922504fa4788b8b259471116c) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Free 32x32 Isometric Tileset Pack/Tile Palette/Free Isometric Pack Palette.prefab using Guid(d01bbee922504fa4788b8b259471116c) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '7e929ef8cd487186b3569ca928000e5d') in 0.0288256 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 10
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_56.png
-  artifactKey: Guid(b9855265ff381844aae27785fb46640b) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_56.png using Guid(b9855265ff381844aae27785fb46640b) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '1e8c0145e5af772cf0281e067c53e629') in 0.027179 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000012 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_04.png
-  artifactKey: Guid(af91ea933b5621c4096f217ecfed268b) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_04.png using Guid(af91ea933b5621c4096f217ecfed268b) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '4bdab55d926a25aa6b8392c73c3c9614') in 0.0206113 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000015 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_87.png
-  artifactKey: Guid(527bcc792a998d243bab159bf7985ae8) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_87.png using Guid(527bcc792a998d243bab159bf7985ae8) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'aafb5aedd81cae554e89b640a1a89a40') in 0.0257667 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000022 seconds.
-  path: Assets/Free 32x32 Isometric Tileset Pack/Tile Palette/Palette Tiles/Free Isometric Pack Spritesheet_9.asset
-  artifactKey: Guid(5a3d71d38c5919b47942eb31bd795dcb) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Free 32x32 Isometric Tileset Pack/Tile Palette/Palette Tiles/Free Isometric Pack Spritesheet_9.asset using Guid(5a3d71d38c5919b47942eb31bd795dcb) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'd89e6b952a0ed34b878a5e8732922785') in 0.0171202 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000014 seconds.
-  path: Assets/Backyard - Free/backyard_51.asset
-  artifactKey: Guid(d069ba915ea59f844ba597ef2a11d357) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_51.asset using Guid(d069ba915ea59f844ba597ef2a11d357) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'b11c5b707aa47684271d0cd8cc9cceee') in 0.0151836 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000012 seconds.
-  path: Assets/Backyard - Free/backyard_62.asset
-  artifactKey: Guid(77a4bc5efa3056049b767280fcb32c3c) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_62.asset using Guid(77a4bc5efa3056049b767280fcb32c3c) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'e9b9e794be665f3ac4e8930f28875943') in 0.0214402 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Backyard - Free/backyard_31.asset
-  artifactKey: Guid(c0b15c5d9a835314a9cec17b34366901) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_31.asset using Guid(c0b15c5d9a835314a9cec17b34366901) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '7ef571b64810fc67f3b316b4c0857636') in 0.0164016 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000014 seconds.
-  path: Assets/Backyard - Free/keaw_logo.asset
-  artifactKey: Guid(d190467c13c723e489ff559ff723bf2d) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/keaw_logo.asset using Guid(d190467c13c723e489ff559ff723bf2d) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'd8e5019c957dbd1a9c6385ff12ce0dd7') in 0.0178402 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000014 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_20.png
-  artifactKey: Guid(3a4199454ab180b41baf68b9e8729b9c) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_20.png using Guid(3a4199454ab180b41baf68b9e8729b9c) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'a3a21a5000292a4655c59eb243158942') in 0.0233252 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000016 seconds.
-  path: Assets/Backyard - Free/backyard_6.asset
-  artifactKey: Guid(3e0ad68aaf697ba4e80262df508a9e15) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_6.asset using Guid(3e0ad68aaf697ba4e80262df508a9e15) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'b17eb6a788866ddfd3b81189906aa475') in 0.0117419 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000020 seconds.
-  path: Assets/Backyard - Free/backyard_18.asset
-  artifactKey: Guid(fbff4d3904d6b954f8e48f52afac4211) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_18.asset using Guid(fbff4d3904d6b954f8e48f52afac4211) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '72fd88f999278b4d795fd96e4205e3f1') in 0.0119427 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_68.png
-  artifactKey: Guid(9ef1cbe36fb9b7c4ba55f572a4d1ac59) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_68.png using Guid(9ef1cbe36fb9b7c4ba55f572a4d1ac59) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '99242c44242d201f6db7d18106c800ac') in 0.0211429 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_12.png
-  artifactKey: Guid(af7001716e952f84a8d7235196e0a2a1) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_12.png using Guid(af7001716e952f84a8d7235196e0a2a1) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'c0e409d07afc1a537ec769a7c4fa8259') in 0.0328423 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000014 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_59.png
-  artifactKey: Guid(a4a3ff7a0ca7f4f45ade43bcf676b986) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_59.png using Guid(a4a3ff7a0ca7f4f45ade43bcf676b986) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '8f29ae85cd1dfcd89a83bc0ec8512e55') in 0.0209629 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Backyard - Free/backyard_32.asset
-  artifactKey: Guid(954bca5941e6664478bb9f8a7b7c52f6) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_32.asset using Guid(954bca5941e6664478bb9f8a7b7c52f6) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '6a1d5182a10e7ca7cec89e8cc1c3cd4a') in 0.0167393 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Settings/Lit2DSceneTemplate.scenetemplate
-  artifactKey: Guid(d03ed43fc9d8a4f2e9fa70c1c7916eb9) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Settings/Lit2DSceneTemplate.scenetemplate using Guid(d03ed43fc9d8a4f2e9fa70c1c7916eb9) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '27f665cb14c7715092c0bd37c82e5b7c') in 0.0477628 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 4
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000016 seconds.
-  path: Assets/Backyard - Free/backyard_7.asset
-  artifactKey: Guid(0c0cbe7be1606f84f9ba45a99d8be255) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_7.asset using Guid(0c0cbe7be1606f84f9ba45a99d8be255) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'fbc9554ee1fbc0e213f05780a6d2fe2a') in 0.0163803 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000019 seconds.
-  path: Assets/Backyard - Free/backyard_88.asset
-  artifactKey: Guid(2bff884ebab0ca4438cd40e936a10f28) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_88.asset using Guid(2bff884ebab0ca4438cd40e936a10f28) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '7050857f08c4f3e1a9fc18aa1385d4db') in 0.0141509 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000014 seconds.
-  path: Assets/Backyard - Free/Additional Files/backyard.pyxel
-  artifactKey: Guid(d9d3d81e4d6c238479151a0759727f38) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Additional Files/backyard.pyxel using Guid(d9d3d81e4d6c238479151a0759727f38) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'bf694d1001c0cbab7712013a28938104') in 0.0081411 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000015 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_61.png
-  artifactKey: Guid(5d1fb61671e1a7046ae9cb324c4a1d0d) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_61.png using Guid(5d1fb61671e1a7046ae9cb324c4a1d0d) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '640d61757ab43747cfd68bcf7d767301') in 0.0217697 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Backyard - Free/backyard_76.asset
-  artifactKey: Guid(9cd6cbad18fc10140bb47147c300138d) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_76.asset using Guid(9cd6cbad18fc10140bb47147c300138d) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '4f1b584e0cb5bfe8f1ea5f3e2706696b') in 0.016543 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000012 seconds.
-  path: Assets/Backyard - Free/backyard_48.asset
-  artifactKey: Guid(e6abe2ad6720fee4291a30bcc273fc5f) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_48.asset using Guid(e6abe2ad6720fee4291a30bcc273fc5f) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'a11332b16dc8dfd54011808a4cdbb0a7') in 0.0149289 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000014 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_32.png
-  artifactKey: Guid(9cc9ef331801669419d571f6d9aa30e1) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_32.png using Guid(9cc9ef331801669419d571f6d9aa30e1) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '3cc70df7d3f1681f926573ae5616836d') in 0.0263617 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000014 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_51.png
-  artifactKey: Guid(0df2e2a07c35ec74eb84100acea65cb7) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_51.png using Guid(0df2e2a07c35ec74eb84100acea65cb7) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '973927e22da9227e553e03b029210ecb') in 0.0284854 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000017 seconds.
-  path: Assets/Free 32x32 Isometric Tileset Pack/Tile Palette/Palette Tiles/Free Isometric Pack Spritesheet_5.asset
-  artifactKey: Guid(c61893fb968c5f548a30f1e535036592) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Free 32x32 Isometric Tileset Pack/Tile Palette/Palette Tiles/Free Isometric Pack Spritesheet_5.asset using Guid(c61893fb968c5f548a30f1e535036592) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '327eba5665e414b28cbb68e7d7a2fc6d') in 0.0198407 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000023 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_84.png
-  artifactKey: Guid(0cf005c00ba921b4481b1ac2778dd184) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_84.png using Guid(0cf005c00ba921b4481b1ac2778dd184) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '07ef5ac8906faaa4ee2af5f66a38c142') in 0.0222419 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Backyard - Free/backyard_75.asset
-  artifactKey: Guid(09f598261f9eb8149b4e0ab78a3a4fa1) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_75.asset using Guid(09f598261f9eb8149b4e0ab78a3a4fa1) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'f7f11990e1fb1c5d106272bead01c0c7') in 0.0218805 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000016 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_33.png
-  artifactKey: Guid(67ef83aae3a88bf488ae817e65e114d6) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_33.png using Guid(67ef83aae3a88bf488ae817e65e114d6) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'be74f1809e15414dd2a6ccf3355ffb6a') in 0.0230161 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000017 seconds.
-  path: Assets/Backyard - Free/backyard_38.asset
-  artifactKey: Guid(1980e40f39c511740a1cf3810a755d86) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_38.asset using Guid(1980e40f39c511740a1cf3810a755d86) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '7d21c4f3c12f68630c17c8e5d4c7e0c9') in 0.0141767 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000016 seconds.
-  path: Assets/Assets/Maps/Ciudad_Plateada_HGSS.jpg
-  artifactKey: Guid(7d953b695abb66640a4648fe752ee077) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Assets/Maps/Ciudad_Plateada_HGSS.jpg using Guid(7d953b695abb66640a4648fe752ee077) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '63166acfe5374cf3a73999a6bcede156') in 0.0240238 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000033 seconds.
-  path: Assets/Backyard - Free/backyard_33.asset
-  artifactKey: Guid(5bace1a64f510c84ab89d1fa0e4f5f1a) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_33.asset using Guid(5bace1a64f510c84ab89d1fa0e4f5f1a) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'f9c7a027afcb132501e5555b914a97ba') in 0.0216899 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000015 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_15.png
-  artifactKey: Guid(34b491e5a136b184ebf6540ba4726c8f) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_15.png using Guid(34b491e5a136b184ebf6540ba4726c8f) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'cf8c783f6822372d23cd7b34356fcef4') in 0.0273252 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/Backyard - Free/backyard_35.asset
-  artifactKey: Guid(d6aadbec9607d334fadb8ba36cdef33b) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/backyard_35.asset using Guid(d6aadbec9607d334fadb8ba36cdef33b) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'e7e6c91c56fe7a2e6a660e2254fb56c9') in 0.0173652 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000011 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_43.png
-  artifactKey: Guid(4218829bd7e6e104e84e039d42617229) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_43.png using Guid(4218829bd7e6e104e84e039d42617229) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'deb347f4b6ae7df032279eedee666103') in 0.0237294 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000014 seconds.
-  path: Assets/Backyard - Free/Separate Tiles/backyard_35.png
-  artifactKey: Guid(783682e92230f094caa78a76ad680c88) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Backyard - Free/Separate Tiles/backyard_35.png using Guid(783682e92230f094caa78a76ad680c88) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '45693d5ea41345b8146dde54f8d81586') in 0.0219508 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 315.675902 seconds.
-  path: Assets/Scenes/SampleScene.unity
-  artifactKey: Guid(8c9cfa26abfee488c85f1582747f6a02) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Scenes/SampleScene.unity using Guid(8c9cfa26abfee488c85f1582747f6a02) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '9824fc3cf5977fd5b7e81a057fae6ace') in 0.0119695 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 992.082334 seconds.
-  path: ProjectSettings/TagManager.asset
-  artifactKey: Guid(00000000000000003000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing ProjectSettings/TagManager.asset using Guid(00000000000000003000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '05837cf81a078ca1e0ac37852c784c3f') in 0.0132432 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 17.799367 seconds.
-  path: ProjectSettings/TagManager.asset
-  artifactKey: Guid(00000000000000003000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing ProjectSettings/TagManager.asset using Guid(00000000000000003000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '31a49d94bd7b5bb2dbae19b3948ab5e7') in 0.0006943 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.905488 seconds.
-  path: Assets/Scenes/SampleScene.unity
-  artifactKey: Guid(8c9cfa26abfee488c85f1582747f6a02) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Scenes/SampleScene.unity using Guid(8c9cfa26abfee488c85f1582747f6a02) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: 'e40bc15b4b50d51e4c272421d4ebb829') in 0.0118839 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 1142.772762 seconds.
-  path: Assets/Scenes/SampleScene.unity
-  artifactKey: Guid(8c9cfa26abfee488c85f1582747f6a02) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Scenes/SampleScene.unity using Guid(8c9cfa26abfee488c85f1582747f6a02) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '3507781f1a1fd02047b974340e7bca70') in 0.0124214 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 68.653088 seconds.
-  path: Assets/Scenes/SampleScene.unity
-  artifactKey: Guid(8c9cfa26abfee488c85f1582747f6a02) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Scenes/SampleScene.unity using Guid(8c9cfa26abfee488c85f1582747f6a02) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '9509df4cd2e992e4e1b7c10cc3b4e894') in 0.0115438 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 502.722877 seconds.
-  path: Assets/Scenes/SampleScene.unity
-  artifactKey: Guid(8c9cfa26abfee488c85f1582747f6a02) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Scenes/SampleScene.unity using Guid(8c9cfa26abfee488c85f1582747f6a02) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '5d267c91899e997d065f9511b0174cbe') in 0.0122245 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 521.038875 seconds.
-  path: Assets/Scenes/SampleScene.unity
-  artifactKey: Guid(8c9cfa26abfee488c85f1582747f6a02) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Scenes/SampleScene.unity using Guid(8c9cfa26abfee488c85f1582747f6a02) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '6d962f6e8c942c5c8718a5a0cf7e5f13') in 0.0141753 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 1046.555682 seconds.
-  path: Assets/Scenes/SampleScene.unity
-  artifactKey: Guid(8c9cfa26abfee488c85f1582747f6a02) Importer(2089858483,192608db42251d675da83286b1cce702)
-Start importing Assets/Scenes/SampleScene.unity using Guid(8c9cfa26abfee488c85f1582747f6a02) Importer(2089858483,192608db42251d675da83286b1cce702) (ScriptedImporter) -> (artifact id: '0b038068efb453f0c2349806cdb5a52d') in 0.0126393 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
 Received Prepare
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.616 seconds
-Refreshing native plugins compatible for Editor in 1.21 ms, found 4 plugins.
+- Loaded All Assemblies, in  0.584 seconds
+Refreshing native plugins compatible for Editor in 1.25 ms, found 4 plugins.
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.807 seconds
-Domain Reload Profiling: 1426ms
-	BeginReloadAssembly (189ms)
+- Finished resetting the current domain, in  0.735 seconds
+Domain Reload Profiling: 1322ms
+	BeginReloadAssembly (175ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (11ms)
+		DisableScriptedObjects (12ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (55ms)
-	RebuildCommonClasses (34ms)
-	RebuildNativeTypeToScriptingClass (10ms)
-	initialDomainReloadingComplete (18ms)
-	LoadAllAssembliesAndSetupDomain (367ms)
-		LoadAssemblies (298ms)
+		CreateAndSetChildDomain (40ms)
+	RebuildCommonClasses (28ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (19ms)
+	LoadAllAssembliesAndSetupDomain (356ms)
+		LoadAssemblies (303ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (158ms)
-			TypeCache.Refresh (8ms)
+		AnalyzeDomain (140ms)
+			TypeCache.Refresh (6ms)
 				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (139ms)
+			BuildScriptInfoCaches (124ms)
 			ResolveRequiredComponents (8ms)
-	FinalizeReload (808ms)
+	FinalizeReload (735ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (657ms)
+		SetupLoadedEditorAssemblies (597ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (3ms)
+			InitializePlatformSupportModulesInManaged (2ms)
 			SetLoadedEditorAssemblies (6ms)
-			BeforeProcessingInitializeOnLoad (144ms)
-			ProcessInitializeOnLoadAttributes (458ms)
+			BeforeProcessingInitializeOnLoad (136ms)
+			ProcessInitializeOnLoadAttributes (407ms)
 			ProcessInitializeOnLoadMethodAttributes (44ms)
 			AfterProcessingInitializeOnLoad (1ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
 		AwakeInstancesAfterBackupRestoration (10ms)
-Refreshing native plugins compatible for Editor in 1.28 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 1.27 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6679 unused Assets / (3.8 MB). Loaded Objects now: 7404.
-Memory consumption went from 154.0 MB to 150.2 MB.
-Total: 5.533200 ms (FindLiveObjects: 0.420800 ms CreateObjectMapping: 0.274300 ms MarkObjects: 3.528200 ms  DeleteObjects: 1.308700 ms)
+Unloading 6677 unused Assets / (4.2 MB). Loaded Objects now: 7445.
+Memory consumption went from 156.5 MB to 152.3 MB.
+Total: 6.800800 ms (FindLiveObjects: 0.603400 ms CreateObjectMapping: 0.378000 ms MarkObjects: 4.292900 ms  DeleteObjects: 1.525200 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.565 seconds
+Refreshing native plugins compatible for Editor in 1.16 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.701 seconds
+Domain Reload Profiling: 1269ms
+	BeginReloadAssembly (168ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (11ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (40ms)
+	RebuildCommonClasses (25ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (18ms)
+	LoadAllAssembliesAndSetupDomain (348ms)
+		LoadAssemblies (287ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (143ms)
+			TypeCache.Refresh (7ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (125ms)
+			ResolveRequiredComponents (8ms)
+	FinalizeReload (701ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (565ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (2ms)
+			SetLoadedEditorAssemblies (6ms)
+			BeforeProcessingInitializeOnLoad (129ms)
+			ProcessInitializeOnLoadAttributes (386ms)
+			ProcessInitializeOnLoadMethodAttributes (41ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (9ms)
+Refreshing native plugins compatible for Editor in 1.26 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6677 unused Assets / (4.0 MB). Loaded Objects now: 7447.
+Memory consumption went from 156.5 MB to 152.5 MB.
+Total: 5.586600 ms (FindLiveObjects: 0.403900 ms CreateObjectMapping: 0.270600 ms MarkObjects: 3.573200 ms  DeleteObjects: 1.337800 ms)
 
 Prepare: number of updated asset objects reloaded= 0
