@@ -1,11 +1,14 @@
+using System;
 using UnityEngine;
 
 public class OverlayTile : MonoBehaviour
 {
-    public int G;
-    public int H;
+    public Int32 G;
+    public Int32 H;
 
-    public int F { get { return G + H; } }
+    public Int32 F { get { return G + H; } }
+
+    public OverlayTile targetReference;
 
     public bool isBlocked;
 
