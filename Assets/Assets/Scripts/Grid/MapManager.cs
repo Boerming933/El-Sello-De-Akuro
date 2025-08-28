@@ -1,12 +1,14 @@
+using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class MapManager : MonoBehaviour
 {
     private static MapManager _instance;
-    public static MapManager Instance {get { return _instance; }}
+    public static MapManager Instance { get { return _instance; } }
 
     public OverlayTile overlayTilePrefab;
     public GameObject OverlayContainer;
@@ -45,13 +47,85 @@ public class MapManager : MonoBehaviour
                         var OverlayTile = Instantiate(overlayTilePrefab, OverlayContainer.transform);
                         var cellWorldPosition = tileMap.GetCellCenterWorld(tileLocation);
 
-                        OverlayTile.transform.position = new Vector3(cellWorldPosition.x, cellWorldPosition.y, cellWorldPosition.z);
-                        OverlayTile.GetComponent<SpriteRenderer>().sortingOrder = tileMap.GetComponent<TilemapRenderer>().sortingOrder;
+                        OverlayTile.transform.position = new Vector3(cellWorldPosition.x, cellWorldPosition.y, cellWorldPosition.z + 1);
+                        OverlayTile.GetComponent<SpriteRenderer>().sortingOrder = tileMap.GetComponent<TilemapRenderer>().sortingOrder + 1;
                         OverlayTile.gridLocation = tileLocation;
                         map.Add(tileKey, OverlayTile);
                     }
                 }
-            }            
+            }
         }
+    }
+
+    public List<OverlayTile> GetNeighbourTiles(OverlayTile currentOverlayTile, List<OverlayTile> searchableTiles)
+    {
+        var map = MapManager.Instance.map;
+        Dictionary<Vector2Int, OverlayTile> tileToSearch = new Dictionary<Vector2Int, OverlayTile>();
+
+        if (searchableTiles.Count > 0)
+        {
+            foreach (var item in searchableTiles)
+            {
+                tileToSearch.Add(item.grid2DLocation, item);
+            }
+        }
+        else
+        {
+            tileToSearch = map;
+        }
+
+
+
+        List<OverlayTile> neighbours = new List<OverlayTile>();
+
+        //arriba
+        Vector2Int locationToCheck = new Vector2Int(
+            currentOverlayTile.gridLocation.x,
+            currentOverlayTile.gridLocation.y + 1
+            );
+
+        if (tileToSearch.ContainsKey(locationToCheck))
+        {
+            if (Mathf.Abs(currentOverlayTile.gridLocation.z - tileToSearch[locationToCheck].gridLocation.z) <= 1)
+                neighbours.Add(tileToSearch[locationToCheck]);
+        }
+
+        //abajo
+        locationToCheck = new Vector2Int(
+            currentOverlayTile.gridLocation.x,
+            currentOverlayTile.gridLocation.y - 1
+        );
+
+        if (tileToSearch.ContainsKey(locationToCheck))
+        {
+            if (Mathf.Abs(currentOverlayTile.gridLocation.z - tileToSearch[locationToCheck].gridLocation.z) <= 1)
+                neighbours.Add(tileToSearch[locationToCheck]);
+        }
+
+        //izquierda
+        locationToCheck = new Vector2Int(
+            currentOverlayTile.gridLocation.x - 1,
+            currentOverlayTile.gridLocation.y
+            );
+
+        if (tileToSearch.ContainsKey(locationToCheck))
+        {
+            if (Mathf.Abs(currentOverlayTile.gridLocation.z - tileToSearch[locationToCheck].gridLocation.z) <= 1)
+                neighbours.Add(tileToSearch[locationToCheck]);
+        }
+
+        //derecha
+        locationToCheck = new Vector2Int(
+            currentOverlayTile.gridLocation.x + 1,
+            currentOverlayTile.gridLocation.y
+            );
+
+        if (tileToSearch.ContainsKey(locationToCheck))
+        {
+            if (Mathf.Abs(currentOverlayTile.gridLocation.z - tileToSearch[locationToCheck].gridLocation.z) <= 1)
+                neighbours.Add(tileToSearch[locationToCheck]);
+        }
+
+        return neighbours;
     }
 }

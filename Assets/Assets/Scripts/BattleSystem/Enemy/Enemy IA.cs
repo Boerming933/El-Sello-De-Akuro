@@ -35,7 +35,7 @@ public class EnemyIA : MonoBehaviour
             Player2.GetComponent<SpriteRenderer>().sortingOrder = overlayTile2.GetComponent<SpriteRenderer>().sortingOrder;
             Player3.GetComponent<SpriteRenderer>().sortingOrder = overlayTile3.GetComponent<SpriteRenderer>().sortingOrder;
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 path = pathfinder.FindPath(Active, overlayTile1, overlayTile2, overlayTile3);
             }
