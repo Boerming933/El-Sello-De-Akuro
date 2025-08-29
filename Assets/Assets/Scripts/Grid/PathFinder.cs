@@ -10,7 +10,7 @@ public class PathFinder
     {
         List<OverlayTile> openList = new List<OverlayTile>();
         List<OverlayTile> closedList = new List<OverlayTile>();
-        
+
         openList.Add(start);
 
         while (openList.Count > 0)
@@ -20,7 +20,7 @@ public class PathFinder
             openList.Remove(currentOverlayTile);
             closedList.Add(currentOverlayTile);
 
-            if(currentOverlayTile == end)
+            if (currentOverlayTile == end)
             {
                 return GetFinishedList(start, end);
             }
@@ -29,7 +29,7 @@ public class PathFinder
 
             foreach (var neighbour in neighbourTiles)
             {
-                if(neighbour.isBlocked || closedList.Contains(neighbour))
+                if (neighbour.isBlocked || closedList.Contains(neighbour))
                 {
                     continue;
                 }
@@ -71,5 +71,6 @@ public class PathFinder
         return (int)(10 * Mathf.Sqrt(2) * Mathf.Min(dx, dy) + 10 * Mathf.Abs(dx - dy));
     }
 
-    
+
 }
+

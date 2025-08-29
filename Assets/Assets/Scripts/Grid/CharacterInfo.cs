@@ -4,4 +4,3 @@ public class CharacterInfo : MonoBehaviour
 {
     public OverlayTile activeTile;
 }
-
