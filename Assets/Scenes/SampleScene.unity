@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 6920267}
   - component: {fileID: 6920269}
   m_Layer: 6
-  m_Name: Vaporeon(Visual)
+  m_Name: Vaporeon
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -201,7 +201,7 @@ Transform:
   m_GameObject: {fileID: 6920266}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2, y: 0.75, z: 0}
+  m_LocalPosition: {x: 0, y: 1.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -289,7 +289,7 @@ Transform:
   m_GameObject: {fileID: 117182015}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.768764, y: -0.31125382, z: 0}
+  m_LocalPosition: {x: -1, y: -0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -362,9 +362,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3eed9011ddc034486a914be6c7e754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 6920266}
   speed: 3
-  movement: 2
+  steps: 2
+  characterPrefab: {fileID: 6920266}
+  character: {fileID: 6920269}
 --- !u!1 &200769972 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7799466084517076723, guid: 351450264f32f3348a57f37689c12f19, type: 3}
@@ -553,7 +554,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 00c2028c29837d84c95d58bb599c2330, type: 3}
   m_Name: 
@@ -4006,9 +4007,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1083553799}
   - component: {fileID: 1083553798}
-  - component: {fileID: 1083553800}
   m_Layer: 6
-  m_Name: Leafeon(Visual)
+  m_Name: Leafeon
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4078,25 +4078,12 @@ Transform:
   m_GameObject: {fileID: 1083553797}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6, y: 0.75, z: 0}
+  m_LocalPosition: {x: 3, y: 1.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1083553800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1083553797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f846459c5db84147ba15e29a8e92590, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activeTile: {fileID: 8564783225781520472, guid: e716efb2b108d554883ad8da3489160e, type: 3}
 --- !u!114 &1097429621 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6207208123214658307, guid: 351450264f32f3348a57f37689c12f19, type: 3}
@@ -4398,6 +4385,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1412991152
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1412991153}
+  m_Layer: 0
+  m_Name: PositionGabite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1412991153
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412991152}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.09084667, y: 0.1560741, z: -11.92509}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1431354837 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7840990114718806709, guid: 351450264f32f3348a57f37689c12f19, type: 3}
@@ -4517,9 +4535,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1633231245}
   - component: {fileID: 1633231244}
-  - component: {fileID: 1633231246}
   m_Layer: 6
-  m_Name: Umbreon(Visual)
+  m_Name: Umbreon
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4595,19 +4612,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1633231246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1633231243}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f846459c5db84147ba15e29a8e92590, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activeTile: {fileID: 8564783225781520472, guid: e716efb2b108d554883ad8da3489160e, type: 3}
 --- !u!114 &1636102304 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7591459846573082438, guid: 351450264f32f3348a57f37689c12f19, type: 3}
@@ -4654,7 +4658,7 @@ GameObject:
   - component: {fileID: 1796309826}
   - component: {fileID: 1796309825}
   m_Layer: 6
-  m_Name: Gabite(Visual)
+  m_Name: Gabite
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4913,3 +4917,4 @@ SceneRoots:
   - {fileID: 1276269354}
   - {fileID: 117182016}
   - {fileID: 1584657261}
+  - {fileID: 1412991153}
