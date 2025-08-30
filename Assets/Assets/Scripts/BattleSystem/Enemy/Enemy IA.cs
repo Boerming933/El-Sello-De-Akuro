@@ -1,21 +1,29 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using finished3;
 using UnityEngine;
 
 public class EnemyIA : MonoBehaviour
 {
     private PathfinderEnemy pathfinder;
-    public float speed;
     private Enemy Enemy;
-    public GameObject Player1,Player2,Player3;
+
+    public float speed;
+    public int movement;
+    private bool isMoving = false;
+    
+    public GameObject Player1, Player2, Player3;
+
     private List<OverlayTile> path;
+    private List<OverlayTile> inRangeTiles = new List<OverlayTile>();
 
     private void Start()
     {
         pathfinder = new PathfinderEnemy();
         path = new List<OverlayTile>();
         Enemy = GetComponent<Enemy>();
+        Debug.Log(isMoving);
     }
 
     private void Update()
@@ -35,18 +43,24 @@ public class EnemyIA : MonoBehaviour
             Player2.GetComponent<SpriteRenderer>().sortingOrder = overlayTile2.GetComponent<SpriteRenderer>().sortingOrder;
             Player3.GetComponent<SpriteRenderer>().sortingOrder = overlayTile3.GetComponent<SpriteRenderer>().sortingOrder;
 
-            if (Input.GetMouseButtonDown(0))
+            if (!isMoving)
             {
-                path = pathfinder.FindPath(Active, overlayTile1, overlayTile2, overlayTile3);
+                var fullPath = pathfinder.FindPath(Active, overlayTile1, overlayTile2, overlayTile3, inRangeTiles);
+                path = fullPath.Take(movement).ToList();  
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                isMoving = true;
+                Debug.Log("isMoving es " + isMoving);
             }
         }
 
-        if (path.Count > 1)
+        if (path.Count > 1 && isMoving)
         {
             MoveAlongPath();
         }
-
-    }    
+    }
 
     private void MoveAlongPath()
     {
@@ -61,6 +75,15 @@ public class EnemyIA : MonoBehaviour
         {
             PositionCharacterOnTile(path[0]);
             path.RemoveAt(0);
+        }
+
+        Debug.Log(path.Count);
+
+        if (path.Count == 1)
+        {
+            //en este lugar es donde termina el movimiento del enemigo y podrias hacer q mande la informacion de q su turno termino
+            isMoving = false;
+            Debug.Log("isMoving es " + isMoving);
         }
     }
 
