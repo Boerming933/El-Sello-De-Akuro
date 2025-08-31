@@ -8,7 +8,7 @@ public class Zoom : MonoBehaviour
     public float zoomSpeed = 0.6f;
     public float zoomFactor = 1.8f;
     public float minZoom = 1.2f;
-    public float maxZoom = 4f;
+    public float maxZoom = 5f;
     public float returnSpeed = 3f;
 
     void Update()

@@ -8,7 +8,7 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 public class MapManager : MonoBehaviour
 {
     private static MapManager _instance;
-    public static MapManager Instance { get { return _instance; } }
+    public static MapManager Instance {get { return _instance; }}
 
     public OverlayTile overlayTilePrefab;
     public GameObject OverlayContainer;
@@ -26,11 +26,14 @@ public class MapManager : MonoBehaviour
 
     void Start()
     {
+
         var tileMap = gameObject.GetComponentInChildren<Tilemap>();
 
         map = new Dictionary<Vector2Int, OverlayTile>();
 
         BoundsInt bounds = tileMap.cellBounds;
+
+        
 
         for (int z = bounds.max.z; z >= bounds.min.z; z--)
         {
@@ -45,6 +48,7 @@ public class MapManager : MonoBehaviour
                     if (tileMap.HasTile(tileLocation) && !map.ContainsKey(tileKey))
                     {
                         var OverlayTile = Instantiate(overlayTilePrefab, OverlayContainer.transform);
+                        OverlayTile.HideTile();
                         var cellWorldPosition = tileMap.GetCellCenterWorld(tileLocation);
 
                         OverlayTile.transform.position = new Vector3(cellWorldPosition.x, cellWorldPosition.y, cellWorldPosition.z + 1);
@@ -57,24 +61,24 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    public List<OverlayTile> GetNeighbourTiles(OverlayTile currentOverlayTile, List<OverlayTile> searchableTiles)
+    public List<OverlayTile> GetNeighbourTiles(OverlayTile currentOverlayTile, List<OverlayTile> searcheableTiles)
     {
-        var map = MapManager.Instance.map;
         Dictionary<Vector2Int, OverlayTile> tileToSearch = new Dictionary<Vector2Int, OverlayTile>();
 
-        if (searchableTiles.Count > 0)
+        if (searcheableTiles.Count > 0)
         {
-            foreach (var item in searchableTiles)
+            foreach (var item in searcheableTiles)
             {
-                tileToSearch.Add(item.grid2DLocation, item);
+                if (!tileToSearch.ContainsKey(item.grid2DLocation))
+                {
+                    tileToSearch.Add(item.grid2DLocation, item);
+                }
             }
         }
         else
         {
             tileToSearch = map;
         }
-
-
 
         List<OverlayTile> neighbours = new List<OverlayTile>();
 

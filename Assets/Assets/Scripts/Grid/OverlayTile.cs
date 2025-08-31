@@ -15,16 +15,17 @@ public class OverlayTile : MonoBehaviour
     public OverlayTile previous;
 
     public Vector3Int gridLocation;
+    
     public Vector2Int grid2DLocation { get { return new Vector2Int(gridLocation.x, gridLocation.y); } }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            HideTile();
-        }
-    }
+    //void Update()
+    //{
+    //    if (Input.GetMouseButtonDown(0))
+    //    {
+    //        HideTile();
+    //    }
+    //}
 
     public void ShowTile()
     {
