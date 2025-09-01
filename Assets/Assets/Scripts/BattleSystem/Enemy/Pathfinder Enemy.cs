@@ -56,6 +56,7 @@ public class PathfinderEnemy
 
                 if (minDistance == F1)
                 {
+                    //Debug.Log("Objetivo actual es Vaporeon");
                     if (searcheableTiles.Contains(end1))
                     {
                         neighbours.H = GetManhattenDistance(end1, neighbours);
@@ -82,6 +83,7 @@ public class PathfinderEnemy
                 }
                 else if (minDistance == F2)
                 {
+                    Debug.Log("Objetivo actual es Umbreon");
                     if (searcheableTiles.Contains(end2))
                     {
                         neighbours.H = GetManhattenDistance(end2, neighbours);
@@ -108,6 +110,7 @@ public class PathfinderEnemy
                 }
                 else
                 {
+                    Debug.Log("Objetivo actual es Leafeon");
                     if (searcheableTiles.Contains(end3))
                     {
                         neighbours.H = GetManhattenDistance(end3, neighbours);

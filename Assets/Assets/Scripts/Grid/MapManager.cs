@@ -8,12 +8,13 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 public class MapManager : MonoBehaviour
 {
     private static MapManager _instance;
-    public static MapManager Instance {get { return _instance; }}
+    public static MapManager Instance { get { return _instance; } }
 
     public OverlayTile overlayTilePrefab;
     public GameObject OverlayContainer;
 
     public Dictionary<Vector2Int, OverlayTile> map;
+    private Tilemap _tilemap;
 
     void Awake()
     {
@@ -26,11 +27,14 @@ public class MapManager : MonoBehaviour
 
     void Start()
     {
-        var tileMap = gameObject.GetComponentInChildren<Tilemap>();
+        _tilemap = GetComponentInChildren<Tilemap>();
+        //var tileMap = gameObject.GetComponentInChildren<Tilemap>();
 
         map = new Dictionary<Vector2Int, OverlayTile>();
 
-        BoundsInt bounds = tileMap.cellBounds;
+        BoundsInt bounds = _tilemap.cellBounds;
+
+
 
         for (int z = bounds.max.z; z >= bounds.min.z; z--)
         {
@@ -42,19 +46,31 @@ public class MapManager : MonoBehaviour
                     var tileLocation = new Vector3Int(x, y, z);
                     var tileKey = new Vector2Int(x, y);
 
-                    if (tileMap.HasTile(tileLocation) && !map.ContainsKey(tileKey))
+                    if (_tilemap.HasTile(tileLocation) && !map.ContainsKey(tileKey))
                     {
                         var OverlayTile = Instantiate(overlayTilePrefab, OverlayContainer.transform);
-                        var cellWorldPosition = tileMap.GetCellCenterWorld(tileLocation);
+                        OverlayTile.HideTile();
+                        var cellWorldPosition = _tilemap.GetCellCenterWorld(tileLocation);
 
                         OverlayTile.transform.position = new Vector3(cellWorldPosition.x, cellWorldPosition.y, cellWorldPosition.z + 1);
-                        OverlayTile.GetComponent<SpriteRenderer>().sortingOrder = tileMap.GetComponent<TilemapRenderer>().sortingOrder + 1;
+                        OverlayTile.GetComponent<SpriteRenderer>().sortingOrder = _tilemap.GetComponent<TilemapRenderer>().sortingOrder + 1;
                         OverlayTile.gridLocation = tileLocation;
                         map.Add(tileKey, OverlayTile);
                     }
                 }
             }
         }
+    }
+
+    public bool TryGetOverlayTileAtWorldPos(Vector3 worldPos, out OverlayTile overlay)
+    {
+        overlay = null;
+        if (_tilemap == null) return false;
+
+        // Convertimos worldPos a celda en 3D y luego a clave 2D
+        Vector3Int cell = _tilemap.WorldToCell(worldPos);
+        Vector2Int key = new Vector2Int(cell.x, cell.y);
+        return map.TryGetValue(key, out overlay);
     }
 
     public List<OverlayTile> GetNeighbourTiles(OverlayTile currentOverlayTile, List<OverlayTile> searcheableTiles)
@@ -127,5 +143,15 @@ public class MapManager : MonoBehaviour
         }
 
         return neighbours;
+    }
+    
+    public void HideAllTiles()
+    {
+        if (map == null) return;
+
+        foreach (var kv in map)
+        {
+            kv.Value.HideTile();
+        }
     }
 }

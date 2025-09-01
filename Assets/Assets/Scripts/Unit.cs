@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public class Unit : MonoBehaviour
 {
@@ -24,6 +25,34 @@ public class Unit : MonoBehaviour
 
     public Sprite portrait;
 
+    public CharacterDetailsUI hud;
+
+    public event Action<int> OnDamageTaken;
+    public event Action OnDeath;
+
+    void Start()
+    {
+        // Inicializa HUD al comenzar el combate
+        hud.ShowDetails(this);
+    }
+
+    public void TakeDamage(int amount)
+    {
+        // 1) Ajusta HP
+        currentHP = Mathf.Max(0, currentHP - amount);
+
+        // 2) Actualiza HUD
+        if (hud != null)
+            hud.UpdateAllUI();
+
+        // 3) Dispara evento de daño
+        OnDamageTaken?.Invoke(amount);
+
+        // 4) Comprueba muerte
+        if (currentHP == 0)
+            Die();
+    }
+
     public bool EquipAttack(AttackData attack)
     {
         if (equippedAttacks.Contains(attack)) return false;
@@ -35,5 +64,13 @@ public class Unit : MonoBehaviour
     public bool UnequipAttack(AttackData attack)
     {
         return equippedAttacks.Remove(attack);
+    }
+
+    private void Die()
+    {
+        OnDeath?.Invoke();
+        // GetComponent<Animator>()?.SetTrigger("Die");
+        // collider.enabled = false;
+        // this.enabled = false;
     }
 }

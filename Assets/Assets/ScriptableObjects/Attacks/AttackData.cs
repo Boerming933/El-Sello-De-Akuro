@@ -8,5 +8,6 @@ public class AttackData : ScriptableObject
     public int damage;
     public int manaCost;
     public float cooldown;
+    public int radius;
     [TextArea] public string description;
 }

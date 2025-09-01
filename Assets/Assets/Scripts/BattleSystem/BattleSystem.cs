@@ -17,8 +17,8 @@ public class BattleSystem : MonoBehaviour
     public bool PlayerInTurn = true;
     int Turn = 1;
 
-    //public List<BattleHUD> playerHUD;
-    //public List<BattleHUD> enemyHUD;
+    public List<BattleHUD> playerHUD;
+    public List<BattleHUD> enemyHUD;
 
     private List<Unit> PlayerUnity = new List<Unit>();
     private List<Unit> EnemyUnity = new List<Unit>();
@@ -74,18 +74,18 @@ public class BattleSystem : MonoBehaviour
         }
 
 
-        //int playerCount = Mathf.Min(PlayerUnity.Count, playerHUD.Count);
-        //int enemyCount  = Mathf.Min(EnemyUnity.Count,  enemyHUD.Count);
+        int playerCount = Mathf.Min(PlayerUnity.Count, playerHUD.Count);
+        int enemyCount  = Mathf.Min(EnemyUnity.Count,  enemyHUD.Count);
 
 
         // Asignar cada unidad a su HUD correspondiente
-        //for (int i = 0; i < playerCount; i++)
+        for (int i = 0; i < playerCount; i++)
         {
-            //playerHUD[i].SetHUD(PlayerUnity[i]);
+            playerHUD[i].SetHUD(PlayerUnity[i]);
         }
-        //for (int i = 0; i < enemyCount; i++)
+        for (int i = 0; i < enemyCount; i++)
         {
-            //enemyHUD[i].SetHUD(EnemyUnity[i]);
+            enemyHUD[i].SetHUD(EnemyUnity[i]);
         }
     }
 

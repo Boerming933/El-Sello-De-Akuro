@@ -1,143 +1,75 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using NUnit.Framework;
 using UnityEngine;
+using System.Collections.Generic;
+using System.Linq;
+using System;
 
-namespace finished3
+public class PathFinder
 {
-    public class PathFinder
+    public List<OverlayTile> FindPath(OverlayTile start, OverlayTile end, List<OverlayTile> searchableTiles)
     {
-        private Dictionary<Vector2Int, OverlayTile> searchableTiles;
+        List<OverlayTile> openList = new List<OverlayTile>();
+        List<OverlayTile> closedList = new List<OverlayTile>();
 
-        public List<OverlayTile> FindPath(OverlayTile start, OverlayTile end, List<OverlayTile> inRangeTiles)
+        openList.Add(start);
+
+        while (openList.Count > 0)
         {
-            searchableTiles = new Dictionary<Vector2Int, OverlayTile>();
+            OverlayTile currentOverlayTile = openList.OrderBy(x => x.F).First();
 
-            List<OverlayTile> openList = new List<OverlayTile>();
-            HashSet<OverlayTile> closedList = new HashSet<OverlayTile>();
+            openList.Remove(currentOverlayTile);
+            closedList.Add(currentOverlayTile);
 
-            if (inRangeTiles.Count > 0)
+            if (currentOverlayTile == end)
             {
-                foreach (var item in inRangeTiles)
-                {
-                    searchableTiles.Add(item.grid2DLocation, MapManager.Instance.map[item.grid2DLocation]);
-                }
-            }
-            else
-            {
-                searchableTiles = MapManager.Instance.map;
+                return GetFinishedList(start, end);
             }
 
-            openList.Add(start);
+            var neighbourTiles = MapManager.Instance.GetNeighbourTiles(currentOverlayTile, searchableTiles);
 
-            while (openList.Count > 0)
+            foreach (var neighbour in neighbourTiles)
             {
-                OverlayTile currentOverlayTile = openList.OrderBy(x => x.F).First();
-
-                openList.Remove(currentOverlayTile);
-                closedList.Add(currentOverlayTile);
-
-                if (currentOverlayTile == end)
+                if (neighbour.isBlocked || closedList.Contains(neighbour))
                 {
-                    return GetFinishedList(start, end);
+                    continue;
                 }
 
-                foreach (var tile in MapManager.Instance.GetNeighbourTiles(currentOverlayTile, inRangeTiles))
+                neighbour.G = GetDistance(start, neighbour);
+                neighbour.H = GetDistance(end, neighbour);
+
+                neighbour.previous = currentOverlayTile;
+
+                if (!openList.Contains(neighbour))
                 {
-                    if (tile.isBlocked || closedList.Contains(tile))
-                    {
-                        continue;
-                    }
-
-                    tile.G = GetManhattenDistance(start, tile);
-                    tile.H = GetManhattenDistance(end, tile);
-
-                    tile.previous = currentOverlayTile;
-
-
-                    if (!openList.Contains(tile))
-                    {
-                        openList.Add(tile);
-                    }
+                    openList.Add(neighbour);
                 }
             }
-
-            return new List<OverlayTile>();
         }
 
-        private List<OverlayTile> GetFinishedList(OverlayTile start, OverlayTile end)
-        {
-            List<OverlayTile> finishedList = new List<OverlayTile>();
-            OverlayTile currentTile = end;
+        return new List<OverlayTile>();
 
-            while (currentTile != start)
-            {
-                finishedList.Add(currentTile);
-                currentTile = currentTile.previous;
-            }
-
-            finishedList.Reverse();
-
-            return finishedList;
-        }
-
-        private int GetManhattenDistance(OverlayTile start, OverlayTile tile)
-        {
-            return Mathf.Abs(start.gridLocation.x - tile.gridLocation.x) + Mathf.Abs(start.gridLocation.y - tile.gridLocation.y);
-        }
-
-        private List<OverlayTile> GetNeightbourOverlayTiles(OverlayTile currentOverlayTile)
-        {
-            var map = MapManager.Instance.map;
-
-            List<OverlayTile> neighbours = new List<OverlayTile>();
-
-            //right
-            Vector2Int locationToCheck = new Vector2Int(
-                currentOverlayTile.gridLocation.x + 1,
-                currentOverlayTile.gridLocation.y
-            );
-
-            if (searchableTiles.ContainsKey(locationToCheck))
-            {
-                neighbours.Add(searchableTiles[locationToCheck]);
-            }
-
-            //left
-            locationToCheck = new Vector2Int(
-                currentOverlayTile.gridLocation.x - 1,
-                currentOverlayTile.gridLocation.y
-            );
-
-            if (searchableTiles.ContainsKey(locationToCheck))
-            {
-                neighbours.Add(searchableTiles[locationToCheck]);
-            }
-
-            //top
-            locationToCheck = new Vector2Int(
-                currentOverlayTile.gridLocation.x,
-                currentOverlayTile.gridLocation.y + 1
-            );
-
-            if (searchableTiles.ContainsKey(locationToCheck))
-            {
-                neighbours.Add(searchableTiles[locationToCheck]);
-            }
-
-            //bottom
-            locationToCheck = new Vector2Int(
-                currentOverlayTile.gridLocation.x,
-                currentOverlayTile.gridLocation.y - 1
-            );
-
-            if (searchableTiles.ContainsKey(locationToCheck))
-            {
-                neighbours.Add(searchableTiles[locationToCheck]);
-            }
-
-            return neighbours;
-        }
-
-      
     }
+
+    private List<OverlayTile> GetFinishedList(OverlayTile start, OverlayTile end)
+    {
+        List<OverlayTile> finishedList = new List<OverlayTile>();
+        OverlayTile currentTile = end;
+
+        while (currentTile != start)
+        {
+            finishedList.Add(currentTile);
+            currentTile = currentTile.previous;
+        }
+        finishedList.Reverse();
+        return finishedList;
+    }
+
+    private int GetDistance(OverlayTile a, OverlayTile b)
+    {
+        int dx = Mathf.Abs(a.gridLocation.x - b.gridLocation.x);
+        int dy = Mathf.Abs(a.gridLocation.y - b.gridLocation.y);
+        return (int)(10 * Mathf.Sqrt(2) * Mathf.Min(dx, dy) + 10 * Mathf.Abs(dx - dy));
+    }
+
+
 }
