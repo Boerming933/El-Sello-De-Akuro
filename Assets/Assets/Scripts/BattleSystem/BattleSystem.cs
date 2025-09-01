@@ -11,8 +11,8 @@ public class BattleSystem : MonoBehaviour
     public List<GameObject> EnemiesPrefab;
     public BattleState state;
 
-    public List<Transform> PlayerBattleStation;
-    public List<Transform> EnemyBattleStation;
+    //public List<Transform> PlayerBattleStation;
+    //public List<Transform> EnemyBattleStation;
 
     public bool PlayerInTurn = true;
     int Turn = 1;
@@ -27,8 +27,8 @@ public class BattleSystem : MonoBehaviour
     {
         state = BattleState.START;
 
-        Debug.Log(Turn);
-        Debug.Log(PlayerInTurn);
+        //Debug.Log(Turn);
+        //Debug.Log(PlayerInTurn);
         SetupBattle();
     }
 
@@ -109,9 +109,9 @@ public class BattleSystem : MonoBehaviour
 
     private void Update()
     {        
-        if (Input.GetKeyDown(KeyCode.Space))
+        //if (Input.GetKeyDown(KeyCode.Space))
         {
-            EndTurn();
+            //EndTurn();
         }
     }
 

@@ -16,19 +16,44 @@ public class OverlayTile : MonoBehaviour
 
     public Vector3Int gridLocation;
 
-    // Update is called once per frame
-    void Update()
-    {
+    public Vector2Int grid2DLocation { get { return new Vector2Int(gridLocation.x, gridLocation.y); } }
 
+    [HideInInspector] public CharacterInfo occupant;
+
+    [SerializeField] private SpriteRenderer _sr;
+
+    void Awake()
+    {
+        _sr = GetComponent<SpriteRenderer>();
     }
+
+    // Update is called once per frame
+    //void Update()
+    //{
+    //    if (Input.GetMouseButtonDown(0))
+    //    {
+    //        HideTile();
+    //    }
+    //}
 
     public void ShowTile()
     {
-        gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
     }
-    
+
     public void HideTile()
     {
-        gameObject.GetComponent<SpriteRenderer>().color = new Color(1,1,1,0);
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+    }
+    
+    public void ShowOverlay(Color c)
+    {
+        _sr.color = c;
+    }
+
+    // Vuelve transparente
+    public void HideTile2()
+    {
+        _sr.color = new Color(1, 1, 1, 0);
     }
 }
