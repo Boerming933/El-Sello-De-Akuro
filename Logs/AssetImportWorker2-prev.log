@@ -1,0 +1,796 @@
+Using pre-set license
+Built from '6000.0/staging' branch; Version is '6000.0.47f1 (2ad1ed33fd3b) revision 2806253'; Using compiler version '193933523'; Build Type 'Release'
+OS: 'Windows 11  (10.0.26100) 64bit Professional' Language: 'en' Physical Memory: 65162 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+D:\Program Files(x86)\6000.0.47f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker2
+-projectPath
+D:/Proyectos/Unity/TechProofRPG
+-logFile
+Logs/AssetImportWorker2.log
+-srvPort
+55579
+-job-worker-count
+7
+-background-job-worker-count
+8
+-gc-helper-count
+1
+Successfully changed project path to: D:/Proyectos/Unity/TechProofRPG
+D:/Proyectos/Unity/TechProofRPG
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [21016]  Target information:
+
+Player connection [21016]  * "[IP] 192.168.100.158 [Port] 0 [Flags] 2 [Guid] 1665264361 [EditorId] 1665264361 [Version] 1048832 [Id] WindowsEditor(7,Matias) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [21016] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [21016] Host joined alternative multi-casting on [225.0.0.222:34997]...
+JobSystem: Creating JobQueue using job-worker-count value 7
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+Library Redirect Path: Library/
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Refreshing native plugins compatible for Editor in 1.84 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 6000.0.47f1 (2ad1ed33fd3b)
+[Subsystems] Discovering subsystems at path D:/Program Files(x86)/6000.0.47f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/Proyectos/Unity/TechProofRPG/Assets
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 4070 Laptop GPU (ID=0x2860)
+    Vendor:   NVIDIA
+    VRAM:     7948 MB
+    Driver:   32.0.15.8088
+Initialize mono
+Mono path[0] = 'D:/Program Files(x86)/6000.0.47f1/Editor/Data/Managed'
+Mono path[1] = 'D:/Program Files(x86)/6000.0.47f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'D:/Program Files(x86)/6000.0.47f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56180
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: D:/Program Files(x86)/6000.0.47f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001414 seconds.
+- Loaded All Assemblies, in  0.329 seconds
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.282 seconds
+Domain Reload Profiling: 611ms
+	BeginReloadAssembly (142ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (26ms)
+	RebuildNativeTypeToScriptingClass (14ms)
+	initialDomainReloadingComplete (31ms)
+	LoadAllAssembliesAndSetupDomain (117ms)
+		LoadAssemblies (141ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (114ms)
+			TypeCache.Refresh (112ms)
+				TypeCache.ScanAssembly (102ms)
+			BuildScriptInfoCaches (0ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (282ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (247ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (18ms)
+			SetLoadedEditorAssemblies (4ms)
+			BeforeProcessingInitializeOnLoad (45ms)
+			ProcessInitializeOnLoadAttributes (132ms)
+			ProcessInitializeOnLoadMethodAttributes (47ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+========================================================================
+Worker process is ready to serve import requests
+Import Worker Mode flag is 0x00
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.663 seconds
+Refreshing native plugins compatible for Editor in 2.01 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.805 seconds
+Domain Reload Profiling: 1467ms
+	BeginReloadAssembly (151ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (6ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (23ms)
+	RebuildCommonClasses (26ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (27ms)
+	LoadAllAssembliesAndSetupDomain (449ms)
+		LoadAssemblies (331ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (215ms)
+			TypeCache.Refresh (153ms)
+				TypeCache.ScanAssembly (138ms)
+			BuildScriptInfoCaches (48ms)
+			ResolveRequiredComponents (11ms)
+	FinalizeReload (805ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (693ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (2ms)
+			SetLoadedEditorAssemblies (5ms)
+			BeforeProcessingInitializeOnLoad (153ms)
+			ProcessInitializeOnLoadAttributes (444ms)
+			ProcessInitializeOnLoadMethodAttributes (87ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (4ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
+Refreshing native plugins compatible for Editor in 1.32 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 206 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6702 unused Assets / (3.8 MB). Loaded Objects now: 7401.
+Memory consumption went from 174.7 MB to 170.9 MB.
+Total: 6.684400 ms (FindLiveObjects: 0.510400 ms CreateObjectMapping: 0.398600 ms MarkObjects: 4.299500 ms  DeleteObjects: 1.473400 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 151263.661531 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_grass_07.png
+  artifactKey: Guid(69cf85a2b0b40ff4b81ea573bfb429c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_grass_07.png using Guid(69cf85a2b0b40ff4b81ea573bfb429c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'bb8e8862772bee7719c63f42055580b4') in 0.0910003 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_desert_skull_01.png
+  artifactKey: Guid(5bf09783d5338b64b8922df7ff3a92d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_desert_skull_01.png using Guid(5bf09783d5338b64b8922df7ff3a92d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c9dfde7e3bb8d878e458e52dc9844874') in 0.015075 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_big_cactus_04.png
+  artifactKey: Guid(0f3f0a368a82bcb4ba5d55ae2f55cf27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_big_cactus_04.png using Guid(0f3f0a368a82bcb4ba5d55ae2f55cf27) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '26743f16eea9e8135b636c9cb99c42c1') in 0.0197684 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Cactus_13.png
+  artifactKey: Guid(ddd8ea449a94efa4383d9d131008d94c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Cactus_13.png using Guid(ddd8ea449a94efa4383d9d131008d94c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '09bdb769f580ee3a9899dfa8f9831914') in 0.0202162 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_reed (8).png
+  artifactKey: Guid(e339b2b9918860a41bf1cff88cd649c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_reed (8).png using Guid(e339b2b9918860a41bf1cff88cd649c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'bc5f4677e9ac51c2fee740310148ca41') in 0.0204703 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_reed (1).png
+  artifactKey: Guid(51902479f2120b340821990a4cd3f668) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_reed (1).png using Guid(51902479f2120b340821990a4cd3f668) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00835161c2e39bccff5e411b0aeb3811') in 0.0194384 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_waterplant 4.png
+  artifactKey: Guid(a7dd59b4c31715c4ba06cbe9c8ac751b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_waterplant 4.png using Guid(a7dd59b4c31715c4ba06cbe9c8ac751b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '97fc0165dd38777aee741d2d419b38ef') in 0.0210481 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_grass_05.png
+  artifactKey: Guid(336e574cdd28ecc4a8ed05223dcb18d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_grass_05.png using Guid(336e574cdd28ecc4a8ed05223dcb18d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '0d70f138b5bb5d90af53ee53a93556b8') in 0.0205821 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Cactus_02.png
+  artifactKey: Guid(b0b73340071252e4b94a438766cc1568) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Cactus_02.png using Guid(b0b73340071252e4b94a438766cc1568) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '9494a13824fb86983950482babeb82f7') in 0.0187112 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_bamboo (6).png
+  artifactKey: Guid(cacdacb1cd60f5b418a76418a4143415) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_bamboo (6).png using Guid(cacdacb1cd60f5b418a76418a4143415) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '4699403a3814b6e0f66ecf18edb8b2ec') in 0.0162931 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Cactus_06.png
+  artifactKey: Guid(d508e1f08fef303489999b225b79f03f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Cactus_06.png using Guid(d508e1f08fef303489999b225b79f03f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '3b2482e48615daf8d8bd2b2f1ecdc135') in 0.0213212 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_big_cypress_02.png
+  artifactKey: Guid(3cc9d1b5c5b04d349891b595a5e66afb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_big_cypress_02.png using Guid(3cc9d1b5c5b04d349891b595a5e66afb) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '65f7d73332278f629c998c725dcac981') in 0.0205117 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_mushroom_01.png
+  artifactKey: Guid(c046f6514f4028a4cbeab1032b0e5bea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_mushroom_01.png using Guid(c046f6514f4028a4cbeab1032b0e5bea) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'f6d42afdca4112a8b49bdd993fce7bfd') in 0.0171678 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_waterplant 6.png
+  artifactKey: Guid(f8e89b704e7a3c546b543268aab82ab5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_waterplant 6.png using Guid(f8e89b704e7a3c546b543268aab82ab5) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'aa9ad6472401ac98a87513b42aa7b0a3') in 0.0170566 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_clover_01.png
+  artifactKey: Guid(af7f0aacf7059b4458cc0a74623a5f50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_clover_01.png using Guid(af7f0aacf7059b4458cc0a74623a5f50) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '8e62087b2950ff3e29627019734945f9') in 0.0182516 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000011 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_big_stone_02.png
+  artifactKey: Guid(1f017b5ae7b58694a8af5a8add04d3e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_big_stone_02.png using Guid(1f017b5ae7b58694a8af5a8add04d3e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '8dcd3267312770883f616f42b2489fa7') in 0.0187895 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_bamboo (4).png
+  artifactKey: Guid(45c02c5ebff3cdc468d338035b0e0611) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_bamboo (4).png using Guid(45c02c5ebff3cdc468d338035b0e0611) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '32a790b2421307d8d1a4a173ae3b3b45') in 0.0229355 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_grass_02.png
+  artifactKey: Guid(acd7a6e2fc5719f4e91bde18137e349b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_grass_02.png using Guid(acd7a6e2fc5719f4e91bde18137e349b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'eb7dc3d8152c9f45c326c9b0f36c43bc') in 0.0180563 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_clover_03.png
+  artifactKey: Guid(df5b418f4f241d843a56108f0bda195d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_clover_03.png using Guid(df5b418f4f241d843a56108f0bda195d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '6e9fe1ad51ab569ca832ec5e85d861f3') in 0.0215043 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_stone (1).png
+  artifactKey: Guid(c75bb69b11ce16a4b8161f15db5ccd56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_stone (1).png using Guid(c75bb69b11ce16a4b8161f15db5ccd56) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '0eafe0211385cbba0487eb91c27efba1') in 0.0186887 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000011 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_big_tree_leaf_01.png
+  artifactKey: Guid(e69841e668d78f54a8d42dbd06229178) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_big_tree_leaf_01.png using Guid(e69841e668d78f54a8d42dbd06229178) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '7faca63a9e89d8bba832898d30cd0f7b') in 0.0237833 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_bamboo (8).png
+  artifactKey: Guid(671b3d067e7919b428ed84896d78ab54) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_bamboo (8).png using Guid(671b3d067e7919b428ed84896d78ab54) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c5ffdcd0a73a50f3df96b01d996ec4dc') in 0.0179363 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Cactus_15.png
+  artifactKey: Guid(004a8f372e605644d9ad6355d15f7c27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Cactus_15.png using Guid(004a8f372e605644d9ad6355d15f7c27) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'e2f5d20b6010a7013d35ef9c9b60d353') in 0.0171489 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Bush_02.png
+  artifactKey: Guid(f87483d28c9713c47947b28b2bb9d3b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Bush_02.png using Guid(f87483d28c9713c47947b28b2bb9d3b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b0238917f9a6b93592e079b249b2a143') in 0.0178259 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 63.199898 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/Decoraciones Isometrico.prefab
+  artifactKey: Guid(822ef43aa1f99aa4a8472e113d289545) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/Decoraciones Isometrico.prefab using Guid(822ef43aa1f99aa4a8472e113d289545) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '04b7272741f3098bfcd7c492c1c9465c') in 0.3593395 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 10
+
+========================================================================
+Received Import Request.
+  Time since last request: 9.072764 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Flower_03.asset
+  artifactKey: Guid(37cfa1889ea302a4a88aa79861980fd5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Flower_03.asset using Guid(37cfa1889ea302a4a88aa79861980fd5) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'a0d5ec28f703d176ec764c040c66c652') in 0.0208908 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_forest_bush (5).asset
+  artifactKey: Guid(27c714929468efb40a0db7d153995129) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_forest_bush (5).asset using Guid(27c714929468efb40a0db7d153995129) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '610c80784c55e723c1e24f8928b6aa8d') in 0.0235113 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_clover_02.asset
+  artifactKey: Guid(18420d12faad1d54ea2ac464894e0c6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_clover_02.asset using Guid(18420d12faad1d54ea2ac464894e0c6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'f6c84afe5f81c09d728e55eda76c5fbf') in 0.0172123 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_deadbush(5).asset
+  artifactKey: Guid(4ff15d586cfaeea499d298a1640cbfee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_deadbush(5).asset using Guid(4ff15d586cfaeea499d298a1640cbfee) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ac9d0004c66d009ff363827481185a6b') in 0.0220477 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_deadTree (1).asset
+  artifactKey: Guid(e392361e826109b47b7e0e0d3b36b851) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_deadTree (1).asset using Guid(e392361e826109b47b7e0e0d3b36b851) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '2d6d985b2e3faad16091c4d28289711b') in 0.0195085 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_fern_02.asset
+  artifactKey: Guid(1d40ce6f8027eec4a97be25ae1098eed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_fern_02.asset using Guid(1d40ce6f8027eec4a97be25ae1098eed) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '82814366dfab8d516efc7b72151fc9a9') in 0.0193491 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_big_tree_needle_03.asset
+  artifactKey: Guid(83c1a7fd7689c8548bf33debf686ed02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_big_tree_needle_03.asset using Guid(83c1a7fd7689c8548bf33debf686ed02) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '81487da2c700d9fcdd4f49d11162b96d') in 0.0358693 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_big_stone_02.asset
+  artifactKey: Guid(8e0ce38e1502b724dbddf7bc150c5a76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_big_stone_02.asset using Guid(8e0ce38e1502b724dbddf7bc150c5a76) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'd7bb5c7224c5a4cd967d6ee0b68138ee') in 0.0128728 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_flower_01.asset
+  artifactKey: Guid(d8119b95c5710a44783a43f18856123b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_flower_01.asset using Guid(d8119b95c5710a44783a43f18856123b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'a16d8817ec8d519a2618ef3562dae8bd') in 0.0161378 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_big_tree_leaf_01.asset
+  artifactKey: Guid(b271a87746c7e0b49a282b13e74d06aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_big_tree_leaf_01.asset using Guid(b271a87746c7e0b49a282b13e74d06aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '6a9170b10a5be0dc814dbc9c742c196e') in 0.0199439 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_forest_bush (4).asset
+  artifactKey: Guid(1c45e6b764fa077438ac8cf4e43030c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_forest_bush (4).asset using Guid(1c45e6b764fa077438ac8cf4e43030c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '89c847180e4d61ba294a6fb0378ba293') in 0.0097587 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_flower_02.asset
+  artifactKey: Guid(7a4146342712b8c4a89c6bb04682c260) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_flower_02.asset using Guid(7a4146342712b8c4a89c6bb04682c260) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '131afd10c5640d59969ba85db0944c81') in 0.0107812 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_fern_01.asset
+  artifactKey: Guid(e19354f68a4d8a44f83d58f3fa3f44de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_fern_01.asset using Guid(e19354f68a4d8a44f83d58f3fa3f44de) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b38c3400cb9b10e96da3a3652c104b09') in 0.0106112 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_big_cypress_02.asset
+  artifactKey: Guid(51fef0dc4ef69f845ba2832d6a51fdcb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_big_cypress_02.asset using Guid(51fef0dc4ef69f845ba2832d6a51fdcb) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '9a601ade86afb279f80e792491b500be') in 0.0108233 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.139350 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_flower_03.asset
+  artifactKey: Guid(7f349c285a8d402498f677c388631222) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_flower_03.asset using Guid(7f349c285a8d402498f677c388631222) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '2ee512e2e058fd4db218c8d52f02e737') in 0.0155554 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_grass_01_65.asset
+  artifactKey: Guid(9fd72da1e711e44408d051de0938cadc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_grass_01_65.asset using Guid(9fd72da1e711e44408d051de0938cadc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '425d4391a6689f75da917649a807e5ab') in 0.0161307 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_grass_04.asset
+  artifactKey: Guid(922c0715eaedc6e41aa172262ba3464e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_grass_04.asset using Guid(922c0715eaedc6e41aa172262ba3464e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '24b62a432ad2ebea0b192e488505c1a1') in 0.0184054 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_reed (3)_87.asset
+  artifactKey: Guid(0b94cb4a3561aaf4ca5f779cfad8df07) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_reed (3)_87.asset using Guid(0b94cb4a3561aaf4ca5f779cfad8df07) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '3e45870af2a55a99b70839a379046280') in 0.0144669 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_tree_log_01.asset
+  artifactKey: Guid(baa58620d272b9147a668c474ec8bafd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_tree_log_01.asset using Guid(baa58620d272b9147a668c474ec8bafd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'dd4ec89939e10aacf68c8c3379a9e2f9') in 0.0178539 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_tree_stump_03.asset
+  artifactKey: Guid(c5057ade423ce664b9e0dc0da17c1d80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_tree_stump_03.asset using Guid(c5057ade423ce664b9e0dc0da17c1d80) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '81e8126ecc18902192ed19679b666808') in 0.0132268 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_tree_log_02.asset
+  artifactKey: Guid(a1d56315645d7bb468645c83830a25fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_tree_log_02.asset using Guid(a1d56315645d7bb468645c83830a25fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '538512b937d68a6302bcf78e49ef5f4e') in 0.0126803 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_grass_08.asset
+  artifactKey: Guid(dd3e247463caa80478abd5e096f0cd59) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_grass_08.asset using Guid(dd3e247463caa80478abd5e096f0cd59) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c1f6cb22680acc6de88cc62ae4bb4f78') in 0.0181344 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_mushroom_01.asset
+  artifactKey: Guid(d704eb3996db9a34795650dbc72f09a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_mushroom_01.asset using Guid(d704eb3996db9a34795650dbc72f09a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '27ab1abe024c190a8970c4161e3bfbe5') in 0.013582 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_grass_07.asset
+  artifactKey: Guid(94fd04ce0c7cbe54ea6002c3b81447fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_grass_07.asset using Guid(94fd04ce0c7cbe54ea6002c3b81447fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '0d645c62e0f5438846f16b4ec97265fa') in 0.0170299 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_reed (4).asset
+  artifactKey: Guid(05f7516531d068047b08ed1ae9fd700f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_reed (4).asset using Guid(05f7516531d068047b08ed1ae9fd700f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'a9e36db5d24a5a12bead26489d47e856') in 0.013461 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_reed (2).asset
+  artifactKey: Guid(931e80d0f837ccd488bb46fe2befb1e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_reed (2).asset using Guid(931e80d0f837ccd488bb46fe2befb1e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '0eec13066ccc453eed42ca39c42fa991') in 0.0135661 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_grass_06.asset
+  artifactKey: Guid(f2126d99677f56f49b126afd6c0fd357) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_grass_06.asset using Guid(f2126d99677f56f49b126afd6c0fd357) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '7d37aaed0214eba142513b540ab7c24b') in 0.0159943 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_reed (8).asset
+  artifactKey: Guid(b4a46a4092afb5445bf1fd63f5675f92) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_reed (8).asset using Guid(b4a46a4092afb5445bf1fd63f5675f92) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '44baf713baae59a59dabc757f0c85ce4') in 0.015541 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_waterplant 6.asset
+  artifactKey: Guid(8e47d3503efc2cd4c87b214b880076d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_waterplant 6.asset using Guid(8e47d3503efc2cd4c87b214b880076d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '0c9271759381887f7d9591b406cd211c') in 0.0171184 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_waterplant (2).asset
+  artifactKey: Guid(d81b1b45ea8751f49af982c5e6879a31) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_waterplant (2).asset using Guid(d81b1b45ea8751f49af982c5e6879a31) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'eb48a4143ee096d1110cb113076a46bb') in 0.0161214 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_waterplant 3.asset
+  artifactKey: Guid(63f3929311e45f941b2323f2b8955a0a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_waterplant 3.asset using Guid(63f3929311e45f941b2323f2b8955a0a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '09409e8d0b0af220c41ddb276dea50a8') in 0.0115213 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_waterplant 1.asset
+  artifactKey: Guid(09b4e4060061f29409b1f21d3a121a91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_waterplant 1.asset using Guid(09b4e4060061f29409b1f21d3a121a91) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '9cc5e80c7c87fa282b07fd124be51e29') in 0.0148762 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_waterplant.asset
+  artifactKey: Guid(03c19399dda006d44851be2588bf3056) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_waterplant.asset using Guid(03c19399dda006d44851be2588bf3056) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '20ab13e20b8d970c5d40f7a529f60ba3') in 0.0039923 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_stone (3).asset
+  artifactKey: Guid(c29fbe15b42af4b4bb35504d2412ecbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_stone (3).asset using Guid(c29fbe15b42af4b4bb35504d2412ecbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '93e5819e429cb53c88e3f8d8a6537717') in 0.0194635 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.492916 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Cactus_09.asset
+  artifactKey: Guid(937681455abce514284e805dd49780e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Cactus_09.asset using Guid(937681455abce514284e805dd49780e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '1fb9f0aae886e585ef0ac1684997fba1') in 0.016167 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Cactus_11.asset
+  artifactKey: Guid(3c470f3c352ac4141803f5b891d93ad2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Cactus_11.asset using Guid(3c470f3c352ac4141803f5b891d93ad2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'e3c5437b86552cbeb34a51b284a0a646') in 0.0158273 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Cactus_04.asset
+  artifactKey: Guid(50fbaf53dda1b5549b8e4082a2a6e3b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Cactus_04.asset using Guid(50fbaf53dda1b5549b8e4082a2a6e3b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b1733c8cf8ff45456145b5d49f83048d') in 0.0181327 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_big_cactus_02.asset
+  artifactKey: Guid(a21684e5d1a7ca14ba4db32bef371157) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_big_cactus_02.asset using Guid(a21684e5d1a7ca14ba4db32bef371157) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '67006a7a0f280e8da2fe8a346667112e') in 0.0117596 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Agave_Cactus_01.asset
+  artifactKey: Guid(d500abcc48cd4f94c93540c0752b2a8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Agave_Cactus_01.asset using Guid(d500abcc48cd4f94c93540c0752b2a8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '5955b3a2d1a59f54355d31f92fceaffa') in 0.0129149 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Agave_Cactus_03.asset
+  artifactKey: Guid(f3b8152d61d2fbf4187b83552c2bf479) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Agave_Cactus_03.asset using Guid(f3b8152d61d2fbf4187b83552c2bf479) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '9326754a44f224e56b354f7b3817caf4') in 0.0196427 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_bamboo (3).asset
+  artifactKey: Guid(f1f2f6ab744086a49a75aadc5ad46778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_bamboo (3).asset using Guid(f1f2f6ab744086a49a75aadc5ad46778) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'd1530d2331c19aa5d9ff3d74c81197f9') in 0.0168827 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Agave_Cactus_02.asset
+  artifactKey: Guid(6f56fbaafa89e944bb4778c4240e7298) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Agave_Cactus_02.asset using Guid(6f56fbaafa89e944bb4778c4240e7298) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'be93cad422c9f1729ad8a285f0f627e6') in 0.0169723 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_bamboo (7).asset
+  artifactKey: Guid(96230f5edc827e842ab50210b9934ab8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_bamboo (7).asset using Guid(96230f5edc827e842ab50210b9934ab8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '225431f1c8a5456f3a1ed74580e28fa9') in 0.0147865 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Flower_02.asset
+  artifactKey: Guid(270cd382d0232bf4d9501bda7a58033b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Flower_02.asset using Guid(270cd382d0232bf4d9501bda7a58033b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '9279d047baf014f54bee467f6f5d095e') in 0.0185241 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_big_cactus_04.asset
+  artifactKey: Guid(fbfaa2c45491fdd48a02adbf62026a10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_big_cactus_04.asset using Guid(fbfaa2c45491fdd48a02adbf62026a10) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '517d9da5ef0ef022cdf55b43b891580f') in 0.02007 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_bamboo (6).asset
+  artifactKey: Guid(c0948ef6df3104443a76ad59e576c2e1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_bamboo (6).asset using Guid(c0948ef6df3104443a76ad59e576c2e1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'a4d310d23e3620617062e4f69cec0ad3') in 0.0164574 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Cactus_05.asset
+  artifactKey: Guid(c25ab38ffbbd6c9458acbf1b937a2cb1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Cactus_05.asset using Guid(c25ab38ffbbd6c9458acbf1b937a2cb1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'cb90539617495250295b210b4ff74b39') in 0.0146344 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/Decoraciones Isometrico.prefab
+  artifactKey: Guid(822ef43aa1f99aa4a8472e113d289545) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/Decoraciones Isometrico.prefab using Guid(822ef43aa1f99aa4a8472e113d289545) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ed71876bd714511d79998978e094e125') in 0.1062784 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 318
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Cactus_15.asset
+  artifactKey: Guid(ef29980b80c925e42a34c8ede7edd1c3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Cactus_15.asset using Guid(ef29980b80c925e42a34c8ede7edd1c3) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '2106b9fc71b414440e03074700434931') in 0.0180129 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Bush_02.asset
+  artifactKey: Guid(0b0487f11913195489e6a60997554506) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Bush_02.asset using Guid(0b0487f11913195489e6a60997554506) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'a9444cc350f997e180ec165546950f66') in 0.0197221 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_bamboo (2).asset
+  artifactKey: Guid(16f92176e85f5ac4581afb5ecc686a28) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_bamboo (2).asset using Guid(16f92176e85f5ac4581afb5ecc686a28) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '2aa3f968dee0a3aed0743b407072f59f') in 0.0139989 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
