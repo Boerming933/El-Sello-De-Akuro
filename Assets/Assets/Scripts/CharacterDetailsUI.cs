@@ -63,7 +63,7 @@ public class CharacterDetailsUI : MonoBehaviour
         IntMinusButton.onClick.AddListener(() => ChangeInt(-1));
     }
 
-    void ShowDetails(Unit unit)
+    public void ShowDetails(Unit unit)
     {
         bool esAliado = unit.CompareTag("Aliado");
         if (!esAliado)
@@ -79,7 +79,7 @@ public class CharacterDetailsUI : MonoBehaviour
        
     }
 
-    void UpdateAllUI()
+    public void UpdateAllUI()
     {
         // Datos básicos
         nameText.text  = currentUnit.Name;

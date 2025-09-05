@@ -5,6 +5,8 @@ public class TurnoVaporeon : MonoBehaviour
 {
     public bool vaporeonTurn = false;
     public GameObject AuraV;
+    public GameObject PanelAcciones;
+    public PanelAcciones panelScript;
     void Update()
     {
         if (vaporeonTurn)
@@ -19,5 +21,15 @@ public class TurnoVaporeon : MonoBehaviour
             AuraV.GetComponent<SpriteRenderer>().sortingOrder = 1;
 
         }
+    }
+
+    private void OnMouseDown()
+    {
+        if (gameObject.tag == "Aliado")
+        {
+            panelScript.panelActive = true;
+            PanelAcciones.SetActive(true);
+        }
+
     }
 }

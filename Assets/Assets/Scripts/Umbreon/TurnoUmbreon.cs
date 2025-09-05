@@ -5,6 +5,8 @@ public class TurnoUmbreon : MonoBehaviour
 {
     public bool umbreonTurn = false;
     public GameObject AuraU;
+    public GameObject PanelAcciones;
+    public PanelAcciones panelScript;
     void Update()
     {
         if (umbreonTurn)
@@ -19,5 +21,15 @@ public class TurnoUmbreon : MonoBehaviour
             AuraU.GetComponent<SpriteRenderer>().sortingOrder = 1;
 
         }
+    }
+
+    private void OnMouseDown()
+    {
+        if (gameObject.tag == "Aliado")
+        {
+            panelScript.panelActive = true;
+            PanelAcciones.SetActive(true);
+        }
+
     }
 }

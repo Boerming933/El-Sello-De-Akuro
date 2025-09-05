@@ -20,6 +20,8 @@ public class BattleHUD : MonoBehaviour
         NumInt.text = unit.Int.ToString();
         HPSlider.maxValue = unit.maxHP;
         HPSlider.value = unit.currentHP;
+        ManaSlider.maxValue = unit.maxMana;
+        ManaSlider.value = unit.currentMana;
 
     }
 
