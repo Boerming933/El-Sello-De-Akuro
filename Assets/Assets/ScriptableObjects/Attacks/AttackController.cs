@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+
 public class AttackController : MonoBehaviour
 {
     [Header("Referencias")]
+    public Turnero turnero;                 // tu gestor de turnos
     public AttackSelectionUI attackUI;      // donde generas botones
     public MouseControler mouseController;  // para apagar movimiento
     public OverlayTile overlayTile;
@@ -20,7 +22,7 @@ public class AttackController : MonoBehaviour
     private RangeFinder rangeFinder = new RangeFinder();
 
     private bool attackExecuted;
-    
+
     void OnEnable()
     {
         attackUI.OnAttackChosen += EnterAttackMode;
@@ -31,25 +33,16 @@ public class AttackController : MonoBehaviour
         attackUI.OnAttackChosen -= EnterAttackMode;
     }
 
-    /// <summary>
-    /// Llamar desde BattleSystem para definir qué Unit pintar
-    /// </summary>
-    public void SetCurrentUnit(Unit u)
-    {
-        currentUnit = u;
-    }
-
     void EnterAttackMode(AttackData atk)
     {
         if (attackExecuted) return;
         attackExecuted = false;
-
         MapManager.Instance.HideAllTiles();
         validTiles.Clear();
         attackExecuted = false;
-        
         // 1) Empieza un nuevo modo ataque
         currentAttack = atk;
+        currentUnit   = GetActiveUnit();
         if (currentUnit == null) return;
 
         // 2) Bloquea movimiento
@@ -111,12 +104,6 @@ public class AttackController : MonoBehaviour
         // 1) Deja de mostrar el rango
         validTiles.ForEach(t => t.HideTile());
         inAttackMode = false;
-        var panels = Object.FindObjectsByType<PanelAcciones>(
-            FindObjectsInactive.Include,    // incluye también los inactivos, si quieres
-            FindObjectsSortMode.None        // no necesitas ordenarlos
-        );
-        foreach (var p in panels)
-        p.Hide();
 
         // 2) Obtiene área de impacto
         var area = rangeFinder.GetTilesInRange(targetTile, currentAttack.radius);
@@ -145,8 +132,8 @@ public class AttackController : MonoBehaviour
             }
         }
 
-        // Espera 3 segundos con la zona marcada
-        yield return new WaitForSeconds(3f);
+        // Espera 5 segundos con la zona marcada
+        yield return new WaitForSeconds(5f);
 
         // Limpia overlays de impacto
         MapManager.Instance.HideAllTiles();
@@ -160,5 +147,19 @@ public class AttackController : MonoBehaviour
         attackUI.SetButtonsInteractable(true);
         attackExecuted = false;
 
+        // Pasa el turno
+        turnero.EndTurn();
+    }
+
+    // Helper para saber qué unidad (Unit) está activa según tu Turnero
+    Unit GetActiveUnit()
+    {
+        if (turnero.vaporeon.vaporeonTurn)
+            return turnero.vaporeon.GetComponent<Unit>();
+        if (turnero.umbreon.umbreonTurn)
+            return turnero.umbreon.GetComponent<Unit>();
+        if (turnero.leafeon.leafeonTurn)
+            return turnero.leafeon.GetComponent<Unit>();
+        return null;
     }
 }

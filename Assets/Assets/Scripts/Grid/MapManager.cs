@@ -14,8 +14,7 @@ public class MapManager : MonoBehaviour
     public GameObject OverlayContainer;
 
     public Dictionary<Vector2Int, OverlayTile> map;
-    public Tilemap _tilemap;
-    
+    private Tilemap _tilemap;
 
     void Awake()
     {
@@ -53,8 +52,8 @@ public class MapManager : MonoBehaviour
                         OverlayTile.HideTile();
                         var cellWorldPosition = _tilemap.GetCellCenterWorld(tileLocation);
 
-                        OverlayTile.transform.position = new Vector3(cellWorldPosition.x, cellWorldPosition.y+0.75f, cellWorldPosition.z+1);
-                        OverlayTile.GetComponent<SpriteRenderer>().sortingOrder = _tilemap.GetComponent<TilemapRenderer>().sortingOrder+1;
+                        OverlayTile.transform.position = new Vector3(cellWorldPosition.x, cellWorldPosition.y, cellWorldPosition.z + 1);
+                        OverlayTile.GetComponent<SpriteRenderer>().sortingOrder = _tilemap.GetComponent<TilemapRenderer>().sortingOrder + 1;
                         OverlayTile.gridLocation = tileLocation;
                         map.Add(tileKey, OverlayTile);
                     }
