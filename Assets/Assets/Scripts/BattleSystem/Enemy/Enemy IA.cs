@@ -8,6 +8,8 @@ public class EnemyIA : MonoBehaviour
 {
     private PathfinderEnemy pathfinder;
     private Enemy Enemy;
+    //public Turnero turnero;
+    public LayerMask tileLayerMask;
 
     public float speed;
     public int movement;
@@ -18,11 +20,18 @@ public class EnemyIA : MonoBehaviour
     private List<OverlayTile> path;
     private List<OverlayTile> inRangeTiles = new List<OverlayTile>();
 
+    public BattleSystem battleSystem;
+    public MouseControler mouseController;
+    private Unit  myUnit;
+
+
+
     private void Start()
     {
         pathfinder = new PathfinderEnemy();
         path = new List<OverlayTile>();
         Enemy = GetComponent<Enemy>();
+        myUnit = GetComponent<Unit>();
         Debug.Log(isMoving);
     }
 
@@ -49,7 +58,7 @@ public class EnemyIA : MonoBehaviour
                 path = fullPath.Take(movement).ToList();  
             }
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (!isMoving && battleSystem.CurrentUnit == myUnit)
             {
                 isMoving = true;
                 Debug.Log("isMoving es " + isMoving);
@@ -83,6 +92,7 @@ public class EnemyIA : MonoBehaviour
         {
             //en este lugar es donde termina el movimiento del enemigo y podrias hacer q mande la informacion de q su turno termino
             isMoving = false;
+            mouseController.turnEnded = true;
             Debug.Log("isMoving es " + isMoving);
         }
     }
@@ -91,7 +101,7 @@ public class EnemyIA : MonoBehaviour
     {
         Vector2 origin = new Vector2(Player1.transform.position.x,Player1.transform.position.y);
 
-        RaycastHit2D[] hits = Physics2D.RaycastAll(origin, Vector2.zero);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(origin, Vector2.zero, 0f, tileLayerMask);
 
         if (hits.Length > 0)
         {
@@ -104,7 +114,7 @@ public class EnemyIA : MonoBehaviour
     {
         Vector2 origin = new Vector2(Player2.transform.position.x,Player2.transform.position.y);
 
-        RaycastHit2D[] hits = Physics2D.RaycastAll(origin, Vector2.zero);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(origin, Vector2.zero, 0f, tileLayerMask);
 
         if (hits.Length > 0)
         {
@@ -117,7 +127,7 @@ public class EnemyIA : MonoBehaviour
     {
         Vector2 origin = new Vector2(Player3.transform.position.x,Player3.transform.position.y);
 
-        RaycastHit2D[] hits = Physics2D.RaycastAll(origin, Vector2.zero);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(origin, Vector2.zero, 0f, tileLayerMask);
 
         if (hits.Length > 0)
         {
