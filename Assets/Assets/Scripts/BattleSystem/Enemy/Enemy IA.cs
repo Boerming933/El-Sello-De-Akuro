@@ -8,7 +8,7 @@ public class EnemyIA : MonoBehaviour
 {
     private PathfinderEnemy pathfinder;
     private Enemy Enemy;
-    public Turnero turnero;
+    //public Turnero turnero;
     public LayerMask tileLayerMask;
 
     public float speed;
@@ -20,11 +20,18 @@ public class EnemyIA : MonoBehaviour
     private List<OverlayTile> path;
     private List<OverlayTile> inRangeTiles = new List<OverlayTile>();
 
+    public BattleSystem battleSystem;
+    public MouseControler mouseController;
+    private Unit  myUnit;
+
+
+
     private void Start()
     {
         pathfinder = new PathfinderEnemy();
         path = new List<OverlayTile>();
         Enemy = GetComponent<Enemy>();
+        myUnit = GetComponent<Unit>();
         Debug.Log(isMoving);
     }
 
@@ -51,7 +58,7 @@ public class EnemyIA : MonoBehaviour
                 path = fullPath.Take(movement).ToList();  
             }
 
-            if (turnero.turno == 4)
+            if (!isMoving && battleSystem.CurrentUnit == myUnit)
             {
                 isMoving = true;
                 Debug.Log("isMoving es " + isMoving);
@@ -85,7 +92,7 @@ public class EnemyIA : MonoBehaviour
         {
             //en este lugar es donde termina el movimiento del enemigo y podrias hacer q mande la informacion de q su turno termino
             isMoving = false;
-            turnero.turno++;
+            mouseController.turnEnded = true;
             Debug.Log("isMoving es " + isMoving);
         }
     }

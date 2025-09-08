@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{92DDBAB1-2B6D-7017-6172-50269F531DED}</ProjectGuid>
+    <ProjectGuid>{334A7D81-440B-4D1E-8508-2EC3A852255B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -63,37 +63,38 @@
   <ItemGroup>
     <Compile Include="Assets\Assets\Scripts\Grid\MapManager.cs" />
     <Compile Include="Assets\Assets\Scripts\Grid\CharacterInfo.cs" />
-    <Compile Include="Assets\Assets\Scripts\Vaporeon\TurnoVaporeon.cs" />
+    <Compile Include="Assets\Assets\Scripts\BattleSystem\InitiativeManager.cs" />
     <Compile Include="Assets\GoldenSkullStudios\2D\2D_Iso_Tile_Pack_Starter\Extras\Scripts\Simple_Door_Interaction.cs" />
     <Compile Include="Assets\GoldenSkullStudios\2D\2D_Iso_Tile_Pack_Starter\Extras\Scripts\Simple_Char_Move.cs" />
-    <Compile Include="Assets\Assets\Scripts\BattleSystem\Turnero.cs" />
-    <Compile Include="Assets\Assets\Scripts\CharacterClick.cs" />
-    <Compile Include="Assets\Assets\Scripts\Umbreon\TurnoUmbreon.cs" />
+    <Compile Include="Assets\Assets\Scripts\Personajes\Unit.cs" />
+    <Compile Include="Assets\Assets\Scripts\BattleSystem\PanelBatalla.cs" />
     <Compile Include="Assets\Assets\Scripts\Zoom.cs" />
     <Compile Include="Assets\Assets\Scripts\BattleSystem\BattleSystem.cs" />
-    <Compile Include="Assets\Assets\Scripts\Leafeon\TurnoLeafeon.cs" />
+    <Compile Include="Assets\Assets\Scripts\HUD\BattleHUD.cs" />
     <Compile Include="Assets\Assets\Scripts\BattleSystem\Enemy\Enemy IA.cs" />
-    <Compile Include="Assets\Assets\Scripts\CharacterDetailsUI.cs" />
-    <Compile Include="Assets\Assets\Scripts\Gabite\GabiteTurn.cs" />
+    <Compile Include="Assets\Assets\Scripts\BattleSystem\Turnable.cs" />
+    <Compile Include="Assets\Assets\Scripts\HUD\AttackButtonHUD.cs" />
+    <Compile Include="Assets\Assets\Scripts\HUD\AttackSelectionUI.cs" />
+    <Compile Include="Assets\Assets\Scripts\BattleSystem\ListaBotones.cs" />
     <Compile Include="Assets\Assets\Scripts\Grid\Grid.cs" />
-    <Compile Include="Assets\Assets\Scripts\AttackButtonHUD.cs" />
+    <Compile Include="Assets\Assets\Scripts\BattleSystem\_ATAQUES.cs" />
     <Compile Include="Assets\Assets\Scripts\Grid\Testing.cs" />
+    <Compile Include="Assets\Assets\Scripts\HUD\CharacterDetailsUI.cs" />
     <Compile Include="Assets\Assets\Scripts\Library\Utility.cs" />
     <Compile Include="Assets\Assets\Scripts\Grid\RangeFinder.cs" />
+    <Compile Include="Assets\Assets\Scripts\HUD\UnitSelection.cs" />
     <Compile Include="Assets\Assets\Scripts\Grid\OverlayTile.cs" />
     <Compile Include="Assets\Assets\Scripts\Grid\PathFinder.cs" />
-    <Compile Include="Assets\Assets\Scripts\AttackSelectionUI.cs" />
-    <Compile Include="Assets\Assets\Scripts\BattleHUD.cs" />
     <Compile Include="Assets\Assets\Scripts\Grid\MouseController.cs" />
     <Compile Include="Assets\Assets\ScriptableObjects\Attacks\AttackController.cs" />
     <Compile Include="Assets\Assets\Scripts\BattleSystem\Enemy\Enemy.cs" />
     <Compile Include="Assets\Assets\ScriptableObjects\Attacks\AttackData.cs" />
     <Compile Include="Assets\Assets\Scripts\BattleSystem\PanelAcciones.cs" />
+    <Compile Include="Assets\Assets\Scripts\Personajes\CharacterClick.cs" />
     <Compile Include="Assets\Assets\Scripts\BattleSystem\Enemy\PlayerTile.cs" />
     <Compile Include="Assets\Assets\Scripts\BattleSystem\Enemy\Pathfinder Enemy.cs" />
-    <Compile Include="Assets\Assets\Scripts\UnitSelection.cs" />
-    <Compile Include="Assets\Assets\Scripts\Unit.cs" />
-    <Compile Include="Assets\Assets\Scripts\UnitHUD.cs" />
+    <Compile Include="Assets\Assets\Scripts\HUD\UnitHUD.cs" />
+    <Compile Include="Assets\Assets\Scripts\Personajes\InitiativeEntry.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

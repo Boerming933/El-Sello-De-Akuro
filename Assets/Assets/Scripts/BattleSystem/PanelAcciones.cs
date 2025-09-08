@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using UnityEngine;
 
 public class PanelAcciones : MonoBehaviour
@@ -5,19 +6,29 @@ public class PanelAcciones : MonoBehaviour
     public MouseControler mouseController;
     public bool panelActive = false;
 
+    public GameObject panelBatalla;
+
     public void Atacar()
     {
         mouseController.canAttack = true;
-        panelActive = false;
-        mouseController.showPanelAcciones = false;
+
+        if (panelBatalla.gameObject.activeInHierarchy)
+        {
+            panelBatalla.SetActive(false);
+        }
+        else
+        {
+            panelBatalla.SetActive(true);
+        }
 
     }
 
     public void Moverse()
     {
-        mouseController.canMove = true;
+        mouseController.StartMoveMode();
         panelActive = false;
         mouseController.showPanelAcciones = false;
+        panelBatalla.SetActive(false);
     }
 
     public void Update()
@@ -29,13 +40,25 @@ public class PanelAcciones : MonoBehaviour
         }
         else
         {
-            gameObject.SetActive(false);
+            Hide();
         }
 
         if (mouseController.showPanelAcciones == true)
         {
-            gameObject.SetActive(true);
+            Show();
         }
+    }
+
+    public void Show()
+    {
+        gameObject.SetActive(true);
+        panelActive = true;
+    }
+
+    public void Hide()
+    {
+        gameObject.SetActive(false);
+        panelActive = false;
     }
 
 
