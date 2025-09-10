@@ -42,9 +42,9 @@ public class Unit : MonoBehaviour
         currentHP = Mathf.Max(0, currentHP - amount);
 
         // 2) Actualiza HUD
-        if (hud != null)
-            hud.UpdateAllUI();
-
+        var ui = UnityEngine.Object.FindFirstObjectByType<CharacterDetailsUI>();
+        if (ui != null)
+            ui.UpdateAllUI();
         // 3) Dispara evento de daño
         OnDamageTaken?.Invoke(amount);
 

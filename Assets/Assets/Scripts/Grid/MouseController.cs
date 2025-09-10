@@ -23,6 +23,9 @@ public class MouseControler : MonoBehaviour
     public bool canMove = false;
     public bool prevCanMove = false;
 
+    public CharacterInfo CurrentCharacter => character;
+    
+
     private void Start()
     {
         pathFinder = new PathFinder();
@@ -223,8 +226,16 @@ public class MouseControler : MonoBehaviour
             canMove = false;
             canAttack = false;
             prevCanMove = false;
+
         }
         path.Clear();
+        // === REACTIVAR panelBatallaGeneral tras finalizar turno ===
+        var allProxies = Object.FindObjectsByType<AttackButtonProxy>(
+            FindObjectsInactive.Include,
+            FindObjectsSortMode.None
+        );
+        foreach (var proxy in allProxies)
+            proxy.ShowGeneralBattlePanel();
     }
 
     private void MoveAlongPath()
@@ -263,6 +274,14 @@ public class MouseControler : MonoBehaviour
             prevCanMove = false;
             showPanelAcciones = true;
             ClearRangeTiles();
+            if (character != null)
+            {
+                var turnable = character.GetComponent<Turnable>();
+                if (turnable != null)
+                {
+                    turnable.ActivateTurn();
+                }
+            }
         }
     }
 
