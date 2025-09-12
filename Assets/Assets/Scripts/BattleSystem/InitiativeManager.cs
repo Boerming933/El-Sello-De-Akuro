@@ -12,6 +12,7 @@ public class InitiativeManager : MonoBehaviour
     private List<InitiativeEntry> turnOrder = new List<InitiativeEntry>();
     private int currentIndex = 0;
 
+    
     /// <summary>
     /// Llamar al inicio de la batalla para barajar la iniciativa.
     /// </summary>

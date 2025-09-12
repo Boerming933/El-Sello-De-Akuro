@@ -16,12 +16,15 @@ public class MouseControler : MonoBehaviour
     public bool showPanelAcciones = false;
 
 
+
     private List<OverlayTile> path = new List<OverlayTile>();
     private List<OverlayTile> inRangeTiles = new List<OverlayTile>();
 
     public bool canAttack = false;
     public bool canMove = false;
     public bool prevCanMove = false;
+
+    public CharacterInfo CurrentCharacter => character;
     
 
     private void Start()
@@ -128,7 +131,7 @@ public class MouseControler : MonoBehaviour
             MoveAlongPath();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))      //Termina el turno al presionar espacio
+        if (Input.GetKeyDown(KeyCode.Q))      //Termina el turno al presionar Q
         {
             DeselectCharacter();
 
@@ -210,9 +213,12 @@ public class MouseControler : MonoBehaviour
         {
             var turnable = character.GetComponent<Turnable>();
             if (turnable != null)
+            {
+                turnable.btnBatalla.interactable = true;
                 turnable.DeactivateTurn();   // <— quita el aura aquí
 
-            character.tilesMoved = 0;
+                character.tilesMoved = 0;
+            }
         }
         ClearRangeTiles();
         if (character != null)
@@ -224,9 +230,16 @@ public class MouseControler : MonoBehaviour
             canMove = false;
             canAttack = false;
             prevCanMove = false;
-            
+
         }
         path.Clear();
+        // === REACTIVAR panelBatallaGeneral tras finalizar turno ===
+        var allProxies = Object.FindObjectsByType<AttackButtonProxy>(
+            FindObjectsInactive.Include,
+            FindObjectsSortMode.None
+        );
+        foreach (var proxy in allProxies)
+            proxy.ShowGeneralBattlePanel();
     }
 
     private void MoveAlongPath()
@@ -260,6 +273,7 @@ public class MouseControler : MonoBehaviour
         if (path.Count == 0)
         {
             // El personaje ya llegó a su destino
+            
             canMove = false;
             canAttack = false;
             prevCanMove = false;
@@ -270,6 +284,7 @@ public class MouseControler : MonoBehaviour
                 var turnable = character.GetComponent<Turnable>();
                 if (turnable != null)
                 {
+                    
                     turnable.ActivateTurn();
                 }
             }

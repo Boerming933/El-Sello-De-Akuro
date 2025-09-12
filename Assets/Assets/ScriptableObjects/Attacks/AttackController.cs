@@ -1,26 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
+
 public class AttackController : MonoBehaviour
 {
     [Header("Referencias")]
-    public AttackSelectionUI attackUI;      // donde generas botones
-    public MouseControler mouseController;  // para apagar movimiento
-    public OverlayTile overlayTile;
+    public AttackSelectionUI attackUI;
+    public MouseControler    mouseController;
 
     [Header("Overlay Colors")]
-    public Color rangeColor  = new Color(0f, 1f, 1f, 0.5f);
-    public Color impactColor = new Color(1f, 0f, 0f, 0.5f);
+    public Color rangeColor    = new Color(1f, 1f, 0f, 0.5f);
+    public Color previewColor  = new Color(0f, 1f, 1f, 0.5f);
+    public Color impactColor   = new Color(1f, 0f, 0f, 0.5f);
 
-    private bool inAttackMode = false;
+    // Estado interno
+    private bool inAttackMode      = false;
     private Unit currentUnit;
     private AttackData currentAttack;
-    private List<OverlayTile> validTiles = new();
-    private RangeFinder rangeFinder = new RangeFinder();
+    private List<OverlayTile> validTiles   = new();
+    private List<OverlayTile> previewTiles = new();
+    private OverlayTile lastHoverTile;
 
+    private RangeFinder rangeFinder = new RangeFinder();
     private bool attackExecuted;
-    
+
     void OnEnable()
     {
         attackUI.OnAttackChosen += EnterAttackMode;
@@ -32,13 +36,16 @@ public class AttackController : MonoBehaviour
     }
 
     /// <summary>
-    /// Llamar desde BattleSystem para definir qué Unit pintar
+    /// Llamar desde BattleSystem para definir la unidad activa
     /// </summary>
     public void SetCurrentUnit(Unit u)
     {
         currentUnit = u;
     }
 
+    /// <summary>
+    /// Inicia el modo ataque: pinta el rango de selección
+    /// </summary>
     void EnterAttackMode(AttackData atk)
     {
         if (attackExecuted) return;
@@ -46,119 +53,288 @@ public class AttackController : MonoBehaviour
 
         MapManager.Instance.HideAllTiles();
         validTiles.Clear();
-        attackExecuted = false;
-        
-        // 1) Empieza un nuevo modo ataque
+        ClearPreview();
+
         currentAttack = atk;
         if (currentUnit == null) return;
 
-        // 2) Bloquea movimiento
         if (mouseController != null)
             mouseController.enabled = false;
 
-        // 3) Limpia overlays previos
-        //overlayTile.HideTile2();
-        //overlayTile.HideTile();
-
-        // 4) Encuentra tile central según la posición world del personaje
+        // Encuentra el tile bajo el personaje
         float threshold = 0.1f;
-        OverlayTile centerTile = MapManager.Instance
-            .map.Values
+        var centerTile = MapManager.Instance.map.Values
             .FirstOrDefault(t =>
                 Vector2.Distance(
-                    new Vector2(t.transform.position.x, t.transform.position.y),
-                    new Vector2(currentUnit.transform.position.x, currentUnit.transform.position.y)
+                    (Vector2)t.transform.position,
+                    (Vector2)currentUnit.transform.position
                 ) < threshold
             );
 
         if (centerTile == null)
         {
-            Debug.LogError($"No se encontró OverlayTile bajo {currentUnit.name}.");
+            Debug.LogError($"No se encontró OverlayTile bajo {currentUnit.name}");
             return;
         }
 
-        // 5) Calcula y pinta rango de ataque
-        validTiles = rangeFinder.GetTilesInRange(centerTile, currentAttack.radius);
+        // 1) Calcula y pinta el rango de selección (círculo)
+        validTiles = rangeFinder.GetTilesInRange(centerTile, currentAttack.selectionRange);
         validTiles.ForEach(t => t.ShowOverlay(rangeColor));
 
-        inAttackMode = true;
+        inAttackMode      = true;
+        lastHoverTile     = null;
     }
 
     void Update()
     {
         if (!inAttackMode) return;
 
-        // Detecta click sobre un overlay válido
+        // 2) Preview dinámico bajo cursor
+        UpdatePreviewUnderCursor();
+
+        // 3) Confirmar ataque
         if (Input.GetMouseButtonDown(0))
         {
-            Vector3 wp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(
-                new Vector2(wp.x, wp.y), Vector2.zero
-            );
-            if (hit.collider == null) return;
-
-            var ot = hit.collider.GetComponent<OverlayTile>();
-            if (ot != null && validTiles.Contains(ot))
-                ConfirmAttack(ot);
+            var hovered = GetTileUnderCursor();
+            if (hovered != null && validTiles.Contains(hovered))
+                ConfirmAttack(hovered);
         }
     }
 
+    /// <summary>
+    /// Pinta/despinta preview según mouse sobre validTiles
+    /// </summary>
+    void UpdatePreviewUnderCursor()
+    {
+        var hovered = GetTileUnderCursor();
+
+        if (hovered == null || !validTiles.Contains(hovered))
+        {
+            ClearPreview();
+            lastHoverTile = null;
+            return;
+        }
+
+        if (hovered == lastHoverTile) return;
+
+        ClearPreview();
+        var area = GetEffectArea(hovered);
+        previewTiles = area;
+        previewTiles.ForEach(t => t.ShowOverlay(previewColor));
+        lastHoverTile = hovered;
+    }
+
+    /// <summary>
+    /// Raycast sencillo para obtener el OverlayTile bajo el mouse
+    /// </summary>
+    OverlayTile GetTileUnderCursor()
+    {
+        Vector3 wp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        var hit = Physics2D.Raycast((Vector2)wp, Vector2.zero);
+        return hit.collider?.GetComponent<OverlayTile>();
+    }
+
+    /// <summary>
+    /// Limpia cualquier overlay de preview
+    /// </summary>
+    void ClearPreview()
+    {
+        // 1) Quita la capa de preview de cada tile
+        foreach (var t in previewTiles)
+            t.HideTile();
+
+        // 2) Vuelve a pintarles el overlay de rango
+        foreach (var t in validTiles)
+            t.ShowOverlay(rangeColor);
+
+        // 3) Limpia la lista de preview
+        previewTiles.Clear();
+    }
+
+
+    /// <summary>
+    /// Devuelve la lista de tiles del área de efecto según forma y tamaño
+    /// </summary>
+    List<OverlayTile> GetEffectArea(OverlayTile center)
+    {
+        var mapTiles  = MapManager.Instance.map.Values;
+        var area      = new List<OverlayTile>();
+        Vector2 origin    = center.transform.position;
+        float  threshold = 0.1f;
+        int    size      = currentAttack.areaSize;
+
+        switch (currentAttack.effectShape)
+        {
+            case AreaShape.Circle:
+                // Igual que antes: círculo de radios “size”
+                area = rangeFinder.GetTilesInRange(center, size);
+                break;
+
+            case AreaShape.LineHorizontal:
+                // En isométrico la “horizontal” va NE–SW:
+                // offset por 1 tile = (0.5, 0.25)
+                Vector2 isoH = new Vector2(0.5f, 0.25f);
+                for (int i = -size; i <= size; i++)
+                {
+                    Vector2 samplePos = origin + isoH * i;
+                    var tile = mapTiles
+                        .FirstOrDefault(t => Vector2.Distance(t.transform.position, samplePos) < threshold);
+                    if (tile != null) area.Add(tile);
+                }
+                break;
+
+            case AreaShape.LineVertical:
+                // En isométrico la “vertical” va SE–NW:
+                // offset por 1 tile = (0.5, -0.25)
+                Vector2 isoV = new Vector2(0.5f, -0.25f);
+                for (int i = -size; i <= size; i++)
+                {
+                    Vector2 samplePos = origin + isoV * i;
+                    var tile = mapTiles
+                        .FirstOrDefault(t => Vector2.Distance(t.transform.position, samplePos) < threshold);
+                    if (tile != null) area.Add(tile);
+                }
+                break;
+
+            case AreaShape.Cross:
+                // Solo ejes puros de mundo: X=(1,0), Y=(0,0.5)
+                area.Add(center);
+                Vector2 pureX = new Vector2(1f, 0f);
+                Vector2 pureY = new Vector2(0f, 0.5f);
+                for (int d = 1; d <= size; d++)
+                {
+                    var leftPos  = origin - pureX * d;
+                    var rightPos = origin + pureX * d;
+                    var upPos    = origin + pureY * d;
+                    var downPos  = origin - pureY * d;
+
+                    var candidates = new[] { leftPos, rightPos, upPos, downPos };
+                    foreach (var pos in candidates)
+                    {
+                        var tile = mapTiles
+                            .FirstOrDefault(t => Vector2.Distance(t.transform.position, pos) < threshold);
+                        if (tile != null && !area.Contains(tile))
+                            area.Add(tile);
+                    }
+                }
+                break;
+        }
+
+        return area;
+    }
+
+
+    /// <summary>
+    /// Al confirmar un tile seleccionado, ejecuta el área de impacto
+    /// </summary>
     void ConfirmAttack(OverlayTile targetTile)
     {
         if (attackExecuted) return;
         attackExecuted = true;
+
         attackUI.SetButtonsInteractable(false);
-        // 1) Deja de mostrar el rango
-        validTiles.ForEach(t => t.HideTile());
+
+        // Limpia rango y preview
+        validTiles .ForEach(t => t.HideTile());
+        ClearPreview();
         inAttackMode = false;
+
+        // Oculta todos los PanelAcciones
         var panels = Object.FindObjectsByType<PanelAcciones>(
-            FindObjectsInactive.Include,    // incluye también los inactivos, si quieres
-            FindObjectsSortMode.None        // no necesitas ordenarlos
+            FindObjectsInactive.Include,
+            FindObjectsSortMode.None
         );
         foreach (var p in panels)
-        p.Hide();
+            p.Hide();
 
-        // 2) Obtiene área de impacto
-        var area = rangeFinder.GetTilesInRange(targetTile, currentAttack.radius);
-
-        // 3) Inicia coroutine para pintar impacto, aplicar daño y limpiar
+        // Calcula área de impacto y comienza la coroutine
+        var area = GetEffectArea(targetTile);
         StartCoroutine(ShowImpactAndFinish(area));
     }
 
     IEnumerator ShowImpactAndFinish(List<OverlayTile> area)
     {
-        // Pinta zona de impacto
+        // 1) Pinta zona de impacto
         area.ForEach(t => t.ShowOverlay(impactColor));
 
-        // Aplica daño a cualquier Unit en esas casillas
-        foreach (var tile in area)
+        // 2) Aplica daño a cualquier Unit en esas casillas
+        try
         {
-            Vector2 center = tile.transform.position;
-            Collider2D[] hits = Physics2D.OverlapCircleAll(center, 0.2f);
-
-            foreach (var col in hits)
+            foreach (var tile in area)
             {
-                if (col.TryGetComponent<Unit>(out Unit enemy) && enemy.CompareTag("Enemy"))
+                Vector2 center = tile.transform.position;
+                Collider2D[] hits = Physics2D.OverlapCircleAll(center, 0.2f);
+                foreach (var col in hits)
                 {
-                    enemy.TakeDamage(currentAttack.damage);
+                    if (col.TryGetComponent<Unit>(out Unit u) && u.CompareTag("Enemy"))
+                        u.TakeDamage(currentAttack.damage);
                 }
             }
         }
+        catch (System.Exception ex)
+        {
+            Debug.LogError($"Error al aplicar daño: {ex.Message}");
+        }
 
-        // Espera 3 segundos con la zona marcada
+        // 3) Espera con la zona marcada
         yield return new WaitForSeconds(3f);
 
-        // Limpia overlays de impacto
+        // 4) Limpia TODOS los overlays (rango, preview e impacto)
         MapManager.Instance.HideAllTiles();
 
-        // 4) Restaura movimiento y cierra turno
+        // 5) Restaura input del MouseController
         if (mouseController != null)
             mouseController.enabled = true;
 
-        // Deselecciona personaje para que no pueda moverse/atacar más
+        // 6) Comprueba si aún le quedan movimientos al personaje
+        var ci = currentUnit.GetComponent<CharacterInfo>();
+        bool hasMovesLeft = ci.tilesMoved < ci.maxTiles;
+
+        if (hasMovesLeft)
+        {
+            // A) Reactiva movimiento y HUD de acciones
+            mouseController.canMove = true;
+            mouseController.canAttack = false;
+            mouseController.showPanelAcciones = true;
+
+            // B) Fuerza la reapertura de su PanelAcciones
+            var panel = Object.FindObjectsByType<PanelAcciones>(
+                                FindObjectsInactive.Include,
+                                FindObjectsSortMode.None
+                            )
+                            .FirstOrDefault(p => p.ownerCharacter == ci);
+            if (panel != null)
+            {
+                panel.Show();
+                panel.panelBatalla.SetActive(false); // cierra sub-panel de ataques
+            }
+
+            // C) Rehabilita los botones de ataque para futuros ataques
+            attackUI.SetButtonsInteractable(true);
+            attackExecuted = false;
+
+            // Salimos sin terminar el turno
+            yield break;
+        }
+
+        // 7) Si no quedan movimientos, termina el turno
         mouseController.DeselectCharacter();
         attackUI.SetButtonsInteractable(true);
         attackExecuted = false;
-
     }
+
+
+    
+    /// <summary>
+    /// Llamar desde un botón de HUD para iniciar un ataque con este SO.
+    /// </summary>
+    public void StartAttack(AttackData atk)
+    {
+        // Esto oculta el panel de selección de ataques si quieres
+        if (attackUI != null)
+            attackUI.gameObject.SetActive(false);
+
+        EnterAttackMode(atk);
+    }
+
 }

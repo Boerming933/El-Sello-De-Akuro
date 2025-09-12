@@ -1,12 +1,14 @@
 using System.Diagnostics;
 using UnityEngine;
 
+
 public class PanelAcciones : MonoBehaviour
 {
     public MouseControler mouseController;
     public bool panelActive = false;
-
+    public CharacterInfo ownerCharacter;
     public GameObject panelBatalla;
+    public GameObject letreroPj;
 
     public void Atacar()
     {
@@ -15,12 +17,14 @@ public class PanelAcciones : MonoBehaviour
         if (panelBatalla.gameObject.activeInHierarchy)
         {
             panelBatalla.SetActive(false);
+            letreroPj.SetActive(true);
         }
         else
         {
             panelBatalla.SetActive(true);
+            letreroPj.SetActive(false);
         }
-
+        
     }
 
     public void Moverse()
@@ -33,19 +37,24 @@ public class PanelAcciones : MonoBehaviour
 
     public void Update()
     {
-        if (panelActive)
+        // Sólo debo estar visible si:
+        //  - este panel pertenece al personaje activo
+        //  - Y además el flag mouseController.showPanelAcciones es true
+        bool shouldShow = mouseController.CurrentCharacter == ownerCharacter
+                       && mouseController.showPanelAcciones;
+
+        UnityEngine.Debug.Log($"[PanelAcciones] Owner={ownerCharacter.name} | " +
+              $"Current={mouseController.CurrentCharacter?.name} | " +
+              $"showPanelAcciones={mouseController.showPanelAcciones} | " +
+              $"shouldShow={shouldShow}");
+
+        if (shouldShow)
         {
-            gameObject.SetActive(true);
-            //panelActive = false;
+            Show();
         }
         else
         {
             Hide();
-        }
-
-        if (mouseController.showPanelAcciones == true)
-        {
-            Show();
         }
     }
 
@@ -53,6 +62,7 @@ public class PanelAcciones : MonoBehaviour
     {
         gameObject.SetActive(true);
         panelActive = true;
+        
     }
 
     public void Hide()
@@ -60,6 +70,7 @@ public class PanelAcciones : MonoBehaviour
         gameObject.SetActive(false);
         panelActive = false;
     }
+    
 
 
 }

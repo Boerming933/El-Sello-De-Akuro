@@ -164,6 +164,12 @@ public class BattleSystem : MonoBehaviour
         }
         attackController.SetCurrentUnit(current);
 
+        var zoom = Camera.main.GetComponent<Zoom>();
+        if (zoom != null)
+        {
+            zoom.SetTarget(current.transform);
+        }
+
         //mouseController.DeselectCharacter(); // limpia cualquier selección previa
     }
 
