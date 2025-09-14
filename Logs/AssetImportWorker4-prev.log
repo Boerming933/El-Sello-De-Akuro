@@ -1,0 +1,1976 @@
+Using pre-set license
+Built from '6000.0/staging' branch; Version is '6000.0.47f1 (2ad1ed33fd3b) revision 2806253'; Using compiler version '193933523'; Build Type 'Release'
+OS: 'Windows 11  (10.0.22631) 64bit Core' Language: 'es' Physical Memory: 32716 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+F:\Unity\6000.0.47f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker4
+-projectPath
+F:/Proyectos/TechProofRPG-Ver7
+-logFile
+Logs/AssetImportWorker4.log
+-srvPort
+53596
+-job-worker-count
+5
+-background-job-worker-count
+8
+-gc-helper-count
+1
+Successfully changed project path to: F:/Proyectos/TechProofRPG-Ver7
+F:/Proyectos/TechProofRPG-Ver7
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [24128]  Target information:
+
+Player connection [24128]  * "[IP] 192.168.0.100 [Port] 0 [Flags] 2 [Guid] 4284451866 [EditorId] 4284451866 [Version] 1048832 [Id] WindowsEditor(7,MaxiMayorga) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [24128] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [24128] Host joined alternative multi-casting on [225.0.0.222:34997]...
+JobSystem: Creating JobQueue using job-worker-count value 5
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+Library Redirect Path: Library/
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Refreshing native plugins compatible for Editor in 3.33 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 6000.0.47f1 (2ad1ed33fd3b)
+[Subsystems] Discovering subsystems at path F:/Unity/6000.0.47f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path F:/Proyectos/TechProofRPG-Ver7/Assets
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: Radeon RX 570 Series (ID=0x67df)
+    Vendor:   ATI
+    VRAM:     4039 MB
+    Driver:   31.0.21923.11000
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Initialize mono
+Mono path[0] = 'F:/Unity/6000.0.47f1/Editor/Data/Managed'
+Mono path[1] = 'F:/Unity/6000.0.47f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'F:/Unity/6000.0.47f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56596
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: F:/Unity/6000.0.47f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: F:/Unity/6000.0.47f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.004303 seconds.
+- Loaded All Assemblies, in  0.665 seconds
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.573 seconds
+Domain Reload Profiling: 1237ms
+	BeginReloadAssembly (202ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (66ms)
+	RebuildNativeTypeToScriptingClass (21ms)
+	initialDomainReloadingComplete (72ms)
+	LoadAllAssembliesAndSetupDomain (303ms)
+		LoadAssemblies (201ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (298ms)
+			TypeCache.Refresh (297ms)
+				TypeCache.ScanAssembly (279ms)
+			BuildScriptInfoCaches (0ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (573ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (496ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (30ms)
+			SetLoadedEditorAssemblies (6ms)
+			BeforeProcessingInitializeOnLoad (90ms)
+			ProcessInitializeOnLoadAttributes (272ms)
+			ProcessInitializeOnLoadMethodAttributes (97ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+========================================================================
+Worker process is ready to serve import requests
+Import Worker Mode flag is 0x00
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.214 seconds
+Refreshing native plugins compatible for Editor in 2.15 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.539 seconds
+Domain Reload Profiling: 2751ms
+	BeginReloadAssembly (253ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (10ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (38ms)
+	RebuildCommonClasses (58ms)
+	RebuildNativeTypeToScriptingClass (23ms)
+	initialDomainReloadingComplete (62ms)
+	LoadAllAssembliesAndSetupDomain (817ms)
+		LoadAssemblies (518ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (450ms)
+			TypeCache.Refresh (332ms)
+				TypeCache.ScanAssembly (311ms)
+			BuildScriptInfoCaches (95ms)
+			ResolveRequiredComponents (19ms)
+	FinalizeReload (1539ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (1294ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (7ms)
+			BeforeProcessingInitializeOnLoad (188ms)
+			ProcessInitializeOnLoadAttributes (912ms)
+			ProcessInitializeOnLoadMethodAttributes (178ms)
+			AfterProcessingInitializeOnLoad (4ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (10ms)
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
+Refreshing native plugins compatible for Editor in 2.43 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 220 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6704 unused Assets / (3.7 MB). Loaded Objects now: 7417.
+Memory consumption went from 178.6 MB to 174.9 MB.
+Total: 17.556800 ms (FindLiveObjects: 1.183000 ms CreateObjectMapping: 1.921200 ms MarkObjects: 10.421700 ms  DeleteObjects: 4.027300 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 9258.522995 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Skin/ISO_Tile_Flesh_01_Var01.png
+  artifactKey: Guid(f482e96cafc9ed849aa5b14b59d95b4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Skin/ISO_Tile_Flesh_01_Var01.png using Guid(f482e96cafc9ed849aa5b14b59d95b4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'd0ba1b5db3a12f1b85f9d7727874f75b') in 0.4115451 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000045 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Low/ISO_LowTile_Sand_01.png
+  artifactKey: Guid(f6cf977306fdf9843a5a111111ce4d5f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Low/ISO_LowTile_Sand_01.png using Guid(f6cf977306fdf9843a5a111111ce4d5f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '019eb15ecb29798cc922fc68a3a8c2b0') in 0.2127424 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Overlay/ISO_Overlay_StonePieces_01.png
+  artifactKey: Guid(2f54e04c282e9974fa282c5f24c0b640) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Overlay/ISO_Overlay_StonePieces_01.png using Guid(2f54e04c282e9974fa282c5f24c0b640) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '50c026dfaf62903a79e584e0d995ed23') in 0.2258574 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000050 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Overlay/ISO_Overlay_Glow_01.png
+  artifactKey: Guid(5a631a29761112147a95067939cfdb28) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Overlay/ISO_Overlay_Glow_01.png using Guid(5a631a29761112147a95067939cfdb28) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '0d5b59862177106f9c00233b4e70df91') in 0.2314243 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_3S_04.png
+  artifactKey: Guid(7b38a584ccb72684da1c73edd5cffe8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_3S_04.png using Guid(7b38a584ccb72684da1c73edd5cffe8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '56043408aa60e64d7b58179f6d705ef5') in 0.2163293 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Cactus_14.png
+  artifactKey: Guid(7dce3c5aeabf3cf439da3a34236b6d2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Cactus_14.png using Guid(7dce3c5aeabf3cf439da3a34236b6d2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '7d98edaac42ad6b1e9315d0065aac417') in 0.0307652 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Foliage/ISO_Tile_Leafs_01.png
+  artifactKey: Guid(56ee814daa0d6904bb43e2531cb70774) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Foliage/ISO_Tile_Leafs_01.png using Guid(56ee814daa0d6904bb43e2531cb70774) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '6416e62231d6cc4d4da6426d2e544f80') in 0.2135157 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Overlay/ISO_Overlay_Grass_01.png
+  artifactKey: Guid(c307387b4bdf33b48be172c0d53c8ab6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Overlay/ISO_Overlay_Grass_01.png using Guid(c307387b4bdf33b48be172c0d53c8ab6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'a25a5e930d173fb29b47235384ab1138') in 0.2494697 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Overlay/ISO_Overlay_Grass_Patch_03_V_01.png
+  artifactKey: Guid(b70c6eb7dea2dc34cbdea09d655ac249) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Overlay/ISO_Overlay_Grass_Patch_03_V_01.png using Guid(b70c6eb7dea2dc34cbdea09d655ac249) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '43fae8fbfa632ab211e1fe0f9722ca1a') in 0.2214482 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Stone/ISO_Tile_Stone_03.png
+  artifactKey: Guid(7b90af6ca594e3244b9ef0bd0f20603a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Stone/ISO_Tile_Stone_03.png using Guid(7b90af6ca594e3244b9ef0bd0f20603a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '4dcfb9776b3e543690c40db7135b7820') in 0.2180601 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000121 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_big_cactus_02.png
+  artifactKey: Guid(6ec112d25bdd3914b8faf1a51d2b6799) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_big_cactus_02.png using Guid(6ec112d25bdd3914b8faf1a51d2b6799) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'dfff8453364c9034425a20a4917b1386') in 0.0759111 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_2C_02.png
+  artifactKey: Guid(09f4570a1be6e0e4389c5889e221a90b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_2C_02.png using Guid(09f4570a1be6e0e4389c5889e221a90b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '804cedd72c7735d0fbe37d4eff681892') in 0.203482 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000053 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_deadTree (2).png
+  artifactKey: Guid(33562937f02929242a0360906a2f930b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_deadTree (2).png using Guid(33562937f02929242a0360906a2f930b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'fda71da69c77f5a00f72c77b53111747') in 0.0443316 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_reed (2).png
+  artifactKey: Guid(b39918866f6832943b5ed2132060be8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_reed (2).png using Guid(b39918866f6832943b5ed2132060be8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '568c7e5b1239772677c0d3b797254f7b') in 0.0232696 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Overlay/ISO_Overlay_Shore_Straight_RD.png
+  artifactKey: Guid(4252029de9db04d4199f6e3defe30553) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Overlay/ISO_Overlay_Shore_Straight_RD.png using Guid(4252029de9db04d4199f6e3defe30553) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'e6823577b98fbd4917bd01de629117e4') in 0.2001687 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Roof_Hay_Simple/Sprites/ISO_Roof_Hay_01_T_E1_SW.png
+  artifactKey: Guid(16af0cd3128e45a44999bfbf90910bf4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Roof_Hay_Simple/Sprites/ISO_Roof_Hay_01_T_E1_SW.png using Guid(16af0cd3128e45a44999bfbf90910bf4) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '080280d8abd7a88dc2eab47fc830aeae') in 0.215265 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000045 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Fence/Sprites/ISO_Fence_01_C2N.png
+  artifactKey: Guid(11de8b92c6cbe174182eb1e8792250d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Fence/Sprites/ISO_Fence_01_C2N.png using Guid(11de8b92c6cbe174182eb1e8792250d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c46589a6029a78895258e4809d34d354') in 0.2114117 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Extras/Sprites/Template_Character.png
+  artifactKey: Guid(8843fdb6fb155e2499f17aa399ff4ee1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Extras/Sprites/Template_Character.png using Guid(8843fdb6fb155e2499f17aa399ff4ee1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '0715c8b7f11ae15757eb3d716e634c0a') in 0.2254725 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000046 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Stone/ISO_Tile_Riverbed_03.png
+  artifactKey: Guid(9190b035fbe0d804bb633c3f6c9f3ffa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Stone/ISO_Tile_Riverbed_03.png using Guid(9190b035fbe0d804bb633c3f6c9f3ffa) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c2749fefd2c2abca330eaca7b75b2c46') in 0.2248821 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_reed (5).png
+  artifactKey: Guid(06878cc4d636f894a88f11ed7f6062bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_reed (5).png using Guid(06878cc4d636f894a88f11ed7f6062bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '7e6511fe661b504d5be05a413b16e126') in 0.0330608 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Roof_Hay_Simple/Sprites/ISO_Roof_Hay_01_T_C4.png
+  artifactKey: Guid(08dd49b520b3e4a4baea82a87a7c47b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Roof_Hay_Simple/Sprites/ISO_Roof_Hay_01_T_C4.png using Guid(08dd49b520b3e4a4baea82a87a7c47b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '7a332073fd22107ab727721ed11ec09f') in 0.2094264 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Backyard - Free/Separate Tiles/backyard_63.png
+  artifactKey: Guid(bf3ab3a00fde90a4494c61d65ad029ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Backyard - Free/Separate Tiles/backyard_63.png using Guid(bf3ab3a00fde90a4494c61d65ad029ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b2bcdf9988ec19d30f33197060c5e789') in 0.0683263 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_3C_02.png
+  artifactKey: Guid(99d815be86dbfa44ca14090e4f45536f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_3C_02.png using Guid(99d815be86dbfa44ca14090e4f45536f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'a0bd6e9396d19787247a54427b3c1f1b') in 0.2038457 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Dirt/ISO_Tile_Dirt_02.png
+  artifactKey: Guid(73c381840b9e96945986aa9fac9dcaf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Dirt/ISO_Tile_Dirt_02.png using Guid(73c381840b9e96945986aa9fac9dcaf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'dc1b894a57fcf2f688d670aea96a0eef') in 0.2332897 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_3C_03.png
+  artifactKey: Guid(cf0d168c8672f3d4c9be1fea10b5c34a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_3C_03.png using Guid(cf0d168c8672f3d4c9be1fea10b5c34a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '3dab296db4748de19c977fec5b284ea6') in 0.2354274 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Lava/ISO_Tile_LavaCracks_01.png
+  artifactKey: Guid(13ea1d8428e49c14c90442cec4ef095e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Lava/ISO_Tile_LavaCracks_01.png using Guid(13ea1d8428e49c14c90442cec4ef095e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '808d7c2160f5a3033c7c3a6f265cd735') in 0.2723168 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Stone/ISO_Tile_Stone_01.png
+  artifactKey: Guid(8101f733e050ce14d9a68d86770b02ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Stone/ISO_Tile_Stone_01.png using Guid(8101f733e050ce14d9a68d86770b02ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '146149a02ab0da482583f102c4907d73') in 0.2269171 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_bamboo (6).png
+  artifactKey: Guid(cacdacb1cd60f5b418a76418a4143415) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_bamboo (6).png using Guid(cacdacb1cd60f5b418a76418a4143415) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b6dd37d0a4ade0cb770ec2b597fb3492') in 0.0423742 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Lava/ISO_Tile_LavaStone_01.png
+  artifactKey: Guid(9be0ebe527c711448a4c393676ede500) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Lava/ISO_Tile_LavaStone_01.png using Guid(9be0ebe527c711448a4c393676ede500) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '6462039a5763f394159278cc47c5f4e3') in 0.2019125 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Water/ISO_Overlay_Water_02.png
+  artifactKey: Guid(e7f43ecab1dd89d498a3db6b6bdf2788) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Water/ISO_Overlay_Water_02.png using Guid(e7f43ecab1dd89d498a3db6b6bdf2788) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '308b0727b0cffc36da9ec3acd4aeb7cc') in 0.2177518 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Snow/ISO_Tile_Ice_01-06.png
+  artifactKey: Guid(8daa3a7a02ab7c14b9493be2b88cb29d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Snow/ISO_Tile_Ice_01-06.png using Guid(8daa3a7a02ab7c14b9493be2b88cb29d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '5fb081fd7bf00d6df351c22b0ea44b46') in 0.2287983 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Low/ISO_LowTile_Stone_01.png
+  artifactKey: Guid(937a0e285256b9348b5561d142b3fe43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Low/ISO_LowTile_Stone_01.png using Guid(937a0e285256b9348b5561d142b3fe43) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '55389b0b1a533dd94abfee572b47187c') in 0.2283402 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_1S1C_05.png
+  artifactKey: Guid(7eee60f4459723a4d831e640b6fe2b6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_1S1C_05.png using Guid(7eee60f4459723a4d831e640b6fe2b6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '45569508852b88fad9306dc1ae24c652') in 0.234541 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Stairs_Simple/Sprites/ISO_Prop_Stair_Stone_05.png
+  artifactKey: Guid(f7d5a9e22477e204094f57ce65a461b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Stairs_Simple/Sprites/ISO_Prop_Stair_Stone_05.png using Guid(f7d5a9e22477e204094f57ce65a461b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'e64a6b938317e9e403b8f50feddfbc8a') in 0.2052986 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000050 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_01.png
+  artifactKey: Guid(514f128270f718a42aadddbf91c44ba6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_01.png using Guid(514f128270f718a42aadddbf91c44ba6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ae35dc5582200eb1a4185773376f90de') in 0.2121911 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Assets/Sprites/Otros/MovementIcon.png
+  artifactKey: Guid(a394b89c5713efa4aa9b197a063e7279) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Sprites/Otros/MovementIcon.png using Guid(a394b89c5713efa4aa9b197a063e7279) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ebdeb4aab8e8c2e13e4f8c4f0a8d9075') in 0.0755625 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 7
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Brick/ISO_Tile_Brick_Stone_01.png
+  artifactKey: Guid(ff1328e61be82ba4cb0d533e0bc16578) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Brick/ISO_Tile_Brick_Stone_01.png using Guid(ff1328e61be82ba4cb0d533e0bc16578) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'f24932e932bc3dce4c3cc9ff2bc4ec55') in 0.1981903 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Overlay/ISO_Overlay_StonePieces_02_Half_V_01.png
+  artifactKey: Guid(74b09da65e1639b4a9185bf4fb91cd50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Overlay/ISO_Overlay_StonePieces_02_Half_V_01.png using Guid(74b09da65e1639b4a9185bf4fb91cd50) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'cd0ffa04fb9890a14ea318b1b25a2464') in 0.2192157 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Overlay/ISO_Overlay_StonePieces_01_Half_H_02.png
+  artifactKey: Guid(ea4cfaaedf6568847997ff2633225864) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Overlay/ISO_Overlay_StonePieces_01_Half_H_02.png using Guid(ea4cfaaedf6568847997ff2633225864) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '790736200b0078623c9f2d22f962a333') in 0.2304844 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Backyard - Free/Separate Tiles/backyard_50.png
+  artifactKey: Guid(bc2e3d80eb9fefe4ba3e101f7d1bd66c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Backyard - Free/Separate Tiles/backyard_50.png using Guid(bc2e3d80eb9fefe4ba3e101f7d1bd66c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c42824d32faa7683b235084892fe9768') in 0.0322536 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_1C_01.png
+  artifactKey: Guid(c25493a640acf99428110e2683f64628) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_1C_01.png using Guid(c25493a640acf99428110e2683f64628) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'a3f3b9624c1f1ce6b218fcdc7b1b1e01') in 0.2172228 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Path/Sprites/ISO_Tile_Dirt_01_GrassPath_Curve_02.png
+  artifactKey: Guid(ec1b266780a724d4d8c8d46e6b212f85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Path/Sprites/ISO_Tile_Dirt_01_GrassPath_Curve_02.png using Guid(ec1b266780a724d4d8c8d46e6b212f85) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '7fbe76a55d1d5e2291a4923963898578') in 0.2367701 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Dirt/ISO_Tile_Dirt_01_ToStone_01.png
+  artifactKey: Guid(351d188ac5383de43a0c2fe2129e7789) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Dirt/ISO_Tile_Dirt_01_ToStone_01.png using Guid(351d188ac5383de43a0c2fe2129e7789) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c6374bf5122c77796a4380d1e824b09e') in 0.2263873 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Water/Animation_01/Sprites/ISO_Tile_Water_01_Anim_01_F2.png
+  artifactKey: Guid(1a603cedd3c448f4881a89937992fcbe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Water/Animation_01/Sprites/ISO_Tile_Water_01_Anim_01_F2.png using Guid(1a603cedd3c448f4881a89937992fcbe) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'a7ca329c4d3f73d0a6abb9c2ead11d7d') in 0.2297816 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_reed (8).png
+  artifactKey: Guid(e339b2b9918860a41bf1cff88cd649c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_reed (8).png using Guid(e339b2b9918860a41bf1cff88cd649c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'd73be47a7e35abc596493c6fcf84fe3b') in 0.0476573 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Sand/ISO_Tile_Sand_03.png
+  artifactKey: Guid(61ff7d2f444cada46bc7b947340994c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Sand/ISO_Tile_Sand_03.png using Guid(61ff7d2f444cada46bc7b947340994c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '7e87e6b1c092f4ba06dcd311b0827594') in 0.2031493 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Overlay/ISO_Overlay_Grass_Patch_03_H_01.png
+  artifactKey: Guid(f1773a959527d0840a123bde24932a80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Overlay/ISO_Overlay_Grass_Patch_03_H_01.png using Guid(f1773a959527d0840a123bde24932a80) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c803d802b5d60566fff3603bd8502144') in 0.2131657 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Stairs_Simple/Sprites/ISO_Prop_Stair_Stone_11.png
+  artifactKey: Guid(57113a2de4a3b8d4ca496d483c804a22) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Stairs_Simple/Sprites/ISO_Prop_Stair_Stone_11.png using Guid(57113a2de4a3b8d4ca496d483c804a22) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '689716c5ce9aeb06677096592e21f7fc') in 0.2064787 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Simple/Sprites/ISO_Tile_Water_Shore_1C_03.png
+  artifactKey: Guid(92c4a08493a4c1b49b880c6c013a888a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Simple/Sprites/ISO_Tile_Water_Shore_1C_03.png using Guid(92c4a08493a4c1b49b880c6c013a888a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'bfd055aac105650c9e4f82c116407db6') in 0.21452 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000040 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Sand/ISO_Tile_Sand_02_ToStone_02.png
+  artifactKey: Guid(27850de8d19393545a1af52d1a5c35cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Sand/ISO_Tile_Sand_02_ToStone_02.png using Guid(27850de8d19393545a1af52d1a5c35cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '292c3d7f2bee096288af990c281db14d') in 0.2290398 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_1S1C_07.png
+  artifactKey: Guid(526d3d5a82a14054f8e7979d6d4b46d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_1S1C_07.png using Guid(526d3d5a82a14054f8e7979d6d4b46d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '7280771220648d1ecd6076e7b676cc38') in 0.2003378 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Fence/Sprites/ISO_Fence_01_S2-NE-SW.png
+  artifactKey: Guid(8fef00f50bddd0e4f9b68f01c98e3586) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Fence/Sprites/ISO_Fence_01_S2-NE-SW.png using Guid(8fef00f50bddd0e4f9b68f01c98e3586) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'd1703c3783789c6ecc39e592afb83571') in 0.204985 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_1S_01.png
+  artifactKey: Guid(d30f1fe44aab5154685c5a587914d707) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_1S_01.png using Guid(d30f1fe44aab5154685c5a587914d707) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '981cd9c51cdac6550856880cb012e438') in 0.2127845 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Wood/ISO_Tile_Wood_03.png
+  artifactKey: Guid(d8826e2d807e2174ea8ed132c874418d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Wood/ISO_Tile_Wood_03.png using Guid(d8826e2d807e2174ea8ed132c874418d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '41cba358b400283c7f8e52fda8f3b25e') in 0.2238105 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_tree_log_02.png
+  artifactKey: Guid(57bad4136a1151b40b49c5ddd1e15fa1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_tree_log_02.png using Guid(57bad4136a1151b40b49c5ddd1e15fa1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '152696a26f18b51099391feeaa710276') in 0.0436106 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Roof_Hay_Simple/Sprites/ISO_Roof_Hay_01_T_E1_NW.png
+  artifactKey: Guid(8acdd6172f2d65e41b60736270c0d531) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Roof_Hay_Simple/Sprites/ISO_Roof_Hay_01_T_E1_NW.png using Guid(8acdd6172f2d65e41b60736270c0d531) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '1fab4cd36e5dc83d9c211c6672777878') in 0.2015059 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Low/ISO_LowTile_Riverbed_04.png
+  artifactKey: Guid(4fb6317702b904547933117de6dd6647) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Low/ISO_LowTile_Riverbed_04.png using Guid(4fb6317702b904547933117de6dd6647) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '480b814f225d40bbcca148633ec4b200') in 0.2256138 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000040 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Low/ISO_LowTile_DirtToStoneTransition_01.png
+  artifactKey: Guid(fb0e7cfd4c205ee4f8ccc1588e5dfb02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Low/ISO_LowTile_DirtToStoneTransition_01.png using Guid(fb0e7cfd4c205ee4f8ccc1588e5dfb02) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '8923ea4abd41fc3095cfdf65c38f824d') in 0.2018053 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Skin/ISO_Deco_Tooth_01_Bad_01_ 1.png
+  artifactKey: Guid(4ae7b3da4ed6d584f8f6ecffb63eadca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Skin/ISO_Deco_Tooth_01_Bad_01_ 1.png using Guid(4ae7b3da4ed6d584f8f6ecffb63eadca) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '732300cf749c89c0f00c98ab7d51687b') in 0.2227343 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000055 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Roof_Hay_Simple/Sprites/ISO_Roof_Hay_01_T_C3_NE.png
+  artifactKey: Guid(d11ae8e4fc4f1db4cbd357fa495aade7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Roof_Hay_Simple/Sprites/ISO_Roof_Hay_01_T_C3_NE.png using Guid(d11ae8e4fc4f1db4cbd357fa495aade7) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'a6c483261c80a0ccf7ca1f72eec21450') in 0.2165399 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/Backyard - Free/sample_ground.png
+  artifactKey: Guid(554eb3f7771ceeb4ca590c856d92dbca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Backyard - Free/sample_ground.png using Guid(554eb3f7771ceeb4ca590c856d92dbca) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '50c884bfb5d6eae1c60e45e4145d6f1e') in 0.0551078 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Low/ISO_LowTile_DirtToStoneTransition_02.png
+  artifactKey: Guid(128cb0d643b04e149bd6022e421521a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Low/ISO_LowTile_DirtToStoneTransition_02.png using Guid(128cb0d643b04e149bd6022e421521a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'dd883d76fd7d722b89008e70598024e9') in 0.2034353 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Water/Animation_01/Sprites/ISO_Tile_Water_01_Anim_01_F7.png
+  artifactKey: Guid(a922286d09f37c24fb022d633b7ee7bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Water/Animation_01/Sprites/ISO_Tile_Water_01_Anim_01_F7.png using Guid(a922286d09f37c24fb022d633b7ee7bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'f67025946a3d8656efc56fab05ea3ca6') in 0.2134897 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Stairs_Simple/Sprites/ISO_Prop_Stair_Stone_10.png
+  artifactKey: Guid(73a81d9d4cf6d484688331816840d2ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Stairs_Simple/Sprites/ISO_Prop_Stair_Stone_10.png using Guid(73a81d9d4cf6d484688331816840d2ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '61a2dc52da35fb69d6c94f2bbf0d7ef5') in 0.217249 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Wood/ISO_Tile_Tree_Birch_01.png
+  artifactKey: Guid(f564c2b738fc8644f8556addb932f232) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Wood/ISO_Tile_Tree_Birch_01.png using Guid(f564c2b738fc8644f8556addb932f232) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '94284fc95ff3c33be4a92614c198e4ca') in 0.2201396 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Backyard - Free/Separate Tiles/backyard_67.png
+  artifactKey: Guid(f03dfa10d891d204fb30ff50120ee471) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Backyard - Free/Separate Tiles/backyard_67.png using Guid(f03dfa10d891d204fb30ff50120ee471) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'd431c8b25c46bb219ada6600c72ad552') in 0.0434088 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_tree_log_03.png
+  artifactKey: Guid(96cebc081a5943d4c9b2e945b07b0b59) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_tree_log_03.png using Guid(96cebc081a5943d4c9b2e945b07b0b59) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '9dc6d126707a3bacfe703338e36b50d4') in 0.0233635 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Stairs_Simple/Sprites/ISO_Prop_Stair_Stone_01.png
+  artifactKey: Guid(d4072cf930358cc4c90ec4812e18e05d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Stairs_Simple/Sprites/ISO_Prop_Stair_Stone_01.png using Guid(d4072cf930358cc4c90ec4812e18e05d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '9686f29d80452231603fd1c3cea89577') in 0.2183961 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_waterplant 2.png
+  artifactKey: Guid(3353be52e3ad90f47879183d7ff24a99) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_waterplant 2.png using Guid(3353be52e3ad90f47879183d7ff24a99) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b1e8b8c66a233a037a06f2bdbfb6a98c') in 0.0356315 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_stone (3).png
+  artifactKey: Guid(1f6f67388585efa429411a181d8172f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_stone (3).png using Guid(1f6f67388585efa429411a181d8172f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '671f292f252bf81b7aa4bb5a70caeaeb') in 0.0236824 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_2S_03.png
+  artifactKey: Guid(7d8577a3dc3cfe349b8e925cebc95e7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_2S_03.png using Guid(7d8577a3dc3cfe349b8e925cebc95e7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '05d24bab2c887ae89a6713859b489ae7') in 0.2010365 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Roof_Hay_Simple/Sprites/ISO_Roof_Hay_01_C2_S.png
+  artifactKey: Guid(075d135499883a146b07eab0c43d7269) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Roof_Hay_Simple/Sprites/ISO_Roof_Hay_01_C2_S.png using Guid(075d135499883a146b07eab0c43d7269) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'dae121798cc7bc5d1510d06b4e5a07e5') in 0.2234568 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000052 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Path/Sprites/ISO_Tile_Dirt_01_GrassPath_3Cross_01.png
+  artifactKey: Guid(a57785f55a3f9dd4dbfc3fa955962baf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Path/Sprites/ISO_Tile_Dirt_01_GrassPath_3Cross_01.png using Guid(a57785f55a3f9dd4dbfc3fa955962baf) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '2a39c87c19e10a784804dbaff4fb69fc') in 0.2299055 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Agave_Cactus_02.png
+  artifactKey: Guid(7de0031bd253b43498b1e2228c4a885e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Agave_Cactus_02.png using Guid(7de0031bd253b43498b1e2228c4a885e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '601be7e861d2af2234a3157a14cbdf4f') in 0.0613515 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_deadbush(5).png
+  artifactKey: Guid(b1c5911f466489b45a6cadbe680c193d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_deadbush(5).png using Guid(b1c5911f466489b45a6cadbe680c193d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b48e2c8c7098d729f9b86a416f6b186b') in 0.0254537 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Grass/ISO_Tile_Dirt_01_GrassPatch_02.png
+  artifactKey: Guid(ef14886e0a930b54ab5a29ec3d7b60b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Grass/ISO_Tile_Dirt_01_GrassPatch_02.png using Guid(ef14886e0a930b54ab5a29ec3d7b60b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '63cd4e6d1aaf8664b4bc3130ec947a77') in 0.2078037 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Overlay/ISO_Overlay_Grass_Patch_02_V_01.png
+  artifactKey: Guid(60191b1b55063b0489e2cd2ac8378ea7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Overlay/ISO_Overlay_Grass_Patch_02_V_01.png using Guid(60191b1b55063b0489e2cd2ac8378ea7) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '9a4de3670910f1dbc05f38ba7c68d609') in 0.2039928 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_waterplant (2).png
+  artifactKey: Guid(e3f6e2831194bfa41ae4596d7f8dae8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_waterplant (2).png using Guid(e3f6e2831194bfa41ae4596d7f8dae8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '77d0bd4521e0e425d65f6ea147ffae86') in 0.044785 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Low/ISO_LowTile_Riverbed_01.png
+  artifactKey: Guid(c116e528227f1f841aaada1a74ab4013) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Low/ISO_LowTile_Riverbed_01.png using Guid(c116e528227f1f841aaada1a74ab4013) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'af9efe4dc611d8cdd4e2562b95e65aae') in 0.2219029 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Brick/ISO_Tile_Brick_Stone_01_03.png
+  artifactKey: Guid(a2272796b6753cf4a856601971d9dd5a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Brick/ISO_Tile_Brick_Stone_01_03.png using Guid(a2272796b6753cf4a856601971d9dd5a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '565c1c0cc910fca9bb266351eeca84b3') in 0.2316973 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000047 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_4S_04.png
+  artifactKey: Guid(df98375cf28175442a62efc212bb6c30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_4S_04.png using Guid(df98375cf28175442a62efc212bb6c30) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '37363263f73610b875de5fe13f69b353') in 0.2228815 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/LawlessGames/Tactics Toolkit Pathfinding/Images/SelectedTile.png
+  artifactKey: Guid(08972de6d8aa08a4283230e0d4323bec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/LawlessGames/Tactics Toolkit Pathfinding/Images/SelectedTile.png using Guid(08972de6d8aa08a4283230e0d4323bec) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b63d6dfe0ba2b8551950dfb5239801a3') in 0.0398233 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Agave_Cactus_03.png
+  artifactKey: Guid(aa41180164c758e46ae8c3e38266f77c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Agave_Cactus_03.png using Guid(aa41180164c758e46ae8c3e38266f77c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'd7d3c318ac17b85ccef6b5ae93c34dad') in 0.0245657 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_forest_bush (5).png
+  artifactKey: Guid(925bc866394f86c49b4ffed73b7c1faf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_forest_bush (5).png using Guid(925bc866394f86c49b4ffed73b7c1faf) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'e82ad1a52b9b8f64a9b8fc431f2947a4') in 0.0235244 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Overlay/ISO_Overlay_Cracks_02.png
+  artifactKey: Guid(7035e0c524722e042adadca5083ff968) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Overlay/ISO_Overlay_Cracks_02.png using Guid(7035e0c524722e042adadca5083ff968) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '515ea23502e13c2470e6440fb5c8b576') in 0.2048326 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_2C_05.png
+  artifactKey: Guid(b81ce33cb686bec48b68543d62717e07) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_2C_05.png using Guid(b81ce33cb686bec48b68543d62717e07) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '82c2a3a2c4fb8e73c904209397002873') in 0.2179369 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Water/Animation_01/Sprites/ISO_Tile_Water_01_Anim_01_F1.png
+  artifactKey: Guid(f1b0a5ef178498142a6a4ed17ee4142c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Water/Animation_01/Sprites/ISO_Tile_Water_01_Anim_01_F1.png using Guid(f1b0a5ef178498142a6a4ed17ee4142c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c48a6eb0bf1171fb29aa3a8adfd75b0f') in 0.2244933 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_1S1C_08.png
+  artifactKey: Guid(a432c43175153354687a0364d133071f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_1S1C_08.png using Guid(a432c43175153354687a0364d133071f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'bf437aae219329f90f1e1ad3878e01f4') in 0.1865263 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Overlay/ISO_Overlay_StonePieces_02_Half_H_02.png
+  artifactKey: Guid(6baa8c28728a4ed40a4d94760a52b417) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Overlay/ISO_Overlay_StonePieces_02_Half_H_02.png using Guid(6baa8c28728a4ed40a4d94760a52b417) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '65d99c399fbc452b64973f158843b45e') in 0.2077789 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Fence/Sprites/ISO_Fence_01_S1-NE.png
+  artifactKey: Guid(b267f7fa9ad26774585ca4e72b932487) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Fence/Sprites/ISO_Fence_01_S1-NE.png using Guid(b267f7fa9ad26774585ca4e72b932487) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '8a764e87eafaa851a5a1d222376d079a') in 0.2159295 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_big_tree_leaf_01.png
+  artifactKey: Guid(e69841e668d78f54a8d42dbd06229178) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_big_tree_leaf_01.png using Guid(e69841e668d78f54a8d42dbd06229178) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '3a604378c519879794df9dd097275184') in 0.0642941 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_bamboo (8).png
+  artifactKey: Guid(671b3d067e7919b428ed84896d78ab54) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_bamboo (8).png using Guid(671b3d067e7919b428ed84896d78ab54) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'd2da41ccc84318a4dce19e74de0f2e26') in 0.0215651 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_tree_stump_01.png
+  artifactKey: Guid(8c67b3bf0a633844d92844ad4684f0ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Forest_small_tree_stump_01.png using Guid(8c67b3bf0a633844d92844ad4684f0ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'cc8133d3f5d0b40c8d95d988c86530ff') in 0.0251639 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000065 seconds.
+  path: Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Cactus_15.png
+  artifactKey: Guid(004a8f372e605644d9ad6355d15f7c27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D_Iso_FoliagePack/Sprites/GSS_Foliage_Desert_small_Cactus_15.png using Guid(004a8f372e605644d9ad6355d15f7c27) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '59552b279fa707ef63b1b326f374a366') in 0.0234406 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Simple/Sprites/ISO_Tile_Water_Shore_1S_03.png
+  artifactKey: Guid(dcb33a2903f6ec9428e8865f3588c134) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Simple/Sprites/ISO_Tile_Water_Shore_1S_03.png using Guid(dcb33a2903f6ec9428e8865f3588c134) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '2779dc03198c13cac70ce078544f52c5') in 0.1974562 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Snow/ISO_Tile_Snow_01_ToStone_01.png
+  artifactKey: Guid(8f6a5216709da5543b82b29539b94be4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Sprites/Snow/ISO_Tile_Snow_01_ToStone_01.png using Guid(8f6a5216709da5543b82b29539b94be4) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '5ba0a5086343d3518f917d496e5e7f24') in 0.2112679 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Fence/Sprites/ISO_Fence_01_S1L-SW.png
+  artifactKey: Guid(58674859ce78fa0468a29f4246da796d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Fence/Sprites/ISO_Fence_01_S1L-SW.png using Guid(58674859ce78fa0468a29f4246da796d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'f4e4f4d69423528bf58639e5ea892ad3') in 0.1819027 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.096 seconds
+Refreshing native plugins compatible for Editor in 2.97 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.490 seconds
+Domain Reload Profiling: 2589ms
+	BeginReloadAssembly (301ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (19ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (81ms)
+	RebuildCommonClasses (67ms)
+	RebuildNativeTypeToScriptingClass (26ms)
+	initialDomainReloadingComplete (35ms)
+	LoadAllAssembliesAndSetupDomain (670ms)
+		LoadAssemblies (493ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (322ms)
+			TypeCache.Refresh (9ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (291ms)
+			ResolveRequiredComponents (18ms)
+	FinalizeReload (1491ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (1171ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (8ms)
+			BeforeProcessingInitializeOnLoad (183ms)
+			ProcessInitializeOnLoadAttributes (853ms)
+			ProcessInitializeOnLoadMethodAttributes (116ms)
+			AfterProcessingInitializeOnLoad (6ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (24ms)
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 2.15 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6704 unused Assets / (4.7 MB). Loaded Objects now: 7486.
+Memory consumption went from 159.5 MB to 154.8 MB.
+Total: 14.310400 ms (FindLiveObjects: 0.905700 ms CreateObjectMapping: 1.249900 ms MarkObjects: 8.199400 ms  DeleteObjects: 3.953800 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.180 seconds
+Refreshing native plugins compatible for Editor in 2.39 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.510 seconds
+Domain Reload Profiling: 2693ms
+	BeginReloadAssembly (324ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (30ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (84ms)
+	RebuildCommonClasses (74ms)
+	RebuildNativeTypeToScriptingClass (33ms)
+	initialDomainReloadingComplete (40ms)
+	LoadAllAssembliesAndSetupDomain (711ms)
+		LoadAssemblies (546ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (311ms)
+			TypeCache.Refresh (8ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (274ms)
+			ResolveRequiredComponents (23ms)
+	FinalizeReload (1511ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (1188ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (8ms)
+			BeforeProcessingInitializeOnLoad (206ms)
+			ProcessInitializeOnLoadAttributes (849ms)
+			ProcessInitializeOnLoadMethodAttributes (110ms)
+			AfterProcessingInitializeOnLoad (9ms)
+			EditorAssembliesLoaded (2ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (25ms)
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 2.15 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6702 unused Assets / (4.5 MB). Loaded Objects now: 7488.
+Memory consumption went from 159.4 MB to 154.9 MB.
+Total: 14.398700 ms (FindLiveObjects: 1.024000 ms CreateObjectMapping: 0.956300 ms MarkObjects: 8.761800 ms  DeleteObjects: 3.654900 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.905 seconds
+Refreshing native plugins compatible for Editor in 1.64 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.164 seconds
+Domain Reload Profiling: 2072ms
+	BeginReloadAssembly (265ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (19ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (63ms)
+	RebuildCommonClasses (52ms)
+	RebuildNativeTypeToScriptingClass (17ms)
+	initialDomainReloadingComplete (33ms)
+	LoadAllAssembliesAndSetupDomain (541ms)
+		LoadAssemblies (412ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (262ms)
+			TypeCache.Refresh (8ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (227ms)
+			ResolveRequiredComponents (23ms)
+	FinalizeReload (1164ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (915ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (6ms)
+			BeforeProcessingInitializeOnLoad (152ms)
+			ProcessInitializeOnLoadAttributes (655ms)
+			ProcessInitializeOnLoadMethodAttributes (95ms)
+			AfterProcessingInitializeOnLoad (4ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (17ms)
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 1.77 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6702 unused Assets / (4.2 MB). Loaded Objects now: 7490.
+Memory consumption went from 159.4 MB to 155.2 MB.
+Total: 9.834000 ms (FindLiveObjects: 0.793600 ms CreateObjectMapping: 0.384900 ms MarkObjects: 6.066700 ms  DeleteObjects: 2.587600 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.084 seconds
+Refreshing native plugins compatible for Editor in 1.87 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.120 seconds
+Domain Reload Profiling: 2204ms
+	BeginReloadAssembly (313ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (26ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (85ms)
+	RebuildCommonClasses (56ms)
+	RebuildNativeTypeToScriptingClass (25ms)
+	initialDomainReloadingComplete (56ms)
+	LoadAllAssembliesAndSetupDomain (633ms)
+		LoadAssemblies (467ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (315ms)
+			TypeCache.Refresh (13ms)
+				TypeCache.ScanAssembly (1ms)
+			BuildScriptInfoCaches (270ms)
+			ResolveRequiredComponents (27ms)
+	FinalizeReload (1120ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (839ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (8ms)
+			BeforeProcessingInitializeOnLoad (149ms)
+			ProcessInitializeOnLoadAttributes (599ms)
+			ProcessInitializeOnLoadMethodAttributes (75ms)
+			AfterProcessingInitializeOnLoad (4ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (14ms)
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 1.84 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6702 unused Assets / (5.3 MB). Loaded Objects now: 7492.
+Memory consumption went from 159.4 MB to 154.1 MB.
+Total: 12.557100 ms (FindLiveObjects: 0.797000 ms CreateObjectMapping: 0.544300 ms MarkObjects: 7.352100 ms  DeleteObjects: 3.862400 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.907 seconds
+Refreshing native plugins compatible for Editor in 1.74 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.212 seconds
+Domain Reload Profiling: 2121ms
+	BeginReloadAssembly (261ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (19ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (67ms)
+	RebuildCommonClasses (52ms)
+	RebuildNativeTypeToScriptingClass (17ms)
+	initialDomainReloadingComplete (30ms)
+	LoadAllAssembliesAndSetupDomain (549ms)
+		LoadAssemblies (396ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (279ms)
+			TypeCache.Refresh (6ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (254ms)
+			ResolveRequiredComponents (14ms)
+	FinalizeReload (1213ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (950ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (6ms)
+			BeforeProcessingInitializeOnLoad (153ms)
+			ProcessInitializeOnLoadAttributes (680ms)
+			ProcessInitializeOnLoadMethodAttributes (102ms)
+			AfterProcessingInitializeOnLoad (5ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (19ms)
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 2.30 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6702 unused Assets / (4.0 MB). Loaded Objects now: 7494.
+Memory consumption went from 159.3 MB to 155.3 MB.
+Total: 12.580000 ms (FindLiveObjects: 0.988000 ms CreateObjectMapping: 0.894500 ms MarkObjects: 7.553800 ms  DeleteObjects: 3.142400 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.142 seconds
+Refreshing native plugins compatible for Editor in 1.86 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.195 seconds
+Domain Reload Profiling: 2338ms
+	BeginReloadAssembly (327ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (29ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (83ms)
+	RebuildCommonClasses (70ms)
+	RebuildNativeTypeToScriptingClass (26ms)
+	initialDomainReloadingComplete (44ms)
+	LoadAllAssembliesAndSetupDomain (675ms)
+		LoadAssemblies (512ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (319ms)
+			TypeCache.Refresh (15ms)
+				TypeCache.ScanAssembly (2ms)
+			BuildScriptInfoCaches (286ms)
+			ResolveRequiredComponents (14ms)
+	FinalizeReload (1196ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (934ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (5ms)
+			BeforeProcessingInitializeOnLoad (154ms)
+			ProcessInitializeOnLoadAttributes (681ms)
+			ProcessInitializeOnLoadMethodAttributes (85ms)
+			AfterProcessingInitializeOnLoad (5ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (17ms)
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 2.61 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6702 unused Assets / (3.9 MB). Loaded Objects now: 7496.
+Memory consumption went from 159.4 MB to 155.5 MB.
+Total: 11.323800 ms (FindLiveObjects: 0.974400 ms CreateObjectMapping: 1.100900 ms MarkObjects: 6.790500 ms  DeleteObjects: 2.456300 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.883 seconds
+Refreshing native plugins compatible for Editor in 1.77 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.184 seconds
+Domain Reload Profiling: 2069ms
+	BeginReloadAssembly (265ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (20ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (59ms)
+	RebuildCommonClasses (55ms)
+	RebuildNativeTypeToScriptingClass (20ms)
+	initialDomainReloadingComplete (42ms)
+	LoadAllAssembliesAndSetupDomain (502ms)
+		LoadAssemblies (399ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (244ms)
+			TypeCache.Refresh (7ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (220ms)
+			ResolveRequiredComponents (14ms)
+	FinalizeReload (1184ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (920ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (8ms)
+			BeforeProcessingInitializeOnLoad (147ms)
+			ProcessInitializeOnLoadAttributes (668ms)
+			ProcessInitializeOnLoadMethodAttributes (90ms)
+			AfterProcessingInitializeOnLoad (4ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (19ms)
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 2.09 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6702 unused Assets / (3.9 MB). Loaded Objects now: 7498.
+Memory consumption went from 159.4 MB to 155.6 MB.
+Total: 10.934000 ms (FindLiveObjects: 0.930000 ms CreateObjectMapping: 1.182800 ms MarkObjects: 6.372000 ms  DeleteObjects: 2.448100 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 2.49 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6691 unused Assets / (3.6 MB). Loaded Objects now: 7498.
+Memory consumption went from 159.6 MB to 155.9 MB.
+Total: 24.986900 ms (FindLiveObjects: 1.009200 ms CreateObjectMapping: 1.248800 ms MarkObjects: 18.314600 ms  DeleteObjects: 4.412300 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.896 seconds
+Refreshing native plugins compatible for Editor in 2.08 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.249 seconds
+Domain Reload Profiling: 2149ms
+	BeginReloadAssembly (255ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (18ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (58ms)
+	RebuildCommonClasses (47ms)
+	RebuildNativeTypeToScriptingClass (22ms)
+	initialDomainReloadingComplete (30ms)
+	LoadAllAssembliesAndSetupDomain (546ms)
+		LoadAssemblies (409ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (261ms)
+			TypeCache.Refresh (15ms)
+				TypeCache.ScanAssembly (1ms)
+			BuildScriptInfoCaches (227ms)
+			ResolveRequiredComponents (16ms)
+	FinalizeReload (1250ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (970ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (7ms)
+			BeforeProcessingInitializeOnLoad (167ms)
+			ProcessInitializeOnLoadAttributes (703ms)
+			ProcessInitializeOnLoadMethodAttributes (87ms)
+			AfterProcessingInitializeOnLoad (3ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (18ms)
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 2.27 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6702 unused Assets / (4.4 MB). Loaded Objects now: 7500.
+Memory consumption went from 159.4 MB to 155.0 MB.
+Total: 12.721400 ms (FindLiveObjects: 1.017000 ms CreateObjectMapping: 1.232000 ms MarkObjects: 7.602600 ms  DeleteObjects: 2.868600 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.913 seconds
+Refreshing native plugins compatible for Editor in 1.82 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.208 seconds
+Domain Reload Profiling: 2125ms
+	BeginReloadAssembly (259ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (25ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (62ms)
+	RebuildCommonClasses (46ms)
+	RebuildNativeTypeToScriptingClass (23ms)
+	initialDomainReloadingComplete (37ms)
+	LoadAllAssembliesAndSetupDomain (550ms)
+		LoadAssemblies (399ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (277ms)
+			TypeCache.Refresh (6ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (243ms)
+			ResolveRequiredComponents (23ms)
+	FinalizeReload (1209ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (935ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (6ms)
+			BeforeProcessingInitializeOnLoad (147ms)
+			ProcessInitializeOnLoadAttributes (687ms)
+			ProcessInitializeOnLoadMethodAttributes (87ms)
+			AfterProcessingInitializeOnLoad (4ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (21ms)
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 1.86 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6702 unused Assets / (5.4 MB). Loaded Objects now: 7502.
+Memory consumption went from 159.4 MB to 154.0 MB.
+Total: 14.313700 ms (FindLiveObjects: 0.887700 ms CreateObjectMapping: 0.900400 ms MarkObjects: 8.329500 ms  DeleteObjects: 4.194300 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.931 seconds
+Refreshing native plugins compatible for Editor in 1.79 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.221 seconds
+Domain Reload Profiling: 2154ms
+	BeginReloadAssembly (272ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (23ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (65ms)
+	RebuildCommonClasses (54ms)
+	RebuildNativeTypeToScriptingClass (17ms)
+	initialDomainReloadingComplete (32ms)
+	LoadAllAssembliesAndSetupDomain (559ms)
+		LoadAssemblies (420ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (272ms)
+			TypeCache.Refresh (11ms)
+				TypeCache.ScanAssembly (1ms)
+			BuildScriptInfoCaches (238ms)
+			ResolveRequiredComponents (20ms)
+	FinalizeReload (1221ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (956ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (7ms)
+			BeforeProcessingInitializeOnLoad (145ms)
+			ProcessInitializeOnLoadAttributes (697ms)
+			ProcessInitializeOnLoadMethodAttributes (98ms)
+			AfterProcessingInitializeOnLoad (5ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (20ms)
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 2.09 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6702 unused Assets / (4.5 MB). Loaded Objects now: 7504.
+Memory consumption went from 159.4 MB to 154.9 MB.
+Total: 12.270200 ms (FindLiveObjects: 0.804700 ms CreateObjectMapping: 0.700300 ms MarkObjects: 7.256500 ms  DeleteObjects: 3.507400 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.876 seconds
+Refreshing native plugins compatible for Editor in 1.78 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.188 seconds
+Domain Reload Profiling: 2065ms
+	BeginReloadAssembly (248ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (18ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (56ms)
+	RebuildCommonClasses (44ms)
+	RebuildNativeTypeToScriptingClass (19ms)
+	initialDomainReloadingComplete (35ms)
+	LoadAllAssembliesAndSetupDomain (531ms)
+		LoadAssemblies (400ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (261ms)
+			TypeCache.Refresh (7ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (235ms)
+			ResolveRequiredComponents (15ms)
+	FinalizeReload (1188ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (917ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (6ms)
+			BeforeProcessingInitializeOnLoad (137ms)
+			ProcessInitializeOnLoadAttributes (675ms)
+			ProcessInitializeOnLoadMethodAttributes (89ms)
+			AfterProcessingInitializeOnLoad (5ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (17ms)
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 2.54 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6702 unused Assets / (4.2 MB). Loaded Objects now: 7506.
+Memory consumption went from 159.4 MB to 155.2 MB.
+Total: 15.449000 ms (FindLiveObjects: 1.086100 ms CreateObjectMapping: 1.496000 ms MarkObjects: 9.390800 ms  DeleteObjects: 3.474900 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.007 seconds
+Refreshing native plugins compatible for Editor in 2.28 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.310 seconds
+Domain Reload Profiling: 2320ms
+	BeginReloadAssembly (263ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (20ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (56ms)
+	RebuildCommonClasses (50ms)
+	RebuildNativeTypeToScriptingClass (22ms)
+	initialDomainReloadingComplete (31ms)
+	LoadAllAssembliesAndSetupDomain (644ms)
+		LoadAssemblies (433ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (347ms)
+			TypeCache.Refresh (11ms)
+				TypeCache.ScanAssembly (1ms)
+			BuildScriptInfoCaches (296ms)
+			ResolveRequiredComponents (28ms)
+	FinalizeReload (1311ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (1018ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (6ms)
+			BeforeProcessingInitializeOnLoad (195ms)
+			ProcessInitializeOnLoadAttributes (720ms)
+			ProcessInitializeOnLoadMethodAttributes (89ms)
+			AfterProcessingInitializeOnLoad (3ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (16ms)
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 2.37 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6702 unused Assets / (4.6 MB). Loaded Objects now: 7508.
+Memory consumption went from 159.4 MB to 154.9 MB.
+Total: 11.590800 ms (FindLiveObjects: 0.984200 ms CreateObjectMapping: 0.677600 ms MarkObjects: 7.448300 ms  DeleteObjects: 2.477300 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.952 seconds
+Refreshing native plugins compatible for Editor in 2.08 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.264 seconds
+Domain Reload Profiling: 2219ms
+	BeginReloadAssembly (260ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (19ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (58ms)
+	RebuildCommonClasses (52ms)
+	RebuildNativeTypeToScriptingClass (17ms)
+	initialDomainReloadingComplete (35ms)
+	LoadAllAssembliesAndSetupDomain (591ms)
+		LoadAssemblies (435ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (290ms)
+			TypeCache.Refresh (7ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (257ms)
+			ResolveRequiredComponents (20ms)
+	FinalizeReload (1265ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (980ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (5ms)
+			BeforeProcessingInitializeOnLoad (166ms)
+			ProcessInitializeOnLoadAttributes (697ms)
+			ProcessInitializeOnLoadMethodAttributes (104ms)
+			AfterProcessingInitializeOnLoad (4ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (19ms)
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 2.42 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6702 unused Assets / (5.1 MB). Loaded Objects now: 7510.
+Memory consumption went from 159.4 MB to 154.3 MB.
+Total: 16.227600 ms (FindLiveObjects: 1.064600 ms CreateObjectMapping: 0.826600 ms MarkObjects: 9.395100 ms  DeleteObjects: 4.939400 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.987 seconds
+Refreshing native plugins compatible for Editor in 1.75 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.203 seconds
+Domain Reload Profiling: 2193ms
+	BeginReloadAssembly (287ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (23ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (60ms)
+	RebuildCommonClasses (47ms)
+	RebuildNativeTypeToScriptingClass (17ms)
+	initialDomainReloadingComplete (40ms)
+	LoadAllAssembliesAndSetupDomain (599ms)
+		LoadAssemblies (441ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (311ms)
+			TypeCache.Refresh (11ms)
+				TypeCache.ScanAssembly (1ms)
+			BuildScriptInfoCaches (270ms)
+			ResolveRequiredComponents (27ms)
+	FinalizeReload (1204ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (914ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (7ms)
+			BeforeProcessingInitializeOnLoad (153ms)
+			ProcessInitializeOnLoadAttributes (662ms)
+			ProcessInitializeOnLoadMethodAttributes (82ms)
+			AfterProcessingInitializeOnLoad (5ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (17ms)
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 1.84 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6702 unused Assets / (4.3 MB). Loaded Objects now: 7512.
+Memory consumption went from 159.4 MB to 155.1 MB.
+Total: 10.156100 ms (FindLiveObjects: 0.802300 ms CreateObjectMapping: 0.467800 ms MarkObjects: 6.318700 ms  DeleteObjects: 2.565900 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.948 seconds
+Refreshing native plugins compatible for Editor in 1.72 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.271 seconds
+Domain Reload Profiling: 2222ms
+	BeginReloadAssembly (251ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (18ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (52ms)
+	RebuildCommonClasses (50ms)
+	RebuildNativeTypeToScriptingClass (20ms)
+	initialDomainReloadingComplete (32ms)
+	LoadAllAssembliesAndSetupDomain (596ms)
+		LoadAssemblies (426ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (298ms)
+			TypeCache.Refresh (8ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (266ms)
+			ResolveRequiredComponents (20ms)
+	FinalizeReload (1272ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (993ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (6ms)
+			BeforeProcessingInitializeOnLoad (161ms)
+			ProcessInitializeOnLoadAttributes (695ms)
+			ProcessInitializeOnLoadMethodAttributes (121ms)
+			AfterProcessingInitializeOnLoad (5ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (21ms)
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 2.74 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6702 unused Assets / (5.0 MB). Loaded Objects now: 7514.
+Memory consumption went from 159.4 MB to 154.4 MB.
+Total: 16.859500 ms (FindLiveObjects: 1.438200 ms CreateObjectMapping: 1.529400 ms MarkObjects: 9.296900 ms  DeleteObjects: 4.593700 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.943 seconds
+Refreshing native plugins compatible for Editor in 2.04 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.190 seconds
+Domain Reload Profiling: 2135ms
+	BeginReloadAssembly (265ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (23ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (58ms)
+	RebuildCommonClasses (46ms)
+	RebuildNativeTypeToScriptingClass (22ms)
+	initialDomainReloadingComplete (46ms)
+	LoadAllAssembliesAndSetupDomain (564ms)
+		LoadAssemblies (400ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (293ms)
+			TypeCache.Refresh (13ms)
+				TypeCache.ScanAssembly (1ms)
+			BuildScriptInfoCaches (256ms)
+			ResolveRequiredComponents (20ms)
+	FinalizeReload (1191ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (925ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (6ms)
+			BeforeProcessingInitializeOnLoad (152ms)
+			ProcessInitializeOnLoadAttributes (672ms)
+			ProcessInitializeOnLoadMethodAttributes (87ms)
+			AfterProcessingInitializeOnLoad (4ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (16ms)
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 1.78 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6702 unused Assets / (3.9 MB). Loaded Objects now: 7516.
+Memory consumption went from 159.4 MB to 155.5 MB.
+Total: 11.743500 ms (FindLiveObjects: 0.999100 ms CreateObjectMapping: 0.957200 ms MarkObjects: 7.201900 ms  DeleteObjects: 2.583400 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.004 seconds
+Refreshing native plugins compatible for Editor in 1.72 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.192 seconds
+Domain Reload Profiling: 2200ms
+	BeginReloadAssembly (264ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (24ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (59ms)
+	RebuildCommonClasses (64ms)
+	RebuildNativeTypeToScriptingClass (24ms)
+	initialDomainReloadingComplete (31ms)
+	LoadAllAssembliesAndSetupDomain (622ms)
+		LoadAssemblies (442ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (306ms)
+			TypeCache.Refresh (8ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (269ms)
+			ResolveRequiredComponents (25ms)
+	FinalizeReload (1193ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (926ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (6ms)
+			BeforeProcessingInitializeOnLoad (159ms)
+			ProcessInitializeOnLoadAttributes (656ms)
+			ProcessInitializeOnLoadMethodAttributes (96ms)
+			AfterProcessingInitializeOnLoad (5ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (22ms)
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 1.88 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6702 unused Assets / (5.1 MB). Loaded Objects now: 7518.
+Memory consumption went from 159.4 MB to 154.3 MB.
+Total: 13.220100 ms (FindLiveObjects: 0.936200 ms CreateObjectMapping: 0.793500 ms MarkObjects: 7.879500 ms  DeleteObjects: 3.610000 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.888 seconds
+Refreshing native plugins compatible for Editor in 1.86 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.225 seconds
+Domain Reload Profiling: 2115ms
+	BeginReloadAssembly (244ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (18ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (55ms)
+	RebuildCommonClasses (50ms)
+	RebuildNativeTypeToScriptingClass (17ms)
+	initialDomainReloadingComplete (33ms)
+	LoadAllAssembliesAndSetupDomain (545ms)
+		LoadAssemblies (393ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (274ms)
+			TypeCache.Refresh (7ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (243ms)
+			ResolveRequiredComponents (20ms)
+	FinalizeReload (1226ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (945ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (8ms)
+			BeforeProcessingInitializeOnLoad (160ms)
+			ProcessInitializeOnLoadAttributes (663ms)
+			ProcessInitializeOnLoadMethodAttributes (102ms)
+			AfterProcessingInitializeOnLoad (7ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (20ms)
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 1.85 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6702 unused Assets / (4.4 MB). Loaded Objects now: 7520.
+Memory consumption went from 159.4 MB to 155.0 MB.
+Total: 13.713900 ms (FindLiveObjects: 1.004200 ms CreateObjectMapping: 1.428700 ms MarkObjects: 7.980800 ms  DeleteObjects: 3.299000 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.948 seconds
+Refreshing native plugins compatible for Editor in 1.67 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.157 seconds
+Domain Reload Profiling: 2107ms
+	BeginReloadAssembly (264ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (25ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (60ms)
+	RebuildCommonClasses (64ms)
+	RebuildNativeTypeToScriptingClass (20ms)
+	initialDomainReloadingComplete (35ms)
+	LoadAllAssembliesAndSetupDomain (567ms)
+		LoadAssemblies (401ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (291ms)
+			TypeCache.Refresh (10ms)
+				TypeCache.ScanAssembly (1ms)
+			BuildScriptInfoCaches (257ms)
+			ResolveRequiredComponents (20ms)
+	FinalizeReload (1158ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (906ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (4ms)
+			SetLoadedEditorAssemblies (6ms)
+			BeforeProcessingInitializeOnLoad (149ms)
+			ProcessInitializeOnLoadAttributes (667ms)
+			ProcessInitializeOnLoadMethodAttributes (77ms)
+			AfterProcessingInitializeOnLoad (4ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (18ms)
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 1.78 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6702 unused Assets / (4.0 MB). Loaded Objects now: 7522.
+Memory consumption went from 159.4 MB to 155.4 MB.
+Total: 10.540400 ms (FindLiveObjects: 0.819200 ms CreateObjectMapping: 0.522600 ms MarkObjects: 6.505400 ms  DeleteObjects: 2.692000 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.897 seconds
+Refreshing native plugins compatible for Editor in 2.38 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.218 seconds
+Domain Reload Profiling: 2117ms
+	BeginReloadAssembly (257ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (19ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (54ms)
+	RebuildCommonClasses (45ms)
+	RebuildNativeTypeToScriptingClass (25ms)
+	initialDomainReloadingComplete (39ms)
+	LoadAllAssembliesAndSetupDomain (533ms)
+		LoadAssemblies (405ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (255ms)
+			TypeCache.Refresh (6ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (228ms)
+			ResolveRequiredComponents (16ms)
+	FinalizeReload (1219ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (930ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (6ms)
+			BeforeProcessingInitializeOnLoad (156ms)
+			ProcessInitializeOnLoadAttributes (681ms)
+			ProcessInitializeOnLoadMethodAttributes (78ms)
+			AfterProcessingInitializeOnLoad (4ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (20ms)
+Shader Hidden/ProbeVolume/VoxelizeScene is not supported: GPU does not support conservative rasterization
+Refreshing native plugins compatible for Editor in 2.25 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6702 unused Assets / (5.0 MB). Loaded Objects now: 7524.
+Memory consumption went from 159.4 MB to 154.4 MB.
+Total: 12.962600 ms (FindLiveObjects: 0.890900 ms CreateObjectMapping: 0.908700 ms MarkObjects: 7.105700 ms  DeleteObjects: 4.056200 ms)
+
+Prepare: number of updated asset objects reloaded= 0

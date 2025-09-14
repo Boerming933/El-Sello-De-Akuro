@@ -14,14 +14,19 @@ public class AttackButtonProxy : MonoBehaviour
 
     public GameObject panelBatallaGeneral;
 
+    public Button botonBatalla;
+
     [Tooltip("Panel de acciones (optional) con el script PanelAcciones")]
     public PanelAcciones panelAcciones;
+
+    public bool botonDesactivado = false;
 
     /// <summary>
     /// Asignar este método al OnClick() de tu botón en el Inspector.
     /// </summary>
     public void OnClick()
     {
+        botonDesactivado = true;
         // 1) Ocultar paneles
         if (panelBatalla != null)
             panelBatalla.SetActive(false);
@@ -31,6 +36,22 @@ public class AttackButtonProxy : MonoBehaviour
 
         if (panelAcciones != null)
             panelAcciones.Hide();
+
+        if (botonBatalla != null)
+        {
+            
+            //Button boton = botonBatalla.GetComponent<Button>();
+            //ColorBlock cb = boton.colors;
+            //cb.normalColor = new Color(0.894f, 0.533f, 0.533f, 1);
+            //boton.colors = cb;
+            botonBatalla.interactable = false;
+            //botonBatalla.GetComponent<Button>().enabled = false;
+        }
+
+        if (botonDesactivado)
+        { 
+            botonBatalla.interactable = false;
+        }
 
         // 2) Disparar la lógica de ataque
         if (attackController != null && attackData != null)

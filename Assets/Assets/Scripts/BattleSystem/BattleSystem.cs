@@ -32,6 +32,9 @@ public class BattleSystem : MonoBehaviour
     public Unit CurrentUnit => _currentUnit;
     public AttackController attackController;
 
+    public CharacterDetailsUI detailsUI;
+
+
     IEnumerator Start()
     {
         // Espera hasta que MapManager.map ya exista
@@ -92,6 +95,10 @@ public class BattleSystem : MonoBehaviour
             // 4) Siguiente unidad en orden prefijado
             _currentUnit = initiativeManager.GetNextUnit();
             OnTurnStart?.Invoke(_currentUnit);
+
+            var detailsUI = FindAnyObjectByType<CharacterDetailsUI>();
+            if (detailsUI != null)
+                detailsUI.ShowDetails(_currentUnit);
 
             // 5) Desactiva siempre todos los inputs/panels
             mouseController.canMove = false;
@@ -163,6 +170,15 @@ public class BattleSystem : MonoBehaviour
                 turnable.DeactivateTurn();
         }
         attackController.SetCurrentUnit(current);
+        // >>> Forzamos refrescar el HUD de detalles:
+        if (detailsUI != null)
+            detailsUI.ShowDetails(current);
+
+        var zoom = Camera.main.GetComponent<Zoom>();
+        if (zoom != null)
+        {
+            zoom.SetTarget(current.transform);
+        }
 
         //mouseController.DeselectCharacter(); // limpia cualquier selección previa
     }

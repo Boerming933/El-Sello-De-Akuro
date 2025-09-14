@@ -1,10 +1,15 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Turnable : MonoBehaviour
 {
     public GameObject aura;
+    public Button btnBatalla;
+    public GameObject letreroPj;
     //public GameObject panelAcciones;
     public PanelAcciones panelScript;
+    public GameObject iconoEspacio;
+
 
     /// <summary>
     /// Invocar cuando comience el turno de este personaje.
@@ -23,6 +28,14 @@ public class Turnable : MonoBehaviour
         if (aura != null) aura.SetActive(true);
         //if (panelAcciones != null) panelAcciones.SetActive(true);
         if (panelScript != null) panelScript.Show();
+        
+
+        
+
+        if (letreroPj != null) letreroPj.SetActive(true);
+        if (iconoEspacio != null) iconoEspacio.SetActive(true);
+
+
     }
 
     /// <summary>
@@ -47,5 +60,7 @@ public class Turnable : MonoBehaviour
         }
         //if (panelAcciones != null) panelAcciones.SetActive(false);
         if (panelScript != null) panelScript.Hide();
+        if (letreroPj != null) letreroPj.SetActive(false);
+        if (iconoEspacio != null) iconoEspacio.SetActive(false);
     }
 }

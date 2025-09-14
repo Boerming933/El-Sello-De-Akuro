@@ -16,6 +16,7 @@ public class MouseControler : MonoBehaviour
     public bool showPanelAcciones = false;
 
 
+
     private List<OverlayTile> path = new List<OverlayTile>();
     private List<OverlayTile> inRangeTiles = new List<OverlayTile>();
 
@@ -130,7 +131,7 @@ public class MouseControler : MonoBehaviour
             MoveAlongPath();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))      //Termina el turno al presionar espacio
+        if (Input.GetKeyDown(KeyCode.Q))      //Termina el turno al presionar Q
         {
             DeselectCharacter();
 
@@ -212,9 +213,12 @@ public class MouseControler : MonoBehaviour
         {
             var turnable = character.GetComponent<Turnable>();
             if (turnable != null)
+            {
+                turnable.btnBatalla.interactable = true;
                 turnable.DeactivateTurn();   // <— quita el aura aquí
 
-            character.tilesMoved = 0;
+                character.tilesMoved = 0;
+            }
         }
         ClearRangeTiles();
         if (character != null)
@@ -269,6 +273,7 @@ public class MouseControler : MonoBehaviour
         if (path.Count == 0)
         {
             // El personaje ya llegó a su destino
+            
             canMove = false;
             canAttack = false;
             prevCanMove = false;
@@ -279,6 +284,7 @@ public class MouseControler : MonoBehaviour
                 var turnable = character.GetComponent<Turnable>();
                 if (turnable != null)
                 {
+                    
                     turnable.ActivateTurn();
                 }
             }

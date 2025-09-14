@@ -14,10 +14,10 @@ public class BattleHUD : MonoBehaviour
 
     public void SetHUD(Unit unit)
     {
-        NumFue.text = unit.Fue.ToString();
-        NumDes.text = unit.Des.ToString();
-        NumCon.text = unit.Con.ToString();
-        NumInt.text = unit.Int.ToString();
+        //NumFue.text = unit.Fue.ToString();
+        //NumDes.text = unit.Des.ToString();
+        //NumCon.text = unit.Con.ToString();
+        //NumInt.text = unit.Int.ToString();
         HPSlider.maxValue = unit.maxHP;
         HPSlider.value = unit.currentHP;
         ManaSlider.maxValue = unit.maxMana;

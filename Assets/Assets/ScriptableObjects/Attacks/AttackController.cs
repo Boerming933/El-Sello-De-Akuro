@@ -275,6 +275,15 @@ public class AttackController : MonoBehaviour
         {
             Debug.LogError($"Error al aplicar daño: {ex.Message}");
         }
+        if (currentAttack.initiativeBonus != 0)
+        {
+            var im = FindAnyObjectByType<InitiativeManager>();
+            im.ApplyInitiativeBuff(
+                currentUnit,
+                currentAttack.initiativeBonus,
+                currentAttack.initiativeDuration
+            );
+        }
 
         // 3) Espera con la zona marcada
         yield return new WaitForSeconds(3f);
