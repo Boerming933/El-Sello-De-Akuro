@@ -38,9 +38,10 @@ public class MouseControler : MonoBehaviour
     /// <summary>
     /// El BattleSystem llamará a esto para decirle quién es el personaje activo.
     /// </summary>
-    public void SetActiveCharacter(CharacterInfo ci)
+    public void SetActiveCharacter(CharacterInfo ci, Unit unit)
     {
         character = ci;
+        myUnit = unit;
     }
 
     /// <summary>
@@ -121,8 +122,6 @@ public class MouseControler : MonoBehaviour
                 //{                                //actualmente no se usa, pero fuera de combate se usará i guess
                 //    DeselectCharacter();
                 //}
-
-
             }
         }
 
@@ -249,21 +248,22 @@ public class MouseControler : MonoBehaviour
         character.transform.position = Vector2.MoveTowards(character.transform.position, path[0].transform.position, stop);
         character.transform.position = new Vector3(character.transform.position.x, character.transform.position.y, zIndex);
 
-        if (Vector2.Distance(character.transform.position, path[0].transform.position) < 0.08f)
+        if (Vector2.Distance(character.transform.position, path[0].transform.position) < 0.0001f)
         {
             OverlayTile reachedTile = path[0];
-            path.RemoveAt(0);
             PositionCharacterOnTile(reachedTile);
+            path.RemoveAt(0);
 
             character.tilesMoved++;
+            battleSystem.CharacterPosition(myUnit);
+            
             Debug.Log("Tiles moved: " + character.tilesMoved);
 
-            if (character.tilesMoved >= 10)  //Termina el turno al moverse x tiles
+            if (character.tilesMoved >= character.maxTiles)  //Termina el turno al moverse x tiles
             {
                 DeselectCharacter();
 
                 return;
-
             }
         }
 
