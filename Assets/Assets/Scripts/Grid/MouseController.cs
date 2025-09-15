@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class MouseControler : MonoBehaviour
 {
@@ -9,16 +10,53 @@ public class MouseControler : MonoBehaviour
 
     private CharacterInfo character; // personaje actualmente seleccionado
     private PathFinder pathFinder;
-    private RangeFinder rangeFinder;
-    public Turnero turnero;
+    private RangeFinderPlayer rangeFinder;
+    [HideInInspector] public bool turnEnded = false;
+    public CharacterDetailsUI characterDetailsUI;
+    public bool showPanelAcciones = false;
 
     private List<OverlayTile> path = new List<OverlayTile>();
     private List<OverlayTile> inRangeTiles = new List<OverlayTile>();
+    private Unit myUnit;
+    private OverlayTile previousTile;
+    public BattleSystem battleSystem;
+
+    public bool canAttack = false;
+    public bool canMove = false;
+    public bool prevCanMove = false;
+
+    public CharacterInfo CurrentCharacter => character;
+    
 
     private void Start()
     {
         pathFinder = new PathFinder();
-        rangeFinder = new RangeFinder();
+        rangeFinder = new RangeFinderPlayer();
+        myUnit = GetComponent<Unit>();
+    }
+
+    /// <summary>
+    /// El BattleSystem llamará a esto para decirle quién es el personaje activo.
+    /// </summary>
+    public void SetActiveCharacter(CharacterInfo ci)
+    {
+        character = ci;
+    }
+
+    /// <summary>
+    /// Encuentra el OverlayTile bajo el personaje activo
+    /// </summary>
+    private OverlayTile FindCenterTile()
+    {
+        const float threshold = 0.1f;
+        return MapManager.Instance
+            .map.Values
+            .FirstOrDefault(t =>
+                Vector2.Distance(
+                    new Vector2(t.transform.position.x, t.transform.position.y),
+                    new Vector2(character.transform.position.x, character.transform.position.y)
+                ) < threshold
+            );
     }
 
     void LateUpdate()
@@ -41,7 +79,8 @@ public class MouseControler : MonoBehaviour
                 // Selección de personaje
                 if (character == null)
                 {
-                    var characterHit = Physics2D.OverlapPointAll(overlayTile.transform.position)
+                    var characterHit = Physics2D
+                        .OverlapPointAll(overlayTile.transform.position)
                         .FirstOrDefault(obj => obj.CompareTag("Aliado"));
 
                     if (characterHit != null)
@@ -54,26 +93,36 @@ public class MouseControler : MonoBehaviour
                         if (tileBelow != null)
                         {
                             character.activeTile = tileBelow;
+                            tileBelow = previousTile;
                         }
 
-                        GetInRangeTiles();
-                    }
-                }
-                else
-                {
-                    if (character.activeTile != null)
-                    {
-                        if (inRangeTiles.Contains(overlayTile))
+                        // Mostrar rango sólo si ya está habilitado para moverse
+                        if (canMove)
                         {
-                            path = pathFinder.FindPath(character.activeTile, overlayTile, inRangeTiles);
-                            
+                            //GetInRangeTiles();
                         }
-                        //else                  //Deseleccionar el personaje al clickear fuera del rango
-                        //{                                //actualmente no se usa, pero fuera de combate se usará i guess
-                        //    DeselectCharacter();
-                        //}
+
                     }
                 }
+
+                else if (character != null      // hay personaje  
+                    && character.activeTile != null  // ya tiene tile base  
+                    && canMove                      // está habilitado para mover  
+                    && inRangeTiles.Contains(overlayTile)  // el tile clicado está en rango  
+                    )
+                {
+                    path = pathFinder.FindPath(
+                        character.activeTile,
+                        overlayTile,
+                        inRangeTiles
+                    );
+                }
+                //else                  //Deseleccionar el personaje al clickear fuera del rango
+                //{                                //actualmente no se usa, pero fuera de combate se usará i guess
+                //    DeselectCharacter();
+                //}
+
+
             }
         }
 
@@ -82,47 +131,71 @@ public class MouseControler : MonoBehaviour
             MoveAlongPath();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))      //Termina el turno al presionar espacio
+        if (Input.GetKeyDown(KeyCode.Q))      //Termina el turno al presionar Q
         {
             DeselectCharacter();
 
             return;
 
         }
+
+        // Disparar/limpiar rango cuando cambia canMove
+        try
+        {
+            if (character != null && character.activeTile != null)
+            {
+                if (!prevCanMove && canMove)
+                {
+                    //GetInRangeTiles();
+                }
+                else if (prevCanMove && !canMove)
+                {
+                    ClearRangeTiles();
+                }
+            }
+            else
+            {
+                // Si no hay personaje válido, aseguramos limpiar rango
+                ClearRangeTiles();
+            }
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogWarning("LateUpdate -> Error manejando canMove: " + ex.Message);
+        }
+        finally
+        {
+            prevCanMove = canMove;
+        }
     }
 
-    private void GetInRangeTiles()
+    public void GetInRangeTiles()
     {
         ClearRangeTiles();
 
-        // RANGO DE MOVIMIENTO
-        if (character.tilesMoved <= 6)
+        OverlayTile center = FindCenterTile();
+        if (center == null)
         {
-            inRangeTiles = rangeFinder.GetTilesInRange(character.activeTile, 4);
+            Debug.LogError($"GetInRangeTiles: no encontré OverlayTile bajo {character.name}");
+            return;
         }
-        else
-        {
-            if(character.tilesMoved == 7)
-            {
-                inRangeTiles = rangeFinder.GetTilesInRange(character.activeTile, 3);
-            }
-            if (character.tilesMoved == 8)
-            {
-                inRangeTiles = rangeFinder.GetTilesInRange(character.activeTile, 2);
-            }
-            if (character.tilesMoved == 9)
-            {
-                inRangeTiles = rangeFinder.GetTilesInRange(character.activeTile, 1);
-            }
-        } 
-        
+
+        character.activeTile = center;
+
+        // RANGO DE MOVIMIENTO
+        // 3) Genera el rango tal cual tenías
+        int maxRange = character.tilesMoved <= character.maxTiles ? character.maxTiles - character.tilesMoved : 1;
+
+        inRangeTiles = rangeFinder.GetTilesInRange(center, maxRange);
+
+        // 4) Pintar como siempre
         foreach (var item in inRangeTiles)
-            {
-                item.ShowTile();
-            }
+        {
+            item.ShowTile();
+        }
     }
 
-    private void ClearRangeTiles()
+    public void ClearRangeTiles()
     {
         foreach (var item in inRangeTiles)
         {
@@ -133,14 +206,37 @@ public class MouseControler : MonoBehaviour
 
     public void DeselectCharacter()
     {
+        if (character != null)
+        {
+            var turnable = character.GetComponent<Turnable>();
+            if (turnable != null)
+            {
+                turnable.btnBatalla.interactable = true;
+                turnable.DeactivateTurn();   // <— quita el aura aquí
+
+                character.tilesMoved = 0;
+            }
+        }
         ClearRangeTiles();
         if (character != null)
         {
             character.tilesMoved = 0;
             character = null;
-            turnero.EndTurn();
+            turnEnded = true;
+            characterDetailsUI.HideDetails();
+            canMove = false;
+            canAttack = false;
+            prevCanMove = false;
+
         }
         path.Clear();
+        // === REACTIVAR panelBatallaGeneral tras finalizar turno ===
+        var allProxies = Object.FindObjectsByType<AttackButtonProxy>(
+            FindObjectsInactive.Include,
+            FindObjectsSortMode.None
+        );
+        foreach (var proxy in allProxies)
+            proxy.ShowGeneralBattlePanel();
     }
 
     private void MoveAlongPath()
@@ -165,15 +261,29 @@ public class MouseControler : MonoBehaviour
             if (character.tilesMoved >= 10)  //Termina el turno al moverse x tiles
             {
                 DeselectCharacter();
-                
-                return; 
+
+                return;
 
             }
         }
 
         if (path.Count == 0)
         {
-            GetInRangeTiles();
+            // El personaje ya llegó a su destino
+            
+            canMove = false;
+            canAttack = false;
+            prevCanMove = false;
+            showPanelAcciones = true;
+            ClearRangeTiles();
+            if (character != null)
+            {
+                var turnable = character.GetComponent<Turnable>();
+                if (turnable != null)
+                {
+                    turnable.ActivateTurn();
+                }
+            }
         }
     }
 
@@ -194,12 +304,26 @@ public class MouseControler : MonoBehaviour
     private void PositionCharacterOnTile(OverlayTile tile)
     {
         character.transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y + 0.000001f, tile.transform.position.z);
-       // var tileOrder = tile.GetComponent<SpriteRenderer>().sortingOrder;
-        character.GetComponent<SpriteRenderer>().sortingOrder = tile.GetComponent<SpriteRenderer>().sortingOrder+1;
+        // var tileOrder = tile.GetComponent<SpriteRenderer>().sortingOrder;
+        character.GetComponent<SpriteRenderer>().sortingOrder = tile.GetComponent<SpriteRenderer>().sortingOrder + 1;
         if (character.activeTile != null)
             character.activeTile.occupant = null;
 
         tile.occupant = character;
         character.activeTile = tile;
+    }
+    
+    public void StartMoveMode()
+    {
+        // marca el cambio
+        canMove     = true;
+        prevCanMove = false;
+        showPanelAcciones = false;
+
+        ClearRangeTiles();
+
+        // si ya hay personaje y tile base, refresca rango YA
+        if (character != null)
+        GetInRangeTiles();
     }
 }

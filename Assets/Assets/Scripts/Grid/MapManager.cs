@@ -14,7 +14,8 @@ public class MapManager : MonoBehaviour
     public GameObject OverlayContainer;
 
     public Dictionary<Vector2Int, OverlayTile> map;
-    private Tilemap _tilemap;
+    public Tilemap _tilemap;
+    
 
     void Awake()
     {
