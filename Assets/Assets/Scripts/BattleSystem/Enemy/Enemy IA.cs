@@ -56,7 +56,6 @@ public class EnemyIA : MonoBehaviour
                 stepsMoved++;
                 Debug.Log("StepsMoved es " + stepsMoved);
                 position = Active.grid2DLocation;
-                battleSystem.CharacterPosition(myUnit);
             }
             if (!isMoving)
             {

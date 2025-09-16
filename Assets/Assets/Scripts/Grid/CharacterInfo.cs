@@ -6,5 +6,4 @@ public class CharacterInfo : MonoBehaviour
 
     public int tilesMoved;
     public int maxTiles;
-
 }

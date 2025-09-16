@@ -78,9 +78,7 @@ public class Unit : MonoBehaviour
         // collider.enabled = false;
         // this.enabled = false;
     }
-
-    //para enemigos
-
+    
     public RaycastHit2D? ActiveTile()
     {
         Vector2 origin = new Vector2(transform.position.x, transform.position.y);
@@ -92,20 +90,5 @@ public class Unit : MonoBehaviour
             return hits.OrderByDescending(i => i.collider.transform.position.z).First();
         }
         return null;
-    }
-
-    //para jugadores
-    
-    public OverlayTile FindCenterTile()
-    {
-        const float threshold = 0.1f;
-        return MapManager.Instance
-            .map.Values
-            .FirstOrDefault(t =>
-                Vector2.Distance(
-                    new Vector2(t.transform.position.x, t.transform.position.y),
-                    new Vector2(transform.position.x, transform.position.y)
-                ) < threshold
-            );
     }
 }
