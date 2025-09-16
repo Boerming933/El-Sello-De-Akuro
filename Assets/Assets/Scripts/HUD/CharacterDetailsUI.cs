@@ -19,64 +19,56 @@ public class CharacterDetailsUI : MonoBehaviour
     [Header("Retrato")]
     public Image portraitImage; 
 
-    [Header("Botones de stats")]
-
-    public Button FuePlusButton;
-    public Button FueMinusButton;
-    public Button DesPlusButton;
-    public Button DesMinusButton;
-    public Button ConPlusButton;
-    public Button ConMinusButton;
-    public Button IntPlusButton;
-    public Button IntMinusButton;
-
     private Unit currentUnit;
-    bool esAliado;
+    public BattleSystem battleSystem;
 
-    void Awake()
-    {
-        panel.SetActive(false);
-        UnitSelection.OnUnitSelected += ShowDetails;
-    }
+    // void Awake()
+    // {
+    //     panel.SetActive(false);
+    //     UnitSelection.OnUnitSelected += ShowDetails;
+    // }
 
     void OnEnable()
     {
-        // Suscribirse aquí
-        UnitSelection.OnUnitSelected += ShowDetails;
+        Debug.Log("[CharacterDetailsUI] OnEnable suscribiendo eventos");
+        //UnitSelection.OnUnitSelected += ShowDetails;
+        if (battleSystem != null)
+        {
+            battleSystem.OnTurnStart += ShowDetails;
+            Debug.Log("[CharacterDetailsUI] Suscrito a battleSystem.OnTurnStart");
+        }
+        else
+        {
+            Debug.LogWarning("[CharacterDetailsUI] battleSystem NO está asignado");
+        }
     }
 
-    void OnDestroy()
+
+    void OnDisable()
     {
         UnitSelection.OnUnitSelected -= ShowDetails;
+        if (battleSystem != null)
+            battleSystem.OnTurnStart -= ShowDetails;
     }
 
-    void Start()
-    {
-        // Asignar listeners a los botones
-        FuePlusButton.onClick.AddListener(() => ChangeFue(+1));
-        FueMinusButton.onClick.AddListener(() => ChangeFue(-1));
-        DesPlusButton.onClick.AddListener(() => ChangeDes(+1));
-        DesMinusButton.onClick.AddListener(() => ChangeDes(-1));
-        ConPlusButton.onClick.AddListener(() => ChangeCon(+1));
-        ConMinusButton.onClick.AddListener(() => ChangeCon(-1));
-        IntPlusButton.onClick.AddListener(() => ChangeInt(+1));
-        IntMinusButton.onClick.AddListener(() => ChangeInt(-1));
-    }
-
+    /// <summary>
+    /// Llama desde BattleSystem o desde selección de ratón para actualizar UI.
+    /// </summary>
     public void ShowDetails(Unit unit)
     {
-        bool esAliado = unit.CompareTag("Aliado");
-        if (!esAliado)
+        bool esEnemigo = unit.CompareTag("Enemy");
+        if (esEnemigo)
         {
             panel.SetActive(false);
             return;
         }
         currentUnit = unit;
         portraitImage.sprite = currentUnit.portrait;
+        Debug.Log(unit.name);
         // Activar panel
         panel.SetActive(true);
         UpdateAllUI();
-       
+
     }
 
     public void UpdateAllUI()
@@ -101,37 +93,42 @@ public class CharacterDetailsUI : MonoBehaviour
         ConText.text = currentUnit.Con.ToString();
         IntText.text = currentUnit.Int.ToString();
     }
-    void ChangeFue(int delta)
-    {
-        currentUnit.Fue = Mathf.Max(0, currentUnit.Fue + delta);
-        UpdateAllUI();
-    }
 
-    // Suma o resta puntos de Inteligencia
-    void ChangeDes(int delta)
-    {
-        currentUnit.Des = Mathf.Max(0, currentUnit.Des + delta);
-        UpdateAllUI();
-    }
+    /// <summary>
+    /// Guardar para luego agregarselo a otros botones.
+    /// </summary>
+    /// 
+    // void ChangeFue(int delta)
+    // {
+    //     currentUnit.Fue = Mathf.Max(0, currentUnit.Fue + delta);
+    //     UpdateAllUI();
+    // }
 
-    void ChangeCon(int delta)
-    {
-        currentUnit.Con = Mathf.Max(0, currentUnit.Con + delta);
-        int hpChange    = 5 * delta;
-        currentUnit.maxHP    = Mathf.Max(1, currentUnit.maxHP + hpChange);
-        currentUnit.currentHP = Mathf.Clamp(currentUnit.currentHP + hpChange, 0, currentUnit.maxHP);
-        UpdateAllUI();
-    }
+    // // Suma o resta puntos de Inteligencia
+    // void ChangeDes(int delta)
+    // {
+    //     currentUnit.Des = Mathf.Max(0, currentUnit.Des + delta);
+    //     UpdateAllUI();
+    // }
 
-    // Suma o resta puntos de Inteligencia
-    void ChangeInt(int delta)
-    {
-        currentUnit.Int = Mathf.Max(0, currentUnit.Int + delta);
-        int manaChange   = 3 * delta;
-        currentUnit.maxMana     = Mathf.Max(1, currentUnit.maxMana + manaChange);
-        currentUnit.currentMana = Mathf.Clamp(currentUnit.currentMana + manaChange, 0, currentUnit.maxMana);
-        UpdateAllUI();
-    }
+    // void ChangeCon(int delta)
+    // {
+    //     currentUnit.Con = Mathf.Max(0, currentUnit.Con + delta);
+    //     int hpChange    = 5 * delta;
+    //     currentUnit.maxHP    = Mathf.Max(1, currentUnit.maxHP + hpChange);
+    //     currentUnit.currentHP = Mathf.Clamp(currentUnit.currentHP + hpChange, 0, currentUnit.maxHP);
+    //     UpdateAllUI();
+    // }
+
+    // // Suma o resta puntos de Inteligencia
+    // void ChangeInt(int delta)
+    // {
+    //     currentUnit.Int = Mathf.Max(0, currentUnit.Int + delta);
+    //     int manaChange   = 3 * delta;
+    //     currentUnit.maxMana     = Mathf.Max(1, currentUnit.maxMana + manaChange);
+    //     currentUnit.currentMana = Mathf.Clamp(currentUnit.currentMana + manaChange, 0, currentUnit.maxMana);
+    //     UpdateAllUI();
+    // }
 
     // Opcional: ocultar al hacer clic fuera o presionar ESC
     public void HideDetails()

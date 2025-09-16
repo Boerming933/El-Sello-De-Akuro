@@ -22,5 +22,9 @@ public class AttackData : ScriptableObject
     public int        areaSize;         // cuántos tiles abarca el efecto final
     public AreaShape  effectShape;      // forma del área de efecto
 
+    [Header("Modificador de iniciativa")]
+    public int initiativeBonus;     // +destreza temporal
+    public int initiativeDuration;  // turnos que dura ese bonus
+
     [TextArea] public string description;
 }

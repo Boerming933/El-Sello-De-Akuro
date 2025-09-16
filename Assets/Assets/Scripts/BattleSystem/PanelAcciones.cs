@@ -43,10 +43,10 @@ public class PanelAcciones : MonoBehaviour
         bool shouldShow = mouseController.CurrentCharacter == ownerCharacter
                        && mouseController.showPanelAcciones;
 
-        UnityEngine.Debug.Log($"[PanelAcciones] Owner={ownerCharacter.name} | " +
-              $"Current={mouseController.CurrentCharacter?.name} | " +
-              $"showPanelAcciones={mouseController.showPanelAcciones} | " +
-              $"shouldShow={shouldShow}");
+        // UnityEngine.Debug.Log($"[PanelAcciones] Owner={ownerCharacter.name} | " +
+        //       $"Current={mouseController.CurrentCharacter?.name} | " +
+        //       $"showPanelAcciones={mouseController.showPanelAcciones} | " +
+        //       $"shouldShow={shouldShow}");
 
         if (shouldShow)
         {

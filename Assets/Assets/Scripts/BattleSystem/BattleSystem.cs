@@ -9,16 +9,22 @@ public enum BattleState{ START, PLAYERTURN, ENEMYTURN, WON, LOST}
 
 public class BattleSystem : MonoBehaviour
 {
+    public static BattleSystem Instance;
+
     public List<GameObject> PlayersPrefab;
     public List<GameObject> EnemiesPrefab;
     public BattleState state;
 
+    public bool start = false;
 
     public List<BattleHUD> playerHUD;
     public List<BattleHUD> enemyHUD;
 
-    private List<Unit> PlayerUnity = new List<Unit>();
-    private List<Unit> EnemyUnity = new List<Unit>();
+    public List<OverlayTile> PositionEnemy;
+    public List<OverlayTile> PositionPlayer;
+
+    public List<Unit> PlayerUnity = new List<Unit>();
+    public List<Unit> EnemyUnity = new List<Unit>();
 
 
     public InitiativeManager initiativeManager;
@@ -32,6 +38,8 @@ public class BattleSystem : MonoBehaviour
     public Unit CurrentUnit => _currentUnit;
     public AttackController attackController;
 
+    public CharacterDetailsUI detailsUI;
+
     IEnumerator Start()
     {
         // Espera hasta que MapManager.map ya exista
@@ -40,7 +48,6 @@ public class BattleSystem : MonoBehaviour
 
         StartBattle();
     }
-
 
     void StartBattle()
     {
@@ -55,9 +62,12 @@ public class BattleSystem : MonoBehaviour
         // 3) Arranca el bucle de turnos
         StartCoroutine(RunTurns());
 
+        start = true;
+
         for (int i = 0; i < PlayersPrefab.Count; i++)
         {
             Unit unit = PlayersPrefab[i].GetComponent<Unit>();
+            RegisterUnits(unit);
             PlayerUnity.Add(unit);
         }
 
@@ -65,14 +75,12 @@ public class BattleSystem : MonoBehaviour
         for (int i = 0; i < EnemiesPrefab.Count; i++)
         {
             Unit unit = EnemiesPrefab[i].GetComponent<Unit>();
+            RegisterUnits(unit);
             EnemyUnity.Add(unit);
         }
 
-
         int playerCount = Mathf.Min(PlayerUnity.Count, playerHUD.Count);
         int enemyCount  = Mathf.Min(EnemyUnity.Count,  enemyHUD.Count);
-
-
         // Asignar cada unidad a su HUD correspondiente
         for (int i = 0; i < playerCount; i++)
         {
@@ -83,7 +91,47 @@ public class BattleSystem : MonoBehaviour
             enemyHUD[i].SetHUD(EnemyUnity[i]);
         }
     }
-    
+
+    public void RegisterUnits(Unit unit)
+    {
+        var position = unit.ActiveTile();
+        if (unit.isEnemy)
+        {
+            PositionEnemy.Add(position.Value.collider.GetComponent<OverlayTile>());
+            OverlayTile Position = position.Value.collider.GetComponent<OverlayTile>();
+            Position.isBlocked = true;
+        }
+        else
+        {
+            PositionPlayer.Add(position.Value.collider.GetComponent<OverlayTile>());
+            OverlayTile Position = position.Value.collider.GetComponent<OverlayTile>();
+            Position.isBlocked = true;
+        }
+    }
+
+    public void CharacterPosition(Unit unit)
+    {
+        for (int i = 0; i < PlayersPrefab.Count; i++)
+        {
+            Unit ally = PlayersPrefab[i].GetComponent<Unit>();
+
+            if (unit == ally)
+            {
+                var position = unit.FindCenterTile();
+                if (position != PositionPlayer[i])
+                {
+                    if (position != null)
+                    {
+                        Debug.Log("tiene valor");
+                        PositionPlayer[i].isBlocked = false;
+                        Debug.Log(PositionPlayer[i].isBlocked);
+                        position.isBlocked = true;
+                        PositionPlayer[i] = position;
+                    }
+                }
+            }
+        }
+    }
 
     private IEnumerator RunTurns()
     {
@@ -93,11 +141,15 @@ public class BattleSystem : MonoBehaviour
             _currentUnit = initiativeManager.GetNextUnit();
             OnTurnStart?.Invoke(_currentUnit);
 
+            var detailsUI = FindAnyObjectByType<CharacterDetailsUI>();
+            if (detailsUI != null)
+                detailsUI.ShowDetails(_currentUnit);
+
             // 5) Desactiva siempre todos los inputs/panels
             mouseController.canMove = false;
             mouseController.canAttack = false;
             mouseController.showPanelAcciones = false;
-            mouseController.turnEnded = false;  
+            mouseController.turnEnded = false;
 
             // 6) Activa/desactiva visualmente y funcionalmente a todos
             SetActiveUnit(_currentUnit);
@@ -122,6 +174,7 @@ public class BattleSystem : MonoBehaviour
 
         // Espera hasta que el jugador termine
         yield return new WaitUntil(() => mouseController.turnEnded);
+     
         mouseController.DeselectCharacter();
     }
 
@@ -134,8 +187,27 @@ public class BattleSystem : MonoBehaviour
         mouseController.showPanelAcciones = false;
 
         // IA del enemigo…
-        yield return new WaitForSeconds(3f);
+        yield return new WaitUntil(() => mouseController.turnEnded);
 
+        for (int i = 0; i < EnemiesPrefab.Count; i++)
+        {            
+            Unit unit = EnemiesPrefab[i].GetComponent<Unit>();
+
+            if (enemy == unit)
+            {
+                var position = enemy.ActiveTile();
+                OverlayTile Position = position.Value.collider.GetComponent<OverlayTile>();
+                if (Position != PositionEnemy[i])
+                {
+                    if (Position != null)
+                    {
+                        PositionEnemy[i].isBlocked = false;
+                        Position.isBlocked = true;
+                        PositionEnemy[i] = Position;
+                    }
+                }
+            }
+        }
         mouseController.turnEnded = true;
         mouseController.DeselectCharacter();
     }
@@ -157,12 +229,16 @@ public class BattleSystem : MonoBehaviour
                 turnable.ActivateTurn();
             // Informa al MouseController
             var ci = current.GetComponent<CharacterInfo>();
+            var unit = current.GetComponent<Unit>();
             if (ci != null)
-                mouseController.SetActiveCharacter(ci);
+                mouseController.SetActiveCharacter(ci, unit);
             else
                 turnable.DeactivateTurn();
         }
         attackController.SetCurrentUnit(current);
+        // >>> Forzamos refrescar el HUD de detalles:
+        if (detailsUI != null)
+            detailsUI.ShowDetails(current);
 
         var zoom = Camera.main.GetComponent<Zoom>();
         if (zoom != null)
@@ -179,11 +255,4 @@ public class BattleSystem : MonoBehaviour
         bool allDeadAllies   = initiativeManager.allies  .All(a => a.currentHP <= 0);
         return allDeadEnemies || allDeadAllies;
     }
-
-
-    private void Update()
-    {
-        
-    }
-
 }
