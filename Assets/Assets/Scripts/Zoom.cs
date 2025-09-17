@@ -30,7 +30,7 @@ public class Zoom : MonoBehaviour
 
         if (zoomHintUI != null)
         {
-            zoomHintUI.SetActive(isZoomedIn);
+            zoomHintUI.SetActive(targetToFollow == null);
         }
 
         if (Input.GetKeyDown(KeyCode.Z))
@@ -71,7 +71,7 @@ public class Zoom : MonoBehaviour
             Vector3 diff = mouseWorldBeforeZoom - mouseWorldAfterZoom;
             cam.transform.position += diff * zoomFactor;
 
-            
+            // Al hacer zoom in, desactivar seguimiento
             targetToFollow = null;
         }
         else if (scroll < 0)
@@ -79,47 +79,18 @@ public class Zoom : MonoBehaviour
             cam.orthographicSize -= scroll * zoomSpeed;
             cam.orthographicSize = Mathf.Clamp(cam.orthographicSize, minZoom, maxZoom);
 
-            if (isZoomedIn)
+            if (isZoomedIn && Mathf.Approximately(cam.orthographicSize, maxZoom))
             {
-                isReturning = true;
-
-                // Si volvió al zoom máximo, restaurar seguimiento
-                if (Mathf.Approximately(cam.orthographicSize, maxZoom))
-                {
-                    isZoomedIn = false;
-                    isReturning = false;
-                    cam.transform.position = originalCameraPosition;
-
-                    
-                    var currentUnit = GameObject.FindGameObjectWithTag("Aliado");
-                    if (currentUnit != null)
-                    {
-                        targetToFollow = currentUnit.transform;
-                    }
-                }
+                isZoomedIn = false;
+                isReturning = false;
             }
         }
-
-        if (isReturning)
-        {
-            cam.transform.position = Vector3.Lerp(
-                cam.transform.position,
-                originalCameraPosition,
-                Time.deltaTime * returnSpeed
-            );
-        }
+        isReturning = false;
     }
 
     void ForceZoomOut()
     {
-        isZoomedIn = false;
-        isReturning = false;
-
-        // Forzar valores
-        cam.orthographicSize = maxZoom;
-        cam.transform.position = originalCameraPosition;
-
-        // Restaurar seguimiento
+        // Solo restaurar seguimiento, NO cambiar zoom ni posición
         var currentUnit = GameObject.FindGameObjectWithTag("Aliado");
         if (currentUnit != null)
         {

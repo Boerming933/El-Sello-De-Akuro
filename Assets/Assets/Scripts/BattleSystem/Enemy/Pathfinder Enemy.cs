@@ -37,7 +37,7 @@ public class PathfinderEnemy
 
             foreach (var neighbours in neighbourTiles)
             {
-                if (neighbours.isBlocked || closeList.Contains(neighbours))
+                if (neighbours != end1 && neighbours != end2 && neighbours != end3 && neighbours.isBlocked || closeList.Contains(neighbours))
                 {
                     continue;
                 }

@@ -6,6 +6,7 @@ using UnityEngine;
 public class AttackController : MonoBehaviour
 {
     [Header("Referencias")]
+    public GameObject hitMarker;
     public AttackSelectionUI attackUI;
     public MouseControler    mouseController;
 
@@ -25,6 +26,7 @@ public class AttackController : MonoBehaviour
     private RangeFinder rangeFinder = new RangeFinder();
     public BattleSystem battleSystem;
     private bool attackExecuted;
+
 
     void OnEnable()
     {
@@ -123,6 +125,26 @@ public class AttackController : MonoBehaviour
         previewTiles = area;
         previewTiles.ForEach(t => t.ShowOverlay(previewColor));
         lastHoverTile = hovered;
+
+        bool enemyFound = false;
+
+        foreach (var tile in previewTiles)
+        {
+            Collider2D[] hits = Physics2D.OverlapCircleAll(tile.transform.position, 0.2f);
+            foreach (var col in hits)
+            {
+                if (col.TryGetComponent<Unit>(out Unit u) && u.CompareTag("Enemy"))
+                {
+                    enemyFound = true;
+                    break;
+                }
+            }
+
+            if (enemyFound) break;
+        }
+
+        if (hitMarker != null)
+            hitMarker.SetActive(enemyFound);
     }
 
     /// <summary>
@@ -140,6 +162,9 @@ public class AttackController : MonoBehaviour
     /// </summary>
     void ClearPreview()
     {
+        if (hitMarker != null)
+            hitMarker.SetActive(false);
+
         // 1) Quita la capa de preview de cada tile
         foreach (var t in previewTiles)
             t.HideTile();
