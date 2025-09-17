@@ -56,6 +56,7 @@ public class EnemyIA : MonoBehaviour
                 stepsMoved++;
                 Debug.Log("StepsMoved es " + stepsMoved);
                 position = Active.grid2DLocation;
+                battleSystem.CharacterPosition(myUnit);
             }
             if (!isMoving)
             {
@@ -74,6 +75,18 @@ public class EnemyIA : MonoBehaviour
         if (path.Count > 1 && isMoving)
         {
             MoveAlongPath();
+        }
+        else
+        {
+            if (battleSystem._currentUnit.isEnemy == true)
+            {
+                isMoving = false;
+                stepsMoved = 0;
+                Debug.Log("StepsMoved es "+stepsMoved);
+                mouseController.turnEnded = true;
+                Debug.Log("isMoving es " + isMoving);
+                
+            }
         }
     }
 

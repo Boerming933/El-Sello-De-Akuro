@@ -34,7 +34,7 @@ public class BattleSystem : MonoBehaviour
 
 
     public event System.Action<Unit> OnTurnStart;
-    private Unit _currentUnit;
+    public Unit _currentUnit;
     public Unit CurrentUnit => _currentUnit;
     public AttackController attackController;
 
@@ -67,8 +67,7 @@ public class BattleSystem : MonoBehaviour
         for (int i = 0; i < PlayersPrefab.Count; i++)
         {
             Unit unit = PlayersPrefab[i].GetComponent<Unit>();
-            var position = unit.ActiveTile();
-            PositionPlayer.Add(position.Value.collider.GetComponent<OverlayTile>());
+            RegisterUnits(unit);
             PlayerUnity.Add(unit);
         }
 
@@ -76,8 +75,7 @@ public class BattleSystem : MonoBehaviour
         for (int i = 0; i < EnemiesPrefab.Count; i++)
         {
             Unit unit = EnemiesPrefab[i].GetComponent<Unit>();
-            var position = unit.ActiveTile();
-            PositionEnemy.Add(position.Value.collider.GetComponent<OverlayTile>());
+            RegisterUnits(unit);
             EnemyUnity.Add(unit);
         }
 
@@ -96,22 +94,45 @@ public class BattleSystem : MonoBehaviour
 
     public void RegisterUnits(Unit unit)
     {
+        var position = unit.ActiveTile();
         if (unit.isEnemy)
         {
-            EnemyUnity.Add(unit);
+            PositionEnemy.Add(position.Value.collider.GetComponent<OverlayTile>());
+            OverlayTile Position = position.Value.collider.GetComponent<OverlayTile>();
+            Position.isBlocked = true;
         }
-        else PlayerUnity.Add(unit);
+        else
+        {
+            PositionPlayer.Add(position.Value.collider.GetComponent<OverlayTile>());
+            OverlayTile Position = position.Value.collider.GetComponent<OverlayTile>();
+            Position.isBlocked = true;
+        }
     }
 
-    public void UnRegisterUnits(Unit unit)
+    public void CharacterPosition(Unit unit)
     {
-        if (unit.isEnemy)
+        for (int i = 0; i < PlayersPrefab.Count; i++)
         {
-            EnemyUnity.Remove(unit);
+            Unit ally = PlayersPrefab[i].GetComponent<Unit>();
+
+            if (unit == ally)
+            {
+                var position = unit.FindCenterTile();
+                if (position != PositionPlayer[i])
+                {
+                    if (position != null)
+                    {
+                        Debug.Log("tiene valor");
+                        PositionPlayer[i].isBlocked = false;
+                        Debug.Log(PositionPlayer[i].isBlocked);
+                        position.isBlocked = true;
+                        PositionPlayer[i] = position;
+                    }
+                }
+            }
         }
-        else PlayerUnity.Remove(unit);
     }
-    
+
     private IEnumerator RunTurns()
     {
         while (!BattleOver())
@@ -153,6 +174,7 @@ public class BattleSystem : MonoBehaviour
 
         // Espera hasta que el jugador termine
         yield return new WaitUntil(() => mouseController.turnEnded);
+     
         mouseController.DeselectCharacter();
     }
 
@@ -167,6 +189,25 @@ public class BattleSystem : MonoBehaviour
         // IA del enemigo…
         yield return new WaitUntil(() => mouseController.turnEnded);
 
+        for (int i = 0; i < EnemiesPrefab.Count; i++)
+        {            
+            Unit unit = EnemiesPrefab[i].GetComponent<Unit>();
+
+            if (enemy == unit)
+            {
+                var position = enemy.ActiveTile();
+                OverlayTile Position = position.Value.collider.GetComponent<OverlayTile>();
+                if (Position != PositionEnemy[i])
+                {
+                    if (Position != null)
+                    {
+                        PositionEnemy[i].isBlocked = false;
+                        Position.isBlocked = true;
+                        PositionEnemy[i] = Position;
+                    }
+                }
+            }
+        }
         mouseController.turnEnded = true;
         mouseController.DeselectCharacter();
     }
@@ -188,8 +229,9 @@ public class BattleSystem : MonoBehaviour
                 turnable.ActivateTurn();
             // Informa al MouseController
             var ci = current.GetComponent<CharacterInfo>();
+            var unit = current.GetComponent<Unit>();
             if (ci != null)
-                mouseController.SetActiveCharacter(ci);
+                mouseController.SetActiveCharacter(ci, unit);
             else
                 turnable.DeactivateTurn();
         }

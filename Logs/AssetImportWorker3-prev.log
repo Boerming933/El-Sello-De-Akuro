@@ -11,19 +11,19 @@ D:\Program Files(x86)\6000.0.47f1\Editor\Unity.exe
 -name
 AssetImportWorker3
 -projectPath
-D:/Proyectos/Unity/TechProofRPG-Rubia/TechProofRPG-Rubia
+D:/Proyectos/Unity/TechProofRPG-Juan/TechProofRPG-Juan
 -logFile
 Logs/AssetImportWorker3.log
 -srvPort
-59258
+57478
 -job-worker-count
 7
 -background-job-worker-count
 8
 -gc-helper-count
 1
-Successfully changed project path to: D:/Proyectos/Unity/TechProofRPG-Rubia/TechProofRPG-Rubia
-D:/Proyectos/Unity/TechProofRPG-Rubia/TechProofRPG-Rubia
+Successfully changed project path to: D:/Proyectos/Unity/TechProofRPG-Juan/TechProofRPG-Juan
+D:/Proyectos/Unity/TechProofRPG-Juan/TechProofRPG-Juan
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
     "memorysetup-bucket-allocator-granularity=16"
     "memorysetup-bucket-allocator-bucket-count=8"
@@ -59,12 +59,14 @@ D:/Proyectos/Unity/TechProofRPG-Rubia/TechProofRPG-Rubia
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [23928]  Target information:
+Player connection [18464]  Target information:
 
-Player connection [23928]  * "[IP] 192.168.100.158 [Port] 0 [Flags] 2 [Guid] 1707763972 [EditorId] 1707763972 [Version] 1048832 [Id] WindowsEditor(7,Matias) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [18464]  * "[IP] 192.168.100.158 [Port] 0 [Flags] 2 [Guid] 730745583 [EditorId] 730745583 [Version] 1048832 [Id] WindowsEditor(7,Matias) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [23928] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [23928] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [18464]  * "[IP] 192.168.100.156 [Port] 0 [Flags] 2 [Guid] 730745583 [EditorId] 730745583 [Version] 1048832 [Id] WindowsEditor(7,Matias) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [18464] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [18464] Host joined alternative multi-casting on [225.0.0.222:34997]...
 JobSystem: Creating JobQueue using job-worker-count value 7
 Input System module state changed to: Initialized.
 [Physics::Module] Initialized fallback backend.
@@ -76,11 +78,11 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
-Refreshing native plugins compatible for Editor in 2.59 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 2.88 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 6000.0.47f1 (2ad1ed33fd3b)
 [Subsystems] Discovering subsystems at path D:/Program Files(x86)/6000.0.47f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path D:/Proyectos/Unity/TechProofRPG-Rubia/TechProofRPG-Rubia/Assets
+[Subsystems] Discovering subsystems at path D:/Proyectos/Unity/TechProofRPG-Juan/TechProofRPG-Juan/Assets
 GfxDevice: creating device client; kGfxThreadingModeNonThreaded
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
@@ -92,306 +94,185 @@ Initialize mono
 Mono path[0] = 'D:/Program Files(x86)/6000.0.47f1/Editor/Data/Managed'
 Mono path[1] = 'D:/Program Files(x86)/6000.0.47f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'D:/Program Files(x86)/6000.0.47f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56100
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56448
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: D:/Program Files(x86)/6000.0.47f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001942 seconds.
-- Loaded All Assemblies, in  0.372 seconds
+Registered in 0.001452 seconds.
+- Loaded All Assemblies, in  0.332 seconds
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.313 seconds
-Domain Reload Profiling: 685ms
-	BeginReloadAssembly (143ms)
+- Finished resetting the current domain, in  0.273 seconds
+Domain Reload Profiling: 605ms
+	BeginReloadAssembly (132ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (33ms)
-	RebuildNativeTypeToScriptingClass (12ms)
-	initialDomainReloadingComplete (39ms)
-	LoadAllAssembliesAndSetupDomain (145ms)
-		LoadAssemblies (143ms)
+	RebuildCommonClasses (29ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (38ms)
+	LoadAllAssembliesAndSetupDomain (122ms)
+		LoadAssemblies (132ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (141ms)
-			TypeCache.Refresh (140ms)
-				TypeCache.ScanAssembly (128ms)
+		AnalyzeDomain (118ms)
+			TypeCache.Refresh (117ms)
+				TypeCache.ScanAssembly (107ms)
 			BuildScriptInfoCaches (0ms)
 			ResolveRequiredComponents (0ms)
-	FinalizeReload (314ms)
+	FinalizeReload (273ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (273ms)
+		SetupLoadedEditorAssemblies (238ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (20ms)
-			SetLoadedEditorAssemblies (4ms)
-			BeforeProcessingInitializeOnLoad (54ms)
-			ProcessInitializeOnLoadAttributes (152ms)
-			ProcessInitializeOnLoadMethodAttributes (42ms)
+			InitializePlatformSupportModulesInManaged (19ms)
+			SetLoadedEditorAssemblies (5ms)
+			BeforeProcessingInitializeOnLoad (46ms)
+			ProcessInitializeOnLoadAttributes (127ms)
+			ProcessInitializeOnLoadMethodAttributes (41ms)
 			AfterProcessingInitializeOnLoad (0ms)
-			EditorAssembliesLoaded (0ms)
+			EditorAssembliesLoaded (1ms)
 		ExecutionOrderSort2 (0ms)
 		AwakeInstancesAfterBackupRestoration (0ms)
 ========================================================================
 Worker process is ready to serve import requests
 Import Worker Mode flag is 0x00
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.802 seconds
-Refreshing native plugins compatible for Editor in 1.16 ms, found 4 plugins.
+- Loaded All Assemblies, in  0.679 seconds
+Refreshing native plugins compatible for Editor in 1.28 ms, found 4 plugins.
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.953 seconds
-Domain Reload Profiling: 1754ms
-	BeginReloadAssembly (168ms)
+- Finished resetting the current domain, in  0.832 seconds
+Domain Reload Profiling: 1510ms
+	BeginReloadAssembly (154ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (5ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (25ms)
-	RebuildCommonClasses (35ms)
-	RebuildNativeTypeToScriptingClass (12ms)
+		CreateAndSetChildDomain (22ms)
+	RebuildCommonClasses (28ms)
+	RebuildNativeTypeToScriptingClass (8ms)
 	initialDomainReloadingComplete (29ms)
-	LoadAllAssembliesAndSetupDomain (558ms)
-		LoadAssemblies (386ms)
+	LoadAllAssembliesAndSetupDomain (459ms)
+		LoadAssemblies (340ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (283ms)
-			TypeCache.Refresh (191ms)
-				TypeCache.ScanAssembly (178ms)
-			BuildScriptInfoCaches (73ms)
-			ResolveRequiredComponents (16ms)
-	FinalizeReload (953ms)
+		AnalyzeDomain (218ms)
+			TypeCache.Refresh (156ms)
+				TypeCache.ScanAssembly (144ms)
+			BuildScriptInfoCaches (49ms)
+			ResolveRequiredComponents (9ms)
+	FinalizeReload (832ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (826ms)
+		SetupLoadedEditorAssemblies (719ms)
 			LogAssemblyErrors (0ms)
 			InitializePlatformSupportModulesInManaged (2ms)
-			SetLoadedEditorAssemblies (6ms)
-			BeforeProcessingInitializeOnLoad (187ms)
-			ProcessInitializeOnLoadAttributes (543ms)
-			ProcessInitializeOnLoadMethodAttributes (85ms)
-			AfterProcessingInitializeOnLoad (2ms)
+			SetLoadedEditorAssemblies (5ms)
+			BeforeProcessingInitializeOnLoad (154ms)
+			ProcessInitializeOnLoadAttributes (480ms)
+			ProcessInitializeOnLoadMethodAttributes (78ms)
+			AfterProcessingInitializeOnLoad (1ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
 		AwakeInstancesAfterBackupRestoration (4ms)
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
-Refreshing native plugins compatible for Editor in 1.27 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 1.45 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 220 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6705 unused Assets / (4.1 MB). Loaded Objects now: 7418.
-Memory consumption went from 180.9 MB to 176.8 MB.
-Total: 5.542400 ms (FindLiveObjects: 0.391700 ms CreateObjectMapping: 0.287000 ms MarkObjects: 3.519300 ms  DeleteObjects: 1.342900 ms)
+Unloading 6706 unused Assets / (4.3 MB). Loaded Objects now: 7419.
+Memory consumption went from 185.0 MB to 180.7 MB.
+Total: 5.808900 ms (FindLiveObjects: 0.406100 ms CreateObjectMapping: 0.265600 ms MarkObjects: 3.676500 ms  DeleteObjects: 1.458700 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 276107.952713 seconds.
-  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/0_Example_Scenes/Maps/Map_3.prefab
-  artifactKey: Guid(820447fb078fb074ab764909a271eff4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/0_Example_Scenes/Maps/Map_3.prefab using Guid(820447fb078fb074ab764909a271eff4) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '9a7f7543f14bfffabe6603f694546383') in 0.6515911 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 644
+  Time since last request: 220900.573389 seconds.
+  path: Assets/Assets/Sprites/Decoraciones/Sprites/GSS_Foliage_Forest_small_bush_01.png
+  artifactKey: Guid(e2f254a65f504ea4da9b6ecb62e56c37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Sprites/Decoraciones/Sprites/GSS_Foliage_Forest_small_bush_01.png using Guid(e2f254a65f504ea4da9b6ecb62e56c37) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '3578dd4ed17ce2b97fcdb18cad69678c') in 0.0933455 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
 
 ========================================================================
 Received Import Request.
-  Time since last request: 11.413529 seconds.
-  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Fence/Sprites/ISO_Fence_01_C2E.png
-  artifactKey: Guid(c2e17146b62498e489fe3d82bb2df8ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Fence/Sprites/ISO_Fence_01_C2E.png using Guid(c2e17146b62498e489fe3d82bb2df8ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '243560b7dcbac5840dae87b7b00b8541') in 0.1434475 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+  Time since last request: 0.000016 seconds.
+  path: Assets/Assets/Sprites/Decoraciones/Sprites/GSS_Foliage_Forest_small_fern_01.png
+  artifactKey: Guid(9588ea5625aba564a8eb9d21cc175210) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Sprites/Decoraciones/Sprites/GSS_Foliage_Forest_small_fern_01.png using Guid(9588ea5625aba564a8eb9d21cc175210) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '357fe017e6a442dc38b186204b6eec6b') in 0.0209399 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000025 seconds.
-  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Fence/Sprites/ISO_Fence_01_S1L_NW.png
-  artifactKey: Guid(a49f91126ddeeaa47a06a897edc47448) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Fence/Sprites/ISO_Fence_01_S1L_NW.png using Guid(a49f91126ddeeaa47a06a897edc47448) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '23442a194611bfeffb719852e295f303') in 0.1191113 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+  Time since last request: 0.000013 seconds.
+  path: Assets/Assets/Sprites/Decoraciones/Sprites/GSS_Foliage_Forest_small_flower_01.png
+  artifactKey: Guid(a648e931884b19d4098f3769281fbf52) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Sprites/Decoraciones/Sprites/GSS_Foliage_Forest_small_flower_01.png using Guid(a648e931884b19d4098f3769281fbf52) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '342c48b49d56b924ccea9e17e80f092b') in 0.0254346 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000028 seconds.
-  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Fence/Sprites/ISO_Fence_01_C3-NE.png
-  artifactKey: Guid(90d58eebedf08564994457c72e8a7f69) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Fence/Sprites/ISO_Fence_01_C3-NE.png using Guid(90d58eebedf08564994457c72e8a7f69) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '18912ec0b071046b78925b5ca3c495db') in 0.1088199 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+  Time since last request: 0.000020 seconds.
+  path: Assets/Assets/Sprites/Decoraciones/Sprites/GSS_Foliage_waterplant 4.png
+  artifactKey: Guid(fcd9ef70ab6797743844814190402365) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Sprites/Decoraciones/Sprites/GSS_Foliage_waterplant 4.png using Guid(fcd9ef70ab6797743844814190402365) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '73bdd1b8851d71252e7cc31053e1e85d') in 0.0212123 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000034 seconds.
-  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Fence/Sprites/ISO_Fence_01_S2-SE-NW.png
-  artifactKey: Guid(9b801b952c0db914f9aeceb8f53f29d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Fence/Sprites/ISO_Fence_01_S2-SE-NW.png using Guid(9b801b952c0db914f9aeceb8f53f29d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '9bf67a7fd61a393c37a2e34e8f7f225f') in 0.1104073 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+  Time since last request: 0.000013 seconds.
+  path: Assets/Assets/Sprites/Decoraciones/Sprites/GSS_Foliage_Forest_small_tree_log_03.png
+  artifactKey: Guid(a9ef82f7366943c44ae0d445012e2c4e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Sprites/Decoraciones/Sprites/GSS_Foliage_Forest_small_tree_log_03.png using Guid(a9ef82f7366943c44ae0d445012e2c4e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '918d506012bf0d4cce7f8159e3323647') in 0.0197208 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
 
 ========================================================================
 Received Import Request.
-  Time since last request: 17.551053 seconds.
-  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Fence/Sprites/ISO_Fence_01_Fence01 4.png
-  artifactKey: Guid(475985155edd81d4ea9821e7b5635d14) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/Fence/Sprites/ISO_Fence_01_Fence01 4.png using Guid(475985155edd81d4ea9821e7b5635d14) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'cb599585707c04b9e4b469470f20c3bc') in 0.1270963 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+  Time since last request: 0.000012 seconds.
+  path: Assets/Assets/Sprites/Decoraciones/Sprites/GSS_Foliage_reed (4).png
+  artifactKey: Guid(2e628ac36027bf7498b0e6e308580c50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Sprites/Decoraciones/Sprites/GSS_Foliage_reed (4).png using Guid(2e628ac36027bf7498b0e6e308580c50) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'a9a45a8eed230aba0e84403582d6c9df') in 0.0217902 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
 
 ========================================================================
 Received Import Request.
-  Time since last request: 5.246009 seconds.
-  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_2S_03.png
-  artifactKey: Guid(7d8577a3dc3cfe349b8e925cebc95e7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_2S_03.png using Guid(7d8577a3dc3cfe349b8e925cebc95e7f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '643298ed48b69c60ab1c6501f8978e7e') in 0.1125101 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+  Time since last request: 0.000012 seconds.
+  path: Assets/Assets/Sprites/Decoraciones/Sprites/GSS_Foliage_reed (5).png
+  artifactKey: Guid(8501d668f39a0f94092b7ec3a5b3995d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Sprites/Decoraciones/Sprites/GSS_Foliage_reed (5).png using Guid(8501d668f39a0f94092b7ec3a5b3995d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'a87bda24ed39406a7d7d5d0f2ea3f431') in 0.0222408 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000028 seconds.
-  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_1S_01.png
-  artifactKey: Guid(d30f1fe44aab5154685c5a587914d707) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_1S_01.png using Guid(d30f1fe44aab5154685c5a587914d707) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '20abb80558aca38cabc901408ad3e557') in 0.1175358 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+  Time since last request: 0.000013 seconds.
+  path: Assets/Assets/Sprites/Decoraciones/Sprites/GSS_Foliage_Forest_small_grass_04.png
+  artifactKey: Guid(eb1ef8731fb342740a07ee2dddd96bdd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Sprites/Decoraciones/Sprites/GSS_Foliage_Forest_small_grass_04.png using Guid(eb1ef8731fb342740a07ee2dddd96bdd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '70ac858aa9c68d5d66f483613b154455') in 0.021753 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000048 seconds.
-  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_1C_02.png
-  artifactKey: Guid(245b1e5c3fd576f459a0bcb9b1abf3c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_1C_02.png using Guid(245b1e5c3fd576f459a0bcb9b1abf3c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'f0f69650144a4bf59674b76a3c9da5b6') in 0.1089038 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+  Time since last request: 0.000016 seconds.
+  path: Assets/Assets/Sprites/Decoraciones/Sprites/GSS_Foliage_Forest_small_tree_log_02.png
+  artifactKey: Guid(b75b00189902e1f479ddff6ca4b53a2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Sprites/Decoraciones/Sprites/GSS_Foliage_Forest_small_tree_log_02.png using Guid(b75b00189902e1f479ddff6ca4b53a2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'f199480a44722ff3ede2720c5ccaf724') in 0.0235636 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000024 seconds.
-  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_2S_04.png
-  artifactKey: Guid(5f51aa33698511b4e836dfafc15d0298) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_2S_04.png using Guid(5f51aa33698511b4e836dfafc15d0298) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '22ff4d08c3f561f1ed9e8c023c2281dd') in 0.1040146 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+  Time since last request: 0.000022 seconds.
+  path: Assets/Assets/Sprites/Decoraciones/Sprites/GSS_Foliage_waterplant 6.png
+  artifactKey: Guid(87a21078ccecffa408fbfb30c331af25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Sprites/Decoraciones/Sprites/GSS_Foliage_waterplant 6.png using Guid(87a21078ccecffa408fbfb30c331af25) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'f46bc1abc32b4434cbfa137b60e34325') in 0.0228689 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000032 seconds.
-  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_2C_05.png
-  artifactKey: Guid(b81ce33cb686bec48b68543d62717e07) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_2C_05.png using Guid(b81ce33cb686bec48b68543d62717e07) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '543ccb55602e2df466411911d41507c0') in 0.1116909 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
+  Time since last request: 0.000013 seconds.
+  path: Assets/Assets/Sprites/Decoraciones/Sprites/GSS_Foliage_waterplant 5.png
+  artifactKey: Guid(90f4d613e156ce143a667aaa4911e50a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Sprites/Decoraciones/Sprites/GSS_Foliage_waterplant 5.png using Guid(90f4d613e156ce143a667aaa4911e50a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b9dca116356201dbd06695f1793157f5') in 0.0198266 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000036 seconds.
-  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_2S_06.png
-  artifactKey: Guid(7bffda9b7b5b09f40a321ffc81588858) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_2S_06.png using Guid(7bffda9b7b5b09f40a321ffc81588858) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b51d0f3101bce2a1e3c8ee90e625998f') in 0.1128303 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000027 seconds.
-  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_1S1C_05.png
-  artifactKey: Guid(7eee60f4459723a4d831e640b6fe2b6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_1S1C_05.png using Guid(7eee60f4459723a4d831e640b6fe2b6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'd6b48c0b47d9882371b72287f98b8b97') in 0.1135221 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000028 seconds.
-  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_3C_03.png
-  artifactKey: Guid(cf0d168c8672f3d4c9be1fea10b5c34a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_3C_03.png using Guid(cf0d168c8672f3d4c9be1fea10b5c34a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b725abe6ced8b818db8efd61e67db1df') in 0.1109568 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000036 seconds.
-  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_1S2C_01.png
-  artifactKey: Guid(89954f53ba60e7c4f840428abe52efa5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_1S2C_01.png using Guid(89954f53ba60e7c4f840428abe52efa5) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ec7e041bafb325fa9ff4a3eb082043db') in 0.1036591 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_1S1C_01.png
-  artifactKey: Guid(d30d711eab1e29040be6febfe4f6ff24) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_1S1C_01.png using Guid(d30d711eab1e29040be6febfe4f6ff24) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '952d509b378050c4aef177e7f1c62ad8') in 0.1082914 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000028 seconds.
-  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_3S_04.png
-  artifactKey: Guid(7b38a584ccb72684da1c73edd5cffe8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Complex/Sprites/ISO_Tile_Water_Shore_3S_04.png using Guid(7b38a584ccb72684da1c73edd5cffe8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '909cc1463b04f48b7fb9eb7a487be0f8') in 0.111468 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
-
-========================================================================
-Received Import Request.
-  Time since last request: 15.225452 seconds.
-  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Simple/Sprites/ISO_Tile_Water_Shore_1C_03.png
-  artifactKey: Guid(92c4a08493a4c1b49b880c6c013a888a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Simple/Sprites/ISO_Tile_Water_Shore_1C_03.png using Guid(92c4a08493a4c1b49b880c6c013a888a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '93e08a7ef4e7a23c6b94a1c428791d36') in 0.1238183 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000024 seconds.
-  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Simple/Sprites/ISO_Tile_Water_Shore_1S_02.png
-  artifactKey: Guid(87870c9534de46449918451f0c36595b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Simple/Sprites/ISO_Tile_Water_Shore_1S_02.png using Guid(87870c9534de46449918451f0c36595b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '81fc25a642cd12150e3b6941290dad2d') in 0.1290663 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000032 seconds.
-  path: Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Simple/Sprites/ISO_Tile_Water_Shore_1C_04.png
-  artifactKey: Guid(49cbee280ae08934e91f903903a803cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/GoldenSkullStudios/2D/2D_Iso_Tile_Pack_Starter/Autotiles/WaterBlock_Shores_Simple/Sprites/ISO_Tile_Water_Shore_1C_04.png using Guid(49cbee280ae08934e91f903903a803cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00f4e2642fc8d1c5b51730df3433e2d0') in 0.1085156 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 609
-
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.775 seconds
-Refreshing native plugins compatible for Editor in 1.68 ms, found 4 plugins.
-Native extension for WindowsStandalone target not found
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.957 seconds
-Domain Reload Profiling: 1734ms
-	BeginReloadAssembly (233ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (27ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (55ms)
-	RebuildCommonClasses (31ms)
-	RebuildNativeTypeToScriptingClass (10ms)
-	initialDomainReloadingComplete (23ms)
-	LoadAllAssembliesAndSetupDomain (480ms)
-		LoadAssemblies (383ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (208ms)
-			TypeCache.Refresh (7ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (188ms)
-			ResolveRequiredComponents (9ms)
-	FinalizeReload (958ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (753ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (3ms)
-			SetLoadedEditorAssemblies (8ms)
-			BeforeProcessingInitializeOnLoad (176ms)
-			ProcessInitializeOnLoadAttributes (497ms)
-			ProcessInitializeOnLoadMethodAttributes (67ms)
-			AfterProcessingInitializeOnLoad (2ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (13ms)
-Refreshing native plugins compatible for Editor in 1.18 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6705 unused Assets / (4.2 MB). Loaded Objects now: 7458.
-Memory consumption went from 164.4 MB to 160.3 MB.
-Total: 5.761000 ms (FindLiveObjects: 0.404300 ms CreateObjectMapping: 0.271600 ms MarkObjects: 3.670800 ms  DeleteObjects: 1.413400 ms)
-
-Prepare: number of updated asset objects reloaded= 0
 Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
-AssetImportWorkerClient::OnTransportError - code=2 error=End of file
 AssetImportWorker is now disconnected from the server
 Process exiting
 Exiting without the bug reporter. Application will terminate with return code 0

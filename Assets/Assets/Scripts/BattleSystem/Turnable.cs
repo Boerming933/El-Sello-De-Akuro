@@ -5,6 +5,7 @@ public class Turnable : MonoBehaviour
 {
     public GameObject aura;
     public Button btnBatalla;
+    public Button btnMoverse;
     public GameObject letreroPj;
     //public GameObject panelAcciones;
     public PanelAcciones panelScript;
