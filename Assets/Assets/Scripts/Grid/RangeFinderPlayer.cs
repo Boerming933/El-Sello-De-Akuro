@@ -5,36 +5,34 @@ using System.Linq;
 
 public class RangeFinderPlayer
 {
+    BattleSystem battleSystem;
     public List<OverlayTile> GetTilesInRange(OverlayTile startingTile, int range)
     {
-        var reachable       = new HashSet<OverlayTile> { startingTile };
-        var frontier        = new List<OverlayTile>    { startingTile };
-        var emptySearchList = new List<OverlayTile>();
-        int step = 0;
+        var inRangeTiles = new List<OverlayTile>();
+        int stepCount = 0;
 
-        while (step < range)
+        inRangeTiles.Add(startingTile);
+
+        var tileForPreviousStep = new List<OverlayTile>();
+        tileForPreviousStep.Add(startingTile);
+
+        while (stepCount < range)
         {
-            var nextFrontier = new List<OverlayTile>();
+            var surroundingTiles = new List<OverlayTile>();
 
-            foreach (var tile in frontier)
+            foreach (var item in tileForPreviousStep)
             {
-                // Pasamos la lista vacía para que el método busque en `map`
-                var neighbours = MapManager.Instance.GetNeighbourTiles(tile, emptySearchList);
-
-                foreach (var neighbour in neighbours)
-                {
-                    if (reachable.Contains(neighbour) || neighbour.isBlocked) continue;
-
-                    reachable.Add(neighbour);
-                    nextFrontier.Add(neighbour);
-                }
+                surroundingTiles.AddRange(MapManager.Instance.GetNeighbourTiles(item, new List<OverlayTile>()));
             }
 
-            frontier = nextFrontier;
-            step++;
+            inRangeTiles.AddRange(surroundingTiles);
+            tileForPreviousStep = surroundingTiles.Distinct().ToList();
+            stepCount++;
         }
 
-        return reachable.ToList();
+        var occupiedEnemy = battleSystem.PositionEnemy;
+        var occupiedPlayer = battleSystem.PositionPlayer;
 
+        return inRangeTiles.Distinct().Where(tile => !occupiedEnemy.Contains(tile)).ToList();
     }
 }

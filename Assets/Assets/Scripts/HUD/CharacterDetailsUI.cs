@@ -31,7 +31,7 @@ public class CharacterDetailsUI : MonoBehaviour
     void OnEnable()
     {
         Debug.Log("[CharacterDetailsUI] OnEnable suscribiendo eventos");
-        //UnitSelection.OnUnitSelected += ShowDetails;
+        UnitSelection.OnUnitSelected += ShowDetails;
         if (battleSystem != null)
         {
             battleSystem.OnTurnStart += ShowDetails;
