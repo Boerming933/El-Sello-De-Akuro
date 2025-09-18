@@ -76,6 +76,18 @@ public class EnemyIA : MonoBehaviour
         {
             MoveAlongPath();
         }
+        else
+        {
+            //if (battleSystem._currentUnit.isEnemy == true)
+            //{
+            //    isMoving = false;
+            //    stepsMoved = 0;
+            //    Debug.Log("StepsMoved es "+stepsMoved);
+            //    mouseController.turnEnded = true;
+            //    Debug.Log("isMoving es " + isMoving);
+                
+            //}
+        }
     }
 
     private void MoveAlongPath()

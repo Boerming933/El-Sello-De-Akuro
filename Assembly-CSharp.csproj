@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{E04429A5-46E2-EB58-E40D-0DB7A995D054}</ProjectGuid>
+    <ProjectGuid>{83924FF8-A47D-64DC-11C1-17CF7D453976}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -64,9 +64,11 @@
     <Compile Include="Assets\Assets\Scripts\Grid\MapManager.cs" />
     <Compile Include="Assets\Assets\Scripts\Grid\CharacterInfo.cs" />
     <Compile Include="Assets\Assets\Scripts\BattleSystem\InitiativeManager.cs" />
+    <Compile Include="Assets\Assets\Scripts\MovimientoEscenario\Decoraciones.cs" />
     <Compile Include="Assets\GoldenSkullStudios\2D\2D_Iso_Tile_Pack_Starter\Extras\Scripts\Simple_Door_Interaction.cs" />
     <Compile Include="Assets\GoldenSkullStudios\2D\2D_Iso_Tile_Pack_Starter\Extras\Scripts\Simple_Char_Move.cs" />
     <Compile Include="Assets\Assets\Scripts\Personajes\Unit.cs" />
+    <Compile Include="Assets\Assets\Scripts\HUD\KeepUISize.cs" />
     <Compile Include="Assets\Assets\Scripts\BattleSystem\PanelBatalla.cs" />
     <Compile Include="Assets\Assets\Scripts\Zoom.cs" />
     <Compile Include="Assets\Assets\Scripts\BattleSystem\BattleSystem.cs" />
@@ -84,6 +86,7 @@
     <Compile Include="Assets\Assets\Scripts\Grid\RangeFinder.cs" />
     <Compile Include="Assets\Assets\Scripts\HUD\UnitSelection.cs" />
     <Compile Include="Assets\Assets\Scripts\Grid\OverlayTile.cs" />
+    <Compile Include="Assets\Assets\Scripts\MovimientoEscenario\MovimientoJugador.cs" />
     <Compile Include="Assets\Assets\Scripts\Grid\PathFinder.cs" />
     <Compile Include="Assets\Assets\Scripts\Grid\RangeFinderPlayer.cs" />
     <Compile Include="Assets\Assets\Scripts\Grid\MouseController.cs" />

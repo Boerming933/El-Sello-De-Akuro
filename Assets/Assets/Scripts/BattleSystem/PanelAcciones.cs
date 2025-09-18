@@ -17,12 +17,12 @@ public class PanelAcciones : MonoBehaviour
         if (panelBatalla.gameObject.activeInHierarchy)
         {
             panelBatalla.SetActive(false);
-            letreroPj.SetActive(true);
+            //letreroPj.SetActive(true);
         }
         else
         {
             panelBatalla.SetActive(true);
-            letreroPj.SetActive(false);
+            //letreroPj.SetActive(false);
         }
         
     }

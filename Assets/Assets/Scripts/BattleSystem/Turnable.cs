@@ -10,6 +10,7 @@ public class Turnable : MonoBehaviour
     //public GameObject panelAcciones;
     public PanelAcciones panelScript;
     public GameObject iconoEspacio;
+    public GameObject panelBatalla;
 
 
     /// <summary>
@@ -35,6 +36,7 @@ public class Turnable : MonoBehaviour
 
         if (letreroPj != null) letreroPj.SetActive(true);
         if (iconoEspacio != null) iconoEspacio.SetActive(true);
+        if (panelBatalla != null) panelBatalla.SetActive(false);
 
 
     }

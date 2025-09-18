@@ -34,7 +34,7 @@ public class BattleSystem : MonoBehaviour
 
 
     public event System.Action<Unit> OnTurnStart;
-    private Unit _currentUnit;
+    public Unit _currentUnit;
     public Unit CurrentUnit => _currentUnit;
     public AttackController attackController;
 
@@ -172,9 +172,13 @@ public class BattleSystem : MonoBehaviour
         mouseController.showPanelAcciones = true;
         mouseController.enabled = true;
 
-        // Espera hasta que el jugador termine
-        yield return new WaitUntil(() => mouseController.turnEnded);
-     
+        float timeLeft = 500f;
+
+        while (timeLeft > 0f && !mouseController.turnEnded)
+        {
+            timeLeft -= Time.deltaTime;
+            yield return null;
+        }
         mouseController.DeselectCharacter();
     }
 
@@ -187,10 +191,16 @@ public class BattleSystem : MonoBehaviour
         mouseController.showPanelAcciones = false;
 
         // IA del enemigo…
-        yield return new WaitUntil(() => mouseController.turnEnded);
+        float timeLeft = 4f;
+
+        while (timeLeft > 0f && !mouseController.turnEnded)
+        {
+            timeLeft -= Time.deltaTime;
+            yield return null;
+        }
 
         for (int i = 0; i < EnemiesPrefab.Count; i++)
-        {            
+        {
             Unit unit = EnemiesPrefab[i].GetComponent<Unit>();
 
             if (enemy == unit)

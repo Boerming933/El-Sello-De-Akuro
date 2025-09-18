@@ -3,6 +3,7 @@ using UnityEngine;
 public class Zoom : MonoBehaviour
 {
     private Vector3 originalCameraPosition;
+    private Vector3 lastMousePosition;
     private bool isZoomedIn = false;
     private bool isReturning = false;
 
@@ -12,7 +13,7 @@ public class Zoom : MonoBehaviour
     public float maxZoom = 5f;
     public float returnSpeed = 5f;
 
-    public Transform targetToFollow;     // El personaje activo
+    public Transform targetToFollow;
     public float followSpeed = 5f;
 
     public GameObject zoomHintUI;
@@ -26,6 +27,16 @@ public class Zoom : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetMouseButtonDown(1))
+        {
+            lastMousePosition = Input.mousePosition;
+        }
+
+        if (Input.GetMouseButton(1))
+        {
+            MoveCamera();
+        }
+
         HandleZoom();
 
         if (zoomHintUI != null)
@@ -38,14 +49,11 @@ public class Zoom : MonoBehaviour
             ForceZoomOut();
         }
 
-        // Solo seguir al objetivo si está asignado
         if (targetToFollow != null)
         {
             Vector3 targetPos = new Vector3(targetToFollow.position.x, targetToFollow.position.y, cam.transform.position.z);
             cam.transform.position = Vector3.Lerp(cam.transform.position, targetPos, Time.deltaTime * followSpeed);
         }
-
-
     }
 
     void HandleZoom()
@@ -62,16 +70,9 @@ public class Zoom : MonoBehaviour
 
             isReturning = false;
 
-            Vector3 mouseWorldBeforeZoom = cam.ScreenToWorldPoint(Input.mousePosition);
-
             cam.orthographicSize -= scroll * zoomSpeed;
             cam.orthographicSize = Mathf.Clamp(cam.orthographicSize, minZoom, maxZoom);
 
-            Vector3 mouseWorldAfterZoom = cam.ScreenToWorldPoint(Input.mousePosition);
-            Vector3 diff = mouseWorldBeforeZoom - mouseWorldAfterZoom;
-            cam.transform.position += diff * zoomFactor;
-
-            // Al hacer zoom in, desactivar seguimiento
             targetToFollow = null;
         }
         else if (scroll < 0)
@@ -90,7 +91,6 @@ public class Zoom : MonoBehaviour
 
     void ForceZoomOut()
     {
-        // Solo restaurar seguimiento, NO cambiar zoom ni posición
         var currentUnit = GameObject.FindGameObjectWithTag("Aliado");
         if (currentUnit != null)
         {
@@ -106,5 +106,24 @@ public class Zoom : MonoBehaviour
     public void ClearTarget()
     {
         targetToFollow = null;
+    }
+
+    void MoveCamera()
+    {
+        Vector3 currentMouseScreenPos = Input.mousePosition;
+
+        float zDistance = -cam.transform.position.z;
+
+        Vector3 lastWorldPos = cam.ScreenToWorldPoint(
+            new Vector3(lastMousePosition.x, lastMousePosition.y, zDistance)
+        );
+        Vector3 currentWorldPos = cam.ScreenToWorldPoint(
+            new Vector3(currentMouseScreenPos.x, currentMouseScreenPos.y, zDistance)
+        );
+
+        Vector3 worldDelta = lastWorldPos - currentWorldPos;
+        transform.position += worldDelta;
+
+        lastMousePosition = currentMouseScreenPos;
     }
 }

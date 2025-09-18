@@ -7,6 +7,7 @@ using static UnityEngine.Rendering.DebugUI;
 public class MouseControler : MonoBehaviour
 {
     public float speed;
+    public bool canSkip = true;
 
     private CharacterInfo character; // personaje actualmente seleccionado
     private PathFinder pathFinder;
@@ -130,7 +131,7 @@ public class MouseControler : MonoBehaviour
             MoveAlongPath();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))      //Termina el turno al presionar espacio
+        if (Input.GetKeyDown(KeyCode.Space) && canSkip)      //Termina el turno al presionar espacio
         {
             DeselectCharacter();
 
@@ -207,6 +208,7 @@ public class MouseControler : MonoBehaviour
 
     public void DeselectCharacter()
     {
+        canSkip = true;
         if (character != null)
         {
             var turnable = character.GetComponent<Turnable>();
@@ -243,6 +245,7 @@ public class MouseControler : MonoBehaviour
 
     private void TryAutoEndTurn()
     {
+        canSkip = true;
         if (character == null) return;
 
         var turnable = character.GetComponent<Turnable>();
@@ -259,6 +262,8 @@ public class MouseControler : MonoBehaviour
 
     private void MoveAlongPath()
     {
+        canSkip = false;
+
         if (character == null) return;
 
         var stop = speed * Time.deltaTime;
@@ -306,7 +311,7 @@ public class MouseControler : MonoBehaviour
         if (path.Count == 0)
         {
             // El personaje ya llegó a su destino
-            
+            canSkip = true;
             canMove = false;
             canAttack = false;
             prevCanMove = false;
