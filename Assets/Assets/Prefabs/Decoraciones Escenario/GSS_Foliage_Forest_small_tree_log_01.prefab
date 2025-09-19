@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 3117693447388196555}
   - component: {fileID: 7238609866598992758}
   - component: {fileID: -1560858298156752390}
-  - component: {fileID: -2452492643272456808}
+  - component: {fileID: 300383606389354460}
+  - component: {fileID: 3934981289044662934}
   m_Layer: 0
   m_Name: GSS_Foliage_Forest_small_tree_log_01
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2084420766790097259}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.0390754, y: 4.148595, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -116,7 +117,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &-2452492643272456808
+--- !u!114 &300383606389354460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084420766790097259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51ace02461c0e77458ac357d2433cfbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  yDiff: 4
+--- !u!60 &3934981289044662934
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,8 +177,37 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 0.25}
-      - {x: -0.5, y: 0}
-      - {x: 0, y: -0.25}
-      - {x: 0.5, y: 0}
+    - - {x: -0.052734375, y: 0.08984375}
+      - {x: 0.068359375, y: 0.2109375}
+      - {x: 0.15820312, y: 0.29296875}
+      - {x: 0.29882812, y: 0.421875}
+      - {x: 0.36914062, y: 0.4609375}
+      - {x: 0.39648438, y: 0.484375}
+      - {x: 0.39648438, y: 0.59375}
+      - {x: 0.39257812, y: 0.625}
+      - {x: 0.35351562, y: 0.71875}
+      - {x: 0.32226562, y: 0.734375}
+      - {x: 0.24414062, y: 0.69921875}
+      - {x: 0.27148438, y: 0.74609375}
+      - {x: 0.25195312, y: 0.76171875}
+      - {x: 0.16601562, y: 0.76171875}
+      - {x: 0.13867188, y: 0.7265625}
+      - {x: 0.033203125, y: 0.625}
+      - {x: -0.048828125, y: 0.52734375}
+      - {x: -0.064453125, y: 0.53125}
+      - {x: -0.103515625, y: 0.5234375}
+      - {x: -0.13085938, y: 0.46484375}
+      - {x: -0.23242188, y: 0.35546875}
+      - {x: -0.27148438, y: 0.3359375}
+      - {x: -0.31054688, y: 0.30078125}
+      - {x: -0.39648438, y: 0.2421875}
+      - {x: -0.39648438, y: 0.08203125}
+      - {x: -0.38867188, y: 0.06640625}
+      - {x: -0.35351562, y: 0.0234375}
+      - {x: -0.30664062, y: 0}
+      - {x: -0.26367188, y: 0}
+      - {x: -0.20898438, y: 0.0390625}
+      - {x: -0.20507812, y: 0.01171875}
+      - {x: -0.19335938, y: 0}
+      - {x: -0.15820312, y: 0}
   m_UseDelaunayMesh: 0

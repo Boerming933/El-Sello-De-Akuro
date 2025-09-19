@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7110568173975316635}
   - component: {fileID: 6987157669966561848}
   - component: {fileID: 8444281042390192256}
+  - component: {fileID: 6716711450085325507}
   m_Layer: 0
   m_Name: ISO_Fence_01_S1L_NW
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 730152980235490366}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.702568, y: -0.8596065, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -162,8 +163,22 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 0.25}
-      - {x: -0.5, y: 0}
-      - {x: 0, y: -0.25}
-      - {x: 0.5, y: 0}
+    - - {x: 0.25100103, y: 0.35196912}
+      - {x: -0.2784132, y: 0.09804724}
+      - {x: -0.26864943, y: 0.010805577}
+      - {x: 0.28821808, y: 0.25296193}
   m_UseDelaunayMesh: 0
+--- !u!114 &6716711450085325507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730152980235490366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51ace02461c0e77458ac357d2433cfbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  yDiff: 0.1

@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 763804633005997112}
   - component: {fileID: 1552158375666666217}
   - component: {fileID: 4695304526898436512}
-  - component: {fileID: 7593416068035269675}
+  - component: {fileID: 2625286412512183745}
+  - component: {fileID: 2089416737967567611}
   m_Layer: 0
   m_Name: ISO_Fence_01_C3-SE
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6427495207123725051}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.656373, y: 0.39244413, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -116,7 +117,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &7593416068035269675
+--- !u!114 &2625286412512183745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6427495207123725051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51ace02461c0e77458ac357d2433cfbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  yDiff: 0.3
+--- !u!60 &2089416737967567611
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,8 +177,21 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 0.25}
-      - {x: -0.5, y: 0}
-      - {x: 0, y: -0.25}
-      - {x: 0.5, y: 0}
+    - - {x: 0.3203125, y: 0.22171876}
+      - {x: 0.13132891, y: 0.30604956}
+      - {x: -0.047184393, y: 0.38358113}
+      - {x: -0.22509153, y: 0.46788672}
+      - {x: -0.27963063, y: 0.42514047}
+      - {x: -0.27665716, y: 0.3447497}
+      - {x: -0.13017999, y: 0.26756787}
+      - {x: -0.3203125, y: 0.20609376}
+      - {x: -0.3222285, y: 0.11955015}
+      - {x: -0.28846917, y: 0.08623585}
+      - {x: -0.1869067, y: 0.1310464}
+      - {x: -0.05719697, y: 0.18159238}
+      - {x: 0.051152144, y: 0.16243213}
+      - {x: 0.15238854, y: 0.12272264}
+      - {x: 0.21947904, y: 0.08904193}
+      - {x: 0.26164466, y: 0.08240369}
+      - {x: 0.30306843, y: 0.07724899}
   m_UseDelaunayMesh: 0

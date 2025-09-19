@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 5472935952278348275}
   - component: {fileID: 5227695183628855204}
   - component: {fileID: 8821294340088994881}
-  - component: {fileID: -4060294475277211550}
+  - component: {fileID: 2239425688029040576}
+  - component: {fileID: 6860042877772668436}
   m_Layer: 0
   m_Name: GSS_Foliage_Forest_small_tree_log_02
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7956325601794280133}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.13177043, y: 3.7878346, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -116,7 +117,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &-4060294475277211550
+--- !u!114 &2239425688029040576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7956325601794280133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51ace02461c0e77458ac357d2433cfbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  yDiff: 1
+--- !u!60 &6860042877772668436
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,8 +177,36 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 0.25}
-      - {x: -0.5, y: 0}
-      - {x: 0, y: -0.25}
-      - {x: 0.5, y: 0}
+    - - {x: 0.17578125, y: 0.2109375}
+      - {x: 0.171875, y: 0.21484375}
+      - {x: 0.17578125, y: 0.42578125}
+      - {x: 0.1875, y: 0.515625}
+      - {x: 0.19140625, y: 0.7421875}
+      - {x: 0.21484375, y: 0.81640625}
+      - {x: 0.21484375, y: 0.875}
+      - {x: 0.20703125, y: 0.92578125}
+      - {x: 0.18359375, y: 0.96875}
+      - {x: 0.1484375, y: 1.0195312}
+      - {x: 0.12109375, y: 1.0351562}
+      - {x: 0.07421875, y: 1.0351562}
+      - {x: 0.04296875, y: 1.0273438}
+      - {x: 0.02734375, y: 1}
+      - {x: 0.015625, y: 1.0351562}
+      - {x: -0.01953125, y: 1.0351562}
+      - {x: -0.12109375, y: 1.0078125}
+      - {x: -0.15625, y: 0.98828125}
+      - {x: -0.19921875, y: 0.91796875}
+      - {x: -0.19140625, y: 0.6953125}
+      - {x: -0.19921875, y: 0.30859375}
+      - {x: -0.2109375, y: 0.2734375}
+      - {x: -0.21484375, y: 0.25390625}
+      - {x: -0.21484375, y: 0.1953125}
+      - {x: -0.203125, y: 0.14453125}
+      - {x: -0.16015625, y: 0.05859375}
+      - {x: -0.12890625, y: 0.046875}
+      - {x: -0.06640625, y: 0.03125}
+      - {x: 0.0234375, y: 0.03125}
+      - {x: 0.12890625, y: 0.0625}
+      - {x: 0.1484375, y: 0.078125}
+      - {x: 0.17578125, y: 0.15625}
   m_UseDelaunayMesh: 0

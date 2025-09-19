@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 561632644002790394}
   - component: {fileID: -6401055583051332493}
   - component: {fileID: -688363025844764762}
+  - component: {fileID: 2325317155053379072}
   m_Layer: 0
   m_Name: GSS_Foliage_bamboo (1)
   m_TagString: Untagged
@@ -150,6 +151,20 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.03926015, y: 0.23220375}
-  m_Size: {x: 0.13741446, y: 0.18356639}
+  m_Offset: {x: -0.03926015, y: 0.20912778}
+  m_Size: {x: 0.13741446, y: 0.13741446}
   m_Direction: 0
+--- !u!114 &2325317155053379072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32185963989316291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51ace02461c0e77458ac357d2433cfbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  yDiff: 0.23

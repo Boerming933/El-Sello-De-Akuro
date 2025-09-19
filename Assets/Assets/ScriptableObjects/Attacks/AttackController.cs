@@ -206,6 +206,7 @@ public class AttackController : MonoBehaviour
 
     void ConfirmAttack(OverlayTile targetTile)
     {
+        mouseController.canPocion = false;
         if (attackExecuted) return;
         attackExecuted = true;
         attackUI.SetButtonsInteractable(false);

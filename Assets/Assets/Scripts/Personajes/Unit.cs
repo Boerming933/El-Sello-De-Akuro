@@ -27,6 +27,7 @@ public class Unit : MonoBehaviour
     public int currentHP;
     public int maxMana;
     public int currentMana;
+    public int pocionHeal;
 
     public Sprite portrait;
 
@@ -107,5 +108,21 @@ public class Unit : MonoBehaviour
                     new Vector2(transform.position.x, transform.position.y)
                 ) < threshold
             );
+    }
+
+    public void Heal()
+    {
+        currentHP = Mathf.Min(currentHP + pocionHeal, maxHP);
+
+        // Actualiza el HUD si está asignado
+        if (hud != null)
+            hud.ShowDetails(this);
+
+        // fuerza actualización general
+        var ui = UnityEngine.Object.FindFirstObjectByType<CharacterDetailsUI>();
+        if (ui != null)
+            ui.UpdateAllUI();
+
+        Debug.Log($"{Name} curó {pocionHeal} HP. Vida actual: {currentHP}/{maxHP}");
     }
 }

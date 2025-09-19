@@ -3,6 +3,8 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
+using TMPro;
+using UnityEngine.UI;
 
 public class MouseControler : MonoBehaviour
 {
@@ -26,6 +28,12 @@ public class MouseControler : MonoBehaviour
     public bool canMove = false;
     public bool prevCanMove = false;
 
+    public GameObject pocionOn;
+    public TextMeshProUGUI pociones;
+    public int cantidadPociones = 10;
+    public bool canPocion = true;
+    public GameObject bgIconoPocion;
+
     public CharacterInfo CurrentCharacter => character;
     
 
@@ -34,6 +42,7 @@ public class MouseControler : MonoBehaviour
         pathFinder = new PathFinder();
         rangeFinder = new RangeFinderPlayer();
         myUnit = GetComponent<Unit>();
+        pociones.text = cantidadPociones.ToString();
     }
 
     /// <summary>
@@ -63,6 +72,43 @@ public class MouseControler : MonoBehaviour
 
     void LateUpdate()
     {
+        if (Input.GetKeyDown(KeyCode.Q) && showPanelAcciones && character != null && cantidadPociones > 0 && canPocion)
+        {
+            var unit = character.GetComponent<Unit>();
+            if (unit != null)
+            {
+                canPocion = false;
+                cantidadPociones--;
+                pocionOn.SetActive(false);
+                bgIconoPocion.SetActive(false);
+                pociones.text = cantidadPociones.ToString();
+                unit.Heal();
+
+                var turnable = character.GetComponent<Turnable>();
+                if (turnable != null && turnable.btnBatalla != null)
+                {
+                    turnable.btnBatalla.interactable = false;
+                }
+                TryAutoEndTurn();
+            }
+        }
+
+        if (canPocion)
+        {
+            pocionOn.SetActive(true);
+            bgIconoPocion.SetActive(true);
+        }
+        else
+        {
+            pocionOn.SetActive(false);
+            bgIconoPocion.SetActive(false);
+        }
+
+        
+
+        pocionOn.SetActive(canPocion && cantidadPociones > 0 && showPanelAcciones);
+        bgIconoPocion.SetActive(canPocion && cantidadPociones > 0 && showPanelAcciones);
+
         var focusedTileHit = GetFocusedOnTile();
 
         if (focusedTileHit.HasValue)
@@ -208,6 +254,7 @@ public class MouseControler : MonoBehaviour
 
     public void DeselectCharacter()
     {
+        //canPocion = true;
         canSkip = true;
         if (character != null)
         {
@@ -256,6 +303,7 @@ public class MouseControler : MonoBehaviour
 
         if (!puedeMoverse && !puedeAtacar)
         {
+            
             DeselectCharacter();
         }
     }

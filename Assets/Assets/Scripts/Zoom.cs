@@ -6,6 +6,7 @@ public class Zoom : MonoBehaviour
     private Vector3 lastMousePosition;
     private bool isZoomedIn = false;
     private bool isReturning = false;
+    private bool isFollowingTarget = true;
 
     public float zoomSpeed = 0.6f;
     public float zoomFactor = 1.8f;
@@ -27,32 +28,40 @@ public class Zoom : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(2))
         {
             lastMousePosition = Input.mousePosition;
         }
 
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(2))
         {
             MoveCamera();
+            isFollowingTarget = false; //mueves la cámara, deja de seguir
         }
 
         HandleZoom();
 
-        if (zoomHintUI != null)
+        if (zoomHintUI != null && targetToFollow != null)
         {
-            zoomHintUI.SetActive(targetToFollow == null);
+            float dist = Vector2.Distance(
+                new Vector2(cam.transform.position.x, cam.transform.position.y),
+                new Vector2(targetToFollow.position.x, targetToFollow.position.y)
+            );
+
+            zoomHintUI.SetActive(!isFollowingTarget && dist > 0.2f);
         }
 
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            ForceZoomOut();
-        }
-
-        if (targetToFollow != null)
+        //Volver al personaje solo si isFollowingTarget está activo
+        if (isFollowingTarget && targetToFollow != null)
         {
             Vector3 targetPos = new Vector3(targetToFollow.position.x, targetToFollow.position.y, cam.transform.position.z);
             cam.transform.position = Vector3.Lerp(cam.transform.position, targetPos, Time.deltaTime * followSpeed);
+        }
+
+        //Z = seguir al personaje
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            ForceZoomOut();
         }
     }
 
@@ -73,7 +82,7 @@ public class Zoom : MonoBehaviour
             cam.orthographicSize -= scroll * zoomSpeed;
             cam.orthographicSize = Mathf.Clamp(cam.orthographicSize, minZoom, maxZoom);
 
-            targetToFollow = null;
+            isFollowingTarget = false;
         }
         else if (scroll < 0)
         {
@@ -86,26 +95,30 @@ public class Zoom : MonoBehaviour
                 isReturning = false;
             }
         }
+
         isReturning = false;
     }
 
-    void ForceZoomOut()
+    public void ForceZoomOut()
     {
         var currentUnit = GameObject.FindGameObjectWithTag("Aliado");
         if (currentUnit != null)
         {
             targetToFollow = currentUnit.transform;
+            isFollowingTarget = true; 
         }
     }
 
     public void SetTarget(Transform newTarget)
     {
         targetToFollow = newTarget;
+        isFollowingTarget = true;
     }
 
     public void ClearTarget()
     {
         targetToFollow = null;
+        isFollowingTarget = false;
     }
 
     void MoveCamera()

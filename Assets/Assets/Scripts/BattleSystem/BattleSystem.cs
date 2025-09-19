@@ -171,6 +171,7 @@ public class BattleSystem : MonoBehaviour
         mouseController.canAttack = true;
         mouseController.showPanelAcciones = true;
         mouseController.enabled = true;
+        mouseController.canPocion = true;
 
         float timeLeft = 500f;
 

@@ -3,18 +3,17 @@ using UnityEngine;
 public class Decoraciones : MonoBehaviour
 {
     public GameObject player;
+    public float yDiff;
 
     void Update()
     {
-        if (player.transform.position.y > transform.position.y)
+        if (player.transform.position.y > transform.position.y + yDiff)
         {
-            Vector3 RepositionZ = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1);
-            transform.position = RepositionZ;
+            transform.position = new Vector3(transform.position.x, transform.position.y, -3f);
         }
-        else if (transform.position.z < 0)
+        else
         {
-            Vector3 RepositionZ = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1);
-            transform.position = RepositionZ;
+            transform.position = new Vector3(transform.position.x, transform.position.y, -1f);
         }
     }
 }
