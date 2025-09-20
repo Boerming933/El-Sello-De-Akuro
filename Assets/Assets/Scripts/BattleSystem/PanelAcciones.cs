@@ -17,12 +17,12 @@ public class PanelAcciones : MonoBehaviour
         if (panelBatalla.gameObject.activeInHierarchy)
         {
             panelBatalla.SetActive(false);
-            letreroPj.SetActive(true);
+            //letreroPj.SetActive(true);
         }
         else
         {
             panelBatalla.SetActive(true);
-            letreroPj.SetActive(false);
+            //letreroPj.SetActive(false);
         }
         
     }
@@ -37,6 +37,7 @@ public class PanelAcciones : MonoBehaviour
 
     public void Update()
     {
+        
         // Sólo debo estar visible si:
         //  - este panel pertenece al personaje activo
         //  - Y además el flag mouseController.showPanelAcciones es true

@@ -39,17 +39,11 @@ public class AttackButtonProxy : MonoBehaviour
 
         if (botonBatalla != null)
         {
-            
-            //Button boton = botonBatalla.GetComponent<Button>();
-            //ColorBlock cb = boton.colors;
-            //cb.normalColor = new Color(0.894f, 0.533f, 0.533f, 1);
-            //boton.colors = cb;
             botonBatalla.interactable = false;
-            //botonBatalla.GetComponent<Button>().enabled = false;
         }
 
         if (botonDesactivado)
-        { 
+        {
             botonBatalla.interactable = false;
         }
 
@@ -57,6 +51,7 @@ public class AttackButtonProxy : MonoBehaviour
         if (attackController != null && attackData != null)
             attackController.StartAttack(attackData);
 
+       
     }
     public void ShowGeneralBattlePanel()
     {

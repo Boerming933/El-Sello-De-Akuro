@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using System.Collections;
+using System.Linq;
 
 public class Unit : MonoBehaviour
 {
@@ -14,7 +16,10 @@ public class Unit : MonoBehaviour
     public string Name;
     public int Level;
 
+    public bool isEnemy;
+
     public int Fue;
+    public int movement;
     public int Des;
     public int Con;
     public int Int;
@@ -22,6 +27,7 @@ public class Unit : MonoBehaviour
     public int currentHP;
     public int maxMana;
     public int currentMana;
+    public int pocionHeal;
 
     public Sprite portrait;
 
@@ -30,7 +36,7 @@ public class Unit : MonoBehaviour
     public event Action<int> OnDamageTaken;
     public event Action OnDeath;
 
-    void Start()
+    private void Start()
     {
         // Inicializa HUD al comenzar el combate
         hud.ShowDetails(this);
@@ -72,5 +78,51 @@ public class Unit : MonoBehaviour
         // GetComponent<Animator>()?.SetTrigger("Die");
         // collider.enabled = false;
         // this.enabled = false;
+    }
+
+    //para enemigos
+
+    public RaycastHit2D? ActiveTile()
+    {
+        Vector2 origin = new Vector2(transform.position.x, transform.position.y);
+
+        RaycastHit2D[] hits = Physics2D.RaycastAll(origin, Vector2.zero);
+
+        if (hits.Length > 0)
+        {
+            return hits.OrderByDescending(i => i.collider.transform.position.z).First();
+        }
+        return null;
+    }
+
+    //para jugadores
+
+    public OverlayTile FindCenterTile()
+    {
+        const float threshold = 0.1f;
+        return MapManager.Instance
+            .map.Values
+            .FirstOrDefault(t =>
+                Vector2.Distance(
+                    new Vector2(t.transform.position.x, t.transform.position.y),
+                    new Vector2(transform.position.x, transform.position.y)
+                ) < threshold
+            );
+    }
+
+    public void Heal()
+    {
+        currentHP = Mathf.Min(currentHP + pocionHeal, maxHP);
+
+        // Actualiza el HUD si está asignado
+        if (hud != null)
+            hud.ShowDetails(this);
+
+        // fuerza actualización general
+        var ui = UnityEngine.Object.FindFirstObjectByType<CharacterDetailsUI>();
+        if (ui != null)
+            ui.UpdateAllUI();
+
+        Debug.Log($"{Name} curó {pocionHeal} HP. Vida actual: {currentHP}/{maxHP}");
     }
 }

@@ -22,6 +22,12 @@ public class OverlayTile : MonoBehaviour
 
     [SerializeField] private SpriteRenderer _sr;
 
+    public void ChangeLayer()
+    {
+        GameObject overlayTile = GetComponent<GameObject>();
+        overlayTile.layer = 6;
+    }
+
     void Awake()
     {
         _sr = GetComponent<SpriteRenderer>();

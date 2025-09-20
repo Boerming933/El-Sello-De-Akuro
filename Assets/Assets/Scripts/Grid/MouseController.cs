@@ -3,26 +3,36 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
+using TMPro;
+using UnityEngine.UI;
 
 public class MouseControler : MonoBehaviour
 {
     public float speed;
+    public bool canSkip = true;
 
     private CharacterInfo character; // personaje actualmente seleccionado
     private PathFinder pathFinder;
-    private RangeFinder rangeFinder;
+    private RangeFinderPlayer rangeFinder;
     [HideInInspector] public bool turnEnded = false;
     public CharacterDetailsUI characterDetailsUI;
     public bool showPanelAcciones = false;
 
-
-
     private List<OverlayTile> path = new List<OverlayTile>();
     private List<OverlayTile> inRangeTiles = new List<OverlayTile>();
+    private Unit myUnit;
+    private OverlayTile previousTile;
+    public BattleSystem battleSystem;
 
     public bool canAttack = false;
     public bool canMove = false;
     public bool prevCanMove = false;
+
+    public GameObject pocionOn;
+    public TextMeshProUGUI pociones;
+    public int cantidadPociones = 10;
+    public bool canPocion = true;
+    public GameObject bgIconoPocion;
 
     public CharacterInfo CurrentCharacter => character;
     
@@ -30,15 +40,18 @@ public class MouseControler : MonoBehaviour
     private void Start()
     {
         pathFinder = new PathFinder();
-        rangeFinder = new RangeFinder();
+        rangeFinder = new RangeFinderPlayer();
+        myUnit = GetComponent<Unit>();
+        pociones.text = cantidadPociones.ToString();
     }
 
     /// <summary>
     /// El BattleSystem llamará a esto para decirle quién es el personaje activo.
     /// </summary>
-    public void SetActiveCharacter(CharacterInfo ci)
+    public void SetActiveCharacter(CharacterInfo ci, Unit unit)
     {
         character = ci;
+        myUnit = unit;
     }
 
     /// <summary>
@@ -57,11 +70,49 @@ public class MouseControler : MonoBehaviour
             );
     }
 
-
-    
-
     void LateUpdate()
     {
+        if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Joystick1Button4))
+        {
+            if (showPanelAcciones && character != null && cantidadPociones > 0 && canPocion)
+            {
+            var unit = character.GetComponent<Unit>();
+            if (unit != null)
+            {
+                canPocion = false;
+                cantidadPociones--;
+                pocionOn.SetActive(false);
+                bgIconoPocion.SetActive(false);
+                pociones.text = cantidadPociones.ToString();
+                unit.Heal();
+
+                var turnable = character.GetComponent<Turnable>();
+                if (turnable != null && turnable.btnBatalla != null)
+                {
+                    turnable.btnBatalla.interactable = false;
+                }
+                TryAutoEndTurn();
+            }
+                
+            }
+        }
+
+        if (canPocion)
+        {
+            pocionOn.SetActive(true);
+            bgIconoPocion.SetActive(true);
+        }
+        else
+        {
+            pocionOn.SetActive(false);
+            bgIconoPocion.SetActive(false);
+        }
+
+        
+
+        pocionOn.SetActive(canPocion && cantidadPociones > 0 && showPanelAcciones);
+        bgIconoPocion.SetActive(canPocion && cantidadPociones > 0 && showPanelAcciones);
+
         var focusedTileHit = GetFocusedOnTile();
 
         if (focusedTileHit.HasValue)
@@ -94,6 +145,7 @@ public class MouseControler : MonoBehaviour
                         if (tileBelow != null)
                         {
                             character.activeTile = tileBelow;
+                            tileBelow = previousTile;
                         }
 
                         // Mostrar rango sólo si ya está habilitado para moverse
@@ -121,8 +173,6 @@ public class MouseControler : MonoBehaviour
                 //{                                //actualmente no se usa, pero fuera de combate se usará i guess
                 //    DeselectCharacter();
                 //}
-
-
             }
         }
 
@@ -131,12 +181,14 @@ public class MouseControler : MonoBehaviour
             MoveAlongPath();
         }
 
-        if (Input.GetKeyDown(KeyCode.Q))      //Termina el turno al presionar Q
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button7))      //Termina el turno al presionar espacio
         {
-            DeselectCharacter();
+            if (canSkip)
+            {
+                DeselectCharacter();
 
-            return;
-
+                return;  
+            }
         }
 
         // Disparar/limpiar rango cuando cambia canMove
@@ -184,19 +236,18 @@ public class MouseControler : MonoBehaviour
 
         // RANGO DE MOVIMIENTO
         // 3) Genera el rango tal cual tenías
-        int maxRange = character.tilesMoved <= 6 ? 4
-                    : character.tilesMoved == 7  ? 3
-                    : character.tilesMoved == 8  ? 2
-                    :                               1;
+        int maxRange = character.tilesMoved <= character.maxTiles ? character.maxTiles - character.tilesMoved : 1;
 
-            inRangeTiles = rangeFinder.GetTilesInRange(center, maxRange);
+        inRangeTiles = rangeFinder.GetTilesInRange(center, maxRange);
 
-            // 4) Pintar como siempre
-            foreach (var item in inRangeTiles)
-            {
-                item.ShowTile();
-            }
+        // 4) Pintar como siempre
+        foreach (var item in inRangeTiles)
+        {
+            item.ShowTile();
         }
+
+       
+    }
 
     public void ClearRangeTiles()
     {
@@ -209,12 +260,15 @@ public class MouseControler : MonoBehaviour
 
     public void DeselectCharacter()
     {
+        //canPocion = true;
+        canSkip = true;
         if (character != null)
         {
             var turnable = character.GetComponent<Turnable>();
             if (turnable != null)
             {
                 turnable.btnBatalla.interactable = true;
+                turnable.btnMoverse.interactable = true;
                 turnable.DeactivateTurn();   // <— quita el aura aquí
 
                 character.tilesMoved = 0;
@@ -242,8 +296,28 @@ public class MouseControler : MonoBehaviour
             proxy.ShowGeneralBattlePanel();
     }
 
+    private void TryAutoEndTurn()
+    {
+        canSkip = true;
+        if (character == null) return;
+
+        var turnable = character.GetComponent<Turnable>();
+        if (turnable == null) return;
+
+        bool puedeMoverse = turnable.btnMoverse != null && turnable.btnMoverse.interactable;
+        bool puedeAtacar = turnable.btnBatalla != null && turnable.btnBatalla.interactable;
+
+        if (!puedeMoverse && !puedeAtacar)
+        {
+            
+            DeselectCharacter();
+        }
+    }
+
     private void MoveAlongPath()
     {
+        canSkip = false;
+
         if (character == null) return;
 
         var stop = speed * Time.deltaTime;
@@ -252,28 +326,46 @@ public class MouseControler : MonoBehaviour
         character.transform.position = Vector2.MoveTowards(character.transform.position, path[0].transform.position, stop);
         character.transform.position = new Vector3(character.transform.position.x, character.transform.position.y, zIndex);
 
-        if (Vector2.Distance(character.transform.position, path[0].transform.position) < 0.08f)
+        if (Vector2.Distance(character.transform.position, path[0].transform.position) < 0.0001f)
         {
             OverlayTile reachedTile = path[0];
-            path.RemoveAt(0);
             PositionCharacterOnTile(reachedTile);
+            path.RemoveAt(0);
 
             character.tilesMoved++;
+            battleSystem.CharacterPosition(myUnit);
+            
             Debug.Log("Tiles moved: " + character.tilesMoved);
 
-            if (character.tilesMoved >= 10)  //Termina el turno al moverse x tiles
+            if (character.tilesMoved >= character.maxTiles)
             {
-                DeselectCharacter();
+                canMove = false;
+                prevCanMove = false;
+                ClearRangeTiles();
+                showPanelAcciones = true;
+
+                if (character != null)
+                {
+                    var turnable = character.GetComponent<Turnable>();
+                    if (turnable != null)
+                    {
+                        if (turnable.btnMoverse != null)
+                            turnable.btnMoverse.interactable = false;
+
+                        turnable.ActivateTurn();
+                    }
+                }
+
+                TryAutoEndTurn();
 
                 return;
-
             }
         }
 
         if (path.Count == 0)
         {
             // El personaje ya llegó a su destino
-            
+            canSkip = true;
             canMove = false;
             canAttack = false;
             prevCanMove = false;
@@ -284,7 +376,6 @@ public class MouseControler : MonoBehaviour
                 var turnable = character.GetComponent<Turnable>();
                 if (turnable != null)
                 {
-                    
                     turnable.ActivateTurn();
                 }
             }

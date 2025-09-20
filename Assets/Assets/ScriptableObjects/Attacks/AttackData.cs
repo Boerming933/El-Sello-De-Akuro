@@ -14,6 +14,7 @@ public class AttackData : ScriptableObject
     public string attackName;
     public Sprite icon;
     public int damage;
+    public float scalingFactor;
     public int manaCost;
     public float cooldown;
 

@@ -1,31 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
-using Unity.VisualScripting;
-using UnityEngine;
 using System.Linq;
+using UnityEngine;
 
-public enum BattleState{ START, PLAYERTURN, ENEMYTURN, WON, LOST}
+public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
 
 public class BattleSystem : MonoBehaviour
 {
+    public static BattleSystem Instance;
+
     public List<GameObject> PlayersPrefab;
     public List<GameObject> EnemiesPrefab;
     public BattleState state;
 
+    public bool start = false;
 
     public List<BattleHUD> playerHUD;
     public List<BattleHUD> enemyHUD;
 
-    private List<Unit> PlayerUnity = new List<Unit>();
-    private List<Unit> EnemyUnity = new List<Unit>();
+    public List<OverlayTile> PositionEnemy = new List<OverlayTile>();
+    public List<OverlayTile> PositionPlayer = new List<OverlayTile>();
 
+    public List<Unit> PlayerUnity = new List<Unit>();
+    public List<Unit> EnemyUnity = new List<Unit>();
 
     public InitiativeManager initiativeManager;
-    public MouseControler     mouseController;  
+    public MouseControler mouseController;
     // Colección de todos los participantes
     private List<Unit> allUnits;
-
 
     public event System.Action<Unit> OnTurnStart;
     private Unit _currentUnit;
@@ -34,48 +36,59 @@ public class BattleSystem : MonoBehaviour
 
     public CharacterDetailsUI detailsUI;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     IEnumerator Start()
     {
         // Espera hasta que MapManager.map ya exista
-        yield return new WaitUntil(() => MapManager.Instance != null 
-                                    && MapManager.Instance.map  != null);
+        yield return new WaitUntil(() => MapManager.Instance != null
+                                    && MapManager.Instance.map != null);
 
         StartBattle();
     }
 
-
     void StartBattle()
     {
         // 1) Reúne aliados y enemigos en un solo listado
-        allUnits = initiativeManager.allies
-            .Concat(initiativeManager.enemies)
-            .ToList();
+        allUnits = new List<Unit>();
+        if (initiativeManager != null)
+        {
+            allUnits = initiativeManager.allies
+                .Concat(initiativeManager.enemies)
+                .ToList();
+        }
 
         // 2) Rola iniciativa UNA VEZ
-        initiativeManager.RollInitiative();
+        initiativeManager?.RollInitiative();
 
         // 3) Arranca el bucle de turnos
         StartCoroutine(RunTurns());
 
+        start = true;
+
+        // Registrar players prefabs
+        PlayerUnity.Clear();
         for (int i = 0; i < PlayersPrefab.Count; i++)
         {
             Unit unit = PlayersPrefab[i].GetComponent<Unit>();
+            RegisterUnits(unit);
             PlayerUnity.Add(unit);
         }
 
-        // Instanciar enemigos y capturar sus componentes Unit
+        // Instanciar/registrar enemigos visibles iniciales
+        EnemyUnity.Clear();
         for (int i = 0; i < EnemiesPrefab.Count; i++)
         {
             Unit unit = EnemiesPrefab[i].GetComponent<Unit>();
+            RegisterUnits(unit);
             EnemyUnity.Add(unit);
         }
 
-
         int playerCount = Mathf.Min(PlayerUnity.Count, playerHUD.Count);
-        int enemyCount  = Mathf.Min(EnemyUnity.Count,  enemyHUD.Count);
-
-
+        int enemyCount = Mathf.Min(EnemyUnity.Count, enemyHUD.Count);
         // Asignar cada unidad a su HUD correspondiente
         for (int i = 0; i < playerCount; i++)
         {
@@ -86,14 +99,174 @@ public class BattleSystem : MonoBehaviour
             enemyHUD[i].SetHUD(EnemyUnity[i]);
         }
     }
-    
+
+    public void RegisterUnits(Unit unit)
+    {
+        if (unit == null)
+        {
+            Debug.LogWarning("RegisterUnits: unit es null");
+            return;
+        }
+
+        var maybePos = unit.ActiveTile();
+        if (!maybePos.HasValue)
+        {
+            Debug.LogWarning($"RegisterUnits: no se encontró casilla para {unit.name}");
+            // aun así añadimos la unidad a la lista correspondiente (se registrará cuando se mueva)
+            if (unit.isEnemy)
+            {
+                if (!EnemyUnity.Contains(unit)) EnemyUnity.Add(unit);
+                // aseguramos lista PositionEnemy sincronizada
+                while (PositionEnemy.Count < EnemyUnity.Count) PositionEnemy.Add(null);
+            }
+            else
+            {
+                if (!PlayerUnity.Contains(unit)) PlayerUnity.Add(unit);
+                while (PositionPlayer.Count < PlayerUnity.Count) PositionPlayer.Add(null);
+            }
+            return;
+        }
+
+        var overlay = maybePos.Value.collider.GetComponent<OverlayTile>();
+        if (overlay == null)
+        {
+            Debug.LogWarning($"RegisterUnits: overlaytile nulo para {unit.name}");
+            return;
+        }
+
+        if (unit.isEnemy)
+        {
+            // Asegurar tamaño de lista
+            while (PositionEnemy.Count <= EnemyUnity.Count)
+                PositionEnemy.Add(null);
+
+            PositionEnemy[EnemyUnity.Count] = overlay;
+            overlay.isBlocked = true;
+
+            if (!EnemyUnity.Contains(unit))
+                EnemyUnity.Add(unit);
+        }
+        else
+        {
+            while (PositionPlayer.Count <= PlayerUnity.Count)
+                PositionPlayer.Add(null);
+
+            PositionPlayer[PlayerUnity.Count] = overlay;
+            overlay.isBlocked = true;
+
+            if (!PlayerUnity.Contains(unit))
+                PlayerUnity.Add(unit);
+        }
+    }
+
+    public void CharacterPosition(Unit unit)
+    {
+        if (unit == null) return;
+
+        // Buscar índice del jugador en PlayerUnity
+        int idx = PlayerUnity.IndexOf(unit);
+        if (idx < 0)
+        {
+            Debug.LogWarning($"CharacterPosition: unidad {unit.name} no encontrada en PlayerUnity");
+            return;
+        }
+
+        var position = unit.FindCenterTile();
+        if (position == null)
+        {
+            Debug.Log($"{unit.name}: CharacterPosition -> no hay casilla (position null)");
+            return;
+        }
+
+        OverlayTile newPos = position;
+        // Aseguramos que PositionPlayer tenga índice idx
+        while (PositionPlayer.Count <= idx)
+            PositionPlayer.Add(null);
+
+        var prev = PositionPlayer[idx];
+        if (prev != null && prev != newPos)
+            prev.isBlocked = false;
+
+        PositionPlayer[idx] = newPos;
+        newPos.isBlocked = true;
+    }
+
+    /// <summary>
+    /// Añade dinámicamente un GameObject enemigo (instanciado o activado) al BattleSystem.
+    /// Se encarga de sincronizar listas internas, bloquear tile y asignar HUD si hay slot.
+    /// </summary>
+    public void AddEnemyToBattle(GameObject enemyGO)
+    {
+        if (enemyGO == null)
+        {
+            return;
+        }
+
+        Unit u = enemyGO.GetComponent<Unit>();
+        if (u == null) { Debug.LogWarning("AddEnemyToBattle: no tiene Unit"); return; }
+
+        // 1) registrar en listas (tu código original)
+        RegisterUnits(u);
+        if (!EnemiesPrefab.Contains(enemyGO)) EnemiesPrefab.Add(enemyGO);
+        if (!EnemyUnity.Contains(u)) EnemyUnity.Add(u);
+        //int enemyCount = Mathf.Min(EnemyUnity.Count, enemyHUD.Count);
+        //for (int i = 0; i < enemyCount; i++) enemyHUD[i].SetHUD(EnemyUnity[i]);
+
+        // 2) intentar resolver overlay tile de forma robusta
+        OverlayTile resolvedOverlay = null;
+        var maybe = u.ActiveTile();
+        if (maybe.HasValue)
+        {
+            resolvedOverlay = maybe.Value.collider.GetComponent<OverlayTile>();
+        }
+        else if (MapManager.Instance != null && MapManager.Instance.TryGetOverlayTileAtWorldPos(enemyGO.transform.position, out var tileFromMap))
+        {
+            resolvedOverlay = tileFromMap;
+        }
+
+        if (resolvedOverlay != null)
+        {
+            // Actualiza PositionEnemy / isBlocked via tu método (asegura consistencia)
+            UpdateEnemyPosition(u, resolvedOverlay);
+        }
+        else
+        {
+            Debug.LogWarning($"[AddEnemyToBattle] No se pudo resolver overlay para {enemyGO.name}");
+        }
+
+        // 3) Ahora que BattleSystem intentó fijar la casilla, asignar referencias y llamar InitAfterSpawn
+        var enemyIA = enemyGO.GetComponent<EnemyIA>();
+        if (enemyIA != null)
+        {
+            enemyIA.battleSystem = this;
+            enemyIA.mouseController = this.mouseController;
+            if (PlayersPrefab != null)
+            {
+                if (PlayersPrefab.Count > 0) enemyIA.Player1 = PlayersPrefab[0];
+                if (PlayersPrefab.Count > 1) enemyIA.Player2 = PlayersPrefab[1];
+                if (PlayersPrefab.Count > 2) enemyIA.Player3 = PlayersPrefab[2];
+            }
+
+            // Llamada crítica: inicializar IA después de intentar fijar la casilla
+            enemyIA.InitAfterSpawn(this, this.mouseController, enemyIA.Player1, enemyIA.Player2, enemyIA.Player3);
+        }
+        else
+        {
+            Debug.LogWarning($"[AddEnemyToBattle] EnemyIA no encontrado en {enemyGO.name}");
+        }
+    }
 
     private IEnumerator RunTurns()
     {
         while (!BattleOver())
         {
+
             // 4) Siguiente unidad en orden prefijado
             _currentUnit = initiativeManager.GetNextUnit();
+            if (_currentUnit == null)
+            {
+                yield break;
+            }
             OnTurnStart?.Invoke(_currentUnit);
 
             var detailsUI = FindAnyObjectByType<CharacterDetailsUI>();
@@ -104,16 +277,21 @@ public class BattleSystem : MonoBehaviour
             mouseController.canMove = false;
             mouseController.canAttack = false;
             mouseController.showPanelAcciones = false;
-            mouseController.turnEnded = false;  
+            mouseController.turnEnded = false;
 
             // 6) Activa/desactiva visualmente y funcionalmente a todos
             SetActiveUnit(_currentUnit);
 
             // 7) Ejecuta el turno según sea aliado o enemigo
             if (_currentUnit.CompareTag("Aliado"))
+            {
+                // arrancamos player turn con watchdog
                 yield return PlayerTurn(_currentUnit);
+            }
             else
+            {
                 yield return EnemyTurn(_currentUnit);
+            }
         }
 
         Debug.Log("¡Batalla terminada!");
@@ -127,24 +305,75 @@ public class BattleSystem : MonoBehaviour
         mouseController.showPanelAcciones = true;
         mouseController.enabled = true;
 
-        // Espera hasta que el jugador termine
-        yield return new WaitUntil(() => mouseController.turnEnded);
+        float timeLeft = 60f;
+
+        while (timeLeft > 0f && !mouseController.turnEnded)
+        {
+            timeLeft -= Time.deltaTime;
+            yield return null;
+        }
         mouseController.DeselectCharacter();
     }
 
     private IEnumerator EnemyTurn(Unit enemy)
     {
-        // Deshabilita input de jugador mientras la IA actúa
+        // Deshabilitar inputs de jugador
         mouseController.enabled = false;
         mouseController.canMove = false;
         mouseController.canAttack = false;
         mouseController.showPanelAcciones = false;
+        //mouseController.canPocion = true;
 
-        // IA del enemigo…
-        yield return new WaitForSeconds(3f);
+        float timeLeft = 60f;
 
-        mouseController.turnEnded = true;
-        mouseController.DeselectCharacter();
+        while (timeLeft > 0f && !mouseController.turnEnded)
+        {
+            timeLeft -= Time.deltaTime;
+            yield return null;
+        }
+
+        // después de que mouseController.turnEnded sea true:
+            for (int i = 0; i < EnemiesPrefab.Count; i++)
+            {
+                if (EnemiesPrefab[i] == null) continue;
+                Unit unit = EnemiesPrefab[i].GetComponent<Unit>();
+                if (unit == null) continue;
+
+                if (enemy == unit)
+                {
+                    var positionMaybe = enemy.ActiveTile();
+                    if (!positionMaybe.HasValue)
+                    {
+                        Debug.LogWarning($"EnemyTurn: active tile nulo para {enemy.name}");
+                        continue;
+                    }
+
+                    OverlayTile newPosition = positionMaybe.Value.collider.GetComponent<OverlayTile>();
+                    if (newPosition == null) continue;
+
+                    // Asegurar capacidad
+                    while (PositionEnemy.Count <= i)
+                        PositionEnemy.Add(null);
+
+                    var prevPos = PositionEnemy[i];
+                    if (prevPos == null)
+                    {
+                        // Si estaba vacío, simplemente asignar
+                        PositionEnemy[i] = newPosition;
+                        newPosition.isBlocked = true;
+                    }
+                    else if (prevPos != newPosition)
+                    {
+                        // liberar anterior y ocupar nuevo
+                        prevPos.isBlocked = false;
+                        newPosition.isBlocked = true;
+                        PositionEnemy[i] = newPosition;
+                    }
+                }
+            }
+            mouseController.turnEnded = true;
+            mouseController.DeselectCharacter();
+        //yield return null;
     }
 
     /// <summary>
@@ -152,24 +381,35 @@ public class BattleSystem : MonoBehaviour
     /// </summary>
     void SetActiveUnit(Unit current)
     {
-        MapManager.Instance.HideAllTiles();
-        mouseController.ClearRangeTiles();
+        if (MapManager.Instance != null) MapManager.Instance.HideAllTiles();
+        if (mouseController != null) mouseController.ClearRangeTiles();
+
+        // Asegurar allUnits no sea null
+        if (allUnits == null) allUnits = new List<Unit>();
+
         foreach (var u in allUnits)
         {
+            if (u == null) continue;
             var turnable = u.GetComponent<Turnable>();
             if (turnable == null)
                 continue;
 
             if (u == current)
                 turnable.ActivateTurn();
-            // Informa al MouseController
-            var ci = current.GetComponent<CharacterInfo>();
-            if (ci != null)
-                mouseController.SetActiveCharacter(ci);
             else
                 turnable.DeactivateTurn();
         }
-        attackController.SetCurrentUnit(current);
+
+        // Informa al MouseController sobre el current
+        if (current != null && mouseController != null)
+        {
+            var ci = current.GetComponent<CharacterInfo>();
+            var unit = current.GetComponent<Unit>();
+            if (ci != null)
+                mouseController.SetActiveCharacter(ci, unit);
+        }
+
+        if (attackController != null) attackController.SetCurrentUnit(current);
         // >>> Forzamos refrescar el HUD de detalles:
         if (detailsUI != null)
             detailsUI.ShowDetails(current);
@@ -179,21 +419,49 @@ public class BattleSystem : MonoBehaviour
         {
             zoom.SetTarget(current.transform);
         }
-
-        //mouseController.DeselectCharacter(); // limpia cualquier selección previa
     }
 
     bool BattleOver()
     {
-        bool allDeadEnemies  = initiativeManager.enemies .All(e => e.currentHP <= 0);
-        bool allDeadAllies   = initiativeManager.allies  .All(a => a.currentHP <= 0);
+        bool allDeadEnemies = initiativeManager.enemies.All(e => e.currentHP <= 0);
+        bool allDeadAllies = initiativeManager.allies.All(a => a.currentHP <= 0);
         return allDeadEnemies || allDeadAllies;
     }
 
-
-    private void Update()
+    /// <summary>
+    /// Actualiza la casilla ocupada por un enemigo de forma segura:
+    /// - encuentra el índice del Unit en EnemyUnity
+    /// - libera la casilla previa si existía
+    /// - marca la nueva casilla como ocupada y actualiza PositionEnemy[index]
+    /// - si la unidad no estaba registrada, la registra (RegisterUnits)
+    /// </summary>
+    public void UpdateEnemyPosition(Unit enemyUnit, OverlayTile newTile)
     {
-        
-    }
+        if (enemyUnit == null || newTile == null) return;
 
+        // Asegurarse de que la unidad esté registrada
+        if (!EnemyUnity.Contains(enemyUnit))
+        {
+            RegisterUnits(enemyUnit);
+        }
+
+        int idx = EnemyUnity.IndexOf(enemyUnit);
+        if (idx < 0)
+        {
+            return;
+        }
+
+        // Asegurar capacidad de PositionEnemy
+        while (PositionEnemy.Count <= idx)
+            PositionEnemy.Add(null);
+
+        var prev = PositionEnemy[idx];
+        if (prev != null && prev != newTile)
+        {
+            prev.isBlocked = false;
+        }
+
+        PositionEnemy[idx] = newTile;
+        newTile.isBlocked = true;
+    }
 }

@@ -5,10 +5,12 @@ public class Turnable : MonoBehaviour
 {
     public GameObject aura;
     public Button btnBatalla;
+    public Button btnMoverse;
     public GameObject letreroPj;
     //public GameObject panelAcciones;
     public PanelAcciones panelScript;
     public GameObject iconoEspacio;
+    public GameObject panelBatalla;
 
 
     /// <summary>
@@ -34,8 +36,9 @@ public class Turnable : MonoBehaviour
 
         if (letreroPj != null) letreroPj.SetActive(true);
         if (iconoEspacio != null) iconoEspacio.SetActive(true);
+        if (panelBatalla != null) panelBatalla.SetActive(false);
 
-
+        
     }
 
     /// <summary>
@@ -62,5 +65,17 @@ public class Turnable : MonoBehaviour
         if (panelScript != null) panelScript.Hide();
         if (letreroPj != null) letreroPj.SetActive(false);
         if (iconoEspacio != null) iconoEspacio.SetActive(false);
+    }
+
+    private void Update()
+    {
+        // Si el botón atacar está desactivado, ocultamos el panelBatalla
+        if (btnBatalla != null && panelBatalla != null)
+        {
+            if (!btnBatalla.interactable && panelBatalla.activeSelf)
+            {
+                panelBatalla.SetActive(false);
+            }
+        }
     }
 }
