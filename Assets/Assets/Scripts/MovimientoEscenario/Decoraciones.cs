@@ -1,19 +1,23 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Decoraciones : MonoBehaviour
 {
-    public GameObject player;
+    public enum SortGroup { Background = 0, Dynamic = 1, Foreground = 2 }
+
+    public SortGroup sortGroup = SortGroup.Dynamic;
+
+    private SpriteRenderer _renderer;
+
     public float yDiff;
 
-    void Update()
+    void Awake()
     {
-        if (player.transform.position.y > transform.position.y + yDiff)
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y, -3f);
-        }
-        else
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y, -1f);
-        }
+        _renderer = GetComponent<SpriteRenderer>();
     }
+
+    public float EffectiveY => transform.position.y + yDiff;
+
+    public SpriteRenderer Renderer => _renderer;
+
 }

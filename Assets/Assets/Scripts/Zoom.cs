@@ -9,10 +9,14 @@ public class Zoom : MonoBehaviour
     private bool isFollowingTarget = true;
 
     public float zoomSpeed = 0.6f;
+    public float triggerZoomSpeed = 3f;
     public float zoomFactor = 1.8f;
     public float minZoom = 1.2f;
     public float maxZoom = 5f;
     public float returnSpeed = 5f;
+
+    private float joystickSensitivity;
+    public float sensitivity;
 
     public Transform targetToFollow;
     public float followSpeed = 5f;
@@ -28,6 +32,18 @@ public class Zoom : MonoBehaviour
 
     void Update()
     {
+        Vector2 rightStickInput = new Vector2(
+        Input.GetAxis("RightStickX"),
+        Input.GetAxis("RightStickY")
+        );
+        joystickSensitivity = 5 * sensitivity;
+
+        if (rightStickInput.magnitude > 0.1f)
+        {
+            MoveCameraWithJoystick(rightStickInput);
+            isFollowingTarget = false;
+        }
+
         if (Input.GetMouseButtonDown(2))
         {
             lastMousePosition = Input.mousePosition;
@@ -36,7 +52,7 @@ public class Zoom : MonoBehaviour
         if (Input.GetMouseButton(2))
         {
             MoveCamera();
-            isFollowingTarget = false; //mueves la cámara, deja de seguir
+            isFollowingTarget = false; //mueves la cï¿½mara, deja de seguir
         }
 
         HandleZoom();
@@ -51,7 +67,7 @@ public class Zoom : MonoBehaviour
             zoomHintUI.SetActive(!isFollowingTarget && dist > 0.2f);
         }
 
-        //Volver al personaje solo si isFollowingTarget está activo
+        //Volver al personaje solo si isFollowingTarget estï¿½ activo
         if (isFollowingTarget && targetToFollow != null)
         {
             Vector3 targetPos = new Vector3(targetToFollow.position.x, targetToFollow.position.y, cam.transform.position.z);
@@ -59,7 +75,7 @@ public class Zoom : MonoBehaviour
         }
 
         //Z = seguir al personaje
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Joystick1Button5))
         {
             ForceZoomOut();
         }
@@ -69,7 +85,28 @@ public class Zoom : MonoBehaviour
     {
         float scroll = Input.mouseScrollDelta.y;
 
-        if (scroll > 0)
+        float JoystickScroll = Input.GetAxis("L2") - Input.GetAxis("R2");
+
+        if (Mathf.Approximately(scroll, 0f) && Mathf.Approximately(JoystickScroll, 0f))
+        {
+            return;
+        }
+
+        float zoomInput;
+        float currentSpeed;
+
+        if (!Mathf.Approximately(scroll, 0f))
+        {
+            zoomInput = scroll;
+            currentSpeed = zoomSpeed;
+        }
+        else
+        {
+            zoomInput = JoystickScroll;
+            currentSpeed = triggerZoomSpeed;
+        }
+
+        if (zoomInput > 0)
         {
             if (!isZoomedIn)
             {
@@ -79,24 +116,19 @@ public class Zoom : MonoBehaviour
 
             isReturning = false;
 
-            cam.orthographicSize -= scroll * zoomSpeed;
-            cam.orthographicSize = Mathf.Clamp(cam.orthographicSize, minZoom, maxZoom);
-
             isFollowingTarget = false;
         }
-        else if (scroll < 0)
+        else if (zoomInput < 0)
         {
-            cam.orthographicSize -= scroll * zoomSpeed;
-            cam.orthographicSize = Mathf.Clamp(cam.orthographicSize, minZoom, maxZoom);
-
             if (isZoomedIn && Mathf.Approximately(cam.orthographicSize, maxZoom))
             {
                 isZoomedIn = false;
                 isReturning = false;
             }
         }
-
-        isReturning = false;
+        
+        cam.orthographicSize -= zoomInput * currentSpeed;
+        cam.orthographicSize = Mathf.Clamp(cam.orthographicSize, minZoom, maxZoom);
     }
 
     public void ForceZoomOut()
@@ -105,7 +137,7 @@ public class Zoom : MonoBehaviour
         if (currentUnit != null)
         {
             targetToFollow = currentUnit.transform;
-            isFollowingTarget = true; 
+            isFollowingTarget = true;
         }
     }
 
@@ -139,4 +171,16 @@ public class Zoom : MonoBehaviour
 
         lastMousePosition = currentMouseScreenPos;
     }
+    
+    void MoveCameraWithJoystick(Vector2 input)
+    {
+        // Convertir input del stick en desplazamiento en el mundo
+        Vector3 right = cam.transform.right;
+        Vector3 up = cam.transform.up;
+
+        Vector3 moveDirection = (right * input.x + up * -input.y) * joystickSensitivity * Time.deltaTime;
+
+        transform.position += moveDirection;
+    }
+
 }

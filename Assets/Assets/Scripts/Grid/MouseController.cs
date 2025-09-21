@@ -72,8 +72,10 @@ public class MouseControler : MonoBehaviour
 
     void LateUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && showPanelAcciones && character != null && cantidadPociones > 0 && canPocion)
+        if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Joystick1Button4))
         {
+            if (showPanelAcciones && character != null && cantidadPociones > 0 && canPocion)
+            {
             var unit = character.GetComponent<Unit>();
             if (unit != null)
             {
@@ -90,6 +92,21 @@ public class MouseControler : MonoBehaviour
                     turnable.btnBatalla.interactable = false;
                 }
                 TryAutoEndTurn();
+            }
+                
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape) && canMove)
+        {
+            canMove = false;
+            ClearRangeTiles();
+            showPanelAcciones = true;
+
+            var turnable = character?.GetComponent<Turnable>();
+            if (turnable != null)
+            {
+                turnable.ActivateTurn(); // Reactiva el panel de acciones
             }
         }
 
@@ -117,8 +134,16 @@ public class MouseControler : MonoBehaviour
 
             if (overlayTile == null) return;
 
-            transform.position = overlayTile.transform.position;
-            gameObject.GetComponent<SpriteRenderer>().sortingOrder = overlayTile.GetComponent<SpriteRenderer>().sortingOrder;
+            if (canMove && inRangeTiles.Contains(overlayTile))
+            {
+                transform.position = overlayTile.transform.position;
+                gameObject.GetComponent<SpriteRenderer>().sortingOrder = overlayTile.GetComponent<SpriteRenderer>().sortingOrder;
+                GetComponent<SpriteRenderer>().enabled = true;
+            }
+            else
+            {
+                GetComponent<SpriteRenderer>().enabled = false; // Ocultar cursor si no está en rango
+            }
 
             if (Input.GetMouseButtonDown(0))
             {
@@ -171,18 +196,25 @@ public class MouseControler : MonoBehaviour
                 //}
             }
         }
+        else
+        {
+            // ✅ Si no hay tile bajo el mouse, ocultar el cursor
+            GetComponent<SpriteRenderer>().enabled = false;
+        }
 
         if (character != null && path.Count > 0)
         {
             MoveAlongPath();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && canSkip)      //Termina el turno al presionar espacio
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button7))      //Termina el turno al presionar espacio
         {
-            DeselectCharacter();
+            if (canSkip)
+            {
+                DeselectCharacter();
 
-            return;
-
+                return;  
+            }
         }
 
         // Disparar/limpiar rango cuando cambia canMove
@@ -238,9 +270,7 @@ public class MouseControler : MonoBehaviour
         foreach (var item in inRangeTiles)
         {
             item.ShowTile();
-        }
-
-       
+        }       
     }
 
     public void ClearRangeTiles()

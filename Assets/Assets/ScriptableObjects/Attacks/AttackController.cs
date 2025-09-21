@@ -68,7 +68,7 @@ public class AttackController : MonoBehaviour
             if (hovered != null && validTiles.Contains(hovered))
                 ConfirmAttack(hovered);
         }
-        else if (Input.GetKeyDown(KeyCode.Escape))
+        else if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button1))
         {
             ExitAttackMode();
         }

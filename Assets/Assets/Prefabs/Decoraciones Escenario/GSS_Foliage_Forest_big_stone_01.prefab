@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5446328108600383962}
   - component: {fileID: -8759798293547132783}
   - component: {fileID: -3789235527516106325}
+  - component: {fileID: -8987948594311807228}
   m_Layer: 0
   m_Name: GSS_Foliage_Forest_big_stone_01
   m_TagString: Untagged
@@ -27,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6078365193740915293}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.66943, y: 0.243895, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.66943, y: 0.243895, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -162,8 +163,31 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0, y: 0.25}
-      - {x: -0.5, y: 0}
-      - {x: 0, y: -0.25}
-      - {x: 0.5, y: 0}
+    - - {x: 0.64280224, y: 0.5254866}
+      - {x: -0.11048961, y: 0.77296436}
+      - {x: -0.2743771, y: 0.8118131}
+      - {x: -0.46820688, y: 0.7817547}
+      - {x: -0.5975394, y: 0.73658353}
+      - {x: -0.644681, y: 0.6403097}
+      - {x: -0.14179611, y: 0.51446724}
+      - {x: -0.21764255, y: 0.4207504}
+      - {x: -0.26268816, y: 0.25725964}
+      - {x: -0.18258595, y: 0.13140687}
+      - {x: 0.018194437, y: 0.04834053}
+      - {x: 0.40404654, y: 0.03772992}
+      - {x: 0.6101948, y: 0.2509988}
   m_UseDelaunayMesh: 0
+--- !u!114 &-8987948594311807228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6078365193740915293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51ace02461c0e77458ac357d2433cfbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortGroup: 1
+  yDiff: 0.55

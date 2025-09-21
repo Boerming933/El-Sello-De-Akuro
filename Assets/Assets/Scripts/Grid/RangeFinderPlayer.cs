@@ -35,6 +35,5 @@ public class RangeFinderPlayer
         }
 
         return reachable.ToList();
-
     }
 }
