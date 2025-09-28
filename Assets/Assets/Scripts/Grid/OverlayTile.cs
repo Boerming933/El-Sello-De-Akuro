@@ -1,0 +1,56 @@
+using System;
+using UnityEngine;
+
+public class OverlayTile : MonoBehaviour
+{
+    public Int32 G;
+    public Int32 H;
+
+    public Int32 F { get { return G + H; } }
+
+    public OverlayTile targetReference;
+
+    public bool isBlocked;
+
+    public OverlayTile previous;
+
+    public Vector3Int gridLocation;
+
+    public Vector2Int grid2DLocation { get { return new Vector2Int(gridLocation.x, gridLocation.y); } }
+
+    [HideInInspector] public CharacterInfo occupant;
+
+    [SerializeField] private SpriteRenderer _sr;
+
+    public void ChangeLayer()
+    {
+        GameObject overlayTile = GetComponent<GameObject>();
+        overlayTile.layer = 6;
+    }
+
+    void Awake()
+    {
+        _sr = GetComponent<SpriteRenderer>();
+    }
+    
+    public void ShowTile()
+    {
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
+    }
+
+    public void HideTile()
+    {
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);
+    }
+    
+    public void ShowOverlay(Color c)
+    {
+        _sr.color = c;
+    }
+
+    // Vuelve transparente
+    public void HideTile2()
+    {
+        _sr.color = new Color(1, 1, 1, 0);
+    }
+}
