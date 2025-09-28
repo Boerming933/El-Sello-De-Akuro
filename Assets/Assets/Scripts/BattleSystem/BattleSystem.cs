@@ -26,26 +26,19 @@ public class BattleSystem : MonoBehaviour
 
     public InitiativeManager initiativeManager;
     public MouseControler mouseController;
-    public List<EnemyIA> EnemyIAs = new List<EnemyIA>();
     // Colección de todos los participantes
     private List<Unit> allUnits;
 
     public event System.Action<Unit> OnTurnStart;
     private Unit _currentUnit;
     public Unit CurrentUnit => _currentUnit;
-    public BuffDebuffAttackController attackController;
+    public AttackController attackController;
 
     public CharacterDetailsUI detailsUI;
 
     private void Awake()
     {
         Instance = this;
-        
-        // ✅ Add AttackUsesRuntimeManager component if not present
-        if (GetComponent<AttackUsesRuntimeManager>() == null)
-        {
-            gameObject.AddComponent<AttackUsesRuntimeManager>();
-        }
     }
 
     IEnumerator Start()
@@ -90,9 +83,7 @@ public class BattleSystem : MonoBehaviour
         for (int i = 0; i < EnemiesPrefab.Count; i++)
         {
             Unit unit = EnemiesPrefab[i].GetComponent<Unit>();
-            EnemyIA enemyIA = EnemiesPrefab[i].GetComponent<EnemyIA>();
             RegisterUnits(unit);
-            EnemyIAs.Add(enemyIA);
             EnemyUnity.Add(unit);
         }
 
@@ -152,6 +143,8 @@ public class BattleSystem : MonoBehaviour
             PositionEnemy[EnemyUnity.Count] = overlay;
             overlay.isBlocked = true;
 
+            //if (!EnemyUnity.Contains(unit))
+            //    EnemyUnity.Add(unit);
         }
         else
         {
@@ -161,6 +154,8 @@ public class BattleSystem : MonoBehaviour
             PositionPlayer[PlayerUnity.Count] = overlay;
             overlay.isBlocked = true;
 
+            if (!PlayerUnity.Contains(unit))
+                PlayerUnity.Add(unit);
         }
     }
 
@@ -304,15 +299,6 @@ public class BattleSystem : MonoBehaviour
 
     private IEnumerator PlayerTurn(Unit ally)
     {
-        // ✅ Double-check: Should this player skip their turn?
-        var statusManager = ally.GetComponent<StatusEffectManager>();
-        if (statusManager != null && statusManager.ShouldSkipTurn())
-        {
-            Debug.Log($"Player {ally.name} is skipping turn due to status effects!");
-            mouseController.turnEnded = true;
-            yield break;
-        }
-
         // Habilita lógica de entrada (mover/atacar).
         mouseController.canMove = true;
         mouseController.canAttack = true;
@@ -332,33 +318,14 @@ public class BattleSystem : MonoBehaviour
 
     private IEnumerator EnemyTurn(Unit enemy)
     {
-        // ✅ Double-check: Should this enemy skip their turn?
-        var statusManager = enemy.GetComponent<StatusEffectManager>();
-        if (statusManager != null && statusManager.ShouldSkipTurn())
-        {
-            Debug.Log($"Enemy {enemy.name} is skipping turn due to status effects!");
-            mouseController.turnEnded = true;
-            yield break;
-        }
-
         // Deshabilitar inputs de jugador
         mouseController.enabled = false;
         mouseController.canMove = false;
         mouseController.canAttack = false;
         mouseController.showPanelAcciones = false;
-        int n = 0;
+        //mouseController.canPocion = true;
 
-        for (int i = 0; i < EnemyUnity.Count; i++)
-        {
-            if (EnemyUnity[i] == enemy)
-            {
-                n = i;
-                break;
-            }
-        }
-        EnemyIAs[n].LogicAI();
-
-        float timeLeft = 5f;
+        float timeLeft = 60f;
 
         while (timeLeft > 0f && !mouseController.turnEnded)
         {
@@ -441,17 +408,6 @@ public class BattleSystem : MonoBehaviour
             var unit = current.GetComponent<Unit>();
             if (ci != null)
                 mouseController.SetActiveCharacter(ci, unit);
-        }
-
-        // ✅ CHECK: Should this unit skip their turn due to status effects?
-        var statusManager = current.GetComponent<StatusEffectManager>();
-        if (statusManager != null && statusManager.ShouldSkipTurn())
-        {
-            Debug.Log($"[BattleSystem] {current.name} is skipping turn due to status effects (Stun, etc.)!");
-            
-            // Skip this turn immediately by setting turnEnded = true
-            mouseController.turnEnded = true;
-            return;
         }
 
         if (attackController != null) attackController.SetCurrentUnit(current);

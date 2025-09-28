@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{F07A8394-6B1E-B1B4-E872-E0B4B453C2E1}</ProjectGuid>
+    <ProjectGuid>{83924FF8-A47D-64DC-11C1-17CF7D453976}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -61,7 +61,6 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.47f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Assets\ScriptableObjects\Attacks\BuffDebuffAttackController.cs" />
     <Compile Include="Assets\Assets\Scripts\Grid\MapManager.cs" />
     <Compile Include="Assets\Assets\Scripts\Grid\CharacterInfo.cs" />
     <Compile Include="Assets\Assets\Scripts\HUD\Dialogue.cs" />
@@ -74,16 +73,11 @@
     <Compile Include="Assets\Assets\Scripts\BattleSystem\PanelBatalla.cs" />
     <Compile Include="Assets\Assets\Scripts\Grid\BlockedRuleTile.cs" />
     <Compile Include="Assets\Assets\Scripts\Obstaculos\ObstacleManager.cs" />
-    <Compile Include="Assets\Assets\ScriptableObjects\Attacks\StatusEffectFactory.cs" />
-    <Compile Include="Assets\Assets\ScriptableObjects\Attacks\BuffDebuffAttackData.cs" />
-    <Compile Include="Assets\Assets\Scripts\HUD\TurnOrderDisplay.cs" />
     <Compile Include="Assets\Assets\Scripts\Zoom.cs" />
     <Compile Include="Assets\Assets\Scripts\BattleSystem\BattleSystem.cs" />
     <Compile Include="Assets\Assets\Scripts\HUD\BattleHUD.cs" />
     <Compile Include="Assets\Assets\Scripts\BattleSystem\Enemy\Enemy IA.cs" />
-    <Compile Include="Assets\Assets\ScriptableObjects\Attacks\AttackUsesRuntimeManager.cs" />
     <Compile Include="Assets\Assets\Scripts\BattleSystem\Turnable.cs" />
-    <Compile Include="Assets\Assets\ScriptableObjects\Attacks\StatusEffectManager.cs" />
     <Compile Include="Assets\Assets\Scripts\HUD\AttackButtonHUD.cs" />
     <Compile Include="Assets\Assets\Scripts\HUD\AttackSelectionUI.cs" />
     <Compile Include="Assets\Assets\Scripts\Scenes\SceneChange.cs" />
@@ -98,25 +92,19 @@
     <Compile Include="Assets\Assets\Scripts\HUD\UnitSelection.cs" />
     <Compile Include="Assets\Assets\Scripts\Grid\OverlayTile.cs" />
     <Compile Include="Assets\Assets\Scripts\MovimientoEscenario\MovimientoJugador.cs" />
-    <Compile Include="Assets\Assets\ScriptableObjects\Attacks\AttackUsesManager.cs" />
-    <Compile Include="Assets\Assets\ScriptableObjects\Attacks\AttackUsesResetMenu.cs" />
     <Compile Include="Assets\Assets\Scripts\Grid\PathFinder.cs" />
     <Compile Include="Assets\Assets\Scripts\Grid\RangeFinderPlayer.cs" />
     <Compile Include="Assets\Assets\Scripts\Grid\MouseController.cs" />
     <Compile Include="Assets\Assets\Scripts\Obstaculos\DecoracionCombate.cs" />
-    <Compile Include="Assets\Assets\ScriptableObjects\Attacks\AttackControllerEnemy.cs" />
     <Compile Include="Assets\Assets\ScriptableObjects\Attacks\AttackController.cs" />
-    <Compile Include="Assets\Assets\ScriptableObjects\Attacks\PlayModeAttackUsesReset.cs" />
     <Compile Include="Assets\Assets\Scripts\BattleSystem\Enemy\Enemy.cs" />
     <Compile Include="Assets\Assets\ScriptableObjects\Attacks\AttackData.cs" />
     <Compile Include="Assets\Assets\Scripts\BattleSystem\PanelAcciones.cs" />
     <Compile Include="Assets\Assets\Scripts\Personajes\CharacterClick.cs" />
     <Compile Include="Assets\Assets\Scripts\BattleSystem\Enemy\PlayerTile.cs" />
     <Compile Include="Assets\Assets\Scripts\BattleSystem\Enemy\Pathfinder Enemy.cs" />
-    <Compile Include="Assets\Assets\ScriptableObjects\Attacks\StatusEffect.cs" />
     <Compile Include="Assets\Assets\Scripts\HUD\UnitHUD.cs" />
     <Compile Include="Assets\Assets\Scripts\Personajes\InitiativeEntry.cs" />
-    <Compile Include="Assets\Assets\ScriptableObjects\Attacks\PlayModeAttackReset.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -610,14 +598,6 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.47f1\Editor\Data\Managed\UnityEngine\UnityEditor.XRModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="SharpToken">
-      <HintPath>Packages\com.bezi.sidekick\Plugins\SharpToken.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>Packages\com.bezi.sidekick\Plugins\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
       <HintPath>Library\PackageCache\com.unity.collections@56bff8827a7e\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
       <Private>False</Private>
@@ -626,36 +606,12 @@
       <HintPath>Library\PackageCache\com.unity.ext.nunit@031a54704bff\net40\unity-custom\nunit.framework.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="bezi-websocket-sharp">
-      <HintPath>Packages\com.bezi.sidekick\Plugins\bezi-websocket-sharp.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Microsoft.CodeAnalysis">
-      <HintPath>Packages\com.bezi.sidekick\Plugins\Microsoft.CodeAnalysis.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Collections.Immutable">
-      <HintPath>Packages\com.bezi.sidekick\Plugins\System.Collections.Immutable.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.visualscripting@7dcdc439b230\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@74deb55db2a0\Runtime\Newtonsoft.Json.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@d6f9955a5d5f\Mono.Cecil.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Reflection.Metadata">
-      <HintPath>Packages\com.bezi.sidekick\Plugins\System.Reflection.Metadata.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Microsoft.CodeAnalysis.CSharp">
-      <HintPath>Packages\com.bezi.sidekick\Plugins\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="netstandard">

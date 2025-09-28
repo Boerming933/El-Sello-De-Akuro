@@ -25,15 +25,6 @@ public class AttackController : MonoBehaviour
     private bool attackExecuted;
     private List<BattleHUD> hudsToReset = new();
 
-    // --- Nuevo: 4 "coordenadas"/facings que pediste ---
-    public enum Facing4
-    {
-        ArribaIzq = 0, // "y"
-        ArribaDer = 1, // "x"
-        AbajoDer = 2, // "-y"
-        AbajoIzq = 3  // "-x"
-    }
-
     void OnEnable() => attackUI.OnAttackChosen += EnterAttackMode;
     void OnDisable() => attackUI.OnAttackChosen -= EnterAttackMode;
 
@@ -93,63 +84,48 @@ public class AttackController : MonoBehaviour
             return;
         }
 
-        // Si cambió el tile bajo el cursor, actualizamos facing del personaje (según la tile bajo el pj)
-        if (hovered != lastHoverTile)
+        if (hovered == lastHoverTile) return;
+        ClearPreview();
+
+        var area = GetEffectArea(hovered);
+        previewTiles = area;
+        previewTiles.ForEach(t => t.ShowOverlay(previewColor));
+        lastHoverTile = hovered;
+
+        var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (var enemyObj in enemies)
         {
-            // Determinar la tile bajo el jugador
-            float originThreshold = 0.1f;
-            var playerTile = MapManager.Instance.map.Values
-                .FirstOrDefault(t => Vector2.Distance((Vector2)t.transform.position, (Vector2)currentUnit.transform.position) < originThreshold);
+            var unit = enemyObj.GetComponent<Unit>();
+            if (unit == null) continue;
 
-            if (playerTile != null)
+            bool isInArea = previewTiles.Any(tile =>
+                Vector2.Distance(tile.transform.position, enemyObj.transform.position) < 0.2f
+            );
+
+            var gabiteHUDObj = enemyObj.transform.Find("HUDSecundaria/GabiteHUD");
+            if (gabiteHUDObj != null)
             {
-                // Calcular facing usando las 4 coordenadas que pediste
-                var facing = DetermineFacingFromTiles(playerTile, hovered);
-                ApplyFacingToUnit(currentUnit, facing);
-            }
-
-            ClearPreview();
-
-            var area = GetEffectArea(hovered);
-            previewTiles = area;
-            previewTiles.ForEach(t => t.ShowOverlay(previewColor));
-            lastHoverTile = hovered;
-
-            var enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            foreach (var enemyObj in enemies)
-            {
-                var unit = enemyObj.GetComponent<Unit>();
-                if (unit == null) continue;
-
-                bool isInArea = previewTiles.Any(tile =>
-                    Vector2.Distance(tile.transform.position, enemyObj.transform.position) < 0.2f
-                );
-
-                var gabiteHUDObj = enemyObj.transform.Find("HUDSecundaria/GabiteHUD");
-                if (gabiteHUDObj != null)
+                var gabiteHUD = gabiteHUDObj.GetComponent<BattleHUD>();
+                if (gabiteHUD != null)
                 {
-                    var gabiteHUD = gabiteHUDObj.GetComponent<BattleHUD>();
-                    if (gabiteHUD != null)
+                    if (isInArea)
                     {
-                        if (isInArea)
-                        {
-                            gabiteHUD.SetHUD(unit);
-                            gabiteHUD.PreviewDamage(Mathf.RoundToInt(currentAttack.damage + currentUnit.Fue * currentAttack.scalingFactor));                               ///////
-                            gabiteHUD.Show();
-                            if (!hudsToReset.Contains(gabiteHUD)) hudsToReset.Add(gabiteHUD);
-                        }
-                        else
-                        {
-                            gabiteHUD.ResetPreview();
-                            gabiteHUD.Hide();
-                        }
+                        gabiteHUD.SetHUD(unit);
+                        gabiteHUD.PreviewDamage(Mathf.RoundToInt(currentAttack.damage * currentAttack.scalingFactor));                               ///////
+                        gabiteHUD.Show();
+                        if (!hudsToReset.Contains(gabiteHUD)) hudsToReset.Add(gabiteHUD);
+                    }
+                    else
+                    {
+                        gabiteHUD.ResetPreview();
+                        gabiteHUD.Hide();
                     }
                 }
-
-                var hitMarker = enemyObj.transform.Find("HitMarker");
-                if (hitMarker != null)
-                    hitMarker.gameObject.SetActive(isInArea);
             }
+
+            var hitMarker = enemyObj.transform.Find("HitMarker");
+            if (hitMarker != null)
+                hitMarker.gameObject.SetActive(isInArea);
         }
     }
 
@@ -186,26 +162,22 @@ public class AttackController : MonoBehaviour
                 area = rangeFinder.GetTilesInRange(center, size);
                 break;
             case AreaShape.LineHorizontal:
-                // 1) Encontramos la casilla donde está el jugador
-                float originThreshold = 0.1f;
-                var playerTileH = MapManager.Instance.map.Values.FirstOrDefault(t => Vector2.Distance((Vector2)t.transform.position, (Vector2)currentUnit.transform.position) < originThreshold);
-                if (playerTileH != null)
+                Vector2 isoH = new Vector2(0.5f, 0.25f);
+                for (int i = -size; i <= size; i++)
                 {
-                    // 2) Determinamos el facing según la tile hover (que llegó como 'center')
-                    var facingH = DetermineFacingFromTiles(playerTileH, center);
-                    // 3) Generamos el área dinámica
-                    area = GetDirectionalHorizontal(playerTileH, facingH, currentAttack.areaSize);
+                    Vector2 samplePos = origin + isoH * i;
+                    var tile = mapTiles.FirstOrDefault(t => Vector2.Distance(t.transform.position, samplePos) < threshold);
+                    if (tile != null) area.Add(tile);
                 }
                 break;
             case AreaShape.LineVertical:
-               float originThresholdV = 0.1f;
-               var playerTileV = MapManager.Instance.map.Values
-                   .FirstOrDefault(t => Vector2.Distance((Vector2)t.transform.position, (Vector2)currentUnit.transform.position) < originThresholdV);
-               if (playerTileV != null)
-               {
-                   var facingV = DetermineFacingFromTiles(playerTileV, center);
-                   area = GetDirectionalVertical(playerTileV, facingV, currentAttack.areaSize);
-               }
+                Vector2 isoV = new Vector2(0.5f, -0.25f);
+                for (int i = -size; i <= size; i++)
+                {
+                    Vector2 samplePos = origin + isoV * i;
+                    var tile = mapTiles.FirstOrDefault(t => Vector2.Distance(t.transform.position, samplePos) < threshold);
+                    if (tile != null) area.Add(tile);
+                }
                 break;
             case AreaShape.Cross:
                 area.Add(center);
@@ -228,13 +200,6 @@ public class AttackController : MonoBehaviour
                     }
                 }
                 break;
-            case AreaShape.Boomerang:
-                float OriginThreshold = 0.1f;
-                var playerTile = MapManager.Instance.map.Values
-                    .FirstOrDefault(t => Vector2.Distance((Vector2)t.transform.position, (Vector2)currentUnit.transform.position) < OriginThreshold);
-                area = GetBoomerangArea(playerTile, center);
-                break;
-
         }
         return area;
     }
@@ -277,7 +242,7 @@ public class AttackController : MonoBehaviour
                         {
 
                             gabiteHUD.SetHUD(u);
-                            gabiteHUD.ApplyDamage(Mathf.RoundToInt(currentAttack.damage + currentUnit.Fue * currentAttack.scalingFactor));                                 /////
+                            gabiteHUD.ApplyDamage(Mathf.RoundToInt(currentAttack.damage * currentAttack.scalingFactor));                                 //////
                             gabiteHUD.Show();
                             hudsToReset.Add(gabiteHUD);
                         }
@@ -293,7 +258,7 @@ public class AttackController : MonoBehaviour
             foreach (var col in hits)
             {
                 if (col.TryGetComponent<Unit>(out Unit u) && u.CompareTag("Enemy"))
-                    u.TakeDamage(Mathf.RoundToInt(currentAttack.damage + currentUnit.Fue * currentAttack.scalingFactor));                                                    ///
+                    u.TakeDamage(Mathf.RoundToInt(currentAttack.damage * currentAttack.scalingFactor));                                                    /////
             }
         }
 
@@ -433,188 +398,4 @@ public class AttackController : MonoBehaviour
                 hitMarker.gameObject.SetActive(false);
         }
     }
-
-    // --- GetBoomerangArea ahora usa DetermineFacingFromTiles con las 4 coordenadas pedidas ---
-    List<OverlayTile> GetBoomerangArea(OverlayTile center, OverlayTile target)
-    {
-        var result = new List<OverlayTile>();
-        if (center == null) return result;
-        if (MapManager.Instance == null || MapManager.Instance.map == null) return result;
-
-        // Offsets base para la dirección RIGHT (referencia)
-        var baseOffsets = new List<Vector2Int>
-        {
-            new Vector2Int(1,0),
-            new Vector2Int(2,0),
-            new Vector2Int(2,1),
-            new Vector2Int(3,1),
-            new Vector2Int(4,1),
-            new Vector2Int(4,0),
-            new Vector2Int(4,-1),
-            new Vector2Int(3,-1),
-            new Vector2Int(2,-1)
-        };
-
-        // Determinar facing usando la función común
-        var facing = DetermineFacingFromTiles(center, target);
-
-        List<Vector2Int> chosenOffsets;
-
-        switch (facing)
-        {
-            case Facing4.ArribaDer: // "x"  -> RIGHT
-                chosenOffsets = baseOffsets;
-                break;
-            case Facing4.AbajoIzq: // "-x" -> LEFT
-                chosenOffsets = baseOffsets.Select(o => new Vector2Int(-o.x, -o.y)).ToList();
-                break;
-            case Facing4.ArribaIzq: // "y" -> UP
-                chosenOffsets = baseOffsets.Select(o => new Vector2Int(-o.y, o.x)).ToList();
-                break;
-            case Facing4.AbajoDer: // "-y" -> DOWN
-                chosenOffsets = baseOffsets.Select(o => new Vector2Int(o.y, -o.x)).ToList();
-                break;
-            default:
-                chosenOffsets = baseOffsets;
-                break;
-        }
-
-        // Convertir offsets a tiles consultando el map por grid2DLocation
-        Vector2Int c = center.grid2DLocation;
-        foreach (var off in chosenOffsets)
-        {
-            var key = c + off;
-            if (MapManager.Instance.map.TryGetValue(key, out var tile) && tile != null)
-                result.Add(tile);
-        }
-
-        return result;
-    }
-
-    // --- NUEVO: determina facing usando las 4 coordenadas que pediste ---
-    Facing4 DetermineFacingFromTiles(OverlayTile playerTile, OverlayTile targetTile)
-    {
-        if (playerTile == null) return Facing4.ArribaDer; // default
-
-        Vector2Int c = playerTile.grid2DLocation;
-        Vector2Int t = (targetTile != null) ? targetTile.grid2DLocation : c + Vector2Int.right;
-        Vector2Int delta = new Vector2Int(t.x - c.x, t.y - c.y);
-
-        if (delta == Vector2Int.zero) delta = Vector2Int.right;
-
-        // Según tu especificación:
-        // ArribaIzq = y (up)
-        // ArribaDer = x (right)
-        // AbajoDer  = -y (down)
-        // AbajoIzq  = -x (left)
-
-        if (Mathf.Abs(delta.x) >= Mathf.Abs(delta.y))
-        {
-            // Dominante horizontal -> "x" o "-x"
-            return delta.x > 0 ? Facing4.ArribaDer : Facing4.AbajoIzq;
-        }
-        else
-        {
-            // Dominante vertical -> "y" o "-y"
-            return delta.y > 0 ? Facing4.ArribaIzq : Facing4.AbajoDer;
-        }
-    }
-
-    // --- NUEVO: aplica el facing al personaje (intento seguro: Animator int + Sprite flipX fallback)
-    void ApplyFacingToUnit(Unit unit, Facing4 facing)
-    {
-        if (unit == null) return;
-
-        // 1) Animator: buscamos un parámetro int "FacingIndex" (si existe lo seteamos)
-        var anim = unit.GetComponentInChildren<Animator>();
-        if (anim != null)
-        {
-            // intentamos setear, si no existe el parámetro no pasa nada visible
-            try { anim.SetInteger("FacingIndex", (int)facing); }
-            catch { /* harmless if param missing */ }
-        }
-
-        // 2) SpriteRenderer fallback: flip horizontal para diferenciar las dos mitades
-        var sr = unit.GetComponentInChildren<SpriteRenderer>();
-        if (sr != null)
-        {
-            // definimos que ArribaDer (x) y AbajoDer ( -y ) usen flipX = false
-            // y ArribaIzq / AbajoIzq usen flipX = true -- ajustalo segun tus sprites
-            if (facing == Facing4.ArribaDer || facing == Facing4.AbajoDer)
-                sr.flipX = true;
-            else
-                sr.flipX = false;
-        }
-
-        // 3) Si tu clase Unit tiene una propiedad para el facing, podríamos setearla (si existe).
-        //    Para no depender de la implementación exacta dejamos esto opcional.
-    }
-
-    /// <summary>
-    /// Convierte un Facing4 a un vector de desplazamiento en grid2D.
-    /// </summary>
-    Vector2Int FacingToVector(Facing4 f)
-    {
-        switch (f)
-        {
-            case Facing4.ArribaIzq: return new Vector2Int(0, +1);
-            case Facing4.ArribaDer: return new Vector2Int(+1, 0);
-            case Facing4.AbajoDer:  return new Vector2Int(0, -1);
-            case Facing4.AbajoIzq:  return new Vector2Int(-1, 0);
-            default:                return new Vector2Int(+1, 0);
-        }
-    }
-
-    /// <summary>
-    /// Eje perpendicular al facing (rotación -90°): perp = (facing.y, -facing.x)
-    /// </summary>
-    Vector2Int Perpendicular(Vector2Int facing)
-    {
-        return new Vector2Int(facing.y, -facing.x);
-    }
-
-    /// <summary>
-    /// Área de un ataque vertical *direccional*: desde el jugador hacia adelante (1..size).
-    /// </summary>
-    List<OverlayTile> GetDirectionalVertical(OverlayTile playerTile, Facing4 facing, int size)
-    {
-        var grid = MapManager.Instance.map;
-        var origin = playerTile.grid2DLocation;
-        var dir = FacingToVector(facing);
-
-        var area = new List<OverlayTile>();
-        for (int i = 1; i <= size; i++)
-        {
-            var key = origin + dir * i;
-            if (grid.TryGetValue(key, out var t) && t != null)
-                area.Add(t);
-        }
-        return area;
-    }
-
-    /// <summary>
-    /// Área de un ataque horizontal *direccional*: una barra perpendicular
-    /// al facing, desplazada 1 casilla adelante.
-    /// </summary>
-    List<OverlayTile> GetDirectionalHorizontal(OverlayTile playerTile, Facing4 facing, int size)
-    {
-        var grid = MapManager.Instance.map;
-        var origin = playerTile.grid2DLocation;
-        var dir = FacingToVector(facing);
-        var perp = Perpendicular(dir);
-
-        var area = new List<OverlayTile>();
-        // desplazamiento 1 adelante + barra de -size..+size
-        for (int i = -size; i <= size; i++)
-        {
-            var key = origin + dir + perp * i;
-            if (grid.TryGetValue(key, out var t) && t != null)
-                area.Add(t);
-        }
-        return area;
-    }
-
-
 }
-
-

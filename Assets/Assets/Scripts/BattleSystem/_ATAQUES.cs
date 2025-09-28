@@ -7,7 +7,7 @@ public class AttackButtonProxy : MonoBehaviour
     public AttackData attackData;
 
     [Tooltip("Reference to your scene's AttackController")]
-    public BuffDebuffAttackController attackController;
+    public AttackController attackController;
 
     [Tooltip("Panel de batalla (opcional) que quieras ocultar al hacer click")]
     public GameObject panelBatalla;

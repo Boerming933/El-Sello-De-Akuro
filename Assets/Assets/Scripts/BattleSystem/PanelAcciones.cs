@@ -14,12 +14,6 @@ public class PanelAcciones : MonoBehaviour
     {
         mouseController.canAttack = true;
 
-        if (mouseController.myUnit.Name == "Riku Takeda")
-        {
-            bool current = mouseController.animatorSamurai.GetBool("idleBatalla");
-            mouseController.animatorSamurai.SetBool("idleBatalla", !current);
-        }
-
         if (panelBatalla.gameObject.activeInHierarchy)
         {
             panelBatalla.SetActive(false);
@@ -35,11 +29,6 @@ public class PanelAcciones : MonoBehaviour
 
     public void Moverse()
     {
-        if (mouseController.myUnit.Name == "Riku Takeda")
-        {
-            mouseController.animatorSamurai.SetBool("idleBatalla", false);
-        }
-
         mouseController.StartMoveMode();
         panelActive = false;
         mouseController.showPanelAcciones = false;
