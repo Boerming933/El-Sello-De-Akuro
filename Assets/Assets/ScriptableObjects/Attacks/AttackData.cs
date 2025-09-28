@@ -5,7 +5,8 @@ public enum AreaShape
     Circle,
     LineHorizontal,
     LineVertical,
-    Cross
+    Cross,
+    Boomerang
 }
 
 [CreateAssetMenu(fileName = "NewAttack", menuName = "Combat/Attack")]
