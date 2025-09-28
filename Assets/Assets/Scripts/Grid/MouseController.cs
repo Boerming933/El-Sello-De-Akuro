@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
@@ -52,6 +52,17 @@ public class MouseControler : MonoBehaviour
     {
         character = ci;
         myUnit = unit;
+        
+        // ✅ For player characters, check status effects when activated
+        if (unit != null && unit.CompareTag("Aliado"))
+        {
+            var statusManager = unit.GetComponent<StatusEffectManager>();
+            if (statusManager != null && statusManager.ShouldSkipTurn())
+            {
+                Debug.Log($"Player {unit.name} should skip turn due to status effects!");
+                // The BattleSystem should handle this, but we can add extra safety here
+            }
+        }
     }
 
     /// <summary>
@@ -97,6 +108,19 @@ public class MouseControler : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.Escape) && canMove)
+        {
+            canMove = false;
+            ClearRangeTiles();
+            showPanelAcciones = true;
+
+            var turnable = character?.GetComponent<Turnable>();
+            if (turnable != null)
+            {
+                turnable.ActivateTurn(); // Reactiva el panel de acciones
+            }
+        }
+
         if (canPocion)
         {
             pocionOn.SetActive(true);
@@ -121,8 +145,16 @@ public class MouseControler : MonoBehaviour
 
             if (overlayTile == null) return;
 
-            transform.position = overlayTile.transform.position;
-            gameObject.GetComponent<SpriteRenderer>().sortingOrder = overlayTile.GetComponent<SpriteRenderer>().sortingOrder;
+            if (canMove && inRangeTiles.Contains(overlayTile))
+            {
+                transform.position = overlayTile.transform.position;
+                gameObject.GetComponent<SpriteRenderer>().sortingOrder = overlayTile.GetComponent<SpriteRenderer>().sortingOrder;
+                GetComponent<SpriteRenderer>().enabled = true;
+            }
+            else
+            {
+                GetComponent<SpriteRenderer>().enabled = false; // Ocultar cursor si no está en rango
+            }
 
             if (Input.GetMouseButtonDown(0))
             {
@@ -163,17 +195,31 @@ public class MouseControler : MonoBehaviour
                     && inRangeTiles.Contains(overlayTile)  // el tile clicado está en rango  
                     )
                 {
+                    // Additional check for status effects blocking movement
+                    var statusManager = character.GetComponent<StatusEffectManager>();
+                    if (statusManager != null && !statusManager.CanMove())
+                    {
+                        Debug.Log($"{character.name} tried to move but is affected by status effects!");
+                        return; // Block movement
+                    }
+
                     path = pathFinder.FindPath(
                         character.activeTile,
                         overlayTile,
                         inRangeTiles
                     );
                 }
+
                 //else                  //Deseleccionar el personaje al clickear fuera del rango
                 //{                                //actualmente no se usa, pero fuera de combate se usará i guess
                 //    DeselectCharacter();
                 //}
             }
+        }
+        else
+        {
+            // ✅ Si no hay tile bajo el mouse, ocultar el cursor
+            GetComponent<SpriteRenderer>().enabled = false;
         }
 
         if (character != null && path.Count > 0)
@@ -185,8 +231,18 @@ public class MouseControler : MonoBehaviour
         {
             if (canSkip)
             {
-                DeselectCharacter();
+                // ✅ NEW: Check if character must attack next turn (Draconic Stance effect)
+                if (character != null)
+                {
+                    var statusManager = character.GetComponent<StatusEffectManager>();
+                    if (statusManager != null && statusManager.MustAttackNextTurn())
+                    {
+                        Debug.Log($"{character.name} cannot skip turn - must attack due to Draconic Stance!");
+                        return; // Block turn skipping
+                    }
+                }
 
+                DeselectCharacter();
                 return;  
             }
         }
@@ -244,9 +300,7 @@ public class MouseControler : MonoBehaviour
         foreach (var item in inRangeTiles)
         {
             item.ShowTile();
-        }
-
-       
+        }       
     }
 
     public void ClearRangeTiles()
@@ -409,16 +463,53 @@ public class MouseControler : MonoBehaviour
     }
     
     public void StartMoveMode()
+{
+    // ✅ Check if character should skip their entire turn
+    if (character != null)
     {
-        // marca el cambio
-        canMove     = true;
-        prevCanMove = false;
-        showPanelAcciones = false;
-
-        ClearRangeTiles();
-
-        // si ya hay personaje y tile base, refresca rango YA
-        if (character != null)
-        GetInRangeTiles();
+        var statusManager = character.GetComponent<StatusEffectManager>();
+        if (statusManager != null && statusManager.ShouldSkipTurn())
+        {
+            Debug.Log($"{character.name} should skip turn - cannot start move mode!");
+            
+            // Show a message that the turn is skipped
+            canMove = false;
+            showPanelAcciones = false;
+            turnEnded = true; // End turn immediately
+            return;
+        }
+        
+        // Check if character can move due to status effects (but not full skip)
+        if (statusManager != null && !statusManager.CanMove())
+        {
+            Debug.Log($"{character.name} cannot move due to status effects (Hypnotic Chant)!");
+            
+            // Show a message or visual indicator that movement is blocked
+            canMove = false;
+            showPanelAcciones = true;
+            
+            // Reactivate turn panel but keep movement disabled
+            var turnable = character.GetComponent<Turnable>();
+            if (turnable != null)
+            {
+                turnable.ActivateTurn();
+                if (turnable.btnMoverse != null)
+                    turnable.btnMoverse.interactable = false; // Disable move button visually
+            }
+            
+            return; // Don't allow movement
+        }
     }
+
+    // Original StartMoveMode logic (if movement is allowed)
+    canMove = true;
+    prevCanMove = false;
+    showPanelAcciones = false;
+
+    ClearRangeTiles();
+
+    if (character != null)
+        GetInRangeTiles();
+}
+
 }

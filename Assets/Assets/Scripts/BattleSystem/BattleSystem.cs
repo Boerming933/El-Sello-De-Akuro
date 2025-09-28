@@ -32,13 +32,19 @@ public class BattleSystem : MonoBehaviour
     public event System.Action<Unit> OnTurnStart;
     private Unit _currentUnit;
     public Unit CurrentUnit => _currentUnit;
-    public AttackController attackController;
+    public BuffDebuffAttackController attackController;
 
     public CharacterDetailsUI detailsUI;
 
     private void Awake()
     {
         Instance = this;
+        
+        // ✅ Add AttackUsesRuntimeManager component if not present
+        if (GetComponent<AttackUsesRuntimeManager>() == null)
+        {
+            gameObject.AddComponent<AttackUsesRuntimeManager>();
+        }
     }
 
     IEnumerator Start()
@@ -115,13 +121,13 @@ public class BattleSystem : MonoBehaviour
             // aun así añadimos la unidad a la lista correspondiente (se registrará cuando se mueva)
             if (unit.isEnemy)
             {
-                if (!EnemyUnity.Contains(unit)) EnemyUnity.Add(unit);
+                //if (!EnemyUnity.Contains(unit)) EnemyUnity.Add(unit);
                 // aseguramos lista PositionEnemy sincronizada
                 while (PositionEnemy.Count < EnemyUnity.Count) PositionEnemy.Add(null);
             }
             else
             {
-                if (!PlayerUnity.Contains(unit)) PlayerUnity.Add(unit);
+                //if (!PlayerUnity.Contains(unit)) PlayerUnity.Add(unit);
                 while (PositionPlayer.Count < PlayerUnity.Count) PositionPlayer.Add(null);
             }
             return;
@@ -143,8 +149,8 @@ public class BattleSystem : MonoBehaviour
             PositionEnemy[EnemyUnity.Count] = overlay;
             overlay.isBlocked = true;
 
-            if (!EnemyUnity.Contains(unit))
-                EnemyUnity.Add(unit);
+            //if (!EnemyUnity.Contains(unit))
+            //    EnemyUnity.Add(unit);
         }
         else
         {
@@ -299,11 +305,21 @@ public class BattleSystem : MonoBehaviour
 
     private IEnumerator PlayerTurn(Unit ally)
     {
+        // ✅ Double-check: Should this player skip their turn?
+        var statusManager = ally.GetComponent<StatusEffectManager>();
+        if (statusManager != null && statusManager.ShouldSkipTurn())
+        {
+            Debug.Log($"Player {ally.name} is skipping turn due to status effects!");
+            mouseController.turnEnded = true;
+            yield break;
+        }
+
         // Habilita lógica de entrada (mover/atacar).
         mouseController.canMove = true;
         mouseController.canAttack = true;
         mouseController.showPanelAcciones = true;
         mouseController.enabled = true;
+        mouseController.canPocion = true;
 
         float timeLeft = 60f;
 
@@ -317,6 +333,15 @@ public class BattleSystem : MonoBehaviour
 
     private IEnumerator EnemyTurn(Unit enemy)
     {
+        // ✅ Double-check: Should this enemy skip their turn?
+        var statusManager = enemy.GetComponent<StatusEffectManager>();
+        if (statusManager != null && statusManager.ShouldSkipTurn())
+        {
+            Debug.Log($"Enemy {enemy.name} is skipping turn due to status effects!");
+            mouseController.turnEnded = true;
+            yield break;
+        }
+
         // Deshabilitar inputs de jugador
         mouseController.enabled = false;
         mouseController.canMove = false;
@@ -407,6 +432,17 @@ public class BattleSystem : MonoBehaviour
             var unit = current.GetComponent<Unit>();
             if (ci != null)
                 mouseController.SetActiveCharacter(ci, unit);
+        }
+
+        // ✅ CHECK: Should this unit skip their turn due to status effects?
+        var statusManager = current.GetComponent<StatusEffectManager>();
+        if (statusManager != null && statusManager.ShouldSkipTurn())
+        {
+            Debug.Log($"[BattleSystem] {current.name} is skipping turn due to status effects (Stun, etc.)!");
+            
+            // Skip this turn immediately by setting turnEnded = true
+            mouseController.turnEnded = true;
+            return;
         }
 
         if (attackController != null) attackController.SetCurrentUnit(current);

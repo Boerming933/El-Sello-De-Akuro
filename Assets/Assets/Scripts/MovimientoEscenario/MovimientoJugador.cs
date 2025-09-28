@@ -6,9 +6,13 @@ public class MovimientoJugador : MonoBehaviour
     private Rigidbody2D rb;
     Vector3 input;
 
+    private Vector3 position;
+    public Zoom zoom;
+
     void Start()
     {
         GetComponent<Transform>();
+        position = transform.position;
     }
 
     void Update()
@@ -17,6 +21,12 @@ public class MovimientoJugador : MonoBehaviour
 
         if (input.magnitude > 1f) input.Normalize();
         transform.Translate(input * speed * Time.deltaTime, Space.World);
-    }
+        if (position != transform.position)
+        {
+            zoom.ForceZoomOut();
+            Camera.main.orthographicSize = 2.5f;
+        }
+        position = transform.position;
 
+    }
 }

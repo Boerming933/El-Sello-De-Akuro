@@ -161,11 +161,37 @@ public class EnemyIA : MonoBehaviour
 
         if (!isMoving && battleSystem.CurrentUnit == myUnit && path.Count > 0)
         {
+            // ✅ CRITICAL: Check if this enemy should skip their entire turn
+            var statusManager = GetComponent<StatusEffectManager>();
+            if (statusManager != null && statusManager.ShouldSkipTurn())
+            {
+                Debug.Log($"{name} is skipping entire turn due to status effects (Stun)!");
+                
+                // Skip entire turn
+                isMoving = false;
+                hasFinishedMovementThisTurn = true;
+                mouseController.turnEnded = true;
+                return;
+            }
+            
+            // Check if this enemy can move due to status effects
+            if (statusManager != null && !statusManager.CanMove())
+            {
+                Debug.Log($"{name} cannot move due to status effects (Hypnotic Chant)!");
+                
+                // Skip movement but still end turn
+                isMoving = false;
+                hasFinishedMovementThisTurn = true;
+                mouseController.turnEnded = true;
+                return;
+            }
+
             isMoving = true;
             hasFinishedMovementThisTurn = false; // resetear al inicio del movimiento
             stepsMoved = 0;                       // asegurar contador limpio
             Debug.Log($"{name}: Start moving (path count {path.Count})");
         }
+
 
         if (path.Count > 1 && isMoving)
         {

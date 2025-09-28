@@ -15,7 +15,9 @@ public class MapManager : MonoBehaviour
 
     public Dictionary<Vector2Int, OverlayTile> map;
     public Tilemap _tilemap;
-    
+    public List<OverlayTile> overlayTiles = new List<OverlayTile>();
+
+    [SerializeField] private List<TileBase> blockedTiles;    
 
     void Awake()
     {
@@ -35,28 +37,59 @@ public class MapManager : MonoBehaviour
 
         BoundsInt bounds = _tilemap.cellBounds;
 
-
-
         for (int z = bounds.max.z; z >= bounds.min.z; z--)
         {
             for (int y = bounds.min.y; y < bounds.max.y; y++)
             {
                 for (int x = bounds.min.x; x < bounds.max.x; x++)
                 {
-
                     var tileLocation = new Vector3Int(x, y, z);
                     var tileKey = new Vector2Int(x, y);
 
                     if (_tilemap.HasTile(tileLocation) && !map.ContainsKey(tileKey))
                     {
-                        var OverlayTile = Instantiate(overlayTilePrefab, OverlayContainer.transform);
-                        OverlayTile.HideTile();
-                        var cellWorldPosition = _tilemap.GetCellCenterWorld(tileLocation);
+                        TileBase tileAsset = _tilemap.GetTile(tileLocation);
+                        if (!blockedTiles.Contains(tileAsset))
+                        {
+                            int n = 0;
+                            var cellWorldPosition = _tilemap.GetCellCenterWorld(tileLocation);
+                            Vector3 position = new Vector3(cellWorldPosition.x, cellWorldPosition.y + 0.75f, cellWorldPosition.z + 1);
 
-                        OverlayTile.transform.position = new Vector3(cellWorldPosition.x, cellWorldPosition.y+0.75f, cellWorldPosition.z+1);
-                        OverlayTile.GetComponent<SpriteRenderer>().sortingOrder = _tilemap.GetComponent<TilemapRenderer>().sortingOrder+1;
-                        OverlayTile.gridLocation = tileLocation;
-                        map.Add(tileKey, OverlayTile);
+                            for (int i = 0; i < overlayTiles.Count; i++)
+                            {
+                                n = i;
+                                if (overlayTiles[i].transform.position == position)
+                                {
+                                    Debug.Log("Hay Duplicado");
+                                    break;
+                                }
+                            }
+                            if (overlayTiles[n].transform.position != position)
+                            {
+                                var OverlayTile = Instantiate(overlayTilePrefab, OverlayContainer.transform);
+                                OverlayTile.HideTile();
+                                OverlayTile.transform.position = position;
+                                OverlayTile.GetComponent<SpriteRenderer>().sortingOrder = _tilemap.GetComponent<TilemapRenderer>().sortingOrder + 1;
+                                OverlayTile.gridLocation = tileLocation;
+                                map.Add(tileKey, OverlayTile);
+                                Debug.Log(blockedTiles[0]);
+                            }
+                        }
+                        else
+                        {
+                            if (_tilemap.GetTile(tileLocation) != blockedTiles[0])
+                            {
+                                var OverlayTile = Instantiate(overlayTilePrefab, OverlayContainer.transform);
+                                OverlayTile.HideTile();
+                                OverlayTile.isBlocked = true;
+                                var cellWorldPosition = _tilemap.GetCellCenterWorld(tileLocation);
+
+                                OverlayTile.transform.position = new Vector3(cellWorldPosition.x, cellWorldPosition.y, cellWorldPosition.z + 2);
+                                OverlayTile.GetComponent<SpriteRenderer>().sortingOrder = _tilemap.GetComponent<TilemapRenderer>().sortingOrder + 1 ;
+                                OverlayTile.gridLocation = tileLocation;
+                                overlayTiles.Add(OverlayTile); 
+                            }
+                        }
                     }
                 }
             }

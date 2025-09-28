@@ -53,7 +53,8 @@ public class Turnable : MonoBehaviour
         }
         else
         {
-            gameObject.tag = "Untagged";
+            //gameObject.tag = "Untagged"; This not
+            gameObject.tag = "Aliado2";
         }
         
         if (aura != null)

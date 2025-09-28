@@ -38,26 +38,34 @@ public class Unit : MonoBehaviour
 
     private void Start()
     {
+        // Ensure StatusEffectManager is present
+        if (GetComponent<StatusEffectManager>() == null)
+        {
+            gameObject.AddComponent<StatusEffectManager>();
+            Debug.Log($"Added StatusEffectManager to {Name}");
+        }
+
         // Inicializa HUD al comenzar el combate
         hud.ShowDetails(this);
     }
 
-    public void TakeDamage(int amount)
-    {
-        // 1) Ajusta HP
-        currentHP = Mathf.Max(0, currentHP - amount);
 
-        // 2) Actualiza HUD
-        var ui = UnityEngine.Object.FindFirstObjectByType<CharacterDetailsUI>();
-        if (ui != null)
-            ui.UpdateAllUI();
-        // 3) Dispara evento de daño
-        OnDamageTaken?.Invoke(amount);
+    // public void TakeDamage(int amount)
+    // {
+    //     // 1) Ajusta HP
+    //     currentHP = Mathf.Max(0, currentHP - amount);
 
-        // 4) Comprueba muerte
-        if (currentHP == 0)
-            Die();
-    }
+    //     // 2) Actualiza HUD
+    //     var ui = UnityEngine.Object.FindFirstObjectByType<CharacterDetailsUI>();
+    //     if (ui != null)
+    //         ui.UpdateAllUI();
+    //     // 3) Dispara evento de daño
+    //     OnDamageTaken?.Invoke(amount);
+
+    //     // 4) Comprueba muerte
+    //     if (currentHP == 0)
+    //         Die();
+    // }
 
     public bool EquipAttack(AttackData attack)
     {
@@ -125,4 +133,54 @@ public class Unit : MonoBehaviour
 
         Debug.Log($"{Name} curó {pocionHeal} HP. Vida actual: {currentHP}/{maxHP}");
     }
+
+    public void TakeDamage(int amount, Unit attacker = null)
+    {
+        // Get status effect manager
+        var statusManager = GetComponent<StatusEffectManager>();
+        if (statusManager == null)
+        {
+            statusManager = gameObject.AddComponent<StatusEffectManager>();
+        }
+        
+        // Set who attacked us for counter effects
+        if (attacker != null)
+        {
+            statusManager.SetLastAttacker(attacker);
+        }
+        
+        // Check for damage negation (Draconic Stance)
+        if (statusManager.HasEffect(StatusEffectType.DraconicStance))
+        {
+            Debug.Log($"{Name} negates all damage with Draconic Stance!");
+            statusManager.TriggerEffect(statusManager.GetEffect(StatusEffectType.DraconicStance), EffectTrigger.OnDamageReceived);
+            return; // No damage taken
+        }
+        
+        // Apply damage reduction (Guard)
+        float damageReduction = statusManager.CalculateDamageReduction();
+        int finalDamage = Mathf.RoundToInt(amount * (1f - damageReduction));
+        
+        // Apply damage
+        currentHP = Mathf.Max(0, currentHP - finalDamage);
+        
+        // Trigger counter effects if we took damage
+        if (finalDamage > 0 && statusManager.HasEffect(StatusEffectType.Guard))
+        {
+            statusManager.TriggerEffect(statusManager.GetEffect(StatusEffectType.Guard), EffectTrigger.OnDamageReceived);
+        }
+        
+        // Update HUD
+        var ui = UnityEngine.Object.FindFirstObjectByType<CharacterDetailsUI>();
+        if (ui != null)
+            ui.UpdateAllUI();
+            
+        // Dispatch events
+        OnDamageTaken?.Invoke(finalDamage);
+        
+        // Check death
+        if (currentHP == 0)
+            Die();
+    }
+
 }
