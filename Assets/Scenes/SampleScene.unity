@@ -1194,7 +1194,7 @@ MonoBehaviour:
   canPocion: 1
   bgIconoPocion: {fileID: 827744729}
   animatorSamurai: {fileID: 6920276}
-  animatorGeisha: {fileID: 0}
+  animatorGeisha: {fileID: 1083553807}
   animatorNinja: {fileID: 0}
 --- !u!224 &117618322 stripped
 RectTransform:
@@ -1869,7 +1869,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: 3465a50ac8a0fad4cbe934bee64e99b7, type: 3}
   m_Color: {r: 1, g: 0, b: 0.028523445, a: 0.38039216}
   m_FlipX: 0
@@ -1925,7 +1925,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5251601854792543004, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
       propertyPath: m_SortingOrder
-      value: 4
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5251601854792543004, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
@@ -2009,11 +2009,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7694764825098764714, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.015
+      value: 0.014
       objectReference: {fileID: 0}
     - target: {fileID: 7694764825098764714, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.015
+      value: 0.014
       objectReference: {fileID: 0}
     - target: {fileID: 7694764825098764714, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3103,6 +3103,7 @@ GameObject:
   - component: {fileID: 391266300}
   - component: {fileID: 391266299}
   - component: {fileID: 391266308}
+  - component: {fileID: 391266309}
   m_Layer: 6
   m_Name: Vaporeon(Visual)
   m_TagString: Enemy
@@ -3163,17 +3164,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.06669541}
+  m_Offset: {x: 0.0061855316, y: 0.34904253}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.2}
-    oldSize: {x: 0.4, y: 0.54}
+    pivot: {x: 0.6, y: 0.1}
+    oldSize: {x: 0.4683333, y: 1.0093063}
     newSize: {x: 0.42, y: 0.46}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.42, y: 0.31739077}
+  m_Size: {x: 0.2921661, y: 0.8820851}
   m_EdgeRadius: 0
 --- !u!114 &391266301
 MonoBehaviour:
@@ -3203,7 +3204,7 @@ MonoBehaviour:
   allAttacks: []
   equippedAttacks: []
   maxEquipped: 3
-  Name: Vaporeon
+  Name: Oni3
   Level: 1
   isEnemy: 1
   Fue: 10
@@ -3258,6 +3259,8 @@ MonoBehaviour:
   mouseController: {fileID: 117182018}
   attackControllerEnemy: {fileID: 391266308}
   currentUnit: {fileID: 0}
+  myUnit: {fileID: 0}
+  animator: {fileID: 391266309}
 --- !u!114 &391266305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3315,7 +3318,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -1820036083835372325, guid: f91f66e86a298c448bdc44790320ad68, type: 3}
+  m_Sprite: {fileID: 7076963370482267937, guid: 0cf1da49063c91d43ac4527313207cd8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3335,8 +3338,8 @@ Transform:
   m_GameObject: {fileID: 391266298}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2, y: -2.75, z: -1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 4, y: -2.75, z: -1}
+  m_LocalScale: {x: 1.25, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1014136953}
@@ -3366,6 +3369,28 @@ MonoBehaviour:
   impactColor: {r: 1, g: 0, b: 0, a: 0.5}
   currentAttack: {fileID: 0}
   enemyIA: {fileID: 391266304}
+--- !u!95 &391266309
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391266298}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1c9e99e635aed0e4aa9c207f6af10c8f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &393054702 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3642138109079392087, guid: 4764d06942a283e45a456b077b24b038, type: 3}
@@ -4107,6 +4132,10 @@ PrefabInstance:
       propertyPath: m_WholeNumbers
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5251601854792543004, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6368497310622736075, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
       propertyPath: barritaVida
       value: 
@@ -4144,6 +4173,14 @@ PrefabInstance:
       value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 7694764825098764714, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.013
+      objectReference: {fileID: 0}
+    - target: {fileID: 7694764825098764714, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.016
+      objectReference: {fileID: 0}
+    - target: {fileID: 7694764825098764714, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -4177,7 +4214,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7694764825098764714, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.05
+      value: 0.429
       objectReference: {fileID: 0}
     - target: {fileID: 7694764825098764714, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -14236,6 +14273,7 @@ GameObject:
   - component: {fileID: 548752741}
   - component: {fileID: 548752740}
   - component: {fileID: 548752748}
+  - component: {fileID: 548752749}
   m_Layer: 6
   m_Name: Umbreon(Visual)
   m_TagString: Enemy
@@ -14258,7 +14296,7 @@ MonoBehaviour:
   allAttacks: []
   equippedAttacks: []
   maxEquipped: 3
-  Name: Umbreon
+  Name: Oni2
   Level: 1
   isEnemy: 1
   Fue: 10
@@ -14327,17 +14365,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.06669541}
+  m_Offset: {x: -0.004267022, y: 0.34406263}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.2}
-    oldSize: {x: 0.4, y: 0.5}
+    pivot: {x: 0.6, y: 0.1}
+    oldSize: {x: 0.54583335, y: 0.97346807}
     newSize: {x: 0.42, y: 0.46}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.42, y: 0.31739077}
+  m_Size: {x: 0.36594906, y: 0.8294531}
   m_EdgeRadius: 0
 --- !u!114 &548752742
 MonoBehaviour:
@@ -14391,6 +14429,8 @@ MonoBehaviour:
   mouseController: {fileID: 117182018}
   attackControllerEnemy: {fileID: 548752748}
   currentUnit: {fileID: 0}
+  myUnit: {fileID: 0}
+  animator: {fileID: 548752749}
 --- !u!114 &548752745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14448,7 +14488,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 8892889418820053409, guid: b3c34f0d1759e6e4cabd19b7870cd4d4, type: 3}
+  m_Sprite: {fileID: 2289800545517630733, guid: 0cf1da49063c91d43ac4527313207cd8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -14469,7 +14509,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2, y: -2.75, z: -1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.25, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 187994904}
@@ -14499,6 +14539,28 @@ MonoBehaviour:
   impactColor: {r: 1, g: 0, b: 0, a: 0.5}
   currentAttack: {fileID: 0}
   enemyIA: {fileID: 548752744}
+--- !u!95 &548752749
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548752738}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0b9ddd24a6bf8e942ac03448ea35a50c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &558339749 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6368497310622736075, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
@@ -14771,6 +14833,10 @@ PrefabInstance:
       propertyPath: m_WholeNumbers
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5251601854792543004, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6368497310622736075, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
       propertyPath: barritaVida
       value: 
@@ -14808,6 +14874,14 @@ PrefabInstance:
       value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 7694764825098764714, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.012
+      objectReference: {fileID: 0}
+    - target: {fileID: 7694764825098764714, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.016
+      objectReference: {fileID: 0}
+    - target: {fileID: 7694764825098764714, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -14841,7 +14915,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7694764825098764714, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.05
+      value: 0.663
       objectReference: {fileID: 0}
     - target: {fileID: 7694764825098764714, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -15478,7 +15552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5251601854792543004, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
       propertyPath: m_SortingOrder
-      value: 4
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5251601854792543004, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
@@ -16756,7 +16830,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5251601854792543004, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
       propertyPath: m_SortingOrder
-      value: 4
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5251601854792543004, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
@@ -16836,11 +16910,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7694764825098764714, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.015
+      value: 0.0165
       objectReference: {fileID: 0}
     - target: {fileID: 7694764825098764714, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.015
+      value: 0.0182
       objectReference: {fileID: 0}
     - target: {fileID: 7694764825098764714, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16876,7 +16950,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7694764825098764714, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.22
+      value: 0.292
       objectReference: {fileID: 0}
     - target: {fileID: 7694764825098764714, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -17820,6 +17894,7 @@ GameObject:
   - component: {fileID: 1083553804}
   - component: {fileID: 1083553803}
   - component: {fileID: 1083553806}
+  - component: {fileID: 1083553807}
   m_Layer: 6
   m_Name: Geisha(Leafeon)
   m_TagString: Player
@@ -17871,7 +17946,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 586011376663545342, guid: 52cd62d67e0555e4da756af1380ac406, type: 3}
+  m_Sprite: {fileID: -5776094179576437565, guid: dbd32f062a136e8498047a48f2211e66, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -17892,7 +17967,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2, y: 2.75, z: -1}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
+  m_LocalScale: {x: 1.1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1446440570}
@@ -18030,6 +18105,28 @@ MonoBehaviour:
   panelScript: {fileID: 117618323}
   iconoEspacio: {fileID: 1251909725}
   panelBatalla: {fileID: 562495720}
+--- !u!95 &1083553807
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083553797}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 77e7d2e8e664be7469afecbe10c15cc1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1084705147
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20014,7 +20111,7 @@ PrefabInstance:
     - target: {fileID: 6207208123214658307, guid: 351450264f32f3348a57f37689c12f19, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1500682985060248425, guid: 22f862837156362438270033927026ba, type: 3}
+      objectReference: {fileID: -914705845482764004, guid: 241d5d25941fecc428f338e6130d2514, type: 3}
     - target: {fileID: 6458160329418339969, guid: 351450264f32f3348a57f37689c12f19, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0
@@ -20089,11 +20186,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8454385894324792934, guid: 351450264f32f3348a57f37689c12f19, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -80.5
+      value: -82.13
       objectReference: {fileID: 0}
     - target: {fileID: 8454385894324792934, guid: 351450264f32f3348a57f37689c12f19, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 40.676395
+      value: 40.8
       objectReference: {fileID: 0}
     - target: {fileID: 8504981282598305841, guid: 351450264f32f3348a57f37689c12f19, type: 3}
       propertyPath: m_IsActive
@@ -22232,7 +22329,7 @@ MonoBehaviour:
   maxHP: 100
   currentHP: 50
   maxMana: 30
-  currentMana: 20
+  currentMana: 30
   pocionHeal: 40
   portrait: {fileID: -4405688444671850872, guid: d1aa3483274e138459cb1a36e9f59237, type: 3}
   turnerIcon: {fileID: -4405688444671850872, guid: d1aa3483274e138459cb1a36e9f59237, type: 3}
@@ -23653,6 +23750,10 @@ PrefabInstance:
       propertyPath: m_WholeNumbers
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5251601854792543004, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6368497310622736075, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
       propertyPath: barritaVida
       value: 
@@ -23690,6 +23791,14 @@ PrefabInstance:
       value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 7694764825098764714, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.013
+      objectReference: {fileID: 0}
+    - target: {fileID: 7694764825098764714, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.016
+      objectReference: {fileID: 0}
+    - target: {fileID: 7694764825098764714, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -23723,7 +23832,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7694764825098764714, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.05
+      value: 0.432
       objectReference: {fileID: 0}
     - target: {fileID: 7694764825098764714, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -23908,6 +24017,7 @@ GameObject:
   - component: {fileID: 1796309830}
   - component: {fileID: 1796309832}
   - component: {fileID: 1796309833}
+  - component: {fileID: 1796309834}
   m_Layer: 6
   m_Name: Gabite(Visual)
   m_TagString: Enemy
@@ -23925,7 +24035,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 6, y: -2.25, z: -1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.35, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 45204156}
@@ -23977,7 +24087,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -1419381550283157397, guid: 8b99c79c8c684b044a2afbfdaeb87147, type: 3}
+  m_Sprite: {fileID: -3346242555856696225, guid: 0cf1da49063c91d43ac4527313207cd8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -24014,6 +24124,8 @@ MonoBehaviour:
   mouseController: {fileID: 117182018}
   attackControllerEnemy: {fileID: 1796309833}
   currentUnit: {fileID: 0}
+  myUnit: {fileID: 0}
+  animator: {fileID: 1796309834}
 --- !u!114 &1796309826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24055,7 +24167,7 @@ MonoBehaviour:
   allAttacks: []
   equippedAttacks: []
   maxEquipped: 3
-  Name: Gabite
+  Name: Oni1
   Level: 1
   isEnemy: 1
   Fue: 10
@@ -24118,17 +24230,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.06669541}
+  m_Offset: {x: -0.0014163852, y: 0.3851267}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.2}
-    oldSize: {x: 0.42, y: 0.46}
+    pivot: {x: 0.45, y: 0.1}
+    oldSize: {x: 0.45166665, y: 1.1918316}
     newSize: {x: 0.42, y: 0.46}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.42, y: 0.31739077}
+  m_Size: {x: 0.36051506, y: 0.95425344}
   m_EdgeRadius: 0
 --- !u!114 &1796309832
 MonoBehaviour:
@@ -24171,6 +24283,28 @@ MonoBehaviour:
   impactColor: {r: 1, g: 0, b: 0, a: 0.5}
   currentAttack: {fileID: 0}
   enemyIA: {fileID: 1796309825}
+--- !u!95 &1796309834
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796309822}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fe700718fd95540459e746721f9013ff, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!224 &1819531371 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6275111903258811226, guid: 02ba1c3cb0acd7144a4c0dad1deca7c6, type: 3}

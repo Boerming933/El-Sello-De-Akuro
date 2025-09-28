@@ -18,6 +18,7 @@ public class AttackData : ScriptableObject
     public float scalingFactor;
     public int manaCost;
     public float cooldown;
+    public bool onCooldown;
 
     [Header("Configuración de alcance y área")]
     public int        selectionRange;   // cuántos tiles de alcance para seleccionar el objetivo

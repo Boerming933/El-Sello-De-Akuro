@@ -71,11 +71,6 @@ public class BattleSystem : MonoBehaviour
         // 2) Rola iniciativa UNA VEZ
         initiativeManager?.RollInitiative();
 
-        // 3) Arranca el bucle de turnos
-        StartCoroutine(RunTurns());
-
-        start = true;
-
         // Registrar players prefabs
         PlayerUnity.Clear();
         for (int i = 0; i < PlayersPrefab.Count; i++)
@@ -95,6 +90,11 @@ public class BattleSystem : MonoBehaviour
             EnemyIAs.Add(enemyIA);
             EnemyUnity.Add(unit);
         }
+
+        // 3) Arranca el bucle de turnos
+        StartCoroutine(RunTurns());
+
+        start = true;
 
         int playerCount = Mathf.Min(PlayerUnity.Count, playerHUD.Count);
         int enemyCount = Mathf.Min(EnemyUnity.Count, enemyHUD.Count);

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,27 +18,33 @@ public class AttackControllerEnemy : MonoBehaviour
 
     OverlayTile Player1, Player2, Player3;
 
+    float[] cooldowns = {1,2,3,4};
+
     OverlayTile finalMove, attackOrigin;
 
     [SerializeField] private AttackData currentAttack;
 
     [SerializeField] private RangeFinder rangeFinder;
 
-    private bool attackExecuted;
-
     private Unit currentUnit;
     public EnemyIA enemyIA;
 
     private List<BattleHUD> hudsToReset = new();
-    
+
     public OverlayTile AttackTile() => attackOrigin;  // select/center del ataque
-    public OverlayTile FinalMoveTile()  => finalMove;     // casilla a la que conviene moverse
-    public AttackData  ChosenAttack()   => currentAttack;
+    public OverlayTile FinalMoveTile() => finalMove;     // casilla a la que conviene moverse
+    public AttackData ChosenAttack() => currentAttack;
 
     private void Awake()
     {
-        if (rangeFinder == null)
-            rangeFinder = new RangeFinder();
+        if (rangeFinder == null) rangeFinder = new RangeFinder();
+        
+        for (int i = 0; i < allAttacks.Count; i++)
+        {
+            Debug.LogError("El i del ataque numero es "+ i);
+            cooldowns[i] = allAttacks[i].cooldown;
+        } 
+ 
     }
 
     public void playerPosition(OverlayTile player1, OverlayTile player2, OverlayTile player3)
@@ -53,14 +60,14 @@ public class AttackControllerEnemy : MonoBehaviour
     public bool CanAttackFrom(List<OverlayTile> MovementTiles, OverlayTile Active)
     {
         currentAttack = null; attackOrigin = null; finalMove = null;
-
+        
         if (Player1 == null || Player2 == null || Player3 == null) { Debug.LogError("El problema esta en Players"); return false; }
         if (rangeFinder == null) { Debug.LogError("El problema esta en rangeFinder"); return false; }
         if (MovementTiles == null || MovementTiles.Count == 0) { Debug.LogError("El problema esta en moveTiles"); return false; }
         if (allAttacks == null || allAttacks.Count == 0) { Debug.LogError("El problema esta en allAttacks"); return false; }
-        
+
         if (Active != null && !MovementTiles.Contains(Active))
-        MovementTiles.Insert(0, Active);
+            MovementTiles.Insert(0, Active);
 
         foreach (var move in MovementTiles)
         {
@@ -70,12 +77,13 @@ public class AttackControllerEnemy : MonoBehaviour
                 var selectTiles = rangeFinder.GetTilesInRange(move, atk.selectionRange) ?? new List<OverlayTile>();
                 foreach (var tile in selectTiles)
                 {
+                    if (atk.onCooldown) continue;
                     // 2) Área de efecto desde ese tile 
                     var area = GetEffectArea(tile, atk) ?? new List<OverlayTile>();
                     if (area.Count == 0) continue;
 
                     // 3) Comprueba si alguno de los playerTiles está en el área 
-                    
+
                     if (area.Contains(Player1) || area.Contains(Player2) || area.Contains(Player3))
                     {
                         if (finalMove == Active) return false;
@@ -160,6 +168,8 @@ public class AttackControllerEnemy : MonoBehaviour
             return;
         }
 
+        currentAttack.onCooldown = true;
+
         var area = GetEffectArea(targetTile, currentAttack);
 
         hudsToReset.Clear();
@@ -219,7 +229,7 @@ public class AttackControllerEnemy : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
         MapManager.Instance.HideAllTiles();
-
+        enemyIA.FinishTurn();
 
         foreach (var playerObj in GameObject.FindGameObjectsWithTag("Player"))
         {
@@ -227,25 +237,18 @@ public class AttackControllerEnemy : MonoBehaviour
             if (hitMarker != null)
                 hitMarker.gameObject.SetActive(false);
         }
+    }
 
-        var ci = currentUnit.GetComponent<CharacterInfo>();
-        bool hasMovesLeft = ci.tilesMoved < ci.maxTiles;
-
-        if (hasMovesLeft)
+    public void ReduceCooldowns()
+    {
+        for (int i = 0; i < allAttacks.Count; i++)
         {
-
-            var panel = Object.FindObjectsByType<PanelAcciones>(
-                FindObjectsInactive.Include,
-                FindObjectsSortMode.None
-            ).FirstOrDefault(p => p.ownerCharacter == ci);
-
-            if (panel != null)
+            if (allAttacks[i].cooldown > 0 && allAttacks[i].onCooldown) allAttacks[i].cooldown--;
+            if (allAttacks[i].cooldown <= 0)
             {
-                panel.Show();
-                panel.panelBatalla.SetActive(false);
+                allAttacks[i].cooldown = cooldowns[i];
+                allAttacks[i].onCooldown = false;
             }
-
-            yield break;
-        }
+        }   
     }
 }

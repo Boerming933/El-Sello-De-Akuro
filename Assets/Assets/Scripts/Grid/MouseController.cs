@@ -319,6 +319,8 @@ public class MouseControler : MonoBehaviour
     public void DeselectCharacter()
     {
         animatorSamurai.SetBool("idleBatalla", false);
+        animatorGeisha.SetBool("idleBatalla", false);
+
         //canPocion = true;
         canSkip = true;
         if (character != null)
@@ -361,6 +363,12 @@ public class MouseControler : MonoBehaviour
         {
             animatorSamurai.SetBool("isMovingDown", false);
             animatorSamurai.SetBool("isMovingUp", false);
+        }
+
+        if (myUnit.Name == "Sayuri")
+        {
+            animatorGeisha.SetBool("isMovingDown", false);
+            animatorGeisha.SetBool("isMovingUp", false);
         }
 
         canSkip = true;
@@ -417,6 +425,44 @@ public class MouseControler : MonoBehaviour
             }
         }
 
+
+        if (myUnit.Name == "Sayuri")
+        {
+            float nextY = path[0].transform.position.y;
+            float currentY = character.transform.position.y;
+
+            if (nextY > currentY)
+            {
+                animatorGeisha.SetBool("isMovingUp", true);
+                animatorGeisha.SetBool("isMovingDown", false);
+            }
+            else if (nextY < currentY)
+            {
+                animatorGeisha.SetBool("isMovingUp", false);
+                animatorGeisha.SetBool("isMovingDown", true);
+            }
+        }
+
+        if (myUnit.Name == "Sayuri")
+        {
+            float nextX = path[0].transform.position.x;
+            float currentX = character.transform.position.x;
+
+            var sr = character.GetComponent<SpriteRenderer>();
+            if (sr != null)
+            {
+                if (nextX > currentX)
+                {
+                    sr.flipX = true; // mira a la derecha
+                }
+                else if (nextX < currentX)
+                {
+                    sr.flipX = false; // mira a la izquierda (por defecto)
+                }
+            }
+        }
+
+
         canSkip = false;
 
         if (character == null) return;
@@ -469,6 +515,12 @@ public class MouseControler : MonoBehaviour
             {
                 animatorSamurai.SetBool("isMovingDown", false);
                 animatorSamurai.SetBool("isMovingUp", false);
+            }
+
+            if (myUnit.Name == "Sayuri")
+            {
+                animatorGeisha.SetBool("isMovingDown", false);
+                animatorGeisha.SetBool("isMovingUp", false);
             }
 
             // El personaje ya llegó a su destino
