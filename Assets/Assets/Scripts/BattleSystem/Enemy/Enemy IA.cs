@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class EnemyIA : MonoBehaviour
 {
@@ -27,8 +28,10 @@ public class EnemyIA : MonoBehaviour
     public AttackControllerEnemy attackControllerEnemy;
     [SerializeField] private RangeFinderPlayer rangeFinder;
     public Unit currentUnit;
-    private Unit myUnit;
+    public Unit myUnit;
     private bool hasFinishedMovementThisTurn = false;
+
+    [SerializeField] public Animator animator;
 
     private void Start()
     {
@@ -96,6 +99,27 @@ public class EnemyIA : MonoBehaviour
 
     private void Update()
     {
+        if (!isMoving)             //DETIENE LA ANIMACION DE MOVERSE DE CADA ENEMIGO
+        {
+            if (myUnit.Name == "Oni1")
+            {
+                animator.SetBool("isMovingDown", false);
+                animator.SetBool("isMovingUp", false);
+            }
+
+            if (myUnit.Name == "Oni2")
+            {
+                animator.SetBool("isMovingDown", false);
+                animator.SetBool("isMovingUp", false);
+            }
+
+            if (myUnit.Name == "Oni3")
+            {
+                animator.SetBool("isMovingDown", false);
+                animator.SetBool("isMovingUp", false);
+            }
+        }
+
         var active = myUnit.ActiveTile();
 
         // Intentar resolver la casilla activa (Active) de forma segura.
@@ -142,17 +166,6 @@ public class EnemyIA : MonoBehaviour
             hasFinishedMovementThisTurn = false; // resetear al inicio del movimiento
             stepsMoved = 0;                       // asegurar contador limpio
         }
-        /*
-        if (path.Count == 0 && isMoving)
-        {
-            FinishTurn();
-        }
-        
-        /*
-        if (currentUnit = myUnit)
-        {
-            LogicAI();
-        }*/
     }
 
     public void LogicAI()
@@ -187,9 +200,6 @@ public class EnemyIA : MonoBehaviour
 
             if (canPlan)
             {
-
-                //Debug.LogError($"Posible ataque: mover a {(moveTo != null ? moveTo.gridLocation.ToString() : "null")} y seleccionar {(select != null ? select.gridLocation.ToString() : "null")}");
-
                 if (moveTo == null || Active == null)
                 {
                     // Ya estoy en la casilla ideal → NO me muevo este turno
@@ -236,6 +246,115 @@ public class EnemyIA : MonoBehaviour
 
     private void MoveAlongPath()
     {
+        if (myUnit.Name == "Oni1")                               //ONI 1
+        {
+            float nextY = path[0].transform.position.y;
+            float currentY = Enemy.transform.position.y;
+
+            if (nextY > currentY)
+            {
+                animator.SetBool("isMovingUp", true);
+                animator.SetBool("isMovingDown", false);
+            }
+            else if (nextY < currentY)
+            {
+                animator.SetBool("isMovingUp", false);
+                animator.SetBool("isMovingDown", true);
+            }
+        }
+
+        if (myUnit.Name == "Oni1")
+        {
+            float nextX = path[0].transform.position.x;
+            float currentX = Enemy.transform.position.x;
+
+            var sr = Enemy.GetComponent<SpriteRenderer>();
+            if (sr != null)
+            {
+                if (nextX > currentX)
+                {
+                    sr.flipX = true; 
+                }
+                else if (nextX < currentX)
+                {
+                    sr.flipX = false; 
+                }
+            }
+        }
+
+        if (myUnit.Name == "Oni2")                            //ONI 2
+        {
+            float nextY = path[0].transform.position.y;
+            float currentY = Enemy.transform.position.y;
+
+            if (nextY > currentY)
+            {
+                animator.SetBool("isMovingUp", true);
+                animator.SetBool("isMovingDown", false);
+            }
+            else if (nextY < currentY)
+            {
+                animator.SetBool("isMovingUp", false);
+                animator.SetBool("isMovingDown", true);
+            }
+        }
+
+        if (myUnit.Name == "Oni2")
+        {
+            float nextX = path[0].transform.position.x;
+            float currentX = Enemy.transform.position.x;
+
+            var sr = Enemy.GetComponent<SpriteRenderer>();
+            if (sr != null)
+            {
+                if (nextX > currentX)
+                {
+                    sr.flipX = true; 
+                }
+                else if (nextX < currentX)
+                {
+                    sr.flipX = false;
+                }
+            }
+        }
+
+        if (myUnit.Name == "Oni3")                            //ONI 3
+        {
+            float nextY = path[0].transform.position.y;
+            float currentY = Enemy.transform.position.y;
+
+            if (nextY > currentY)
+            {
+                animator.SetBool("isMovingUp", true);
+                animator.SetBool("isMovingDown", false);
+            }
+            else if (nextY < currentY)
+            {
+                animator.SetBool("isMovingUp", false);
+                animator.SetBool("isMovingDown", true);
+            }
+        }
+
+        if (myUnit.Name == "Oni3")
+        {
+            float nextX = path[0].transform.position.x;
+            float currentX = Enemy.transform.position.x;
+
+            var sr = Enemy.GetComponent<SpriteRenderer>();
+            if (sr != null)
+            {
+                if (nextX > currentX)
+                {
+                    sr.flipX = true;
+                }
+                else if (nextX < currentX)
+                {
+                    sr.flipX = false;
+                }
+            }
+        }
+
+
         if (path == null) return; // defensa
         var step = speed * Time.deltaTime;
         var zIndex = path[0].transform.position.z - 1f;
@@ -251,7 +370,9 @@ public class EnemyIA : MonoBehaviour
 
     public void FinishTurn()
     {
-        hasFinishedMovementThisTurn = true; // evita que esto se repita
+        
+        hasFinishedMovementThisTurn = true;
+
         isMoving = false;
         stepsMoved = 0;
         mouseController.turnEnded = true;
