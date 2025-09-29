@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class EnemyIA : MonoBehaviour
 {
@@ -14,6 +14,8 @@ public class EnemyIA : MonoBehaviour
     public float speed;
     private int stepsMoved = 0;
     private bool isMoving = false;
+    public bool inAttackMode = false;
+    public bool isMyTurn = false;
 
     public GameObject Player1, Player2, Player3;
 
@@ -23,22 +25,25 @@ public class EnemyIA : MonoBehaviour
 
     public BattleSystem battleSystem;
     public MouseControler mouseController;
-    private Unit myUnit;
+    public AttackControllerEnemy attackControllerEnemy;
+    [SerializeField] private RangeFinderPlayer rangeFinder;
+    public Unit currentUnit;
+    public Unit myUnit;
     private bool hasFinishedMovementThisTurn = false;
+
+    [SerializeField] public Animator animator;
 
     private void Start()
     {
+        if (rangeFinder == null) rangeFinder = new RangeFinderPlayer();
         pathfinder = new PathfinderEnemy();
         path = new List<OverlayTile>();
         Enemy = GetComponent<Enemy>();
         myUnit = GetComponent<Unit>();
-        Debug.Log($"[EnemyIA.Start] name={name} myUnit={(myUnit != null ? myUnit.name : "null")} battleSystem={(battleSystem != null ? "ok" : "null")} mouseController={(mouseController != null ? "ok" : "null")}");
-
     }
 
     public void InitAfterSpawn(BattleSystem bs, MouseControler mc, GameObject p1 = null, GameObject p2 = null, GameObject p3 = null)
     {
-        Debug.Log($"[EnemyIA.InitAfterSpawn] called for {name}. bs={(bs != null ? "ok" : "null")} mc={(mc != null ? "ok" : "null")} p1={(p1 != null ? p1.name : "null")}");
         battleSystem = bs;
         mouseController = mc;
         if (p1 != null) Player1 = p1;
@@ -76,8 +81,6 @@ public class EnemyIA : MonoBehaviour
         {
             Debug.LogWarning($"InitAfterSpawn: no se pudo setear Active para {name}: {ex.Message}");
         }
-        Debug.Log($"[EnemyIA.InitAfterSpawn] resolved Active={(Active != null ? Active.grid2DLocation.ToString() : "null")}, Player1={(Player1 != null ? Player1.name : "null")}, myUnit={(myUnit != null ? myUnit.name : "null")}");
-        
         // Si Active aún es null, intentamos resolver por posición world usando MapManager
         if (Active == null && MapManager.Instance != null)
         {
@@ -90,21 +93,34 @@ public class EnemyIA : MonoBehaviour
 
                 // avisar al BattleSystem que actualice posiciones internas
                 battleSystem?.UpdateEnemyPosition(myUnit, t);
-                Debug.Log($"[EnemyIA.InitAfterSpawn] Fallback resolved Active for {name} -> {t.grid2DLocation}");
             }
         }
     }
 
     private void Update()
     {
-        var platerTile1 = Player1Tile();
-        var platerTile2 = Player2Tile();
-        var platerTile3 = Player3Tile();
-        var active = myUnit.ActiveTile();
+        if (!isMoving)             //DETIENE LA ANIMACION DE MOVERSE DE CADA ENEMIGO
+        {
+            if (myUnit.Name == "Oni1")
+            {
+                animator.SetBool("isMovingDown", false);
+                animator.SetBool("isMovingUp", false);
+            }
 
-        // Si no hay tiles de players, no hacemos nada
-        if (!platerTile1.HasValue && !platerTile2.HasValue && !platerTile3.HasValue)
-            return;
+            if (myUnit.Name == "Oni2")
+            {
+                animator.SetBool("isMovingDown", false);
+                animator.SetBool("isMovingUp", false);
+            }
+
+            if (myUnit.Name == "Oni3")
+            {
+                animator.SetBool("isMovingDown", false);
+                animator.SetBool("isMovingUp", false);
+            }
+        }
+
+        var active = myUnit.ActiveTile();
 
         // Intentar resolver la casilla activa (Active) de forma segura.
         // Primero con el Raycast (ActiveTile), si no hay resultado uso MapManager (fallback por posición world).
@@ -122,114 +138,247 @@ public class EnemyIA : MonoBehaviour
         if (resolvedActive == null)
             return;
 
-        // Resolver tiles de jugadores sólo si existen (null-safe)
-        OverlayTile overlayTile1 = platerTile1.HasValue ? platerTile1.Value.collider.GetComponent<OverlayTile>() : null;
-        OverlayTile overlayTile2 = platerTile2.HasValue ? platerTile2.Value.collider.GetComponent<OverlayTile>() : null;
-        OverlayTile overlayTile3 = platerTile3.HasValue ? platerTile3.Value.collider.GetComponent<OverlayTile>() : null;
-
         // Asignamos Active y actualizamos sorting (siempre comprobando nulls)
         Active = resolvedActive;
-        if (overlayTile1 != null && Player1 != null) Player1.GetComponent<SpriteRenderer>().sortingOrder = overlayTile1.GetComponent<SpriteRenderer>().sortingOrder;
-        if (overlayTile2 != null && Player2 != null) Player2.GetComponent<SpriteRenderer>().sortingOrder = overlayTile2.GetComponent<SpriteRenderer>().sortingOrder;
-        if (overlayTile3 != null && Player3 != null) Player3.GetComponent<SpriteRenderer>().sortingOrder = overlayTile3.GetComponent<SpriteRenderer>().sortingOrder;
 
         // CONTADOR DE PASOS (igual que antes)
         if (Active != null && position != Active.grid2DLocation)
         {
             stepsMoved++;
             position = Active.grid2DLocation;
-            Debug.Log($"[EnemyIA] Llego a nuevo tile. stepsMoved incrementado a {stepsMoved} para {name} - Active={position}");
             if (battleSystem != null)
                 battleSystem.CharacterPosition(myUnit);
         }
 
-        // cálculo de path (igual que antes) - usa overlayTile1/2/3 que pueden ser null
-        if (!isMoving)
+        if (path.Count > 0)
         {
-            var fullPath = pathfinder.FindPath(Active, overlayTile1, overlayTile2, overlayTile3, inRangeTiles);
-            if (fullPath != null && fullPath.Count > 0)
+            MoveAlongPath();
+            if (Vector2.Distance(Enemy.transform.position, path[0].transform.position) < 0.0001f)
             {
-                if (fullPath.Count > 0 && fullPath[0] == Active)
-                    fullPath.RemoveAt(0);
-                path = fullPath.Take(myUnit.movement).ToList();
-            }
-            else
-            {
-                path = new List<OverlayTile>();
+                PositionCharacterOnTile(path[0]);
+                path.RemoveAt(0);
             }
         }
-
-        if (!isMoving && battleSystem.CurrentUnit == myUnit && path.Count > 0)
+        
+        if (!isMoving && path.Count > 1)
         {
-            // ✅ CRITICAL: Check if this enemy should skip their entire turn
-            var statusManager = GetComponent<StatusEffectManager>();
-            if (statusManager != null && statusManager.ShouldSkipTurn())
-            {
-                Debug.Log($"{name} is skipping entire turn due to status effects (Stun)!");
-                
-                // Skip entire turn
-                isMoving = false;
-                hasFinishedMovementThisTurn = true;
-                mouseController.turnEnded = true;
-                return;
-            }
-            
-            // Check if this enemy can move due to status effects
-            if (statusManager != null && !statusManager.CanMove())
-            {
-                Debug.Log($"{name} cannot move due to status effects (Hypnotic Chant)!");
-                
-                // Skip movement but still end turn
-                isMoving = false;
-                hasFinishedMovementThisTurn = true;
-                mouseController.turnEnded = true;
-                return;
-            }
-
             isMoving = true;
             hasFinishedMovementThisTurn = false; // resetear al inicio del movimiento
             stepsMoved = 0;                       // asegurar contador limpio
-            Debug.Log($"{name}: Start moving (path count {path.Count})");
         }
+    }
 
+    public void LogicAI()
+    {
+        var platerTile1 = Player1Tile();
+        var platerTile2 = Player2Tile();
+        var platerTile3 = Player3Tile();
+        
+        // Si no hay tiles de players, no hacemos nada
+        if (!platerTile1.HasValue && !platerTile2.HasValue && !platerTile3.HasValue)
+            return;
 
-        if (path.Count > 1 && isMoving)
+        // Resolver tiles de jugadores sólo si existen (null-safe)
+        OverlayTile overlayTile1 = platerTile1.HasValue ? platerTile1.Value.collider.GetComponent<OverlayTile>() : null;
+        OverlayTile overlayTile2 = platerTile2.HasValue ? platerTile2.Value.collider.GetComponent<OverlayTile>() : null;
+        OverlayTile overlayTile3 = platerTile3.HasValue ? platerTile3.Value.collider.GetComponent<OverlayTile>() : null;
+
+        if (overlayTile1 != null && Player1 != null) Player1.GetComponent<SpriteRenderer>().sortingOrder = overlayTile1.GetComponent<SpriteRenderer>().sortingOrder;
+        if (overlayTile2 != null && Player2 != null) Player2.GetComponent<SpriteRenderer>().sortingOrder = overlayTile2.GetComponent<SpriteRenderer>().sortingOrder;
+        if (overlayTile3 != null && Player3 != null) Player3.GetComponent<SpriteRenderer>().sortingOrder = overlayTile3.GetComponent<SpriteRenderer>().sortingOrder;
+
+        // cálculo de path (igual que antes) - usa overlayTile1/2/3 que pueden ser null
+        if (!isMoving)
         {
-            MoveAlongPath();
+            var range = rangeFinder.GetTilesInRange(Active, myUnit.movement);
+            attackControllerEnemy.playerPosition(overlayTile1, overlayTile2, overlayTile3);
+            var canPlan = attackControllerEnemy.CanAttackFrom(range, Active);
+
+            var moveTo = attackControllerEnemy.FinalMoveTile();  // casilla donde me paro para atacar
+            var select = attackControllerEnemy.AttackTile();     // tile que voy a seleccionar para el área
+            var attack = attackControllerEnemy.ChosenAttack(); // ataque que va a utilizar
+
+            if (canPlan)
+            {
+                if (moveTo == null || Active == null)
+                {
+                    // Ya estoy en la casilla ideal → NO me muevo este turno
+                }
+                else if (moveTo == Active)
+                {
+
+                    // plan quieto
+                    path.Clear();
+
+                    // Hasta que implementes ataques, cerrá turno acá
+                    FinishTurn();
+                }
+                else
+                {
+                    var toPlan = pathfinder.FindPath(Active, moveTo, null, null, inRangeTiles);
+                    if (toPlan != null && toPlan.Count > 0 && toPlan[0] == Active) toPlan.RemoveAt(0);
+                    path = (toPlan ?? new List<OverlayTile>()).Take(myUnit.movement).ToList();
+                }
+            }
+            else
+            {
+                if (moveTo != Active)
+                {
+                    var fullPath = pathfinder.FindPath(Active, overlayTile1, overlayTile2, overlayTile3, inRangeTiles);
+
+                    if (fullPath != null && fullPath.Count > 0)
+                    {
+
+                        if (fullPath.Count > 0 && fullPath[0] == Active)
+                            fullPath.RemoveAt(0);
+
+                        path = fullPath.Take(myUnit.movement).Where(t => t != null).ToList();
+                    }
+                }
+                else
+                {
+                    attackControllerEnemy.ConfirmAttack(select,attack);
+                }
+            }
         }
+
     }
 
     private void MoveAlongPath()
     {
-        if (path == null || path.Count == 0) return; // defensa
+        if (myUnit.Name == "Oni1")                               //ONI 1
+        {
+            float nextY = path[0].transform.position.y;
+            float currentY = Enemy.transform.position.y;
+
+            if (nextY > currentY)
+            {
+                animator.SetBool("isMovingUp", true);
+                animator.SetBool("isMovingDown", false);
+            }
+            else if (nextY < currentY)
+            {
+                animator.SetBool("isMovingUp", false);
+                animator.SetBool("isMovingDown", true);
+            }
+        }
+
+        if (myUnit.Name == "Oni1")
+        {
+            float nextX = path[0].transform.position.x;
+            float currentX = Enemy.transform.position.x;
+
+            var sr = Enemy.GetComponent<SpriteRenderer>();
+            if (sr != null)
+            {
+                if (nextX > currentX)
+                {
+                    sr.flipX = true; 
+                }
+                else if (nextX < currentX)
+                {
+                    sr.flipX = false; 
+                }
+            }
+        }
+
+        if (myUnit.Name == "Oni2")                            //ONI 2
+        {
+            float nextY = path[0].transform.position.y;
+            float currentY = Enemy.transform.position.y;
+
+            if (nextY > currentY)
+            {
+                animator.SetBool("isMovingUp", true);
+                animator.SetBool("isMovingDown", false);
+            }
+            else if (nextY < currentY)
+            {
+                animator.SetBool("isMovingUp", false);
+                animator.SetBool("isMovingDown", true);
+            }
+        }
+
+        if (myUnit.Name == "Oni2")
+        {
+            float nextX = path[0].transform.position.x;
+            float currentX = Enemy.transform.position.x;
+
+            var sr = Enemy.GetComponent<SpriteRenderer>();
+            if (sr != null)
+            {
+                if (nextX > currentX)
+                {
+                    sr.flipX = true; 
+                }
+                else if (nextX < currentX)
+                {
+                    sr.flipX = false;
+                }
+            }
+        }
+
+        if (myUnit.Name == "Oni3")                            //ONI 3
+        {
+            float nextY = path[0].transform.position.y;
+            float currentY = Enemy.transform.position.y;
+
+            if (nextY > currentY)
+            {
+                animator.SetBool("isMovingUp", true);
+                animator.SetBool("isMovingDown", false);
+            }
+            else if (nextY < currentY)
+            {
+                animator.SetBool("isMovingUp", false);
+                animator.SetBool("isMovingDown", true);
+            }
+        }
+
+        if (myUnit.Name == "Oni3")
+        {
+            float nextX = path[0].transform.position.x;
+            float currentX = Enemy.transform.position.x;
+
+            var sr = Enemy.GetComponent<SpriteRenderer>();
+            if (sr != null)
+            {
+                if (nextX > currentX)
+                {
+                    sr.flipX = true;
+                }
+                else if (nextX < currentX)
+                {
+                    sr.flipX = false;
+                }
+            }
+        }
+
+
+        if (path == null) return; // defensa
         var step = speed * Time.deltaTime;
-        Debug.Log("StepsMoved es " + stepsMoved);
-        var zIndex = path[0].transform.position.z - 2f;
+        var zIndex = path[0].transform.position.z - 1f;
 
-        Enemy.transform.position = Vector2.MoveTowards(transform.position, path[0].transform.position, step);
-        Enemy.transform.position = new Vector3(Enemy.transform.position.x, Enemy.transform.position.y, zIndex);
-
-        if (Vector2.Distance(Enemy.transform.position, path[0].transform.position) < 0.0001f)
+        transform.position = Vector2.MoveTowards(transform.position, path[0].transform.position, step);
+        transform.position = new Vector3(transform.position.x, transform.position.y, zIndex);
+        
+        if (!hasFinishedMovementThisTurn && (path.Count == 1 || stepsMoved >= myUnit.movement))
         {
-            PositionCharacterOnTile(path[0]);
-            path.RemoveAt(0);
+            FinishTurn();
         }
+    }
 
-        Debug.Log($"[EnemyIA.MoveAlongPath] {name} pathCount={path?.Count} isMoving={isMoving} stepsMoved={stepsMoved}, movementCap={myUnit.movement}");
+    public void FinishTurn()
+    {
+        
+        hasFinishedMovementThisTurn = true;
 
+        isMoving = false;
+        stepsMoved = 0;
+        mouseController.turnEnded = true;
+        attackControllerEnemy.ReduceCooldowns();
 
-        if (!hasFinishedMovementThisTurn && path.Count == 1 || stepsMoved >= myUnit.movement)
-        {
-            hasFinishedMovementThisTurn = true; // evita que esto se repita
-            Debug.Log($"[EnemyIA] Movimiento terminado (segunda etapa), setting turnEnded=true para {name}. pathCount={path.Count}, stepsMoved={stepsMoved}");
-            isMoving = false;
-            stepsMoved = 0;
-            Debug.Log("StepsMoved es " + stepsMoved);
-            Debug.Log($"[EnemyIA] Movimiento terminado, setting turnEnded=true para {name}");
-            mouseController.turnEnded = true;
-            Debug.Log("isMoving es " + isMoving);
-            Debug.Log($"{name}: finished moving. Ending turn.");
-        }
+        return;        
     }
 
     public RaycastHit2D? Player1Tile()
@@ -270,23 +419,10 @@ public class EnemyIA : MonoBehaviour
         }
         return null;
     }
-    /*
-    public RaycastHit2D? ActiveTile()
-    {
-        Vector2 origin = new Vector2(transform.position.x, transform.position.y);
-
-        RaycastHit2D[] hits = Physics2D.RaycastAll(origin, Vector2.zero);
-
-        if (hits.Length > 0)
-        {
-            return hits.OrderByDescending(i => i.collider.transform.position.z).First();
-        }
-        return null;
-    }
-*/
+    
     private void PositionCharacterOnTile(OverlayTile tile)
     {
-        Enemy.transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y + 0.0001f, tile.transform.position.z - 2f);
+        transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y, tile.transform.position.z - 1f);
         Enemy.GetComponent<SpriteRenderer>().sortingOrder = tile.GetComponent<SpriteRenderer>().sortingOrder;
         Enemy.activeTile = tile;
         if (battleSystem != null)
@@ -296,7 +432,7 @@ public class EnemyIA : MonoBehaviour
     }
     
     // Métodos de inspección para el watchdog (debug)
+
     public bool IsMovingDebug() => isMoving;
     public int PathCountDebug() => (path != null) ? path.Count : -1;
-
 }

@@ -26,6 +26,7 @@ public class BattleSystem : MonoBehaviour
 
     public InitiativeManager initiativeManager;
     public MouseControler mouseController;
+    public List<EnemyIA> EnemyIAs = new List<EnemyIA>();
     // Colección de todos los participantes
     private List<Unit> allUnits;
 
@@ -70,11 +71,6 @@ public class BattleSystem : MonoBehaviour
         // 2) Rola iniciativa UNA VEZ
         initiativeManager?.RollInitiative();
 
-        // 3) Arranca el bucle de turnos
-        StartCoroutine(RunTurns());
-
-        start = true;
-
         // Registrar players prefabs
         PlayerUnity.Clear();
         for (int i = 0; i < PlayersPrefab.Count; i++)
@@ -89,9 +85,16 @@ public class BattleSystem : MonoBehaviour
         for (int i = 0; i < EnemiesPrefab.Count; i++)
         {
             Unit unit = EnemiesPrefab[i].GetComponent<Unit>();
+            EnemyIA enemyIA = EnemiesPrefab[i].GetComponent<EnemyIA>();
             RegisterUnits(unit);
+            EnemyIAs.Add(enemyIA);
             EnemyUnity.Add(unit);
         }
+
+        // 3) Arranca el bucle de turnos
+        StartCoroutine(RunTurns());
+
+        start = true;
 
         int playerCount = Mathf.Min(PlayerUnity.Count, playerHUD.Count);
         int enemyCount = Mathf.Min(EnemyUnity.Count, enemyHUD.Count);
@@ -149,8 +152,6 @@ public class BattleSystem : MonoBehaviour
             PositionEnemy[EnemyUnity.Count] = overlay;
             overlay.isBlocked = true;
 
-            //if (!EnemyUnity.Contains(unit))
-            //    EnemyUnity.Add(unit);
         }
         else
         {
@@ -160,8 +161,6 @@ public class BattleSystem : MonoBehaviour
             PositionPlayer[PlayerUnity.Count] = overlay;
             overlay.isBlocked = true;
 
-            if (!PlayerUnity.Contains(unit))
-                PlayerUnity.Add(unit);
         }
     }
 
@@ -347,9 +346,19 @@ public class BattleSystem : MonoBehaviour
         mouseController.canMove = false;
         mouseController.canAttack = false;
         mouseController.showPanelAcciones = false;
-        //mouseController.canPocion = true;
+        int n = 0;
 
-        float timeLeft = 60f;
+        for (int i = 0; i < EnemyUnity.Count; i++)
+        {
+            if (EnemyUnity[i] == enemy)
+            {
+                n = i;
+                break;
+            }
+        }
+        EnemyIAs[n].LogicAI();
+
+        float timeLeft = 5f;
 
         while (timeLeft > 0f && !mouseController.turnEnded)
         {

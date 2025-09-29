@@ -20,7 +20,7 @@ public class MouseControler : MonoBehaviour
 
     private List<OverlayTile> path = new List<OverlayTile>();
     private List<OverlayTile> inRangeTiles = new List<OverlayTile>();
-    private Unit myUnit;
+    public Unit myUnit;
     private OverlayTile previousTile;
     public BattleSystem battleSystem;
 
@@ -35,7 +35,11 @@ public class MouseControler : MonoBehaviour
     public GameObject bgIconoPocion;
 
     public CharacterInfo CurrentCharacter => character;
-    
+
+    [SerializeField] public Animator animatorSamurai;
+    [SerializeField] public Animator animatorGeisha;
+    [SerializeField] public Animator animatorNinja;
+
 
     private void Start()
     {
@@ -314,6 +318,9 @@ public class MouseControler : MonoBehaviour
 
     public void DeselectCharacter()
     {
+        animatorSamurai.SetBool("idleBatalla", false);
+        animatorGeisha.SetBool("idleBatalla", false);
+
         //canPocion = true;
         canSkip = true;
         if (character != null)
@@ -352,6 +359,18 @@ public class MouseControler : MonoBehaviour
 
     private void TryAutoEndTurn()
     {
+        if (myUnit.Name == "Riku Takeda")
+        {
+            animatorSamurai.SetBool("isMovingDown", false);
+            animatorSamurai.SetBool("isMovingUp", false);
+        }
+
+        if (myUnit.Name == "Sayuri")
+        {
+            animatorGeisha.SetBool("isMovingDown", false);
+            animatorGeisha.SetBool("isMovingUp", false);
+        }
+
         canSkip = true;
         if (character == null) return;
 
@@ -370,6 +389,80 @@ public class MouseControler : MonoBehaviour
 
     private void MoveAlongPath()
     {
+        if (myUnit.Name == "Riku Takeda")
+        {
+            float nextY = path[0].transform.position.y;
+            float currentY = character.transform.position.y;
+
+            if (nextY > currentY)
+            {
+                animatorSamurai.SetBool("isMovingUp", true);
+                animatorSamurai.SetBool("isMovingDown", false);
+            }
+            else if (nextY < currentY)
+            {
+                animatorSamurai.SetBool("isMovingUp", false);
+                animatorSamurai.SetBool("isMovingDown", true);
+            }
+        }
+
+        if (myUnit.Name == "Riku Takeda")
+        {
+            float nextX = path[0].transform.position.x;
+            float currentX = character.transform.position.x;
+
+            var sr = character.GetComponent<SpriteRenderer>();
+            if (sr != null)
+            {
+                if (nextX > currentX)
+                {
+                    sr.flipX = true; // mira a la derecha
+                }
+                else if (nextX < currentX)
+                {
+                    sr.flipX = false; // mira a la izquierda (por defecto)
+                }
+            }
+        }
+
+
+        if (myUnit.Name == "Sayuri")
+        {
+            float nextY = path[0].transform.position.y;
+            float currentY = character.transform.position.y;
+
+            if (nextY > currentY)
+            {
+                animatorGeisha.SetBool("isMovingUp", true);
+                animatorGeisha.SetBool("isMovingDown", false);
+            }
+            else if (nextY < currentY)
+            {
+                animatorGeisha.SetBool("isMovingUp", false);
+                animatorGeisha.SetBool("isMovingDown", true);
+            }
+        }
+
+        if (myUnit.Name == "Sayuri")
+        {
+            float nextX = path[0].transform.position.x;
+            float currentX = character.transform.position.x;
+
+            var sr = character.GetComponent<SpriteRenderer>();
+            if (sr != null)
+            {
+                if (nextX > currentX)
+                {
+                    sr.flipX = true; // mira a la derecha
+                }
+                else if (nextX < currentX)
+                {
+                    sr.flipX = false; // mira a la izquierda (por defecto)
+                }
+            }
+        }
+
+
         canSkip = false;
 
         if (character == null) return;
@@ -418,6 +511,18 @@ public class MouseControler : MonoBehaviour
 
         if (path.Count == 0)
         {
+            if (myUnit.Name == "Riku Takeda")
+            {
+                animatorSamurai.SetBool("isMovingDown", false);
+                animatorSamurai.SetBool("isMovingUp", false);
+            }
+
+            if (myUnit.Name == "Sayuri")
+            {
+                animatorGeisha.SetBool("isMovingDown", false);
+                animatorGeisha.SetBool("isMovingUp", false);
+            }
+
             // El personaje ya llegó a su destino
             canSkip = true;
             canMove = false;
