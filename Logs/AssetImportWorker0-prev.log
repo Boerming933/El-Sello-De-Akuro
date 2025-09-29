@@ -15,7 +15,7 @@ D:/Proyectos/Unity/TechProofRPG-Juan/TechProofRPG-Juan
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-62479
+56156
 -job-worker-count
 7
 -background-job-worker-count
@@ -59,12 +59,12 @@ D:/Proyectos/Unity/TechProofRPG-Juan/TechProofRPG-Juan
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [43416]  Target information:
+Player connection [35432]  Target information:
 
-Player connection [43416]  * "[IP] 192.168.100.158 [Port] 0 [Flags] 2 [Guid] 210003131 [EditorId] 210003131 [Version] 1048832 [Id] WindowsEditor(7,Matias) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [35432]  * "[IP] 192.168.100.158 [Port] 0 [Flags] 2 [Guid] 1724861314 [EditorId] 1724861314 [Version] 1048832 [Id] WindowsEditor(7,Matias) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [43416] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [43416] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [35432] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [35432] Host joined alternative multi-casting on [225.0.0.222:34997]...
 JobSystem: Creating JobQueue using job-worker-count value 7
 Input System module state changed to: Initialized.
 [Physics::Module] Initialized fallback backend.
@@ -76,7 +76,7 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
-Refreshing native plugins compatible for Editor in 2.49 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 2.77 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 6000.0.47f1 (2ad1ed33fd3b)
 [Subsystems] Discovering subsystems at path D:/Program Files(x86)/6000.0.47f1/Editor/Data/Resources/UnitySubsystems
@@ -92,43 +92,43 @@ Initialize mono
 Mono path[0] = 'D:/Program Files(x86)/6000.0.47f1/Editor/Data/Managed'
 Mono path[1] = 'D:/Program Files(x86)/6000.0.47f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'D:/Program Files(x86)/6000.0.47f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56908
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56548
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: D:/Program Files(x86)/6000.0.47f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002068 seconds.
-- Loaded All Assemblies, in  0.337 seconds
+Registered in 0.001425 seconds.
+- Loaded All Assemblies, in  0.336 seconds
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.294 seconds
-Domain Reload Profiling: 630ms
-	BeginReloadAssembly (129ms)
+- Finished resetting the current domain, in  0.279 seconds
+Domain Reload Profiling: 615ms
+	BeginReloadAssembly (117ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (1ms)
 	RebuildCommonClasses (30ms)
-	RebuildNativeTypeToScriptingClass (8ms)
-	initialDomainReloadingComplete (38ms)
-	LoadAllAssembliesAndSetupDomain (130ms)
-		LoadAssemblies (129ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (40ms)
+	LoadAllAssembliesAndSetupDomain (140ms)
+		LoadAssemblies (117ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (127ms)
-			TypeCache.Refresh (126ms)
-				TypeCache.ScanAssembly (115ms)
+		AnalyzeDomain (137ms)
+			TypeCache.Refresh (135ms)
+				TypeCache.ScanAssembly (124ms)
 			BuildScriptInfoCaches (0ms)
 			ResolveRequiredComponents (0ms)
-	FinalizeReload (294ms)
+	FinalizeReload (280ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (256ms)
+		SetupLoadedEditorAssemblies (241ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (19ms)
-			SetLoadedEditorAssemblies (4ms)
-			BeforeProcessingInitializeOnLoad (46ms)
-			ProcessInitializeOnLoadAttributes (143ms)
-			ProcessInitializeOnLoadMethodAttributes (43ms)
+			InitializePlatformSupportModulesInManaged (20ms)
+			SetLoadedEditorAssemblies (5ms)
+			BeforeProcessingInitializeOnLoad (45ms)
+			ProcessInitializeOnLoadAttributes (130ms)
+			ProcessInitializeOnLoadMethodAttributes (42ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -138,269 +138,931 @@ Worker process is ready to serve import requests
 Import Worker Mode flag is 0x00
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  0.897 seconds
-Refreshing native plugins compatible for Editor in 1.29 ms, found 4 plugins.
+- Loaded All Assemblies, in  0.838 seconds
+Refreshing native plugins compatible for Editor in 1.26 ms, found 4 plugins.
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.937 seconds
-Domain Reload Profiling: 1833ms
-	BeginReloadAssembly (168ms)
+- Finished resetting the current domain, in  0.880 seconds
+Domain Reload Profiling: 1717ms
+	BeginReloadAssembly (158ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (5ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (25ms)
-	RebuildCommonClasses (32ms)
-	RebuildNativeTypeToScriptingClass (10ms)
-	initialDomainReloadingComplete (31ms)
-	LoadAllAssembliesAndSetupDomain (655ms)
-		LoadAssemblies (429ms)
+		CreateAndSetChildDomain (23ms)
+	RebuildCommonClasses (29ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (29ms)
+	LoadAllAssembliesAndSetupDomain (612ms)
+		LoadAssemblies (406ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (333ms)
-			TypeCache.Refresh (267ms)
-				TypeCache.ScanAssembly (251ms)
-			BuildScriptInfoCaches (52ms)
-			ResolveRequiredComponents (10ms)
-	FinalizeReload (937ms)
+		AnalyzeDomain (309ms)
+			TypeCache.Refresh (242ms)
+				TypeCache.ScanAssembly (225ms)
+			BuildScriptInfoCaches (55ms)
+			ResolveRequiredComponents (9ms)
+	FinalizeReload (880ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (817ms)
+		SetupLoadedEditorAssemblies (764ms)
 			LogAssemblyErrors (0ms)
 			InitializePlatformSupportModulesInManaged (2ms)
 			SetLoadedEditorAssemblies (6ms)
-			BeforeProcessingInitializeOnLoad (176ms)
-			ProcessInitializeOnLoadAttributes (523ms)
-			ProcessInitializeOnLoadMethodAttributes (108ms)
+			BeforeProcessingInitializeOnLoad (162ms)
+			ProcessInitializeOnLoadAttributes (500ms)
+			ProcessInitializeOnLoadMethodAttributes (92ms)
 			AfterProcessingInitializeOnLoad (1ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (4ms)
+		AwakeInstancesAfterBackupRestoration (5ms)
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
-Refreshing native plugins compatible for Editor in 1.85 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 1.23 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 220 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6736 unused Assets / (4.7 MB). Loaded Objects now: 7439.
-Memory consumption went from 183.8 MB to 179.2 MB.
-Total: 7.469200 ms (FindLiveObjects: 0.427800 ms CreateObjectMapping: 0.300800 ms MarkObjects: 4.782000 ms  DeleteObjects: 1.956200 ms)
+Unloading 6736 unused Assets / (4.1 MB). Loaded Objects now: 7439.
+Memory consumption went from 187.8 MB to 183.7 MB.
+Total: 6.068500 ms (FindLiveObjects: 0.412900 ms CreateObjectMapping: 0.305000 ms MarkObjects: 3.888000 ms  DeleteObjects: 1.460200 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 85696.146661 seconds.
-  path: Assets/UniversalRenderPipelineGlobalSettings.asset
-  artifactKey: Guid(93b439a37f63240aca3dd4e01d978a9f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/UniversalRenderPipelineGlobalSettings.asset using Guid(93b439a37f63240aca3dd4e01d978a9f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '662ca22e14c8daba2c60dd5d1bf3c378') in 0.0180856 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+  Time since last request: 117175.498401 seconds.
+  path: Assets/InputSystem_Actions.inputactions
+  artifactKey: Guid(2bcd2660ca9b64942af0de543d8d7100) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/InputSystem_Actions.inputactions using Guid(2bcd2660ca9b64942af0de543d8d7100) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '1526cf67c1d1aaa9a72597cdbc7bb0b0') in 0.0227984 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 19
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000012 seconds.
-  path: Assets/DefaultVolumeProfile.asset
-  artifactKey: Guid(3f9215ea0144899419cfbc0957140d3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/DefaultVolumeProfile.asset using Guid(3f9215ea0144899419cfbc0957140d3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '1e3ee85287093c2e01e2184a29fd3edf') in 0.0009309 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+  Time since last request: 0.000016 seconds.
+  path: Assets/MovementIcon.png
+  artifactKey: Guid(9ea7e1cc447861742976f40df29445e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/MovementIcon.png using Guid(9ea7e1cc447861742976f40df29445e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '30c438c8dbd54f4fc235e3d976771710') in 0.0870449 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 7
 
 ========================================================================
 Received Import Request.
-  Time since last request: 265.148607 seconds.
+  Time since last request: 6.072350 seconds.
   path: Assets/Scenes/SampleScene.unity
   artifactKey: Guid(8c9cfa26abfee488c85f1582747f6a02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/SampleScene.unity using Guid(8c9cfa26abfee488c85f1582747f6a02) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '3cd3265d82e9409043638839e700fac9') in 0.0004766 seconds
+Start importing Assets/Scenes/SampleScene.unity using Guid(8c9cfa26abfee488c85f1582747f6a02) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '22d206323f42ae1bcc927a7f10739ad2') in 0.0006084 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
 ========================================================================
 Received Prepare
-Refreshing native plugins compatible for Editor in 1.82 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 2.09 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 13 unused Assets / (1.8 MB). Loaded Objects now: 7442.
-Memory consumption went from 142.9 MB to 141.1 MB.
-Total: 5.076200 ms (FindLiveObjects: 0.367600 ms CreateObjectMapping: 0.090200 ms MarkObjects: 4.310900 ms  DeleteObjects: 0.306200 ms)
+Unloading 13 unused Assets / (1.8 MB). Loaded Objects now: 7452.
+Memory consumption went from 151.7 MB to 149.9 MB.
+Total: 4.588100 ms (FindLiveObjects: 0.271600 ms CreateObjectMapping: 0.131100 ms MarkObjects: 3.949400 ms  DeleteObjects: 0.235000 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 ========================================================================
 Received Prepare
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  0.756 seconds
-Refreshing native plugins compatible for Editor in 1.23 ms, found 4 plugins.
+- Loaded All Assemblies, in  0.842 seconds
+Refreshing native plugins compatible for Editor in 1.14 ms, found 4 plugins.
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.860 seconds
-Domain Reload Profiling: 1617ms
-	BeginReloadAssembly (182ms)
+- Finished resetting the current domain, in  0.853 seconds
+Domain Reload Profiling: 1696ms
+	BeginReloadAssembly (209ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (11ms)
+		DisableScriptedObjects (10ms)
 		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (44ms)
-	RebuildCommonClasses (29ms)
-	RebuildNativeTypeToScriptingClass (9ms)
-	initialDomainReloadingComplete (21ms)
-	LoadAllAssembliesAndSetupDomain (516ms)
-		LoadAssemblies (380ms)
+		ReleaseScriptingObjects (1ms)
+		CreateAndSetChildDomain (60ms)
+	RebuildCommonClasses (32ms)
+	RebuildNativeTypeToScriptingClass (11ms)
+	initialDomainReloadingComplete (24ms)
+	LoadAllAssembliesAndSetupDomain (568ms)
+		LoadAssemblies (425ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (227ms)
-			TypeCache.Refresh (7ms)
+		AnalyzeDomain (242ms)
+			TypeCache.Refresh (9ms)
 				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (208ms)
-			ResolveRequiredComponents (8ms)
-	FinalizeReload (860ms)
+			BuildScriptInfoCaches (217ms)
+			ResolveRequiredComponents (9ms)
+	FinalizeReload (853ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (697ms)
+		SetupLoadedEditorAssemblies (689ms)
 			LogAssemblyErrors (0ms)
 			InitializePlatformSupportModulesInManaged (2ms)
 			SetLoadedEditorAssemblies (6ms)
-			BeforeProcessingInitializeOnLoad (149ms)
-			ProcessInitializeOnLoadAttributes (472ms)
-			ProcessInitializeOnLoadMethodAttributes (65ms)
+			BeforeProcessingInitializeOnLoad (162ms)
+			ProcessInitializeOnLoadAttributes (466ms)
+			ProcessInitializeOnLoadMethodAttributes (51ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (11ms)
+Refreshing native plugins compatible for Editor in 1.42 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6734 unused Assets / (4.0 MB). Loaded Objects now: 7454.
+Memory consumption went from 159.7 MB to 155.7 MB.
+Total: 5.682000 ms (FindLiveObjects: 0.393800 ms CreateObjectMapping: 0.249500 ms MarkObjects: 3.604800 ms  DeleteObjects: 1.433300 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 159.271972 seconds.
+  path: Assets/Assets/Scripts/BattleSystem/Enemy/Enemy IA.cs
+  artifactKey: Guid(3c01b8fb4b5f09d4db3e4f521b938d37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Scripts/BattleSystem/Enemy/Enemy IA.cs using Guid(3c01b8fb4b5f09d4db3e4f521b938d37) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ed4379ede6accb34f022092844b128a2') in 0.0092364 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  1.056 seconds
+Refreshing native plugins compatible for Editor in 1.41 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.864 seconds
+Domain Reload Profiling: 1920ms
+	BeginReloadAssembly (288ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (12ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (58ms)
+	RebuildCommonClasses (57ms)
+	RebuildNativeTypeToScriptingClass (15ms)
+	initialDomainReloadingComplete (48ms)
+	LoadAllAssembliesAndSetupDomain (646ms)
+		LoadAssemblies (564ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (258ms)
+			TypeCache.Refresh (10ms)
+				TypeCache.ScanAssembly (1ms)
+			BuildScriptInfoCaches (232ms)
+			ResolveRequiredComponents (10ms)
+	FinalizeReload (865ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (689ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (2ms)
+			SetLoadedEditorAssemblies (6ms)
+			BeforeProcessingInitializeOnLoad (163ms)
+			ProcessInitializeOnLoadAttributes (460ms)
+			ProcessInitializeOnLoadMethodAttributes (54ms)
+			AfterProcessingInitializeOnLoad (3ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (12ms)
+Refreshing native plugins compatible for Editor in 1.37 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6734 unused Assets / (4.3 MB). Loaded Objects now: 7456.
+Memory consumption went from 159.7 MB to 155.4 MB.
+Total: 6.039700 ms (FindLiveObjects: 0.426500 ms CreateObjectMapping: 0.281900 ms MarkObjects: 3.766000 ms  DeleteObjects: 1.563900 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 219.180175 seconds.
+  path: Assets/Assets/ScriptableObjects/Attacks/Enemigos/Golpe de Garra.asset
+  artifactKey: Guid(bb62791ab79e1c24faeca80766c770aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/ScriptableObjects/Attacks/Enemigos/Golpe de Garra.asset using Guid(bb62791ab79e1c24faeca80766c770aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '07c3c72d2228cbf136dc659151289245') in 0.0183587 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Assets/ScriptableObjects/Attacks/Enemigos/Pisotón.asset
+  artifactKey: Guid(de6a4e91b8f46d349a540f13a26423f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/ScriptableObjects/Attacks/Enemigos/Pisotón.asset using Guid(de6a4e91b8f46d349a540f13a26423f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '9322496717a5b21f3ffc2d1e2d78bcef') in 0.0007783 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 32.858782 seconds.
+  path: Assets/Assets/ScriptableObjects/Attacks/Enemigos/Golpe de Garra.asset
+  artifactKey: Guid(bb62791ab79e1c24faeca80766c770aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/ScriptableObjects/Attacks/Enemigos/Golpe de Garra.asset using Guid(bb62791ab79e1c24faeca80766c770aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'cbd7a8da2a11192b26cee010e7f52ee1') in 0.0015661 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.987447 seconds.
+  path: Assets/Assets/ScriptableObjects/Attacks/Enemigos/Grito.asset
+  artifactKey: Guid(11bb3479389a5544eb796155187a3f8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/ScriptableObjects/Attacks/Enemigos/Grito.asset using Guid(11bb3479389a5544eb796155187a3f8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c7b3236477be3771561e3c13b3f62485') in 0.0009003 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.659923 seconds.
+  path: Assets/Assets/ScriptableObjects/Attacks/Enemigos/Grito.asset
+  artifactKey: Guid(11bb3479389a5544eb796155187a3f8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/ScriptableObjects/Attacks/Enemigos/Grito.asset using Guid(11bb3479389a5544eb796155187a3f8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '3d664538a7e9c0d7a30dbeafba53892b') in 0.0009345 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.149996 seconds.
+  path: Assets/Assets/ScriptableObjects/Attacks/Enemigos/Pisotón.asset
+  artifactKey: Guid(de6a4e91b8f46d349a540f13a26423f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/ScriptableObjects/Attacks/Enemigos/Pisotón.asset using Guid(de6a4e91b8f46d349a540f13a26423f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '33b3b7e74d53d1b3c5be1cb4e109e03b') in 0.0010073 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.153938 seconds.
+  path: Assets/Assets/ScriptableObjects/Attacks/Enemigos/Rugido.asset
+  artifactKey: Guid(f2710781d1954ee43b3365dda0382c96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/ScriptableObjects/Attacks/Enemigos/Rugido.asset using Guid(f2710781d1954ee43b3365dda0382c96) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '3738d6b09f0e0a023122cf86b008f8b2') in 0.0009482 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.770 seconds
+Refreshing native plugins compatible for Editor in 1.22 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.959 seconds
+Domain Reload Profiling: 1733ms
+	BeginReloadAssembly (194ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (16ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (49ms)
+	RebuildCommonClasses (26ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (22ms)
+	LoadAllAssembliesAndSetupDomain (521ms)
+		LoadAssemblies (383ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (232ms)
+			TypeCache.Refresh (7ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (211ms)
+			ResolveRequiredComponents (8ms)
+	FinalizeReload (960ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (782ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (3ms)
+			SetLoadedEditorAssemblies (8ms)
+			BeforeProcessingInitializeOnLoad (177ms)
+			ProcessInitializeOnLoadAttributes (525ms)
+			ProcessInitializeOnLoadMethodAttributes (64ms)
 			AfterProcessingInitializeOnLoad (3ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
 		AwakeInstancesAfterBackupRestoration (15ms)
-Refreshing native plugins compatible for Editor in 1.30 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 1.76 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6734 unused Assets / (3.7 MB). Loaded Objects now: 7445.
-Memory consumption went from 151.2 MB to 147.5 MB.
-Total: 6.629400 ms (FindLiveObjects: 0.496800 ms CreateObjectMapping: 0.274900 ms MarkObjects: 4.421100 ms  DeleteObjects: 1.435500 ms)
+Unloading 6734 unused Assets / (4.0 MB). Loaded Objects now: 7458.
+Memory consumption went from 159.7 MB to 155.8 MB.
+Total: 6.785800 ms (FindLiveObjects: 0.519800 ms CreateObjectMapping: 0.274800 ms MarkObjects: 4.423000 ms  DeleteObjects: 1.566600 ms)
 
 Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 49.384285 seconds.
-  path: Assets/Assets/ScriptableObjects/Attacks/AttackControllerEnemy.cs
-  artifactKey: Guid(6f474c961b7199c448fb7a5010bdf3c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/ScriptableObjects/Attacks/AttackControllerEnemy.cs using Guid(6f474c961b7199c448fb7a5010bdf3c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'f5eaf40a5d86b4a935751390acc26a15') in 0.0083119 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
 ========================================================================
 Received Prepare
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  0.807 seconds
-Refreshing native plugins compatible for Editor in 1.26 ms, found 4 plugins.
+- Loaded All Assemblies, in  0.737 seconds
+Refreshing native plugins compatible for Editor in 1.36 ms, found 4 plugins.
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.900 seconds
-Domain Reload Profiling: 1709ms
-	BeginReloadAssembly (200ms)
+- Finished resetting the current domain, in  0.910 seconds
+Domain Reload Profiling: 1649ms
+	BeginReloadAssembly (179ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (11ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (46ms)
-	RebuildCommonClasses (30ms)
-	RebuildNativeTypeToScriptingClass (11ms)
-	initialDomainReloadingComplete (24ms)
-	LoadAllAssembliesAndSetupDomain (545ms)
-		LoadAssemblies (398ms)
+		CreateAndSetChildDomain (41ms)
+	RebuildCommonClasses (26ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (22ms)
+	LoadAllAssembliesAndSetupDomain (503ms)
+		LoadAssemblies (378ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (255ms)
-			TypeCache.Refresh (10ms)
-				TypeCache.ScanAssembly (1ms)
+		AnalyzeDomain (216ms)
+			TypeCache.Refresh (7ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (195ms)
+			ResolveRequiredComponents (9ms)
+	FinalizeReload (911ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (740ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (2ms)
+			SetLoadedEditorAssemblies (8ms)
+			BeforeProcessingInitializeOnLoad (155ms)
+			ProcessInitializeOnLoadAttributes (513ms)
+			ProcessInitializeOnLoadMethodAttributes (59ms)
+			AfterProcessingInitializeOnLoad (3ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (14ms)
+Refreshing native plugins compatible for Editor in 1.58 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6734 unused Assets / (4.5 MB). Loaded Objects now: 7460.
+Memory consumption went from 159.7 MB to 155.3 MB.
+Total: 7.308200 ms (FindLiveObjects: 0.468700 ms CreateObjectMapping: 0.511600 ms MarkObjects: 4.548900 ms  DeleteObjects: 1.778000 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.809 seconds
+Refreshing native plugins compatible for Editor in 1.90 ms, found 4 plugins.
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.876 seconds
+Domain Reload Profiling: 1688ms
+	BeginReloadAssembly (194ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (17ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (43ms)
+	RebuildCommonClasses (33ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (20ms)
+	LoadAllAssembliesAndSetupDomain (556ms)
+		LoadAssemblies (400ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (252ms)
+			TypeCache.Refresh (7ms)
+				TypeCache.ScanAssembly (0ms)
 			BuildScriptInfoCaches (230ms)
 			ResolveRequiredComponents (9ms)
-	FinalizeReload (900ms)
+	FinalizeReload (877ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
 		SetupLoadedEditorAssemblies (716ms)
 			LogAssemblyErrors (0ms)
 			InitializePlatformSupportModulesInManaged (2ms)
-			SetLoadedEditorAssemblies (7ms)
-			BeforeProcessingInitializeOnLoad (163ms)
-			ProcessInitializeOnLoadAttributes (482ms)
-			ProcessInitializeOnLoadMethodAttributes (61ms)
-			AfterProcessingInitializeOnLoad (1ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (10ms)
-Refreshing native plugins compatible for Editor in 1.24 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6734 unused Assets / (4.2 MB). Loaded Objects now: 7447.
-Memory consumption went from 151.2 MB to 146.9 MB.
-Total: 5.868700 ms (FindLiveObjects: 0.416600 ms CreateObjectMapping: 0.282500 ms MarkObjects: 3.633100 ms  DeleteObjects: 1.535300 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 153.159611 seconds.
-  path: Assets/Assets/ScriptableObjects/Attacks/Enemigos/Golpe de Garra.asset
-  artifactKey: Guid(bb62791ab79e1c24faeca80766c770aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/ScriptableObjects/Attacks/Enemigos/Golpe de Garra.asset using Guid(bb62791ab79e1c24faeca80766c770aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '07c3c72d2228cbf136dc659151289245') in 0.0175934 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000012 seconds.
-  path: Assets/Assets/ScriptableObjects/Attacks/Enemigos/Pisotón.asset
-  artifactKey: Guid(de6a4e91b8f46d349a540f13a26423f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/ScriptableObjects/Attacks/Enemigos/Pisotón.asset using Guid(de6a4e91b8f46d349a540f13a26423f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '188d5c577cd517025cc7e47fe78e77ea') in 0.0008421 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 24.320216 seconds.
-  path: Assets/Assets/ScriptableObjects/Attacks/Enemigos/Pisotón.asset
-  artifactKey: Guid(de6a4e91b8f46d349a540f13a26423f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/ScriptableObjects/Attacks/Enemigos/Pisotón.asset using Guid(de6a4e91b8f46d349a540f13a26423f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '9322496717a5b21f3ffc2d1e2d78bcef') in 0.0009185 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Assets/ScriptableObjects/Attacks/Enemigos/Rugido.asset
-  artifactKey: Guid(f2710781d1954ee43b3365dda0382c96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/ScriptableObjects/Attacks/Enemigos/Rugido.asset using Guid(f2710781d1954ee43b3365dda0382c96) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'f206d6ff8f426eed6a7fcb6aaa96818e') in 0.0010495 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  0.760 seconds
-Refreshing native plugins compatible for Editor in 1.24 ms, found 4 plugins.
-Native extension for WindowsStandalone target not found
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.812 seconds
-Domain Reload Profiling: 1574ms
-	BeginReloadAssembly (182ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (11ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (48ms)
-	RebuildCommonClasses (27ms)
-	RebuildNativeTypeToScriptingClass (9ms)
-	initialDomainReloadingComplete (23ms)
-	LoadAllAssembliesAndSetupDomain (521ms)
-		LoadAssemblies (381ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (229ms)
-			TypeCache.Refresh (8ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (208ms)
-			ResolveRequiredComponents (9ms)
-	FinalizeReload (812ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (659ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (2ms)
-			SetLoadedEditorAssemblies (7ms)
-			BeforeProcessingInitializeOnLoad (144ms)
-			ProcessInitializeOnLoadAttributes (447ms)
-			ProcessInitializeOnLoadMethodAttributes (57ms)
+			SetLoadedEditorAssemblies (6ms)
+			BeforeProcessingInitializeOnLoad (143ms)
+			ProcessInitializeOnLoadAttributes (501ms)
+			ProcessInitializeOnLoadMethodAttributes (60ms)
 			AfterProcessingInitializeOnLoad (2ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (10ms)
-Refreshing native plugins compatible for Editor in 1.58 ms, found 4 plugins.
+		AwakeInstancesAfterBackupRestoration (13ms)
+Refreshing native plugins compatible for Editor in 2.59 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6734 unused Assets / (4.4 MB). Loaded Objects now: 7449.
-Memory consumption went from 151.2 MB to 146.8 MB.
-Total: 6.334700 ms (FindLiveObjects: 0.412800 ms CreateObjectMapping: 0.294400 ms MarkObjects: 4.043200 ms  DeleteObjects: 1.583300 ms)
+Unloading 6734 unused Assets / (4.2 MB). Loaded Objects now: 7462.
+Memory consumption went from 159.7 MB to 155.4 MB.
+Total: 6.670700 ms (FindLiveObjects: 0.445400 ms CreateObjectMapping: 0.275700 ms MarkObjects: 4.231700 ms  DeleteObjects: 1.716900 ms)
 
 Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 358.635461 seconds.
+  path: Assets/Assets/Prefabs/VaporeonPj.prefab
+  artifactKey: Guid(8deff32ba989f9341b553a8b31b3bb10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/VaporeonPj.prefab using Guid(8deff32ba989f9341b553a8b31b3bb10) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c6ee7783a66841a11592fde7dd6ac694') in 0.3965599 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.137558 seconds.
+  path: Assets/Assets/Prefabs/En combate
+  artifactKey: Guid(5620c7454594e7342bfa74ca0ee0aa0f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate using Guid(5620c7454594e7342bfa74ca0ee0aa0f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'aa6bdc54f1836ba458f4367387927749') in 0.0004848 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.054295 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_bamboo (1).prefab
+  artifactKey: Guid(2b9768edb37c94943a54cc686160251a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_bamboo (1).prefab using Guid(2b9768edb37c94943a54cc686160251a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '65ee4594e81690e3bb7dc42022571ba4') in 0.0252908 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Desert_small_Cactus_15.prefab
+  artifactKey: Guid(6ca4b8397df0f3542a3c764ff3716723) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Desert_small_Cactus_15.prefab using Guid(6ca4b8397df0f3542a3c764ff3716723) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '7052a82532b2a8959964b9fb31551248') in 0.0247917 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Desert_small_Cactus_05.prefab
+  artifactKey: Guid(f9108e95e42493e48b4f31fb3cbed0c3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Desert_small_Cactus_05.prefab using Guid(f9108e95e42493e48b4f31fb3cbed0c3) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '8206fffb3ca2334e832aca6318090c8f') in 0.0189215 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_desert_skull_03.prefab
+  artifactKey: Guid(08e326e18e4c18d4895a98e5ef7e12c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_desert_skull_03.prefab using Guid(08e326e18e4c18d4895a98e5ef7e12c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '9a7349f1b0a2a759c3f0c71b4674f7c8') in 0.0176916 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_bamboo (3).prefab
+  artifactKey: Guid(2f812547cd42e58438a9b89a5a6fa8f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_bamboo (3).prefab using Guid(2f812547cd42e58438a9b89a5a6fa8f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '8c02749a4c5933b824f3db4553ff9ad5') in 0.0252937 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000059 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_bamboo (7).prefab
+  artifactKey: Guid(393a4bc697e716f4db9627886c8cc6d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_bamboo (7).prefab using Guid(393a4bc697e716f4db9627886c8cc6d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '55548ca1c0eff0e66b844b8f63d86c40') in 0.0194251 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Desert_small_Cactus_12.prefab
+  artifactKey: Guid(4d6cf0b0f6c853246a198c4b1066eace) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Desert_small_Cactus_12.prefab using Guid(4d6cf0b0f6c853246a198c4b1066eace) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'eb1b7c1d090f0e5996c3207247e4560c') in 0.0206952 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_big_cypress_01.prefab
+  artifactKey: Guid(50e9c29f2cf86e144b768ed568d5a86a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_big_cypress_01.prefab using Guid(50e9c29f2cf86e144b768ed568d5a86a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ae4966b66844743291c11b89744109ba') in 0.021801 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Desert_small_Cactus_10.prefab
+  artifactKey: Guid(1fe92bd015e8ae84bb16cd0234a09555) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Desert_small_Cactus_10.prefab using Guid(1fe92bd015e8ae84bb16cd0234a09555) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'fc7bf74a70675326e18ce9fba2b14278') in 0.0298976 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Desert_small_Flower_01.prefab
+  artifactKey: Guid(5932d5476a331e2458cbb4cabb673a95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Desert_small_Flower_01.prefab using Guid(5932d5476a331e2458cbb4cabb673a95) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '2a28c8852c4f7b96d2c15574e3fc70f2') in 0.022481 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_desert_skull_01.prefab
+  artifactKey: Guid(dd7954f01bcef724c8503be65dd0a046) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_desert_skull_01.prefab using Guid(dd7954f01bcef724c8503be65dd0a046) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '2180c90c0b300d68f01d32856b78dc4a') in 0.0214761 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Desert_small_Agave_Cactus_02.prefab
+  artifactKey: Guid(ce1c9b785d6e82141bc18e71553d3de7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Desert_small_Agave_Cactus_02.prefab using Guid(ce1c9b785d6e82141bc18e71553d3de7) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '6fcce5a375561fc7fce115be592f8ff4') in 0.0205825 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Desert_small_Cactus_06.prefab
+  artifactKey: Guid(b3a22db56d1089140a2618c3a26bb633) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Desert_small_Cactus_06.prefab using Guid(b3a22db56d1089140a2618c3a26bb633) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '497e4f6b65d43c7f137221977b68ef75') in 0.0183432 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Desert_big_flower_01.prefab
+  artifactKey: Guid(d1a022821dfea8440b22be38c6880e2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Desert_big_flower_01.prefab using Guid(d1a022821dfea8440b22be38c6880e2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'd873562366e561a94d81e7095e8ad1a1') in 0.0238584 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_bamboo (5).prefab
+  artifactKey: Guid(ad5a8b500ab775f4b963646d544f03e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_bamboo (5).prefab using Guid(ad5a8b500ab775f4b963646d544f03e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b00054bbd679a0f5c25c6c450c3b31c4') in 0.0189514 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Desert_small_Cactus_02.prefab
+  artifactKey: Guid(b5cd5b4861be82b479d819bbe7bbb816) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Desert_small_Cactus_02.prefab using Guid(b5cd5b4861be82b479d819bbe7bbb816) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '480af01807a4d4d850262efd7ba6b65e') in 0.0176786 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_big_cypress_03.prefab
+  artifactKey: Guid(754905b0f6322634191af8d2a3f6635a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_big_cypress_03.prefab using Guid(754905b0f6322634191af8d2a3f6635a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '2cc9279fbc04f02f500014307d441004') in 0.0213276 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Desert_small_Flower_03.prefab
+  artifactKey: Guid(5a611d2ac9041ac4f907a5c50514f141) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Desert_small_Flower_03.prefab using Guid(5a611d2ac9041ac4f907a5c50514f141) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '0f07df1b7627a74f2a8dd1dc2a99824d') in 0.0165602 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_bamboo (6).prefab
+  artifactKey: Guid(379131fd63abd0b4f8a139b1f6373368) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_bamboo (6).prefab using Guid(379131fd63abd0b4f8a139b1f6373368) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'f7b1ab83a9bf212e691cb29bca2dcbb3') in 0.0182621 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_big_stone_01.prefab
+  artifactKey: Guid(f6dbca2154ed6c84cae5e275f530bfc9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_big_stone_01.prefab using Guid(f6dbca2154ed6c84cae5e275f530bfc9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '4283043263ed161b6ea610af6dcb1c7b') in 0.0184498 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Desert_small_Cactus_11.prefab
+  artifactKey: Guid(1828d30e010abb54cbc7409daed64756) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Desert_small_Cactus_11.prefab using Guid(1828d30e010abb54cbc7409daed64756) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b5b97ffe8fca1f7932577a0df742039c') in 0.0207936 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Desert_small_Cactus_09.prefab
+  artifactKey: Guid(111925e17ca899a45889a235da1d9165) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Desert_small_Cactus_09.prefab using Guid(111925e17ca899a45889a235da1d9165) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '6d7f0fae364cd283249ec733e783e1db') in 0.0196351 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Desert_small_Flower_02.prefab
+  artifactKey: Guid(53a95a923995182449bb63140a1d93f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Desert_small_Flower_02.prefab using Guid(53a95a923995182449bb63140a1d93f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '737f223930b3cfabde36afd97f593c4b') in 0.0193698 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Desert_small_Bush_01.prefab
+  artifactKey: Guid(a9ca3cc2cc0b40140a4ec749eaa338a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Desert_small_Bush_01.prefab using Guid(a9ca3cc2cc0b40140a4ec749eaa338a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '09683f07a447e27fb882c9562a120244') in 0.0199071 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Desert_big_cactus_03.prefab
+  artifactKey: Guid(73ba0ddf9ade9e44cb3a60296d4b79c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Desert_big_cactus_03.prefab using Guid(73ba0ddf9ade9e44cb3a60296d4b79c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '51c45ef0af95a9dddec82f12ca922737') in 0.0163997 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.237301 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_big_stone_02.prefab
+  artifactKey: Guid(99657db714836254bbdb2b7da827b1b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_big_stone_02.prefab using Guid(99657db714836254bbdb2b7da827b1b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '0286187dd371dab8351109a4f94818fe') in 0.0214551 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_forest_bush (5).prefab
+  artifactKey: Guid(4bfee3e98bcc48d429f8dc5cbeb72a87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_forest_bush (5).prefab using Guid(4bfee3e98bcc48d429f8dc5cbeb72a87) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c83f48c81be1f1050ffe9cbe2d5233cd') in 0.0177267 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_small_bush_01.prefab
+  artifactKey: Guid(06774a7ee32ae8540bc19bf6ee8b869f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_small_bush_01.prefab using Guid(06774a7ee32ae8540bc19bf6ee8b869f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '2ad0961358c81c8042520d8370ad93a9') in 0.0230339 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_big_tree_needle_04.prefab
+  artifactKey: Guid(bbe3e1809760c0a4f89c221fe980b993) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_big_tree_needle_04.prefab using Guid(bbe3e1809760c0a4f89c221fe980b993) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '4634d5a65fc33c49faef976853f3276e') in 0.0236786 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_deadTree (3).prefab
+  artifactKey: Guid(7b931513916ef444e80839df7115cff0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_deadTree (3).prefab using Guid(7b931513916ef444e80839df7115cff0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b21b0344456983cbe6669620a164e69a') in 0.0165291 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 7
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_forest_bush (4).prefab
+  artifactKey: Guid(174ae29b42cc5f946a57e7b04ba02842) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_forest_bush (4).prefab using Guid(174ae29b42cc5f946a57e7b04ba02842) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '6349ae7261cb1883314066db7a018922') in 0.0184181 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_small_bush_02.prefab
+  artifactKey: Guid(b1bedbd3bd975104996c4bf2fbcb9a57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_small_bush_02.prefab using Guid(b1bedbd3bd975104996c4bf2fbcb9a57) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'bf9f571649c9ca1f047e8216cff16086') in 0.0209097 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.413165 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_small_clover_01.prefab
+  artifactKey: Guid(728c13124bae03a438af7b49def175db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_small_clover_01.prefab using Guid(728c13124bae03a438af7b49def175db) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '97933e0c0b511be423249d3cc4ae23fa') in 0.0273657 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_small_grass_03.prefab
+  artifactKey: Guid(62fd518589b387e4d98b3a3ec2593088) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_small_grass_03.prefab using Guid(62fd518589b387e4d98b3a3ec2593088) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '49b3cb7e04f6457140b8089944ab9abe') in 0.0214751 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_small_fern_02.prefab
+  artifactKey: Guid(64da754e5138dd043b8097b4341b53ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_small_fern_02.prefab using Guid(64da754e5138dd043b8097b4341b53ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'e47cddb1d85b95c46dc5b4b923e277ec') in 0.0179979 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_small_grass_05.prefab
+  artifactKey: Guid(3a904cc7fafbc9a46a2fc266b63e536a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_small_grass_05.prefab using Guid(3a904cc7fafbc9a46a2fc266b63e536a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '1629de19e3c9485d581de7c244b29a34') in 0.0197856 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_small_flower_02.prefab
+  artifactKey: Guid(744db9924ae9a4842a3201bcaeeaf0cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_small_flower_02.prefab using Guid(744db9924ae9a4842a3201bcaeeaf0cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c0ae973ed146dc76d4915a6e99a78429') in 0.0215162 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_small_mushroom_01.prefab
+  artifactKey: Guid(008c71910d4ff62418ca2f4b48f53427) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_small_mushroom_01.prefab using Guid(008c71910d4ff62418ca2f4b48f53427) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '1ba8e854de56e60e3725b76380e0a5fa') in 0.0178365 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_small_tree_log_03.prefab
+  artifactKey: Guid(b22f70fb6af2c82448389d7feb1a6e33) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_small_tree_log_03.prefab using Guid(b22f70fb6af2c82448389d7feb1a6e33) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'face2dbc968764d456fa55793f49f227') in 0.0210269 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_small_mushroom_03.prefab
+  artifactKey: Guid(5d4771fa100af82429c4358b13ebd728) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_small_mushroom_03.prefab using Guid(5d4771fa100af82429c4358b13ebd728) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '2f5bd7dac554388e0559b6fd021d463d') in 0.0203808 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_small_grass_08.prefab
+  artifactKey: Guid(8c1dc9e09c72b1c408990d852d2fc132) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_small_grass_08.prefab using Guid(8c1dc9e09c72b1c408990d852d2fc132) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c2621369816678674b9df1c2b9a67895') in 0.0215654 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_small_fern_01.prefab
+  artifactKey: Guid(ab564192e92629f4da7869183e131a89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_small_fern_01.prefab using Guid(ab564192e92629f4da7869183e131a89) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'f2a6bf3ddd490ddb736c3ff4d0dba16e') in 0.0177977 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_reed (1).prefab
+  artifactKey: Guid(734fc55e1cbb5ec4eb52707eaea6bed7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_reed (1).prefab using Guid(734fc55e1cbb5ec4eb52707eaea6bed7) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '46a3f9c7804446b27e5c46080269f070') in 0.0174541 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_small_grass_04.prefab
+  artifactKey: Guid(e530cd7b04113c1438c6605d3de31769) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_small_grass_04.prefab using Guid(e530cd7b04113c1438c6605d3de31769) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '449b3f5e1b920db64600039b8c87884b') in 0.0206742 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_small_tree_log_01.prefab
+  artifactKey: Guid(69b94262a38726c4183eff3f922dca97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_small_tree_log_01.prefab using Guid(69b94262a38726c4183eff3f922dca97) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'd0a04ab678c47a0a164e5e2afe444734') in 0.0155436 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_small_mushroom_02.prefab
+  artifactKey: Guid(57d745682b8c2f74fa41cba3b3f62edc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_Forest_small_mushroom_02.prefab using Guid(57d745682b8c2f74fa41cba3b3f62edc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '75e98aaa29c113cb92b423840d97eab4') in 0.0164587 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.103225 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_reed (3).prefab
+  artifactKey: Guid(769af3d7fa413d34d97c434a3856893d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_reed (3).prefab using Guid(769af3d7fa413d34d97c434a3856893d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '1f0dadfaa00b57c030a4cda94109ee97') in 0.0231058 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_waterplant (1).prefab
+  artifactKey: Guid(afaa2c141ca66944b9c0290fb84bfab4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_waterplant (1).prefab using Guid(afaa2c141ca66944b9c0290fb84bfab4) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ee6aa043885a6b51f458939cb1fadbfd') in 0.0176316 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 7
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_waterplant (2).prefab
+  artifactKey: Guid(e3d95b96d373b5746a67d149a602aefc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_waterplant (2).prefab using Guid(e3d95b96d373b5746a67d149a602aefc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '4d0b6f590d4fb6c00d84cbfff9520e9c') in 0.0140581 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Assets/Prefabs/En combate/ISO_Fence_01_C3-SW.prefab
+  artifactKey: Guid(05c53534b50c1f946b880bcc81d20222) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/ISO_Fence_01_C3-SW.prefab using Guid(05c53534b50c1f946b880bcc81d20222) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '44ce4ba89d1314750c0b55fee46f298d') in 0.0197977 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Assets/Prefabs/En combate/ISO_Fence_01_C4.prefab
+  artifactKey: Guid(9b5379292d79ce2409836133840df7d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/ISO_Fence_01_C4.prefab using Guid(9b5379292d79ce2409836133840df7d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '324f862aaf920ccf1671dd0276cae428') in 0.0175118 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Assets/Prefabs/En combate/ISO_Fence_01_C3-NE.prefab
+  artifactKey: Guid(15d5274a76f0ad2429ba0c322cbf0e17) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/ISO_Fence_01_C3-NE.prefab using Guid(15d5274a76f0ad2429ba0c322cbf0e17) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '06f7e7c2fb47b69fc6de71607e9f5541') in 0.016481 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_waterplant 5.prefab
+  artifactKey: Guid(1321ea076a179244286955f2636d53ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_waterplant 5.prefab using Guid(1321ea076a179244286955f2636d53ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'fba446f2c248ae080877082f33fefe19') in 0.0181011 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_stone (1).prefab
+  artifactKey: Guid(997162d997a87dd41ae9aafeb46f05da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_stone (1).prefab using Guid(997162d997a87dd41ae9aafeb46f05da) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '7ad0e13c64701acbf73abff29686f79e') in 0.0178498 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_reed (6).prefab
+  artifactKey: Guid(a9c1f9698fcdc6040a57e5dba72eee90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_reed (6).prefab using Guid(a9c1f9698fcdc6040a57e5dba72eee90) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '0e875737bd96b6e87a409001743efa9f') in 0.0180317 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_waterplant.prefab
+  artifactKey: Guid(c3f9e1a7a4b563a469a86b2d2acab00e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_waterplant.prefab using Guid(c3f9e1a7a4b563a469a86b2d2acab00e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b340308da85fd48b301ae16f61980308') in 0.0183541 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_waterplant 1.prefab
+  artifactKey: Guid(d3606880a57d59545ad1db2c66deb345) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_waterplant 1.prefab using Guid(d3606880a57d59545ad1db2c66deb345) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'fd2a32a4674462a6b767a8bcda771ab5') in 0.0191322 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_waterplant 2.prefab
+  artifactKey: Guid(ee6aeb93114d21f4a9a5cff821bdb664) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_waterplant 2.prefab using Guid(ee6aeb93114d21f4a9a5cff821bdb664) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'd90f733cb55ab21c18d20379748db26a') in 0.0197265 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Assets/Prefabs/En combate/ISO_Fence_01_C3-SE.prefab
+  artifactKey: Guid(0f11543167e7711478dc438bf9617361) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/ISO_Fence_01_C3-SE.prefab using Guid(0f11543167e7711478dc438bf9617361) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '9bb80bac84b45a927765bd9cc3a87255') in 0.0181969 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Assets/Prefabs/En combate/GSS_Foliage_waterplant 3.prefab
+  artifactKey: Guid(1aa3802bef31bfc478accf81aa5c7abf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/GSS_Foliage_waterplant 3.prefab using Guid(1aa3802bef31bfc478accf81aa5c7abf) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '02cba1fb1c03340dfb86c336793ee05e') in 0.0163628 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.498316 seconds.
+  path: Assets/Assets/Prefabs/En combate/ISO_Fence_01_M1.prefab
+  artifactKey: Guid(e8f00f5ce9228bc4c8ab6ba4424b7efc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/ISO_Fence_01_M1.prefab using Guid(e8f00f5ce9228bc4c8ab6ba4424b7efc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '714140b452128a5b56b180b11a89e409') in 0.020301 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Assets/Prefabs/En combate/ISO_Fence_01_S2-NE-SW.prefab
+  artifactKey: Guid(58a541e99ae121f4f8cbc0dbc6f558cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/ISO_Fence_01_S2-NE-SW.prefab using Guid(58a541e99ae121f4f8cbc0dbc6f558cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ca5e3d221e6cd6b4accd038f6cd96076') in 0.0164166 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Assets/Prefabs/En combate/ISO_Fence_01_S2-SE-NW.prefab
+  artifactKey: Guid(26d12dd74a77cf14db5f731012361067) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/ISO_Fence_01_S2-SE-NW.prefab using Guid(26d12dd74a77cf14db5f731012361067) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '742e60b09e16c3eb9fd5410e10ef3d83') in 0.0161418 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Assets/Prefabs/En combate/ISO_Fence_01_S1-SW.prefab
+  artifactKey: Guid(604ac553a47cfe24495063febe150526) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/ISO_Fence_01_S1-SW.prefab using Guid(604ac553a47cfe24495063febe150526) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '9878918c7fb70fb77ed4962b2da342e8') in 0.0179982 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Assets/Prefabs/En combate/ISO_Fence_01_S1L-SW.prefab
+  artifactKey: Guid(96d8030d435482341ba2ee5ddff41796) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Prefabs/En combate/ISO_Fence_01_S1L-SW.prefab using Guid(96d8030d435482341ba2ee5ddff41796) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'a5aee872c02a38a6565b9fa64100864b') in 0.0169989 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

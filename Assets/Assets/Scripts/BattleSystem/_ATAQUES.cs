@@ -21,6 +21,7 @@ public class AttackButtonProxy : MonoBehaviour
 
     public bool botonDesactivado = false;
 
+
     /// <summary>
     /// Asignar este método al OnClick() de tu botón en el Inspector.
     /// </summary>

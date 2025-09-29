@@ -5,6 +5,12 @@ TextureImporter:
   - first:
       213: 1500682985060248425
     second: GeishaHUD_0
+  - first:
+      213: 5487790512275330194
+    second: GeishaHUD_1
+  - first:
+      213: -6365673632197617328
+    second: GeishaHUD_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -72,10 +78,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -105,9 +111,9 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 3695
-        height: 5474
-      alignment: 9
+        width: 5205
+        height: 5205
+      alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -121,11 +127,55 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: GeishaHUD_1
+      rect:
+        serializedVersion: 2
+        x: 3556
+        y: 2415
+        width: 23
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2941ee5356c882c40800000000000000
+      internalID: 5487790512275330194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GeishaHUD_2
+      rect:
+        serializedVersion: 2
+        x: 3579
+        y: 2429
+        width: 51
+        height: 206
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0595accee8598a7a0800000000000000
+      internalID: -6365673632197617328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: c0bb061b766563c40bdab685335494e9
+    spriteID: 305b93e8b9398884aa5df020b618ba48
     internalID: 0
     vertices: []
     indices: 
@@ -136,6 +186,8 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       GeishaHUD_0: 1500682985060248425
+      GeishaHUD_1: 5487790512275330194
+      GeishaHUD_2: -6365673632197617328
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

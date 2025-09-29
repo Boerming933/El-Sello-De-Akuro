@@ -26,6 +26,12 @@ public class PanelAcciones : MonoBehaviour
             mouseController.animatorGeisha.SetBool("idleBatalla", !current);
         }
 
+        if (mouseController.myUnit.Name == "Raiden")
+        {
+            bool current = mouseController.animatorNinja.GetBool("idleBatalla");
+            mouseController.animatorNinja.SetBool("idleBatalla", !current);
+        }
+
         if (panelBatalla.gameObject.activeInHierarchy)
         {
             panelBatalla.SetActive(false);
@@ -49,6 +55,11 @@ public class PanelAcciones : MonoBehaviour
         if (mouseController.myUnit.Name == "Sayuri")
         {
             mouseController.animatorGeisha.SetBool("idleBatalla", false);
+        }
+
+        if (mouseController.myUnit.Name == "Raiden")
+        {
+            mouseController.animatorNinja.SetBool("idleBatalla", false);
         }
 
         mouseController.StartMoveMode();
