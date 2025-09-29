@@ -26,7 +26,6 @@ public class Turnable : MonoBehaviour
         else
         {
             gameObject.tag = "Aliado";
-            
         }
         if (aura != null) aura.SetActive(true);
         //if (panelAcciones != null) panelAcciones.SetActive(true);
@@ -66,7 +65,7 @@ public class Turnable : MonoBehaviour
         //if (panelAcciones != null) panelAcciones.SetActive(false);
         if (panelScript != null) panelScript.Hide();
         if (letreroPj != null) letreroPj.SetActive(false);
-        //if (iconoEspacio != null) iconoEspacio.SetActive(false);
+        if (iconoEspacio != null) iconoEspacio.SetActive(false);
     }
 
     private void Update()

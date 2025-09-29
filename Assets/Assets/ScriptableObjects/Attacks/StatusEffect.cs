@@ -30,7 +30,6 @@ public class StatusEffect
     public int counterDamageMin = 0;
     public int counterDamageMax = 0;
     public int attackBonus = 0;
-    public float attackReduction = 0f;
     public bool blockMovement = false;
     public bool blockAttack = false;
     public bool skipTurn = false;

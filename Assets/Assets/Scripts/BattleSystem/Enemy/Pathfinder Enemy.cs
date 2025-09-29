@@ -8,30 +8,14 @@ public class PathfinderEnemy
 {
     public List<OverlayTile> FindPath(OverlayTile start, OverlayTile end1, OverlayTile end2, OverlayTile end3, List<OverlayTile> searcheableTiles)
     {
-        var targets = new[] { end1, end2, end3 }
-        .Where(t => t != null)
-        .Distinct()
-        .ToList();
-
-        if (targets.Count == 0)
-        {
-            // Sin objetivos: podés devolver null o lista vacía según tu juego
-            Debug.LogWarning("[PathfinderEnemy] no hay objetivos válidos");
-            return null;
-        }
-
         List<OverlayTile> openList = new List<OverlayTile>();
         List<OverlayTile> closeList = new List<OverlayTile>();
-
-        start.G = 0;
-        start.H = MinHeuristic(start, targets);
-        start.previous = null;
 
         openList.Add(start);
 
         while (openList.Count > 0)
         {
-            OverlayTile currentOverlayTile = openList.OrderBy(x => x.F).ThenBy(x => x.H).First();
+            OverlayTile currentOverlayTile = openList.OrderBy(x => x.F).First();
 
             openList.Remove(currentOverlayTile);
             closeList.Add(currentOverlayTile);
@@ -53,48 +37,113 @@ public class PathfinderEnemy
 
             foreach (var neighbours in neighbourTiles)
             {
-                if (neighbours == null) continue;
-                if (!targets.Contains(neighbours) && neighbours.isBlocked || closeList.Contains(neighbours))
+                if (neighbours != end1 && neighbours != end2 && neighbours != end3 && neighbours.isBlocked || closeList.Contains(neighbours))
                 {
                     continue;
                 }
 
-                int tentativeG = currentOverlayTile.G + 1;
+                int G = neighbours.G = GetManhattenDistance(start, neighbours);
 
-                bool isBetter = false;
+                int P1H = GetManhattenDistance(end1, neighbours);
+                int P2H = GetManhattenDistance(end2, neighbours);
+                int P3H = GetManhattenDistance(end3, neighbours);
+
+                int F1 = G + P1H;
+                int F2 = G + P2H;
+                int F3 = G + P3H;
+
+                int minDistance = Mathf.Min(F1, F2, F3);
+
+                if (minDistance == F1)
+                {
+                    if (searcheableTiles.Contains(end1))
+                    {
+                        neighbours.H = GetManhattenDistance(end1, neighbours);
+                        neighbours.targetReference = end1;
+                    }
+                    else
+                    {
+                        OverlayTile fallbackTarget = end1;
+                        float minF = Mathf.Infinity;
+                        foreach (var tile in searcheableTiles)
+                        {
+                            float H = GetManhattenDistance(end1, tile);
+                            float F = G + H;
+                            if (F < minF)
+                            {
+                                minF = F;
+                                fallbackTarget = tile;
+                            }
+                        }
+
+                        neighbours.targetReference = fallbackTarget;
+                        neighbours.H = GetManhattenDistance(fallbackTarget, neighbours);
+                    }
+                }
+                else if (minDistance == F2)
+                {
+                    if (searcheableTiles.Contains(end2))
+                    {
+                        neighbours.H = GetManhattenDistance(end2, neighbours);
+                        neighbours.targetReference = end2;
+                    }
+                    else
+                    {
+                        float minF = Mathf.Infinity;
+                        OverlayTile fallbackTarget = end2;
+                        foreach (var tile in searcheableTiles)
+                        {
+                            float H = GetManhattenDistance(end2, tile);
+                            float F = G + H;
+                            if (F < minF)
+                            {
+                                minF = F;
+                                fallbackTarget = tile;
+                            }
+                        }
+
+                        neighbours.targetReference = fallbackTarget;
+                        neighbours.H = GetManhattenDistance(fallbackTarget, neighbours);
+                    }
+                }
+                else
+                {
+                    if (searcheableTiles.Contains(end3))
+                    {
+                        neighbours.H = GetManhattenDistance(end3, neighbours);
+                        neighbours.targetReference = end3;
+                    }
+                    else
+                    {
+                        float minF = Mathf.Infinity;
+                        OverlayTile fallbackTarget = end3;
+                        foreach (var tile in searcheableTiles)
+                        {
+                            float H = GetManhattenDistance(end3, tile);
+                            float F = G + H;
+                            if (F < minF)
+                            {
+                                minF = F;
+                                fallbackTarget = tile;
+                            }
+                        }
+
+                        neighbours.targetReference = fallbackTarget;
+                        neighbours.H = GetManhattenDistance(fallbackTarget, neighbours);
+                    }
+                }
+
+                neighbours.previous = currentOverlayTile;
 
                 if (!openList.Contains(neighbours))
                 {
                     openList.Add(neighbours);
-                    isBetter = true;
-                }
-                else if (tentativeG < neighbours.G)
-                {
-                    isBetter = true;
-                }
-
-                if (isBetter)
-                {
-                    neighbours.previous = currentOverlayTile;
-                    neighbours.G = tentativeG;
-                    neighbours.H = MinHeuristic(neighbours, targets); // Heurística mínima a cualquier objetivo
                 }
 
             }
         }
 
         return new List<OverlayTile>();
-    }
-
-    private int MinHeuristic(OverlayTile from, List<OverlayTile> targets)
-    {
-        int best = int.MaxValue;
-        foreach (var t in targets)
-        {
-            int d = GetManhattenDistanceSafe(from, t);
-            if (d < best) best = d;
-        }
-        return best == int.MaxValue ? 0 : best;
     }
 
     private List<OverlayTile> GetFinishedList(OverlayTile start, OverlayTile end)
@@ -108,24 +157,51 @@ public class PathfinderEnemy
             currentTile = currentTile.previous;
         }
 
-        if (currentTile == start) finishedList.Reverse();
-        else finishedList.Clear(); // ruta inconsistente
+        finishedList.Reverse();
 
         return finishedList;
     }
 
     public int GetManhattenDistance(OverlayTile start, OverlayTile neighbours)
     {
-        if (start == null) Debug.LogError("El start es nulo");
-        if (neighbours == null) Debug.LogError("El error esta en Neighbours");
         return Mathf.Abs(start.gridLocation.x - neighbours.gridLocation.x) + Mathf.Abs(start.gridLocation.y - neighbours.gridLocation.y);
     }
 
-    public int GetManhattenDistanceSafe(OverlayTile a, OverlayTile b)
+    /*
+    private List<OverlayTile> GetNeightbourOverlayTiles(OverlayTile currentOverlayTile, List<OverlayTile> searcheableTile)
     {
-        if (a == null || b == null) return int.MaxValue / 2; // grande pero sin overflow
-        var da = a.gridLocation; // si usás grid2DLocation, cámbialo aquí
-        var db = b.gridLocation;
-        return Mathf.Abs(da.x - db.x) + Mathf.Abs(da.y - db.y);
+        var map = MapManager.Instance.map;
+        List<OverlayTile> neighbours = new List<OverlayTile>();
+
+        // Top
+        Vector2Int locationToCheck = new Vector2Int(currentOverlayTile.gridLocation.x, currentOverlayTile.gridLocation.y + 1);
+        if (map.ContainsKey(locationToCheck))
+        {
+            neighbours.Add(map[locationToCheck]);
+        }
+
+        //Bottom
+        locationToCheck = new Vector2Int(currentOverlayTile.gridLocation.x, currentOverlayTile.gridLocation.y - 1);
+        if (map.ContainsKey(locationToCheck))
+        {
+            neighbours.Add(map[locationToCheck]);
+        }
+
+        //Right
+        locationToCheck = new Vector2Int(currentOverlayTile.gridLocation.x + 1, currentOverlayTile.gridLocation.y);
+        if (map.ContainsKey(locationToCheck))
+        {
+            neighbours.Add(map[locationToCheck]);
+        }
+
+        //Left
+        locationToCheck = new Vector2Int(currentOverlayTile.gridLocation.x - 1, currentOverlayTile.gridLocation.y);
+        if (map.ContainsKey(locationToCheck))
+        {
+            neighbours.Add(map[locationToCheck]);
+        }
+
+        return neighbours;
     }
+    */
 }

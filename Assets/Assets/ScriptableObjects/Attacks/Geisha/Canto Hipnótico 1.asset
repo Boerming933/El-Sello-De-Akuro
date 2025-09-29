@@ -18,32 +18,29 @@ MonoBehaviour:
   scalingFactor: 0
   manaCost: 5
   cooldown: 0
-  onCooldown: 0
-  selectionRange: 10
+  selectionRange: 2
   areaSize: 0
   effectShape: 0
   initiativeBonus: 0
   initiativeDuration: 0
-  description: Con un canto suave distrae al enemigo.
+  description: 
   attackType: 2
   statusEffects:
   - statusEffect:
       effectType: 3
       effectName: "Canto Hipn\xF3tico"
       description: 
-      duration: 2
+      duration: 1
       canStack: 0
       decrementOnTurnStart: 1
       damageReduction: 0
       counterDamageMin: 0
       counterDamageMax: 0
       attackBonus: 0
-      attackReduction: 0.5
-      blockMovement: 1
+      blockMovement: 0
       blockAttack: 0
-      skipTurn: 0
+      skipTurn: 1
       mustAttackNextTurn: 0
-      turnApplied: 0
       effectIcon: {fileID: 0}
       visualEffectPrefab: {fileID: 0}
       animatorParameterName: 
@@ -53,7 +50,7 @@ MonoBehaviour:
       target: {fileID: 0}
     probability: 100
     targetSelf: 0
-    targetAllies: 0
+    targetAllies: 1
     targetEnemies: 1
   requiresBehindTarget: 0
   requiresEmptyPath: 0

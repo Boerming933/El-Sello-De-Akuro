@@ -58,8 +58,15 @@ public class StatusEffectManager : MonoBehaviour
         
         var newEffect = effect.Clone();
         newEffect.target = unit;
-        newEffect.turnApplied = turnNumber;
+        newEffect.turnApplied = turnNumber; // ✅ NEW: Track when this effect was applied
         activeEffects.Add(newEffect);
+        
+        Debug.Log($"[StatusEffectManager] Added effect to {unit.name}:");
+        Debug.Log($"  - Effect: {newEffect.effectName}");
+        Debug.Log($"  - Duration: {newEffect.duration}");
+        Debug.Log($"  - IsActive: {newEffect.IsActive}");
+        Debug.Log($"  - Attack Bonus: {newEffect.attackBonus}");
+        Debug.Log($"  - Total effects now: {activeEffects.Count}");
         
         OnEffectApplied?.Invoke(newEffect);
         Debug.Log($"Applied {newEffect.effectName} to {unit.name} for {newEffect.duration} turns (skipTurn: {newEffect.skipTurn})");
@@ -137,19 +144,6 @@ public class StatusEffectManager : MonoBehaviour
             case StatusEffectType.DraconicStance:
                 HandleDraconicStanceTrigger(effect, trigger);
                 break;
-            case StatusEffectType.DamageBoost:  // ✅ ADD THIS
-                HandleDamageBoostTrigger(effect, trigger);
-                break;
-        }
-    }
-
-    // ✅ ADD THIS METHOD
-    private void HandleDamageBoostTrigger(StatusEffect effect, EffectTrigger trigger)
-    {
-        if (trigger == EffectTrigger.OnAttack)
-        {
-            Debug.Log($"{unit.name} consumed {effect.effectName} after attack!");
-            RemoveEffect(effect.effectType);
         }
     }
     
@@ -194,29 +188,21 @@ public class StatusEffectManager : MonoBehaviour
     public int CalculateAttackBonus()
     {
         int totalBonus = 0;
+        Debug.Log($"[StatusEffectManager] Calculating attack bonus for {unit.name}:");
+        Debug.Log($"  Total active effects: {activeEffects.Count}");
+        
         foreach (var effect in activeEffects)
         {
+            Debug.Log($"  - {effect.effectName}: duration={effect.duration}, IsActive={effect.IsActive}, attackBonus={effect.attackBonus}");
             if (effect.IsActive)
             {
                 totalBonus += effect.attackBonus;
             }
         }
+        
+        Debug.Log($"  Final attack bonus: {totalBonus}");
         return totalBonus;
     }
-
-    public float CalculateOutgoingDamagePenalty()
-    {
-        float totalPenalty = 0f;
-        foreach (var effect in activeEffects)
-        {
-            if (effect.IsActive)
-            {
-                totalPenalty += effect.attackReduction;
-            }
-        }
-        return totalPenalty;
-    }
-
     
     // Movement/action restriction checks
     public bool CanMove()
@@ -292,11 +278,5 @@ public class StatusEffectManager : MonoBehaviour
         }
     }
 }
-
-public List<StatusEffect> GetActiveEffects()
-{
-    return activeEffects.Where(e => e.IsActive).ToList();
-}
-
 
 }

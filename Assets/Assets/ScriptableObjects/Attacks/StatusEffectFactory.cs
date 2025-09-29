@@ -52,15 +52,13 @@ public static class StatusEffectFactory
     
     public static StatusEffect CreateHypnoticChant()
     {
-        return new StatusEffect(StatusEffectType.HypnoticChant, 2)
+        return new StatusEffect(StatusEffectType.HypnoticChant, 1)
         {
-            effectName = "Canto Hipnótico",
-            description = "No puede moverse y su daño se reduce 50%",
-            blockMovement = true,
-            attackReduction = 0.5f // 50% damage reduction
+            effectName = "Hypnotic Chant",
+            description = "Cannot move but can still attack",
+            blockMovement = true
         };
     }
-
     
     public static StatusEffect CreateStun()
     {
