@@ -18,12 +18,14 @@ MonoBehaviour:
   scalingFactor: 0
   manaCost: 5
   cooldown: 0
+  onCooldown: 0
   selectionRange: 2
   areaSize: 0
   effectShape: 0
   initiativeBonus: 0
   initiativeDuration: 0
-  description: 
+  description: 'Si el jugador esta detras del enemigo, le realizara un golpe con
+    la daga. '
   attackType: 3
   statusEffects:
   - statusEffect:
@@ -37,6 +39,7 @@ MonoBehaviour:
       counterDamageMin: 0
       counterDamageMax: 0
       attackBonus: 0
+      attackReduction: 0
       blockMovement: 0
       blockAttack: 0
       skipTurn: 1

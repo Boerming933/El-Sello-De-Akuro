@@ -78,6 +78,18 @@ public class BuffDebuffAttackController : MonoBehaviour
         }
         
         validTiles = rangeFinder.GetTilesInRange(centerTile, currentAttack.selectionRange);
+        
+        // ✅ SPECIAL CASE: For self-targeting attacks with selectionRange 0, include the caster's tile
+        var buffDebuffAttack = currentAttack as BuffDebuffAttackData;
+        if (buffDebuffAttack != null && currentAttack.selectionRange == 0)
+        {
+            bool hasSelfTargeting = buffDebuffAttack.statusEffects.Any(e => e.targetSelf);
+            if (hasSelfTargeting && !validTiles.Contains(centerTile))
+            {
+                validTiles.Add(centerTile);
+            }
+        }
+        
         Debug.Log($"Found {validTiles.Count} valid tiles for attack {currentAttack.attackName}");
         foreach (var tile in validTiles)
         {
@@ -183,7 +195,22 @@ public class BuffDebuffAttackController : MonoBehaviour
 
     void ConfirmAttack(OverlayTile targetTile)
 {
-    mouseController.canPocion = false;
+        if (mouseController.myUnit.Name == "Riku Takeda")
+        {
+            mouseController.animatorSamurai.SetTrigger("attackFront");
+        }
+
+        if (mouseController.myUnit.Name == "Sayuri")
+        {
+            mouseController.animatorGeisha.SetTrigger("attack1");
+        }
+
+        if (mouseController.myUnit.Name == "Raiden")
+        {
+            mouseController.animatorNinja.SetTrigger("attackFront");
+        }
+
+        mouseController.canPocion = false;
     if (attackExecuted) return;
     
     // ✅ NEW: Clear mustAttackNextTurn condition after confirming an attack
@@ -366,16 +393,25 @@ public class BuffDebuffAttackController : MonoBehaviour
         bool isCritical = Random.value < criticalChance;
         float damageMultiplier = isCritical ? criticalMultiplier : 1.0f;
 
+        // ✅ FIXED: Declare attackerStatusManager outside of damage block
+        var attackerStatusManager = currentUnit.GetComponent<StatusEffectManager>();
+
         if (currentAttack.damage > 0)
         {
             // ✅ NEW: Include attack bonus from status effects
             int baseAttackDamage = currentAttack.damage + Mathf.RoundToInt(currentUnit.Fue * currentAttack.scalingFactor);
-            
-            var attackerStatusManager = currentUnit.GetComponent<StatusEffectManager>();
+
             if (attackerStatusManager != null)
             {
                 baseAttackDamage += attackerStatusManager.CalculateAttackBonus();
-                Debug.Log($"{currentUnit.name} attack bonus: +{attackerStatusManager.CalculateAttackBonus()}");
+                
+                // ✅ NEW: Apply outgoing damage penalty (for Hypnotic Chant)
+                float outgoingPenalty = attackerStatusManager.CalculateOutgoingDamagePenalty();
+                if (outgoingPenalty > 0)
+                {
+                    baseAttackDamage = Mathf.RoundToInt(baseAttackDamage * (1f - outgoingPenalty));
+                    Debug.Log($"{currentUnit.name} damage reduced by {outgoingPenalty * 100}% due to status effects");
+                }
             }
             
             finalDamage = Mathf.RoundToInt(baseAttackDamage * damageMultiplier);
@@ -408,28 +444,19 @@ public class BuffDebuffAttackController : MonoBehaviour
         // Apply status effects (only if this is a BuffDebuffAttackData)
         if (buffDebuffAttack != null)
         {
-            Debug.Log($"Applying {buffDebuffAttack.statusEffects.Count} status effects to {targetUnit.name}");
             foreach (var attackEffect in buffDebuffAttack.statusEffects)
             {
-                Debug.Log($"Processing status effect: {attackEffect.statusEffect.effectName} with probability {attackEffect.probability}%");
                 if (Random.value <= attackEffect.probability)
                 {
                     var statusManager = targetUnit.GetComponent<StatusEffectManager>();
                     if (statusManager == null)
                     {
-                        Debug.Log($"Adding StatusEffectManager to {targetUnit.name}");
                         statusManager = targetUnit.gameObject.AddComponent<StatusEffectManager>();
                     }
 
                     var effectToApply = attackEffect.statusEffect.Clone();
                     effectToApply.caster = currentUnit;
-                    Debug.Log($"Applying {effectToApply.effectName} to {targetUnit.name} for {effectToApply.duration} turns with attack bonus {effectToApply.attackBonus}");
                     statusManager.ApplyEffect(effectToApply);
-                    Debug.Log($"Successfully applied {effectToApply.effectName} to {targetUnit.name}");
-                }
-                else
-                {
-                    Debug.Log($"Status effect {attackEffect.statusEffect.effectName} failed probability check");
                 }
             }
 
@@ -439,6 +466,21 @@ public class BuffDebuffAttackController : MonoBehaviour
                 PushUnit(targetUnit, buffDebuffAttack.pushDistance);
             }
         }
+        
+        // ✅ FIXED: Only trigger OnAttack effects for actual damage-dealing attacks
+        // This prevents buffs from consuming themselves when applied
+        if (attackerStatusManager != null && currentAttack.damage > 0)
+        {
+            var effectsToTrigger = attackerStatusManager.GetActiveEffects()
+                .Where(e => e.triggers.Contains(EffectTrigger.OnAttack))
+                .ToList();
+            
+            foreach (var effect in effectsToTrigger)
+            {
+                attackerStatusManager.TriggerEffect(effect, EffectTrigger.OnAttack);
+            }
+        }
+        
         // Return the final damage dealt for HUD updates
         if (currentAttack.damage > 0)
         {
@@ -725,6 +767,8 @@ public class BuffDebuffAttackController : MonoBehaviour
 
     public void ExitAttackMode()
     {
+        
+
         if (!inAttackMode) return;
 
         inAttackMode = false;
@@ -740,6 +784,7 @@ public class BuffDebuffAttackController : MonoBehaviour
             mouseController.enabled = true;
             mouseController.canAttack = true;
             mouseController.showPanelAcciones = true;
+            
         }
 
         var panels = Object.FindObjectsByType<PanelAcciones>(
@@ -783,10 +828,15 @@ public class BuffDebuffAttackController : MonoBehaviour
             if (hitMarker != null)
                 hitMarker.gameObject.SetActive(false);
         }
+
+
+        
     }
 
     IEnumerator ShowImpactAndFinish(List<OverlayTile> area)
     {
+
+
         area.ForEach(t => t.ShowOverlay(impactColor));
 
         // Initiative bonus handling
@@ -841,6 +891,7 @@ public class BuffDebuffAttackController : MonoBehaviour
 
             yield break;
         }
+
 
         mouseController.DeselectCharacter();
         attackUI.SetButtonsInteractable(true);

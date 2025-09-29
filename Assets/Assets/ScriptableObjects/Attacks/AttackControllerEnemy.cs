@@ -9,8 +9,6 @@ public class AttackControllerEnemy : MonoBehaviour
     [Header("Inventario de ataques")]
     public List<AttackData> allAttacks = new List<AttackData>();
 
-    private List<OverlayTile> validTiles = new();
-
     public bool inAttackMode = false;
     public bool playerHit = false;
 
@@ -18,11 +16,14 @@ public class AttackControllerEnemy : MonoBehaviour
 
     OverlayTile Player1, Player2, Player3;
 
-    float[] cooldowns = {1,2,3,4};
+    public float[] Atkcooldowns;
+    public float[] actualCD;
+    public bool[] onCooldown;
 
     OverlayTile finalMove, attackOrigin;
 
     [SerializeField] private AttackData currentAttack;
+    [SerializeField] private int currentAttackIndex = -1;
 
     [SerializeField] private RangeFinder rangeFinder;
 
@@ -38,13 +39,19 @@ public class AttackControllerEnemy : MonoBehaviour
     private void Awake()
     {
         if (rangeFinder == null) rangeFinder = new RangeFinder();
-        
-        for (int i = 0; i < allAttacks.Count; i++)
+
+        int attackCount = allAttacks.Count;
+        Atkcooldowns = new float[attackCount];
+        actualCD = new float[attackCount];
+        onCooldown = new bool[attackCount];
+
+        for (int i = 0; i < attackCount; i++)
         {
-            Debug.LogError("El i del ataque numero es "+ i);
-            cooldowns[i] = allAttacks[i].cooldown;
-        } 
- 
+            Debug.LogError("El i del ataque numero es " + i);
+            Atkcooldowns[i] = allAttacks[i].cooldown;
+            actualCD[i] = 0f;
+            onCooldown[i] = false;
+        }
     }
 
     public void playerPosition(OverlayTile player1, OverlayTile player2, OverlayTile player3)
@@ -60,7 +67,8 @@ public class AttackControllerEnemy : MonoBehaviour
     public bool CanAttackFrom(List<OverlayTile> MovementTiles, OverlayTile Active)
     {
         currentAttack = null; attackOrigin = null; finalMove = null;
-        
+        currentAttackIndex = -1;
+
         if (Player1 == null || Player2 == null || Player3 == null) { Debug.LogError("El problema esta en Players"); return false; }
         if (rangeFinder == null) { Debug.LogError("El problema esta en rangeFinder"); return false; }
         if (MovementTiles == null || MovementTiles.Count == 0) { Debug.LogError("El problema esta en moveTiles"); return false; }
@@ -71,14 +79,14 @@ public class AttackControllerEnemy : MonoBehaviour
 
         foreach (var move in MovementTiles)
         {
-            foreach (var atk in allAttacks)
+            for (int i = 0; i < allAttacks.Count; i++)
             {
+                var atk = allAttacks[i];
+                if (onCooldown[i]) continue;
                 // 1) Tiles desde donde seleccionar 
                 var selectTiles = rangeFinder.GetTilesInRange(move, atk.selectionRange) ?? new List<OverlayTile>();
                 foreach (var tile in selectTiles)
                 {
-                    if (atk.onCooldown) continue;
-                    // 2) Área de efecto desde ese tile 
                     var area = GetEffectArea(tile, atk) ?? new List<OverlayTile>();
                     if (area.Count == 0) continue;
 
@@ -88,6 +96,7 @@ public class AttackControllerEnemy : MonoBehaviour
                     {
                         if (finalMove == Active) return false;
                         currentAttack = atk;
+                        currentAttackIndex = i;
                         finalMove = move;
                         attackOrigin = tile;
                     }
@@ -168,7 +177,12 @@ public class AttackControllerEnemy : MonoBehaviour
             return;
         }
 
-        currentAttack.onCooldown = true;
+        if (currentAttackIndex >= 0 && currentAttackIndex < onCooldown.Length)
+        {
+            onCooldown[currentAttackIndex] = true;
+            actualCD[currentAttackIndex] = Atkcooldowns[currentAttackIndex];
+            Debug.Log($"Attack {currentAttack.name} put on cooldown for {actualCD[currentAttackIndex]} turns");
+        }
 
         var area = GetEffectArea(targetTile, currentAttack);
 
@@ -243,12 +257,16 @@ public class AttackControllerEnemy : MonoBehaviour
     {
         for (int i = 0; i < allAttacks.Count; i++)
         {
-            if (allAttacks[i].cooldown > 0 && allAttacks[i].onCooldown) allAttacks[i].cooldown--;
-            if (allAttacks[i].cooldown <= 0)
+            if (actualCD[i] > 0 && onCooldown[i])
             {
-                allAttacks[i].cooldown = cooldowns[i];
-                allAttacks[i].onCooldown = false;
+                actualCD[i]--;
+                Debug.Log($"Attack {allAttacks[i].name} cooldown reduced to {actualCD[i]}");
+                if (actualCD[i] <= 0)
+                {
+                    onCooldown[i] = false;
+                    Debug.Log($"Attack {allAttacks[i].name} is now off cooldown");
+                }
             }
-        }   
-    }
+        }
+    }    
 }

@@ -166,17 +166,6 @@ public class EnemyIA : MonoBehaviour
             hasFinishedMovementThisTurn = false; // resetear al inicio del movimiento
             stepsMoved = 0;                       // asegurar contador limpio
         }
-        /*
-        if (path.Count == 0 && isMoving)
-        {
-            FinishTurn();
-        }
-        
-        /*
-        if (currentUnit = myUnit)
-        {
-            LogicAI();
-        }*/
     }
 
     public void LogicAI()
@@ -211,9 +200,6 @@ public class EnemyIA : MonoBehaviour
 
             if (canPlan)
             {
-
-                //Debug.LogError($"Posible ataque: mover a {(moveTo != null ? moveTo.gridLocation.ToString() : "null")} y seleccionar {(select != null ? select.gridLocation.ToString() : "null")}");
-
                 if (moveTo == null || Active == null)
                 {
                     // Ya estoy en la casilla ideal → NO me muevo este turno
