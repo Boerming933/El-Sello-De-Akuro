@@ -30,6 +30,7 @@ public class Unit : MonoBehaviour
     public int pocionHeal;
 
     public Sprite portrait;
+    public Sprite turnerIcon;
 
     public CharacterDetailsUI hud;
 
