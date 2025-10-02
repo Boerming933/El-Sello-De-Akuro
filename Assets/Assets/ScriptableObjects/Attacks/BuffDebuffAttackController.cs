@@ -194,71 +194,74 @@ public class BuffDebuffAttackController : MonoBehaviour
     }
 
     void ConfirmAttack(OverlayTile targetTile)
-{
-        if (mouseController.myUnit.Name == "Riku Takeda")
-        {
+    {
+            if (mouseController.myUnit.Name == "Riku Takeda")
+            {
+            mouseController.animatorSamurai.SetBool("idleBatalla", false);
             mouseController.animatorSamurai.SetTrigger("attackFront");
-        }
+            }
 
-        if (mouseController.myUnit.Name == "Sayuri")
-        {
+            if (mouseController.myUnit.Name == "Sayuri")
+            {
+            mouseController.animatorGeisha.SetBool("idleBatalla", false);
             mouseController.animatorGeisha.SetTrigger("attack1");
-        }
+             }
 
-        if (mouseController.myUnit.Name == "Raiden")
-        {
-            mouseController.animatorNinja.SetTrigger("attackFront");
-        }
+            if (mouseController.myUnit.Name == "Raiden")
+            {
+                 mouseController.animatorNinja.SetBool("idleBatalla", false);
+                    mouseController.animatorNinja.SetTrigger("attackFront");
+             }
 
-        mouseController.canPocion = false;
-    if (attackExecuted) return;
-    
-    // ✅ NEW: Clear mustAttackNextTurn condition after confirming an attack
-    if (currentUnit != null)
-    {
-        var statusManager = currentUnit.GetComponent<StatusEffectManager>();
-        if (statusManager != null && statusManager.MustAttackNextTurn())
-        {
-            statusManager.ClearMustAttackCondition();
-        }
-    }
-    
-    var buffDebuffAttack = currentAttack as BuffDebuffAttackData;
-    if (buffDebuffAttack != null)
-    {
-        if (!buffDebuffAttack.CanUse()) return;
+            mouseController.canPocion = false;
+        if (attackExecuted) return;
         
-        // ✅ FIXED: Check behind target requirement safely
-        if (buffDebuffAttack.requiresBehindTarget && !IsAttackerBehindTarget(targetTile))
+        // ✅ NEW: Clear mustAttackNextTurn condition after confirming an attack
+        if (currentUnit != null)
         {
-            Debug.Log("Attack requires positioning behind target!");
-            return;
+            var statusManager = currentUnit.GetComponent<StatusEffectManager>();
+            if (statusManager != null && statusManager.MustAttackNextTurn())
+            {
+                statusManager.ClearMustAttackCondition();
+            }
         }
         
-        buffDebuffAttack.UseAttack();
+        var buffDebuffAttack = currentAttack as BuffDebuffAttackData;
+        if (buffDebuffAttack != null)
+        {
+            if (!buffDebuffAttack.CanUse()) return;
+            
+            // ✅ FIXED: Check behind target requirement safely
+            if (buffDebuffAttack.requiresBehindTarget && !IsAttackerBehindTarget(targetTile))
+            {
+                Debug.Log("Attack requires positioning behind target!");
+                return;
+            }
+            
+            buffDebuffAttack.UseAttack();
+        }
+        
+        attackExecuted = true;
+        attackUI.SetButtonsInteractable(false);
+
+        validTiles.ForEach(t => t.HideTile());
+        ClearPreview();
+        inAttackMode = false;
+
+        // Hide all panel actions
+        var panels = Object.FindObjectsByType<PanelAcciones>(
+            FindObjectsInactive.Include,
+            FindObjectsSortMode.None
+        );
+        foreach (var p in panels) p.Hide();
+
+        var area = GetEffectArea(targetTile);
+        hudsToReset.Clear();
+
+        // Execute all attack effects
+        ExecuteAttackEffects(area);
+        StartCoroutine(ShowImpactAndFinish(area));
     }
-    
-    attackExecuted = true;
-    attackUI.SetButtonsInteractable(false);
-
-    validTiles.ForEach(t => t.HideTile());
-    ClearPreview();
-    inAttackMode = false;
-
-    // Hide all panel actions
-    var panels = Object.FindObjectsByType<PanelAcciones>(
-        FindObjectsInactive.Include,
-        FindObjectsSortMode.None
-    );
-    foreach (var p in panels) p.Hide();
-
-    var area = GetEffectArea(targetTile);
-    hudsToReset.Clear();
-
-    // Execute all attack effects
-    ExecuteAttackEffects(area);
-    StartCoroutine(ShowImpactAndFinish(area));
-}
 
 
     void ExecuteAttackEffects(List<OverlayTile> area)
@@ -827,16 +830,11 @@ public class BuffDebuffAttackController : MonoBehaviour
             var hitMarker = enemy.transform.Find("HitMarker");
             if (hitMarker != null)
                 hitMarker.gameObject.SetActive(false);
-        }
-
-
-        
+        }        
     }
 
     IEnumerator ShowImpactAndFinish(List<OverlayTile> area)
     {
-
-
         area.ForEach(t => t.ShowOverlay(impactColor));
 
         // Initiative bonus handling
@@ -850,7 +848,7 @@ public class BuffDebuffAttackController : MonoBehaviour
             );
         }
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         MapManager.Instance.HideAllTiles();
 
         if (mouseController != null) mouseController.enabled = true;
@@ -891,7 +889,6 @@ public class BuffDebuffAttackController : MonoBehaviour
 
             yield break;
         }
-
 
         mouseController.DeselectCharacter();
         attackUI.SetButtonsInteractable(true);
