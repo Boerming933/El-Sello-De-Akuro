@@ -320,6 +320,8 @@ public class MouseControler : MonoBehaviour
     {
         animatorSamurai.SetBool("idleBatalla", false);
         animatorGeisha.SetBool("idleBatalla", false);
+        animatorNinja.SetBool("idleBatalla", false);
+
 
         //canPocion = true;
         canSkip = true;
@@ -359,16 +361,25 @@ public class MouseControler : MonoBehaviour
 
     private void TryAutoEndTurn()
     {
+        
+
         if (myUnit.Name == "Riku Takeda")
         {
             animatorSamurai.SetBool("isMovingDown", false);
             animatorSamurai.SetBool("isMovingUp", false);
+            
         }
 
         if (myUnit.Name == "Sayuri")
         {
             animatorGeisha.SetBool("isMovingDown", false);
             animatorGeisha.SetBool("isMovingUp", false);
+        }
+
+        if (myUnit.Name == "Raiden")
+        {
+            animatorNinja.SetBool("isMovingDown", false);
+            animatorNinja.SetBool("isMovingUp", false);
         }
 
         canSkip = true;
@@ -462,6 +473,42 @@ public class MouseControler : MonoBehaviour
             }
         }
 
+        if (myUnit.Name == "Raiden")
+        {
+            float nextY = path[0].transform.position.y;
+            float currentY = character.transform.position.y;
+
+            if (nextY > currentY)
+            {
+                animatorNinja.SetBool("isMovingUp", true);
+                animatorNinja.SetBool("isMovingDown", false);
+            }
+            else if (nextY < currentY)
+            {
+                animatorNinja.SetBool("isMovingUp", false);
+                animatorNinja.SetBool("isMovingDown", true);
+            }
+        }
+
+        if (myUnit.Name == "Raiden")
+        {
+            float nextX = path[0].transform.position.x;
+            float currentX = character.transform.position.x;
+
+            var sr = character.GetComponent<SpriteRenderer>();
+            if (sr != null)
+            {
+                if (nextX > currentX)
+                {
+                    sr.flipX = true; // mira a la derecha
+                }
+                else if (nextX < currentX)
+                {
+                    sr.flipX = false; // mira a la izquierda (por defecto)
+                }
+            }
+        }
+
 
         canSkip = false;
 
@@ -521,6 +568,12 @@ public class MouseControler : MonoBehaviour
             {
                 animatorGeisha.SetBool("isMovingDown", false);
                 animatorGeisha.SetBool("isMovingUp", false);
+            }
+
+            if (myUnit.Name == "Raiden")
+            {
+                animatorNinja.SetBool("isMovingDown", false);
+                animatorNinja.SetBool("isMovingUp", false);
             }
 
             // El personaje ya llegó a su destino

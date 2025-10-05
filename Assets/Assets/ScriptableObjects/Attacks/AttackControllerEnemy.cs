@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +26,7 @@ public class AttackControllerEnemy : MonoBehaviour
 
     [SerializeField] private RangeFinder rangeFinder;
 
-    private Unit currentUnit;
+    public Unit currentUnit;
     public EnemyIA enemyIA;
 
     private List<BattleHUD> hudsToReset = new();
@@ -47,7 +46,6 @@ public class AttackControllerEnemy : MonoBehaviour
 
         for (int i = 0; i < attackCount; i++)
         {
-            Debug.LogError("El i del ataque numero es " + i);
             Atkcooldowns[i] = allAttacks[i].cooldown;
             actualCD[i] = 0f;
             onCooldown[i] = false;
@@ -184,7 +182,10 @@ public class AttackControllerEnemy : MonoBehaviour
             Debug.Log($"Attack {currentAttack.name} put on cooldown for {actualCD[currentAttackIndex]} turns");
         }
 
-        var area = GetEffectArea(targetTile, currentAttack);
+
+        var unitDamageMap = new Dictionary<Unit, int>();
+
+        var area = GetEffectArea(targetTile, attack);
 
         hudsToReset.Clear();
 
@@ -194,19 +195,30 @@ public class AttackControllerEnemy : MonoBehaviour
             Collider2D[] hits = Physics2D.OverlapCircleAll(center, 0.2f);
             foreach (var col in hits)
             {
-                if (col.CompareTag("Player"))
+                if (col.CompareTag("Aliado") || col.CompareTag("Aliado2"))
                 {
+                    Debug.LogError("currentUnit es " + currentUnit);
                     var u = col.GetComponent<Unit>();
+
+                    Debug.Log($"Applying attack effects to {u.name}");
+                    int actualDamage = ApplyAttackToUnit(u);
+                    if (actualDamage > 0)
+                        unitDamageMap[u] = actualDamage;
+
                     var playerHUDObj = col.transform.Find("HUDSecundaria/PlayerHUD");
                     if (playerHUDObj != null)
                     {
-                        var PlayerHUD = playerHUDObj.GetComponent<BattleHUD>();
-                        if (PlayerHUD != null && !hudsToReset.Contains(PlayerHUD))
+                        var playerHUD = playerHUDObj.GetComponent<BattleHUD>();
+                        if (playerHUD != null && !hudsToReset.Contains(playerHUD))
                         {
-                            PlayerHUD.SetHUD(u);
-                            PlayerHUD.ApplyDamage(Mathf.RoundToInt(currentAttack.damage + currentUnit.Fue * currentAttack.scalingFactor));                                 //////
-                            PlayerHUD.Show();
-                            hudsToReset.Add(PlayerHUD);
+                            playerHUD.SetHUD(u);
+                            if (unitDamageMap.ContainsKey(u) && unitDamageMap[u] > 0)
+                            {
+                                //gabiteHUD.ApplyDamage(unitDamageMap[u]);
+                                Debug.Log($"HUD showing real damage: {unitDamageMap[u]} to {u.name}");
+                            }                                //////
+                            playerHUD.Show();
+                            hudsToReset.Add(playerHUD);
                         }
                     }
                 }
@@ -241,7 +253,7 @@ public class AttackControllerEnemy : MonoBehaviour
             );
         }
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         MapManager.Instance.HideAllTiles();
         enemyIA.FinishTurn();
 
@@ -251,6 +263,12 @@ public class AttackControllerEnemy : MonoBehaviour
             if (hitMarker != null)
                 hitMarker.gameObject.SetActive(false);
         }
+
+        foreach (var hud in hudsToReset)
+            hud?.Hide();
+        hudsToReset.Clear();
+
+        yield break;
     }
 
     public void ReduceCooldowns()
@@ -268,5 +286,126 @@ public class AttackControllerEnemy : MonoBehaviour
                 }
             }
         }
-    }    
+    }
+    
+    int ApplyAttackToUnit(Unit targetUnit)
+    {
+        // ✅ FIXED: Safe property access for criticals
+        float criticalChance = 0f;
+        float criticalMultiplier = 1f;
+        int finalDamage = 0;
+
+        var buffDebuffAttack = currentAttack as BuffDebuffAttackData;
+        if (buffDebuffAttack != null)
+        {
+            criticalChance = buffDebuffAttack.criticalChance;
+            criticalMultiplier = buffDebuffAttack.criticalMultiplier;
+        }
+
+        bool isCritical = Random.value < criticalChance;
+        float damageMultiplier = isCritical ? criticalMultiplier : 1.0f;
+
+        if (currentAttack.damage > 0)
+        {
+            // ✅ NEW: Include attack bonus from status effects
+            int baseAttackDamage = currentAttack.damage + Mathf.RoundToInt(currentUnit.Fue * currentAttack.scalingFactor);
+
+            var attackerStatusManager = currentUnit.GetComponent<StatusEffectManager>();
+            if (attackerStatusManager != null)
+            {
+                baseAttackDamage += attackerStatusManager.CalculateAttackBonus();
+                Debug.Log($"{currentUnit.name} attack bonus: +{attackerStatusManager.CalculateAttackBonus()}");
+            }
+
+            finalDamage = Mathf.RoundToInt(baseAttackDamage * damageMultiplier);
+
+            var statusManager = targetUnit.GetComponent<StatusEffectManager>();
+            if (statusManager != null)
+            {
+                float damageReduction = statusManager.CalculateDamageReduction();
+                finalDamage = Mathf.RoundToInt(finalDamage * (1f - damageReduction));
+
+                if (statusManager.HasEffect(StatusEffectType.DraconicStance))
+                {
+                    Debug.Log($"{targetUnit.name} negates all damage with Draconic Stance!");
+                    statusManager.TriggerEffect(statusManager.GetEffect(StatusEffectType.DraconicStance), EffectTrigger.OnDamageReceived);
+                    finalDamage = 0;
+                }
+                else if (statusManager.HasEffect(StatusEffectType.Guard))
+                {
+                    statusManager.TriggerEffect(statusManager.GetEffect(StatusEffectType.Guard), EffectTrigger.OnDamageReceived);
+                }
+            }
+
+            if (finalDamage > 0)
+            {
+                targetUnit.TakeDamage(finalDamage);
+                if (isCritical) Debug.Log($"Critical hit! {finalDamage} damage to {targetUnit.name}");
+            }
+        }
+
+        // Apply status effects (only if this is a BuffDebuffAttackData)
+        if (buffDebuffAttack != null)
+        {
+            Debug.Log($"Applying {buffDebuffAttack.statusEffects.Count} status effects to {targetUnit.name}");
+            foreach (var attackEffect in buffDebuffAttack.statusEffects)
+            {
+                Debug.Log($"Processing status effect: {attackEffect.statusEffect.effectName} with probability {attackEffect.probability}%");
+                if (Random.value <= attackEffect.probability)
+                {
+                    var statusManager = targetUnit.GetComponent<StatusEffectManager>();
+                    if (statusManager == null)
+                    {
+                        Debug.Log($"Adding StatusEffectManager to {targetUnit.name}");
+                        statusManager = targetUnit.gameObject.AddComponent<StatusEffectManager>();
+                    }
+
+                    var effectToApply = attackEffect.statusEffect.Clone();
+                    effectToApply.caster = currentUnit;
+                    Debug.Log($"Applying {effectToApply.effectName} to {targetUnit.name} for {effectToApply.duration} turns with attack bonus {effectToApply.attackBonus}");
+                    statusManager.ApplyEffect(effectToApply);
+                    Debug.Log($"Successfully applied {effectToApply.effectName} to {targetUnit.name}");
+                }
+                else
+                {
+                    Debug.Log($"Status effect {attackEffect.statusEffect.effectName} failed probability check");
+                }
+            }
+
+            // Push mechanics (only available for BuffDebuffAttackData)
+            if (buffDebuffAttack.canPushTarget && Random.value < buffDebuffAttack.pushChance)
+            {
+                PushUnit(targetUnit, buffDebuffAttack.pushDistance);
+            }
+        }
+        // Return the final damage dealt for HUD updates
+        if (currentAttack.damage > 0)
+        {
+            return finalDamage;
+        }
+        return 0;
+    }
+
+    void PushUnit(Unit targetUnit, int distance)
+    {
+        var currentTile = targetUnit.FindCenterTile();
+        if (currentTile == null) return;
+
+        Vector2Int pushDirection = GetPushDirection(currentUnit.FindCenterTile(), currentTile);
+        Vector2Int newPosition = currentTile.grid2DLocation + pushDirection * distance;
+
+        if (MapManager.Instance.map.TryGetValue(newPosition, out OverlayTile newTile) && !newTile.isBlocked)
+        {
+            targetUnit.transform.position = newTile.transform.position;
+            currentTile.isBlocked = false;
+            newTile.isBlocked = true;
+            Debug.Log($"{targetUnit.name} pushed {distance} tiles!");
+        }
+    }
+
+    Vector2Int GetPushDirection(OverlayTile from, OverlayTile to)
+    {
+        Vector2Int delta = to.grid2DLocation - from.grid2DLocation;
+        return new Vector2Int(Mathf.Clamp(delta.x, -1, 1), Mathf.Clamp(delta.y, -1, 1));
+    }
 }

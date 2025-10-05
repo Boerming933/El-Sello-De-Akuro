@@ -10,6 +10,9 @@ public class EnemyIA : MonoBehaviour
     private Enemy Enemy;
     public LayerMask tileLayerMask;
     public OverlayTile Active;
+    public OverlayTile moveTo;
+    public OverlayTile select;
+    public AttackData attack;
 
     public float speed;
     private int stepsMoved = 0;
@@ -194,9 +197,9 @@ public class EnemyIA : MonoBehaviour
             attackControllerEnemy.playerPosition(overlayTile1, overlayTile2, overlayTile3);
             var canPlan = attackControllerEnemy.CanAttackFrom(range, Active);
 
-            var moveTo = attackControllerEnemy.FinalMoveTile();  // casilla donde me paro para atacar
-            var select = attackControllerEnemy.AttackTile();     // tile que voy a seleccionar para el área
-            var attack = attackControllerEnemy.ChosenAttack(); // ataque que va a utilizar
+            moveTo = attackControllerEnemy.FinalMoveTile();  // casilla donde me paro para atacar
+            select = attackControllerEnemy.AttackTile();     // tile que voy a seleccionar para el área
+            attack = attackControllerEnemy.ChosenAttack(); // ataque que va a utilizar
 
             if (canPlan)
             {
@@ -211,7 +214,8 @@ public class EnemyIA : MonoBehaviour
                     path.Clear();
 
                     // Hasta que implementes ataques, cerrá turno acá
-                    FinishTurn();
+                    attackControllerEnemy.currentUnit = myUnit;
+                    attackControllerEnemy.ConfirmAttack(select, attack);
                 }
                 else
                 {
@@ -237,7 +241,8 @@ public class EnemyIA : MonoBehaviour
                 }
                 else
                 {
-                    attackControllerEnemy.ConfirmAttack(select,attack);
+                    attackControllerEnemy.currentUnit = myUnit;
+                    attackControllerEnemy.ConfirmAttack(select, attack);
                 }
             }
         }

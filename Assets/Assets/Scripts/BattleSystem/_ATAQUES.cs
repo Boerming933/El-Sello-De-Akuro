@@ -1,7 +1,8 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class AttackButtonProxy : MonoBehaviour
+public class AttackButtonProxy : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
 {
     [Tooltip("Drag here the AttackData ScriptableObject for this button")]
     public AttackData attackData;
@@ -16,10 +17,13 @@ public class AttackButtonProxy : MonoBehaviour
 
     public Button botonBatalla;
 
+    public GameObject descripcionAtaque;
+
     [Tooltip("Panel de acciones (optional) con el script PanelAcciones")]
     public PanelAcciones panelAcciones;
 
     public bool botonDesactivado = false;
+
 
     /// <summary>
     /// Asignar este método al OnClick() de tu botón en el Inspector.
@@ -51,8 +55,47 @@ public class AttackButtonProxy : MonoBehaviour
         if (attackController != null && attackData != null)
             attackController.StartAttack(attackData);
 
+        HideDescription();
+
        
     }
+
+
+    // Called when button becomes highlighted (mouse hover OR keyboard/gamepad selection)
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        ShowDescription();
+    }
+
+    public void OnSelect(BaseEventData eventData)
+    {
+        ShowDescription();
+    }
+
+    // Called when button loses highlight (mouse exit OR keyboard/gamepad deselection)
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        HideDescription();
+    }
+
+    public void OnDeselect(BaseEventData eventData)
+    {
+        HideDescription();
+    }
+
+    private void ShowDescription()
+    {
+        if (descripcionAtaque != null)
+            descripcionAtaque.SetActive(true);
+    }
+
+    private void HideDescription()
+    {
+        if (descripcionAtaque != null)
+            descripcionAtaque.SetActive(false);
+    }
+
+
     public void ShowGeneralBattlePanel()
     {
         if (panelBatallaGeneral != null)
