@@ -55,6 +55,8 @@ public class AttackButtonProxy : MonoBehaviour, IPointerEnterHandler, IPointerEx
         if (attackController != null && attackData != null)
             attackController.StartAttack(attackData);
 
+        HideDescription();
+
        
     }
 

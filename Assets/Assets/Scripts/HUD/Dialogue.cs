@@ -54,7 +54,7 @@ public class Dialogue : MonoBehaviour
         NPCName.text = nameTxt;
         lineIndex = 0;
         Time.timeScale = 0f;
-        audioSource.PlayOneShot(NPCVoice);          //Borrar esta wea cuando se use el script en otros NPCs XD
+        //audioSource.PlayOneShot(NPCVoice);          //Borrar esta wea cuando se use el script en otros NPCs XD
         StartCoroutine(ShowLine());
     }
 
