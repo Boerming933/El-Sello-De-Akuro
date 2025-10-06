@@ -56,6 +56,33 @@ public class BattleSystem : MonoBehaviour
 
         StartBattle();
     }
+    
+
+    void Update()
+    {
+        for (int i = 0; i < PlayersPrefab.Count; i++)
+        {
+            if (PlayersPrefab[i] == null)
+            {
+                PositionPlayer[i].isBlocked = false;
+                PositionPlayer.RemoveAt(i);
+                playerHUD.RemoveAt(i);
+                PlayersPrefab.RemoveAt(i);
+                PlayerUnity.RemoveAt(i);
+            }
+        }
+        for (int i = 0; i < EnemiesPrefab.Count; i++)
+        {
+            if (EnemiesPrefab[i] == null)
+            {
+                EnemiesPrefab.RemoveAt(i);
+                PositionEnemy[i].isBlocked = false;
+                PositionEnemy.RemoveAt(i);
+                EnemyUnity.RemoveAt(i);
+                EnemyIAs.RemoveAt(i);
+            }
+        }
+    }
 
     void StartBattle()
     {
@@ -160,7 +187,6 @@ public class BattleSystem : MonoBehaviour
 
             PositionPlayer[PlayerUnity.Count] = overlay;
             overlay.isBlocked = true;
-
         }
     }
 
@@ -265,13 +291,13 @@ public class BattleSystem : MonoBehaviour
     {
         while (!BattleOver())
         {
-
             // 4) Siguiente unidad en orden prefijado
             _currentUnit = initiativeManager.GetNextUnit();
             if (_currentUnit == null)
             {
-                yield break;
+                continue;
             }
+            
             OnTurnStart?.Invoke(_currentUnit);
 
             var detailsUI = FindAnyObjectByType<CharacterDetailsUI>();
@@ -356,6 +382,7 @@ public class BattleSystem : MonoBehaviour
                 break;
             }
         }
+        EnemyIAs[n].currentUnit = enemy;
         EnemyIAs[n].LogicAI();
 
         float timeLeft = 5f;

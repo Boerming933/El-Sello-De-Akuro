@@ -6,6 +6,16 @@ using System.Collections.Generic;
 public class DecoracionCombate : MonoBehaviour
 {
     public OverlayTile Active;
+    
+    public enum SortGroup { Background = 0, Dynamic = 1, Foreground = 2 }
+    
+    public SortGroup sortGroup = SortGroup.Dynamic;
+    
+    private SpriteRenderer _renderer;
+    
+    public bool blocked = true;
+
+    public SpriteRenderer Renderer => _renderer;
 
     private IEnumerator Start()
     {
@@ -14,7 +24,11 @@ public class DecoracionCombate : MonoBehaviour
 
         var activeTile = ActiveTile();
         Active = activeTile.Value.collider.GetComponent<OverlayTile>();
-        Active.isBlocked = true;
+        if (blocked)
+        {
+            Active.isBlocked = true;
+        }
+        _renderer = GetComponent<SpriteRenderer>();
     }
     
     public RaycastHit2D? ActiveTile()

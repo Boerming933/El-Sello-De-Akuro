@@ -39,6 +39,9 @@ public class MouseControler : MonoBehaviour
     [SerializeField] public Animator animatorSamurai;
     [SerializeField] public Animator animatorGeisha;
     [SerializeField] public Animator animatorNinja;
+    [SerializeField] public Animator geishaEffects;
+
+    public AttackBools attackBools;
 
 
     private void Start()
@@ -318,9 +321,13 @@ public class MouseControler : MonoBehaviour
 
     public void DeselectCharacter()
     {
+        animatorSamurai.SetBool("idleBatallaUp", false);
+        animatorGeisha.SetBool("idleBatallaUp", false);
+        animatorNinja.SetBool("idleBatallaUp", false);
         animatorSamurai.SetBool("idleBatalla", false);
         animatorGeisha.SetBool("idleBatalla", false);
         animatorNinja.SetBool("idleBatalla", false);
+        
 
 
         //canPocion = true;
