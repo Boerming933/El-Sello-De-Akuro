@@ -45,28 +45,9 @@ public class Unit : MonoBehaviour
             gameObject.AddComponent<StatusEffectManager>();
             Debug.Log($"Added StatusEffectManager to {Name}");
         }
-
         // Inicializa HUD al comenzar el combate
         hud.ShowDetails(this);
     }
-
-
-    // public void TakeDamage(int amount)
-    // {
-    //     // 1) Ajusta HP
-    //     currentHP = Mathf.Max(0, currentHP - amount);
-
-    //     // 2) Actualiza HUD
-    //     var ui = UnityEngine.Object.FindFirstObjectByType<CharacterDetailsUI>();
-    //     if (ui != null)
-    //         ui.UpdateAllUI();
-    //     // 3) Dispara evento de daño
-    //     OnDamageTaken?.Invoke(amount);
-
-    //     // 4) Comprueba muerte
-    //     if (currentHP == 0)
-    //         Die();
-    // }
 
     public bool EquipAttack(AttackData attack)
     {
@@ -83,10 +64,7 @@ public class Unit : MonoBehaviour
 
     private void Die()
     {
-        OnDeath?.Invoke();
-        // GetComponent<Animator>()?.SetTrigger("Die");
-        // collider.enabled = false;
-        // this.enabled = false;
+        Destroy(gameObject);
     }
 
     //para enemigos
@@ -183,5 +161,4 @@ public class Unit : MonoBehaviour
         if (currentHP == 0)
             Die();
     }
-
 }
