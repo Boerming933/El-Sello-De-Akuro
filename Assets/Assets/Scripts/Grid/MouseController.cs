@@ -321,14 +321,24 @@ public class MouseControler : MonoBehaviour
 
     public void DeselectCharacter()
     {
-        animatorSamurai.SetBool("idleBatallaUp", false);
-        animatorGeisha.SetBool("idleBatallaUp", false);
-        animatorNinja.SetBool("idleBatallaUp", false);
-        animatorSamurai.SetBool("idleBatalla", false);
-        animatorGeisha.SetBool("idleBatalla", false);
-        animatorNinja.SetBool("idleBatalla", false);
-        
-
+        if (character != null)
+        {
+            if (animatorGeisha)
+            {
+                animatorGeisha.SetBool("idleBatallaUp", false);
+                animatorGeisha.SetBool("idleBatalla", false);  
+            }
+            if (animatorNinja)
+            {
+                animatorNinja.SetBool("idleBatallaUp", false);
+                animatorNinja.SetBool("idleBatalla", false);
+            }
+            if (animatorSamurai)
+            {
+                animatorSamurai.SetBool("idleBatallaUp", false);
+                animatorSamurai.SetBool("idleBatalla", false);      
+            }
+        }
 
         //canPocion = true;
         canSkip = true;

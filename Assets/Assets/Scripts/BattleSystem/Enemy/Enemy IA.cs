@@ -22,8 +22,12 @@ public class EnemyIA : MonoBehaviour
 
     private List<OverlayTile> path;
     private List<OverlayTile> inRangeTiles = new List<OverlayTile>();
+    public List<OverlayTile> PlayerPosition = new List<OverlayTile>();
+
     private Vector2Int position = new Vector2Int(0, 0);
 
+    private OverlayTile select;
+    private AttackData attack;
     public BattleSystem battleSystem;
     public MouseControler mouseController;
     public AttackControllerEnemy attackControllerEnemy;
@@ -39,6 +43,8 @@ public class EnemyIA : MonoBehaviour
         if (rangeFinder == null) rangeFinder = new RangeFinderPlayer();
         pathfinder = new PathfinderEnemy();
         path = new List<OverlayTile>();
+        select = new OverlayTile();
+        attack = new AttackData();
         Enemy = GetComponent<Enemy>();
         myUnit = GetComponent<Unit>();
     }
@@ -151,9 +157,14 @@ public class EnemyIA : MonoBehaviour
                 battleSystem.CharacterPosition(myUnit);
         }
 
-        if(path.Count > 0 && currentUnit == myUnit)
+        if (path.Count > 0 && currentUnit == myUnit && !inAttackMode)
         {
             MoveAlongPath();
+        }
+
+        if(path.Count > 0 && currentUnit == myUnit  && inAttackMode)
+        {
+            MoveToAttack();
         }
         
         if (!isMoving && path.Count > 1 && currentUnit == myUnit)
@@ -170,9 +181,6 @@ public class EnemyIA : MonoBehaviour
         {
             return;
         }
-        var platerTile1 = Player1Tile();
-        var platerTile2 = Player2Tile();
-        var platerTile3 = Player3Tile();
 
         List<OverlayTile> alivePlayerTiles = GetAlivePlayerTiles();
 
@@ -182,10 +190,6 @@ public class EnemyIA : MonoBehaviour
             FinishTurn();
             return;
         }
-        // Si no hay tiles de players, no hacemos nada
-        if (!platerTile1.HasValue && !platerTile2.HasValue && !platerTile3.HasValue)
-            return;
-
         // Resolver tiles de jugadores sólo si existen (null-safe)
         OverlayTile overlayTile1 = alivePlayerTiles.Count > 0 ? alivePlayerTiles[0] : null;
         OverlayTile overlayTile2 = alivePlayerTiles.Count > 1 ? alivePlayerTiles[1] : null;
@@ -203,8 +207,8 @@ public class EnemyIA : MonoBehaviour
             canPlan = attackControllerEnemy.CanAttackFrom(range, Active);
 
             var moveTo = attackControllerEnemy.FinalMoveTile();  // casilla donde me paro para atacar
-            var select = attackControllerEnemy.AttackTile();     // tile que voy a seleccionar para el área
-            var attack = attackControllerEnemy.ChosenAttack(); // ataque que va a utilizar
+            select = attackControllerEnemy.AttackTile();     // tile que voy a seleccionar para el área
+            attack = attackControllerEnemy.ChosenAttack(); // ataque que va a utilizar
 
             if (canPlan)
             {
@@ -218,6 +222,7 @@ public class EnemyIA : MonoBehaviour
                     var toPlan = pathfinder.FindPath(Active, moveTo, null, null, inRangeTiles);
                     if (toPlan != null && toPlan.Count > 0 && toPlan[0] == Active) toPlan.RemoveAt(0);
                     path = (toPlan ?? new List<OverlayTile>()).Take(myUnit.movement).ToList();
+                    inAttackMode = true;
                 }
             }
             else
@@ -257,6 +262,135 @@ public class EnemyIA : MonoBehaviour
     }
 
     private void MoveAlongPath()
+    {
+        if (myUnit.Name == "Oni1")                               //ONI 1
+        {
+            float nextY = path[0].transform.position.y;
+            float currentY = Enemy.transform.position.y;
+
+            if (nextY > currentY)
+            {
+                animator.SetBool("isMovingUp", true);
+                animator.SetBool("isMovingDown", false);
+            }
+            else if (nextY < currentY)
+            {
+                animator.SetBool("isMovingUp", false);
+                animator.SetBool("isMovingDown", true);
+            }
+        }
+
+        if (myUnit.Name == "Oni1")
+        {
+            float nextX = path[0].transform.position.x;
+            float currentX = Enemy.transform.position.x;
+
+            var sr = Enemy.GetComponent<SpriteRenderer>();
+            if (sr != null)
+            {
+                if (nextX > currentX)
+                {
+                    sr.flipX = true;
+                }
+                else if (nextX < currentX)
+                {
+                    sr.flipX = false;
+                }
+            }
+        }
+
+        if (myUnit.Name == "Oni2")                            //ONI 2
+        {
+            float nextY = path[0].transform.position.y;
+            float currentY = Enemy.transform.position.y;
+
+            if (nextY > currentY)
+            {
+                animator.SetBool("isMovingUp", true);
+                animator.SetBool("isMovingDown", false);
+            }
+            else if (nextY < currentY)
+            {
+                animator.SetBool("isMovingUp", false);
+                animator.SetBool("isMovingDown", true);
+            }
+        }
+
+        if (myUnit.Name == "Oni2")
+        {
+            float nextX = path[0].transform.position.x;
+            float currentX = Enemy.transform.position.x;
+
+            var sr = Enemy.GetComponent<SpriteRenderer>();
+            if (sr != null)
+            {
+                if (nextX > currentX)
+                {
+                    sr.flipX = true;
+                }
+                else if (nextX < currentX)
+                {
+                    sr.flipX = false;
+                }
+            }
+        }
+
+        if (myUnit.Name == "Oni3")                            //ONI 3
+        {
+            float nextY = path[0].transform.position.y;
+            float currentY = Enemy.transform.position.y;
+
+            if (nextY > currentY)
+            {
+                animator.SetBool("isMovingUp", true);
+                animator.SetBool("isMovingDown", false);
+            }
+            else if (nextY < currentY)
+            {
+                animator.SetBool("isMovingUp", false);
+                animator.SetBool("isMovingDown", true);
+            }
+        }
+
+        if (myUnit.Name == "Oni3")
+        {
+            float nextX = path[0].transform.position.x;
+            float currentX = Enemy.transform.position.x;
+
+            var sr = Enemy.GetComponent<SpriteRenderer>();
+            if (sr != null)
+            {
+                if (nextX > currentX)
+                {
+                    sr.flipX = true;
+                }
+                else if (nextX < currentX)
+                {
+                    sr.flipX = false;
+                }
+            }
+        }
+
+        if (path == null) return; // defensa
+        var step = speed * Time.deltaTime;
+        var zIndex = path[0].transform.position.z - 1f;
+
+        transform.position = Vector2.MoveTowards(transform.position, path[0].transform.position, step);
+        transform.position = new Vector3(transform.position.x, transform.position.y, zIndex);
+
+        if (Vector2.Distance(Enemy.transform.position, path[0].transform.position) < 0.0001f)
+        {
+            PositionCharacterOnTile(path[0]);
+            path.RemoveAt(0);
+        }
+
+        if (!hasFinishedMovementThisTurn && path.Count == 1)
+        {
+            FinishTurn();
+        }
+    }
+    
+    private void MoveToAttack()
     {
         if (myUnit.Name == "Oni1")                               //ONI 1
         {
@@ -381,31 +515,7 @@ public class EnemyIA : MonoBehaviour
         
         if (!hasFinishedMovementThisTurn && path.Count == 1)
         {
-            VerifyTurn();
-        }
-    }
-
-    private void VerifyTurn()
-    {
-        var select = attackControllerEnemy.AttackTile();     // tile que voy a seleccionar para el área
-        var attack = attackControllerEnemy.ChosenAttack(); // ataque que va a utilizar
-        var moveTo = attackControllerEnemy.FinalMoveTile();  // casilla donde me paro para atacar
-        Debug.LogError("canPlan es " + canPlan);
-
-        if (moveTo == Active)
-        {
-            Debug.LogError("Posible Ataque");
-            path.Clear();
             ExecuteAttack(select, attack);
-        }
-        else if (canPlan)
-        {
-            Debug.LogError("attack es " + attack);
-            path.Clear();
-            ExecuteAttack(select, attack);
-        }
-        else
-        {
             FinishTurn();
         }
     }
@@ -417,6 +527,8 @@ public class EnemyIA : MonoBehaviour
             Debug.LogError("No es tu turno Capo");
             return;
         }
+
+        inAttackMode = false;
 
         currentUnit = null;
         hasFinishedMovementThisTurn = true;
@@ -434,54 +546,6 @@ public class EnemyIA : MonoBehaviour
         attackControllerEnemy.ConfirmAttack(select, attack);
     }
 
-    public RaycastHit2D? Player1Tile()
-    {
-        if (Player1 != null)
-        {
-            Vector2 origin = new Vector2(Player1.transform.position.x, Player1.transform.position.y);
-
-            RaycastHit2D[] hits = Physics2D.RaycastAll(origin, Vector2.zero, 0f, tileLayerMask);
-
-            if (hits.Length > 0)
-            {
-                return hits.OrderByDescending(i => i.collider.transform.position.z).First();
-            }
-        }
-        return null;
-    }
-
-    public RaycastHit2D? Player2Tile()
-    {
-        if (Player2 != null)
-        {
-            Vector2 origin = new Vector2(Player2.transform.position.x, Player2.transform.position.y);
-
-            RaycastHit2D[] hits = Physics2D.RaycastAll(origin, Vector2.zero, 0f, tileLayerMask);
-
-            if (hits.Length > 0)
-            {
-                return hits.OrderByDescending(i => i.collider.transform.position.z).First();
-            }
-        }
-        return null;
-    }
-
-    public RaycastHit2D? Player3Tile()
-    {
-        if (Player3 != null)
-        {
-            Vector2 origin = new Vector2(Player3.transform.position.x, Player3.transform.position.y);
-
-            RaycastHit2D[] hits = Physics2D.RaycastAll(origin, Vector2.zero, 0f, tileLayerMask);
-
-            if (hits.Length > 0)
-            {
-                return hits.OrderByDescending(i => i.collider.transform.position.z).First();
-            }
-        }
-        return null;
-    }
-    
     private void PositionCharacterOnTile(OverlayTile tile)
     {
         transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y, tile.transform.position.z - 1f);
@@ -496,23 +560,25 @@ public class EnemyIA : MonoBehaviour
     // New helper method to get alive player tiles
     private List<OverlayTile> GetAlivePlayerTiles()
     {
-        List<OverlayTile> aliveTiles = new List<OverlayTile>();
+        PlayerPosition.Clear();
         
         if (battleSystem != null && battleSystem.PlayerUnity != null)
         {
+            int i = 0;
             foreach (var player in battleSystem.PlayerUnity)
             {
                 if (player != null && player.currentHP > 0)
                 {
-                    var tile = player.FindCenterTile();
+                    var tile = battleSystem.PositionPlayer[i];
                     if (tile != null)
                     {
-                        aliveTiles.Add(tile);
+                        PlayerPosition.Add(tile);
                     }
+                    i++;
                 }
             }
         }
-        return aliveTiles;
+        return PlayerPosition;
     }
 
     // New helper method to get nearest alive player
