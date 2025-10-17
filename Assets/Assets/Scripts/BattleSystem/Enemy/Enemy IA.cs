@@ -28,6 +28,7 @@ public class EnemyIA : MonoBehaviour
 
     private OverlayTile select;
     private AttackData attack;
+
     public BattleSystem battleSystem;
     public MouseControler mouseController;
     public AttackControllerEnemy attackControllerEnemy;
@@ -43,8 +44,7 @@ public class EnemyIA : MonoBehaviour
         if (rangeFinder == null) rangeFinder = new RangeFinderPlayer();
         pathfinder = new PathfinderEnemy();
         path = new List<OverlayTile>();
-        select = new OverlayTile();
-        attack = new AttackData();
+
         Enemy = GetComponent<Enemy>();
         myUnit = GetComponent<Unit>();
     }
@@ -162,7 +162,7 @@ public class EnemyIA : MonoBehaviour
             MoveAlongPath();
         }
 
-        if(path.Count > 0 && currentUnit == myUnit  && inAttackMode)
+        if(path.Count > 0 && currentUnit == myUnit && inAttackMode)
         {
             MoveToAttack();
         }
@@ -254,7 +254,8 @@ public class EnemyIA : MonoBehaviour
                     if (currentUnit == myUnit)
                     {
                         path.Clear();
-                        ExecuteAttack(select,attack);
+                        
+                        ExecuteAttack(select, attack);
                     }
                 }
             }
@@ -513,10 +514,9 @@ public class EnemyIA : MonoBehaviour
             path.RemoveAt(0);
         }
         
-        if (!hasFinishedMovementThisTurn && path.Count == 1)
+        if (!hasFinishedMovementThisTurn && path.Count == 0)
         {
             ExecuteAttack(select, attack);
-            FinishTurn();
         }
     }
 
@@ -530,6 +530,7 @@ public class EnemyIA : MonoBehaviour
 
         inAttackMode = false;
 
+        path.Clear();
         currentUnit = null;
         hasFinishedMovementThisTurn = true;
         isMoving = false;
@@ -599,7 +600,6 @@ public class EnemyIA : MonoBehaviour
                 nearest = tile;
             }
         }
-        
         return nearest;
     }
 

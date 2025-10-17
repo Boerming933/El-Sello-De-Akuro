@@ -660,9 +660,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1957207592}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 710, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &37895979
@@ -1127,9 +1127,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1957207592}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 380, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &87196569
@@ -4677,9 +4677,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1957207592}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 270, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &370823025
@@ -5031,6 +5031,7 @@ MonoBehaviour:
   Player1: {fileID: 6920266}
   Player2: {fileID: 1633231243}
   Player3: {fileID: 1083553797}
+  PlayerPosition: []
   battleSystem: {fileID: 909774828}
   mouseController: {fileID: 117182018}
   attackControllerEnemy: {fileID: 391266308}
@@ -5141,9 +5142,14 @@ MonoBehaviour:
   inAttackMode: 0
   playerHit: 0
   impactColor: {r: 1, g: 0, b: 0, a: 0.5}
+  Player1: {fileID: 0}
+  Player2: {fileID: 0}
+  Player3: {fileID: 0}
   Atkcooldowns: []
   actualCD: []
   onCooldown: 
+  finalMove: {fileID: 0}
+  attackOrigin: {fileID: 0}
   currentAttack: {fileID: 0}
   currentAttackIndex: -1
   currentUnit: {fileID: 0}
@@ -5569,9 +5575,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1957207592}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 600, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &411191798
@@ -6057,9 +6063,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1957207592}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 160, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &484276659
@@ -16888,6 +16894,7 @@ MonoBehaviour:
   Player1: {fileID: 6920266}
   Player2: {fileID: 1633231243}
   Player3: {fileID: 1083553797}
+  PlayerPosition: []
   battleSystem: {fileID: 909774828}
   mouseController: {fileID: 117182018}
   attackControllerEnemy: {fileID: 548752748}
@@ -16998,9 +17005,14 @@ MonoBehaviour:
   inAttackMode: 0
   playerHit: 0
   impactColor: {r: 1, g: 0, b: 0, a: 0.5}
+  Player1: {fileID: 0}
+  Player2: {fileID: 0}
+  Player3: {fileID: 0}
   Atkcooldowns: []
   actualCD: []
   onCooldown: 
+  finalMove: {fileID: 0}
+  attackOrigin: {fileID: 0}
   currentAttack: {fileID: 0}
   currentAttackIndex: -1
   currentUnit: {fileID: 0}
@@ -22447,7 +22459,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8005493730088606526, guid: 0dea4a3f61b52d9469ed4c4d6ec4b026, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 8005493730088606526, guid: 0dea4a3f61b52d9469ed4c4d6ec4b026, type: 3}
       propertyPath: m_SizeDelta.y
@@ -27196,11 +27208,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7338144979150455018, guid: 351450264f32f3348a57f37689c12f19, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7338144979150455018, guid: 351450264f32f3348a57f37689c12f19, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7388829869333490903, guid: 351450264f32f3348a57f37689c12f19, type: 3}
       propertyPath: m_IsActive
@@ -27388,11 +27400,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8909733365615172219, guid: 351450264f32f3348a57f37689c12f19, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8909733365615172219, guid: 351450264f32f3348a57f37689c12f19, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7770864120373869074, guid: 351450264f32f3348a57f37689c12f19, type: 3}
@@ -31999,9 +32011,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1957207592}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1696044843
@@ -33829,6 +33841,7 @@ MonoBehaviour:
   Player1: {fileID: 6920266}
   Player2: {fileID: 1633231243}
   Player3: {fileID: 1083553797}
+  PlayerPosition: []
   battleSystem: {fileID: 909774828}
   mouseController: {fileID: 117182018}
   attackControllerEnemy: {fileID: 1796309833}
@@ -33988,9 +34001,14 @@ MonoBehaviour:
   inAttackMode: 0
   playerHit: 0
   impactColor: {r: 1, g: 0, b: 0, a: 0.5}
+  Player1: {fileID: 0}
+  Player2: {fileID: 0}
+  Player3: {fileID: 0}
   Atkcooldowns: []
   actualCD: []
   onCooldown: 
+  finalMove: {fileID: 0}
+  attackOrigin: {fileID: 0}
   currentAttack: {fileID: 0}
   currentAttackIndex: -1
   currentUnit: {fileID: 0}
@@ -35186,9 +35204,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1957207592}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 490, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1887512143
@@ -36189,7 +36207,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1995960701
 MonoBehaviour:
   m_ObjectHideFlags: 0

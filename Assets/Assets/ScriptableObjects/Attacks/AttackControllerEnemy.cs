@@ -13,13 +13,13 @@ public class AttackControllerEnemy : MonoBehaviour
 
     public Color impactColor = new Color(1f, 0f, 0f, 0.5f);
 
-    OverlayTile Player1, Player2, Player3;
+    public OverlayTile Player1, Player2, Player3;
 
     public float[] Atkcooldowns;
     public float[] actualCD;
     public bool[] onCooldown;
 
-    OverlayTile finalMove, attackOrigin;
+    public OverlayTile finalMove, attackOrigin;
 
     [SerializeField] private AttackData currentAttack;
     [SerializeField] private int currentAttackIndex = -1;
@@ -64,7 +64,8 @@ public class AttackControllerEnemy : MonoBehaviour
         </summary>*/
     public bool CanAttackFrom(List<OverlayTile> MovementTiles, OverlayTile Active)
     {
-        if (finalMove == Active) return false;
+        currentAttack = null; attackOrigin = null; finalMove = null;
+        currentAttackIndex = -1;
 
        var players = new List<OverlayTile>{ Player1, Player2, Player3 };
 
@@ -76,9 +77,6 @@ public class AttackControllerEnemy : MonoBehaviour
                 break;
             }
         }
-
-        currentAttack = null; attackOrigin = null; finalMove = null;
-        currentAttackIndex = -1;
 
         if (rangeFinder == null) { Debug.LogError("El problema esta en rangeFinder"); return false; }
         if (Active == null) { Debug.LogError("El problema esta en Active"); return false; }
@@ -198,9 +196,8 @@ public class AttackControllerEnemy : MonoBehaviour
         {
             onCooldown[currentAttackIndex] = true;
             actualCD[currentAttackIndex] = Atkcooldowns[currentAttackIndex];
-            Debug.Log($"Attack {currentAttack.name} put on cooldown for {actualCD[currentAttackIndex]} turns");
+            Debug.LogError($"Attack {currentAttack.name} put on cooldown for {actualCD[currentAttackIndex]} turns");
         }
-
 
         var unitDamageMap = new Dictionary<Unit, int>();
 
@@ -233,7 +230,7 @@ public class AttackControllerEnemy : MonoBehaviour
                             if (unitDamageMap.ContainsKey(u) && unitDamageMap[u] > 0)
                             {
                                 //gabiteHUD.ApplyDamage(unitDamageMap[u]);
-                                Debug.Log($"HUD showing real damage: {unitDamageMap[u]} to {u.name}");
+                                Debug.LogError($"HUD showing real damage: {unitDamageMap[u]} to {u.name}");
                             }                                //////
                             playerHUD.Show();
                             hudsToReset.Add(playerHUD);
