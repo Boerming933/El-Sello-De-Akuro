@@ -10,13 +10,15 @@ public class EnemyIA : MonoBehaviour
     private Enemy Enemy;
     public LayerMask tileLayerMask;
     public OverlayTile Active;
+    public OverlayTile moveTo;
+    public OverlayTile select;
+    public AttackData attack;
 
     public float speed;
     private int stepsMoved = 0;
     private bool isMoving = false;
     public bool inAttackMode = false;
     public bool isMyTurn = false;
-    private bool canPlan;
 
     public GameObject Player1, Player2, Player3;
 
@@ -151,12 +153,17 @@ public class EnemyIA : MonoBehaviour
                 battleSystem.CharacterPosition(myUnit);
         }
 
-        if(path.Count > 0 && currentUnit == myUnit)
+        if (path.Count > 0)
         {
             MoveAlongPath();
+            if (Vector2.Distance(Enemy.transform.position, path[0].transform.position) < 0.0001f)
+            {
+                PositionCharacterOnTile(path[0]);
+                path.RemoveAt(0);
+            }
         }
         
-        if (!isMoving && path.Count > 1 && currentUnit == myUnit)
+        if (!isMoving && path.Count > 1)
         {
             isMoving = true;
             hasFinishedMovementThisTurn = false; // resetear al inicio del movimiento
@@ -166,30 +173,18 @@ public class EnemyIA : MonoBehaviour
 
     public void LogicAI()
     {
-        if (currentUnit != myUnit)
-        {
-            return;
-        }
         var platerTile1 = Player1Tile();
         var platerTile2 = Player2Tile();
         var platerTile3 = Player3Tile();
-
-        List<OverlayTile> alivePlayerTiles = GetAlivePlayerTiles();
-
-        if (alivePlayerTiles.Count == 0)
-        {
-            Debug.Log($"{myUnit.Name}: No alive players found, finishing turn");
-            FinishTurn();
-            return;
-        }
+        
         // Si no hay tiles de players, no hacemos nada
         if (!platerTile1.HasValue && !platerTile2.HasValue && !platerTile3.HasValue)
             return;
 
         // Resolver tiles de jugadores sólo si existen (null-safe)
-        OverlayTile overlayTile1 = alivePlayerTiles.Count > 0 ? alivePlayerTiles[0] : null;
-        OverlayTile overlayTile2 = alivePlayerTiles.Count > 1 ? alivePlayerTiles[1] : null;
-        OverlayTile overlayTile3 = alivePlayerTiles.Count > 2 ? alivePlayerTiles[2] : null;
+        OverlayTile overlayTile1 = platerTile1.HasValue ? platerTile1.Value.collider.GetComponent<OverlayTile>() : null;
+        OverlayTile overlayTile2 = platerTile2.HasValue ? platerTile2.Value.collider.GetComponent<OverlayTile>() : null;
+        OverlayTile overlayTile3 = platerTile3.HasValue ? platerTile3.Value.collider.GetComponent<OverlayTile>() : null;
 
         if (overlayTile1 != null && Player1 != null) Player1.GetComponent<SpriteRenderer>().sortingOrder = overlayTile1.GetComponent<SpriteRenderer>().sortingOrder;
         if (overlayTile2 != null && Player2 != null) Player2.GetComponent<SpriteRenderer>().sortingOrder = overlayTile2.GetComponent<SpriteRenderer>().sortingOrder;
@@ -200,18 +195,27 @@ public class EnemyIA : MonoBehaviour
         {
             var range = rangeFinder.GetTilesInRange(Active, myUnit.movement);
             attackControllerEnemy.playerPosition(overlayTile1, overlayTile2, overlayTile3);
-            canPlan = attackControllerEnemy.CanAttackFrom(range, Active);
+            var canPlan = attackControllerEnemy.CanAttackFrom(range, Active);
 
-            var moveTo = attackControllerEnemy.FinalMoveTile();  // casilla donde me paro para atacar
-            var select = attackControllerEnemy.AttackTile();     // tile que voy a seleccionar para el área
-            var attack = attackControllerEnemy.ChosenAttack(); // ataque que va a utilizar
+            moveTo = attackControllerEnemy.FinalMoveTile();  // casilla donde me paro para atacar
+            select = attackControllerEnemy.AttackTile();     // tile que voy a seleccionar para el área
+            attack = attackControllerEnemy.ChosenAttack(); // ataque que va a utilizar
 
             if (canPlan)
             {
-                if (moveTo == Active)
+                if (moveTo == null || Active == null)
                 {
+                    // Ya estoy en la casilla ideal → NO me muevo este turno
+                }
+                else if (moveTo == Active)
+                {
+
+                    // plan quieto
                     path.Clear();
-                    ExecuteAttack(select,attack);
+
+                    // Hasta que implementes ataques, cerrá turno acá
+                    attackControllerEnemy.currentUnit = myUnit;
+                    attackControllerEnemy.ConfirmAttack(select, attack);
                 }
                 else
                 {
@@ -224,36 +228,25 @@ public class EnemyIA : MonoBehaviour
             {
                 if (moveTo != Active)
                 {
-                    var nearestPlayer = GetNearestAlivePlayer();
-                    
-                    if (nearestPlayer != null)
-                    {
-                        var fullPath = pathfinder.FindPath(Active, nearestPlayer, null, null, inRangeTiles);
-                    
-                        if (fullPath != null && fullPath.Count > 0)
-                        {
+                    var fullPath = pathfinder.FindPath(Active, overlayTile1, overlayTile2, overlayTile3, inRangeTiles);
 
-                            if (fullPath.Count > 0 && fullPath[0] == Active)
-                                fullPath.RemoveAt(0);
-
-                            path = fullPath.Take(myUnit.movement).Where(t => t != null).ToList();
-                        }
-                    }
-                    else
+                    if (fullPath != null && fullPath.Count > 0)
                     {
-                        FinishTurn();
+
+                        if (fullPath.Count > 0 && fullPath[0] == Active)
+                            fullPath.RemoveAt(0);
+
+                        path = fullPath.Take(myUnit.movement).Where(t => t != null).ToList();
                     }
                 }
                 else
                 {
-                    if (currentUnit == myUnit)
-                    {
-                        path.Clear();
-                        ExecuteAttack(select,attack);
-                    }
+                    attackControllerEnemy.currentUnit = myUnit;
+                    attackControllerEnemy.ConfirmAttack(select, attack);
                 }
             }
         }
+
     }
 
     private void MoveAlongPath()
@@ -366,45 +359,15 @@ public class EnemyIA : MonoBehaviour
             }
         }
 
+
         if (path == null) return; // defensa
         var step = speed * Time.deltaTime;
         var zIndex = path[0].transform.position.z - 1f;
 
         transform.position = Vector2.MoveTowards(transform.position, path[0].transform.position, step);
         transform.position = new Vector3(transform.position.x, transform.position.y, zIndex);
-
-        if (Vector2.Distance(Enemy.transform.position, path[0].transform.position) < 0.0001f)
-        {
-            PositionCharacterOnTile(path[0]);
-            path.RemoveAt(0);
-        }
         
-        if (!hasFinishedMovementThisTurn && path.Count == 1)
-        {
-            VerifyTurn();
-        }
-    }
-
-    private void VerifyTurn()
-    {
-        var select = attackControllerEnemy.AttackTile();     // tile que voy a seleccionar para el área
-        var attack = attackControllerEnemy.ChosenAttack(); // ataque que va a utilizar
-        var moveTo = attackControllerEnemy.FinalMoveTile();  // casilla donde me paro para atacar
-        Debug.LogError("canPlan es " + canPlan);
-
-        if (moveTo == Active)
-        {
-            Debug.LogError("Posible Ataque");
-            path.Clear();
-            ExecuteAttack(select, attack);
-        }
-        else if (canPlan)
-        {
-            Debug.LogError("attack es " + attack);
-            path.Clear();
-            ExecuteAttack(select, attack);
-        }
-        else
+        if (!hasFinishedMovementThisTurn && (path.Count == 1 || stepsMoved >= myUnit.movement))
         {
             FinishTurn();
         }
@@ -412,72 +375,52 @@ public class EnemyIA : MonoBehaviour
 
     public void FinishTurn()
     {
-        if (currentUnit != myUnit)
-        {
-            Debug.LogError("No es tu turno Capo");
-            return;
-        }
-
-        currentUnit = null;
+        
         hasFinishedMovementThisTurn = true;
+
         isMoving = false;
         stepsMoved = 0;
         mouseController.turnEnded = true;
         attackControllerEnemy.ReduceCooldowns();
 
-        return;
-    }
-
-    private void ExecuteAttack(OverlayTile select, AttackData attack)
-    {
-        attackControllerEnemy.currentUnit = myUnit;
-        attackControllerEnemy.ConfirmAttack(select, attack);
+        return;        
     }
 
     public RaycastHit2D? Player1Tile()
     {
-        if (Player1 != null)
+        Vector2 origin = new Vector2(Player1.transform.position.x, Player1.transform.position.y);
+
+        RaycastHit2D[] hits = Physics2D.RaycastAll(origin, Vector2.zero, 0f, tileLayerMask);
+
+        if (hits.Length > 0)
         {
-            Vector2 origin = new Vector2(Player1.transform.position.x, Player1.transform.position.y);
-
-            RaycastHit2D[] hits = Physics2D.RaycastAll(origin, Vector2.zero, 0f, tileLayerMask);
-
-            if (hits.Length > 0)
-            {
-                return hits.OrderByDescending(i => i.collider.transform.position.z).First();
-            }
+            return hits.OrderByDescending(i => i.collider.transform.position.z).First();
         }
         return null;
     }
 
     public RaycastHit2D? Player2Tile()
     {
-        if (Player2 != null)
+        Vector2 origin = new Vector2(Player2.transform.position.x, Player2.transform.position.y);
+
+        RaycastHit2D[] hits = Physics2D.RaycastAll(origin, Vector2.zero, 0f, tileLayerMask);
+
+        if (hits.Length > 0)
         {
-            Vector2 origin = new Vector2(Player2.transform.position.x, Player2.transform.position.y);
-
-            RaycastHit2D[] hits = Physics2D.RaycastAll(origin, Vector2.zero, 0f, tileLayerMask);
-
-            if (hits.Length > 0)
-            {
-                return hits.OrderByDescending(i => i.collider.transform.position.z).First();
-            }
+            return hits.OrderByDescending(i => i.collider.transform.position.z).First();
         }
         return null;
     }
 
     public RaycastHit2D? Player3Tile()
     {
-        if (Player3 != null)
+        Vector2 origin = new Vector2(Player3.transform.position.x, Player3.transform.position.y);
+
+        RaycastHit2D[] hits = Physics2D.RaycastAll(origin, Vector2.zero, 0f, tileLayerMask);
+
+        if (hits.Length > 0)
         {
-            Vector2 origin = new Vector2(Player3.transform.position.x, Player3.transform.position.y);
-
-            RaycastHit2D[] hits = Physics2D.RaycastAll(origin, Vector2.zero, 0f, tileLayerMask);
-
-            if (hits.Length > 0)
-            {
-                return hits.OrderByDescending(i => i.collider.transform.position.z).First();
-            }
+            return hits.OrderByDescending(i => i.collider.transform.position.z).First();
         }
         return null;
     }
@@ -492,51 +435,7 @@ public class EnemyIA : MonoBehaviour
             battleSystem.UpdateEnemyPosition(myUnit, tile);
         }
     }
-
-    // New helper method to get alive player tiles
-    private List<OverlayTile> GetAlivePlayerTiles()
-    {
-        List<OverlayTile> aliveTiles = new List<OverlayTile>();
-        
-        if (battleSystem != null && battleSystem.PlayerUnity != null)
-        {
-            foreach (var player in battleSystem.PlayerUnity)
-            {
-                if (player != null && player.currentHP > 0)
-                {
-                    var tile = player.FindCenterTile();
-                    if (tile != null)
-                    {
-                        aliveTiles.Add(tile);
-                    }
-                }
-            }
-        }
-        return aliveTiles;
-    }
-
-    // New helper method to get nearest alive player
-    private OverlayTile GetNearestAlivePlayer()
-    {
-        var aliveTiles = GetAlivePlayerTiles();
-        if (aliveTiles.Count == 0) return null;
-        
-        OverlayTile nearest = null;
-        float minDistance = float.MaxValue;
-        
-        foreach (var tile in aliveTiles)
-        {
-            float distance = Vector2.Distance(Active.transform.position, tile.transform.position);
-            if (distance < minDistance)
-            {
-                minDistance = distance;
-                nearest = tile;
-            }
-        }
-        
-        return nearest;
-    }
-
+    
     // Métodos de inspección para el watchdog (debug)
 
     public bool IsMovingDebug() => isMoving;

@@ -64,24 +64,11 @@ public class AttackControllerEnemy : MonoBehaviour
         </summary>*/
     public bool CanAttackFrom(List<OverlayTile> MovementTiles, OverlayTile Active)
     {
-        if (finalMove == Active) return false;
-
-       var players = new List<OverlayTile>{ Player1, Player2, Player3 };
-
-        for (int i = 0; i < players.Count; i++)
-        {
-            if (players[i] == null)
-            {
-                players.RemoveAt(i);
-                break;
-            }
-        }
-
         currentAttack = null; attackOrigin = null; finalMove = null;
         currentAttackIndex = -1;
 
+        if (Player1 == null || Player2 == null || Player3 == null) { Debug.LogError("El problema esta en Players"); return false; }
         if (rangeFinder == null) { Debug.LogError("El problema esta en rangeFinder"); return false; }
-        if (Active == null) { Debug.LogError("El problema esta en Active"); return false; }
         if (MovementTiles == null || MovementTiles.Count == 0) { Debug.LogError("El problema esta en moveTiles"); return false; }
         if (allAttacks == null || allAttacks.Count == 0) { Debug.LogError("El problema esta en allAttacks"); return false; }
 
@@ -103,12 +90,9 @@ public class AttackControllerEnemy : MonoBehaviour
 
                     // 3) Comprueba si alguno de los playerTiles está en el área 
 
-                    if (players.Any(area.Contains))
+                    if (area.Contains(Player1) || area.Contains(Player2) || area.Contains(Player3))
                     {
-                        if (finalMove == Active)
-                        {
-                            return false;
-                        }
+                        if (finalMove == Active) return false;
                         currentAttack = atk;
                         currentAttackIndex = i;
                         finalMove = move;
@@ -121,10 +105,7 @@ public class AttackControllerEnemy : MonoBehaviour
         Player1 = null; Player2 = null; Player3 = null;
 
         if (finalMove != Active && finalMove != null) return true;
-        else
-        {
-            return false;
-        }
+        else return false;
     }
 
     public List<OverlayTile> GetEffectArea(OverlayTile center, AttackData attack)
@@ -216,8 +197,9 @@ public class AttackControllerEnemy : MonoBehaviour
             {
                 if (col.CompareTag("Aliado") || col.CompareTag("Aliado2"))
                 {
+                    Debug.LogError("currentUnit es " + currentUnit);
                     var u = col.GetComponent<Unit>();
-                    if (!u.gameObject.activeInHierarchy) continue;
+
                     Debug.Log($"Applying attack effects to {u.name}");
                     int actualDamage = ApplyAttackToUnit(u);
                     if (actualDamage > 0)
@@ -273,22 +255,23 @@ public class AttackControllerEnemy : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
         MapManager.Instance.HideAllTiles();
-        if (enemyIA != null && enemyIA.currentUnit == currentUnit)
-        {
-            enemyIA.FinishTurn();
-        }
+        enemyIA.FinishTurn();
 
         foreach (var playerObj in GameObject.FindGameObjectsWithTag("Player"))
         {
             var hitMarker = playerObj.transform.Find("HitMarker");
             if (hitMarker != null)
                 hitMarker.gameObject.SetActive(false);
+
+            var hudObj = playerObj.transform.Find("HUDSecundaria/PlayerHUD");
+            if (hudObj != null)
+            {
+                hudObj.gameObject.SetActive(false);
+            }
         }
 
         foreach (var hud in hudsToReset)
-        {
-            if(hud != null) hud?.Hide();
-        }
+            hud?.Hide();
         hudsToReset.Clear();
 
         yield break;
