@@ -191,17 +191,17 @@ public class StatusEffectManager : MonoBehaviour
         return activeEffects.Where(e => e.IsActive).Sum(e => e.damageReduction);
     }
     
-    public int CalculateAttackBonus()
+    public float CalculateAttackBonusPercent()
     {
-        int totalBonus = 0;
+        float totalBonusPercent = 0f;
         foreach (var effect in activeEffects)
         {
             if (effect.IsActive)
             {
-                totalBonus += effect.attackBonus;
+                totalBonusPercent += effect.attackBonusPercent;
             }
         }
-        return totalBonus;
+        return totalBonusPercent;
     }
 
     public float CalculateOutgoingDamagePenalty()

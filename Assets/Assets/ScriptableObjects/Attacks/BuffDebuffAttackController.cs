@@ -9,15 +9,15 @@ public class BuffDebuffAttackController : MonoBehaviour
     public AttackSelectionUI attackUI;
     public MouseControler mouseController;
     public BattleSystem battleSystem;
-    
+
     [Header("Components")]
     public AttackBools attackBools;
-    
+
     [Header("Overlay Colors")]
     public Color rangeColor = new Color(1f, 1f, 0f, 0.5f);
     public Color previewColor = new Color(0f, 1f, 1f, 0.5f);
     public Color impactColor = new Color(1f, 0f, 0f, 0.5f);
-    
+
     private bool inAttackMode = false;
     private Unit currentUnit;
     private AttackData currentAttack; // ✅ Changed to AttackData to support both types
@@ -49,6 +49,9 @@ public class BuffDebuffAttackController : MonoBehaviour
 
     void EnterAttackMode(AttackData atkData)
     {
+        
+
+
         if (attackExecuted) return;
         attackExecuted = false;
 
@@ -68,23 +71,43 @@ public class BuffDebuffAttackController : MonoBehaviour
         
         float threshold = 0.1f;
         var centerTile = MapManager.Instance.map.Values.FirstOrDefault(t => Vector2.Distance((Vector2)t.transform.position, (Vector2)currentUnit.transform.position) < threshold);          ////Intentar optimizar esto
-        
+
         if (centerTile == null)
         {
             Debug.LogError($"No se encontró OverlayTile bajo {currentUnit.name}");
             return;
         }
+        bool isSelfTargeting = ShouldAffectSelf();
         
-        validTiles = rangeFinder.GetTilesInRange(centerTile, currentAttack.selectionRange);                 ////Intentar optimizar esto
-        
-        var buffDebuffAttack = currentAttack as BuffDebuffAttackData;                           /////
-        if (buffDebuffAttack != null && currentAttack.selectionRange == 0)                      /////
+        if (currentAttack.selectionRange == 0 || isSelfTargeting)
         {
-            bool hasSelfTargeting = buffDebuffAttack.statusEffects.Any(e => e.targetSelf);      /////
-            if (hasSelfTargeting && !validTiles.Contains(centerTile))                           /////                     
+            ConfirmAttack(centerTile);
+            return;
+        }
+        
+        validTiles = rangeFinder.GetTilesInRange(centerTile, currentAttack.selectionRange, currentAttack);
+        
+        var buffDebuffAttack = currentAttack as BuffDebuffAttackData;
+        bool allowSelfTargeting = false;
+        
+        if (buffDebuffAttack != null && currentAttack.selectionRange == 0)
+        {
+            bool hasSelfTargeting = buffDebuffAttack.statusEffects.Any(e => e.targetSelf);
+            if (hasSelfTargeting && !validTiles.Contains(centerTile))
             {
                 validTiles.Add(centerTile);
+                allowSelfTargeting = true;
             }
+        }
+        
+        if (!allowSelfTargeting && validTiles.Contains(centerTile))
+        {
+            validTiles.Remove(centerTile);
+        }
+        
+        if (currentAttack.effectShape == AreaShape.Perpendicular)
+        {
+            Debug.Log($"[EnterAttackMode] Valid selection tiles: {string.Join(", ", validTiles.Select(t => $"({t.grid2DLocation.x},{t.grid2DLocation.y})"))}");
         }
         
         foreach (var tile in validTiles)
@@ -94,7 +117,7 @@ public class BuffDebuffAttackController : MonoBehaviour
         inAttackMode = true;
         lastHoverTile = null;
     }
-    
+
     void Update()
     {
         if (!inAttackMode) return;
@@ -130,15 +153,55 @@ public class BuffDebuffAttackController : MonoBehaviour
             var playerTile = MapManager.Instance.map.Values
                 .FirstOrDefault(t => Vector2.Distance((Vector2)t.transform.position, (Vector2)currentUnit.transform.position) < originThreshold);
 
+
+
             if (playerTile != null)
             {
                 var facing = DetermineFacingFromTiles(playerTile, hovered);
                 ApplyFacingToUnit(currentUnit, facing);
-                
+
+
+
                 // IMMEDIATELY after facing decision: update isLookingUp using same tiles
                 if (attackBools != null)
                 {
                     attackBools.CheckTileDirection(playerTile, hovered);
+
+                    if (mouseController.myUnit.Name == "Riku Takeda")
+                    {
+                        if (mouseController.attackBools.isLookingUp == true)
+                        {
+                            mouseController.animatorSamurai.SetBool("idleBatallaUp", true);
+                        }
+                        else
+                        {
+                            mouseController.animatorSamurai.SetBool("idleBatallaUp", false);
+                        }
+                    }
+
+                    if (mouseController.myUnit.Name == "Sayuri")
+                    {
+                        if (mouseController.attackBools.isLookingUp == true)
+                        {
+                            mouseController.animatorGeisha.SetBool("idleBatallaUp", true);
+                        }
+                        else
+                        {
+                            mouseController.animatorGeisha.SetBool("idleBatallaUp", false);
+                        }
+                    }
+
+                    if (mouseController.myUnit.Name == "Raiden")
+                    {
+                        if (mouseController.attackBools.isLookingUp == true)
+                        {
+                            mouseController.animatorNinja.SetBool("idleBatallaUp", true);
+                        }
+                        else
+                        {
+                            mouseController.animatorNinja.SetBool("idleBatallaUp", false);
+                        }
+                    }
                 }
             }
 
@@ -167,12 +230,13 @@ public class BuffDebuffAttackController : MonoBehaviour
                         if (isInArea)
                         {
                             gabiteHUD.SetHUD(unit);
-                            // ✅ NEW: Include attack bonus in damage preview
                             int baseDamage = Mathf.RoundToInt(currentAttack.damage + currentUnit.Fue * currentAttack.scalingFactor);
                             var attackerStatusManager = currentUnit.GetComponent<StatusEffectManager>();
                             if (attackerStatusManager != null)
                             {
-                                baseDamage += attackerStatusManager.CalculateAttackBonus();
+                                float bonusPercent = attackerStatusManager.CalculateAttackBonusPercent();
+                                baseDamage = Mathf.RoundToInt(baseDamage * (1f + bonusPercent));
+                                baseDamage = Mathf.Max(0, baseDamage);
                             }
                             gabiteHUD.PreviewDamage(baseDamage);
                             gabiteHUD.Show();
@@ -197,25 +261,218 @@ public class BuffDebuffAttackController : MonoBehaviour
     {
         if (mouseController.myUnit.Name == "Riku Takeda")
         {
+            mouseController.animatorSamurai.SetBool("idleBatallaUp", false);
             mouseController.animatorSamurai.SetBool("idleBatalla", false);
-            mouseController.animatorSamurai.SetTrigger("attackFront");
+
+            if (mouseController.attackBools.samuraiAttack1)              // ATAQUE 1
+            {
+                if (mouseController.attackBools.isLookingUp == true)
+                {
+                    mouseController.animatorSamurai.SetTrigger("attack1Up");
+                }
+                else
+                {
+                    mouseController.animatorSamurai.SetTrigger("attack1");
+                }
+
+                AudioManager.Instance.PlaySFX("SamuraiAttack1");
+                mouseController.attackBools.ResetAllSamuraiAttacks();
+            }
+
+            if (mouseController.attackBools.samuraiAttack2)               // ATAQUE 2
+            {
+                if (mouseController.attackBools.isLookingUp == true)
+                {
+                    mouseController.animatorSamurai.SetTrigger("attack2Up");
+                }
+                else
+                {
+                    mouseController.animatorSamurai.SetTrigger("attack2");
+                }
+
+                AudioManager.Instance.PlaySFX("SamuraiAttack2");
+                mouseController.attackBools.ResetAllSamuraiAttacks();
+            }
+
+            if (mouseController.attackBools.samuraiAttack3)               // ATAQUE 3
+            {
+                if (mouseController.attackBools.isLookingUp == true)
+                {
+                    mouseController.animatorSamurai.SetTrigger("attack3Up");
+                }
+                else
+                {
+                    mouseController.animatorSamurai.SetTrigger("attack3");
+                }
+
+                AudioManager.Instance.PlaySFX("SamuraiAttack3");
+                mouseController.attackBools.ResetAllSamuraiAttacks();
+            }
+
+            if (mouseController.attackBools.samuraiAttack4)               // ATAQUE 4
+            {
+                
+                    mouseController.animatorSamurai.SetTrigger("attack4");
+                
+
+                AudioManager.Instance.PlaySFX("SamuraiAttack4");
+                mouseController.attackBools.ResetAllSamuraiAttacks();
+            }
+
+            if (mouseController.attackBools.samuraiAttack5)               // ATAQUE 5
+            {
+                
+                    mouseController.animatorSamurai.SetTrigger("attack4");
+                mouseController.SamuraiShield.SetActive(true);       // convertir en false cuando de el contraataque
+
+
+                AudioManager.Instance.PlaySFX("SamuraiAttack5");
+                mouseController.attackBools.ResetAllSamuraiAttacks();
+            }
         }
 
         if (mouseController.myUnit.Name == "Sayuri")
         {
+            mouseController.animatorGeisha.SetBool("idleBatallaUp", false);
             mouseController.animatorGeisha.SetBool("idleBatalla", false);
-            mouseController.animatorGeisha.SetTrigger("attack1");
+
+            if (mouseController.attackBools.geishaAttack1)              // ATAQUE 1
+            {
+                if (mouseController.attackBools.isLookingUp == true)
+                {
+                    mouseController.animatorGeisha.SetTrigger("attack1Up");
+                    mouseController.geishaEffects.SetTrigger("attack1Up");
+                }
+                else
+                {
+                    mouseController.animatorGeisha.SetTrigger("attack1");
+                    mouseController.geishaEffects.SetTrigger("attack1");
+
+                }
+
+                AudioManager.Instance.PlaySFX("GeishaAttack1");
+                mouseController.attackBools.ResetAllGeishaAttacks();
+            }
+
+            if (mouseController.attackBools.geishaAttack3)              // ATAQUE 3
+            {
+                if (mouseController.attackBools.isLookingUp == true)
+                {
+                    mouseController.animatorGeisha.SetTrigger("attack3Up");
+                    mouseController.geishaEffects.SetTrigger("attack3Up");
+                }
+                else
+                {
+                    mouseController.animatorGeisha.SetTrigger("attack3");
+                    mouseController.geishaEffects.SetTrigger("attack3");
+                }
+
+                AudioManager.Instance.PlaySFX("GeishaAttack3");
+                mouseController.attackBools.ResetAllGeishaAttacks();
+            }
+
+            if (mouseController.attackBools.geishaAttack4)              // ATAQUE 4
+            {
+                mouseController.animatorGeisha.SetTrigger("attack4");
+                AudioManager.Instance.PlaySFX("GeishaAttack4");
+
+                mouseController.attackBools.ResetAllGeishaAttacks();
+            }
+
+            if (mouseController.attackBools.geishaAttack5)              // ATAQUE 5
+            {
+                mouseController.animatorGeisha.SetTrigger("attack5");
+                AudioManager.Instance.PlaySFX("GeishaAttack5");
+
+                mouseController.attackBools.ResetAllGeishaAttacks();
+            }
         }
+
+
 
         if (mouseController.myUnit.Name == "Raiden")
         {
+            mouseController.animatorNinja.SetBool("idleBatallaUp", false);
             mouseController.animatorNinja.SetBool("idleBatalla", false);
-            mouseController.animatorNinja.SetTrigger("attackFront");
+
+            if (mouseController.attackBools.ninjaAttack1)              // ATAQUE 1
+            {
+                if (mouseController.attackBools.isLookingUp == true)
+                {
+                    mouseController.animatorNinja.SetTrigger("attack1Up");
+                }
+                else
+                {
+                    mouseController.animatorNinja.SetTrigger("attack1");
+                }
+
+                AudioManager.Instance.PlaySFX("NinjaAttack1");
+                mouseController.attackBools.ResetAllNinjaAttacks();
+            }
+
+            if (mouseController.attackBools.ninjaAttack2)              // ATAQUE 2
+            {
+                if (mouseController.attackBools.isLookingUp == true)
+                {
+                    mouseController.animatorNinja.SetTrigger("attack2Up");
+                    mouseController.ninjaEffects.SetTrigger("attack2Up");
+                }
+                else
+                {
+                    mouseController.animatorNinja.SetTrigger("attack2");
+                    mouseController.ninjaEffects.SetTrigger("attack2");
+                }
+
+                AudioManager.Instance.PlaySFX("NinjaAttack2");
+                mouseController.attackBools.ResetAllNinjaAttacks();
+            }
+
+            if (mouseController.attackBools.ninjaAttack3)              // ATAQUE 3
+            {
+                if (mouseController.attackBools.isLookingUp == true)
+                {
+                    mouseController.animatorNinja.SetTrigger("attack3Up");
+                    mouseController.ninjaEffects.SetTrigger("attack3Up");
+                }
+                else
+                {
+                    mouseController.animatorNinja.SetTrigger("attack3");
+                    mouseController.ninjaEffects.SetTrigger("attack3");
+                }
+
+                AudioManager.Instance.PlaySFX("NinjaAttack3");
+                mouseController.attackBools.ResetAllNinjaAttacks();
+            }
+
+            if (mouseController.attackBools.ninjaAttack4)              // ATAQUE 4
+            {
+               
+                mouseController.animatorNinja.SetTrigger("attack4");
+                    
+
+                AudioManager.Instance.PlaySFX("NinjaAttack4");
+                mouseController.attackBools.ResetAllNinjaAttacks();
+            }
         }
 
         mouseController.canPocion = false;
         if (attackExecuted) return;
-                
+
+        if (currentAttack.manaCost > currentUnit.currentMana)
+        {
+            Debug.LogWarning($"[Safety Guard] {currentUnit.Name} attempted attack without enough mana! This shouldn't happen. Cost: {currentAttack.manaCost}, Current: {currentUnit.currentMana}");
+            ExitAttackMode();
+            attackBools.ResetDirectionStates();
+            return;
+        }
+
+        currentUnit.currentMana -= currentAttack.manaCost;
+        Debug.Log($"{currentUnit.Name} spent {currentAttack.manaCost} mana. Remaining: {currentUnit.currentMana}/{currentUnit.maxMana}");
+
+        var detailsUI = UnityEngine.Object.FindFirstObjectByType<CharacterDetailsUI>();
+        if (detailsUI != null)
+            detailsUI.UpdateAllUI();
+
         if (currentUnit != null)
         {
             var statusManager = currentUnit.GetComponent<StatusEffectManager>();
@@ -224,14 +481,14 @@ public class BuffDebuffAttackController : MonoBehaviour
                 statusManager.ClearMustAttackCondition();
             }
         }
-        
+
         var buffDebuffAttack = currentAttack as BuffDebuffAttackData;
         if (buffDebuffAttack != null)
         {
             if (!buffDebuffAttack.CanUse()) return;
             buffDebuffAttack.UseAttack();
         }
-        
+
         attackExecuted = true;
         attackUI.SetButtonsInteractable(false);
 
@@ -239,7 +496,7 @@ public class BuffDebuffAttackController : MonoBehaviour
         ClearPreview();
         inAttackMode = false;
 
-        var panels = Object.FindObjectsByType<PanelAcciones>(FindObjectsInactive.Include,FindObjectsSortMode.None);
+        var panels = Object.FindObjectsByType<PanelAcciones>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         foreach (var p in panels) p.Hide();
 
         var area = GetEffectArea(targetTile);
@@ -253,34 +510,34 @@ public class BuffDebuffAttackController : MonoBehaviour
     void ExecuteAttackEffects(List<OverlayTile> area)                   ////////////////////////// OPTIMIZAR ESTO //////////////////////
     {
         var affectedUnits = new List<Unit>();
-                
+
         // Collect all affected units
         foreach (var tile in area)
         {
             Vector2 center = tile.transform.position;
             Collider2D[] hits = Physics2D.OverlapCircleAll(center, 0.3f);
-                        
+
             foreach (var col in hits)
             {
                 var unit = col.GetComponent<Unit>();
-                if (unit == null) 
+                if (unit == null)
                 {
                     Debug.Log($"Collider {col.name} has no Unit component");
                     continue;
                 }
-                
+
                 bool isEnemy = col.CompareTag("Enemy");
                 bool isAlly = col.CompareTag("Aliado") || col.CompareTag("Aliado2");
                 bool isSelf = unit == currentUnit;
-                
+
                 //Debug.Log($"Found unit {unit.name}: isEnemy={isEnemy}, isAlly={isAlly}, isSelf={isSelf}");
-                
+
                 // For BuffDebuffAttackData, use targeting rules
                 var buffDebuffAttack = currentAttack as BuffDebuffAttackData;
                 if (buffDebuffAttack != null)
                 {
                     //Debug.Log($"Targeting rules: ShouldAffectEnemies={ShouldAffectEnemies()}, ShouldAffectAllies={ShouldAffectAllies()}, ShouldAffectSelf={ShouldAffectSelf()}");
-                    
+
                     if ((isEnemy && ShouldAffectEnemies()) || (isAlly && ShouldAffectAllies()) || (isSelf && ShouldAffectSelf()) || (isEnemy && currentAttack.damage > 0)) // Always damage enemies
                     {
                         if (!affectedUnits.Contains(unit))
@@ -367,29 +624,36 @@ public class BuffDebuffAttackController : MonoBehaviour
 
         if (currentAttack.damage > 0)
         {
-            // ✅ NEW: Include attack bonus from status effects
             int baseAttackDamage = currentAttack.damage + Mathf.RoundToInt(currentUnit.Fue * currentAttack.scalingFactor);
 
             if (attackerStatusManager != null)
             {
-                baseAttackDamage += attackerStatusManager.CalculateAttackBonus();
+                float bonusPercent = attackerStatusManager.CalculateAttackBonusPercent();
+                if (bonusPercent != 0f)
+                {
+                    baseAttackDamage = Mathf.RoundToInt(baseAttackDamage * (1f + bonusPercent));
+                    baseAttackDamage = Mathf.Max(0, baseAttackDamage);
+                    Debug.Log($"{currentUnit.name} attack bonus: +{bonusPercent * 100}% (base damage with bonus: {baseAttackDamage})");
+                }
                 
-                // ✅ NEW: Apply outgoing damage penalty (for Hypnotic Chant)
                 float outgoingPenalty = attackerStatusManager.CalculateOutgoingDamagePenalty();
                 if (outgoingPenalty > 0)
                 {
                     baseAttackDamage = Mathf.RoundToInt(baseAttackDamage * (1f - outgoingPenalty));
+                    baseAttackDamage = Mathf.Max(0, baseAttackDamage);
                     Debug.Log($"{currentUnit.name} damage reduced by {outgoingPenalty * 100}% due to status effects");
                 }
             }
             
             finalDamage = Mathf.RoundToInt(baseAttackDamage * damageMultiplier);
+            finalDamage = Mathf.Max(0, finalDamage);
 
             var statusManager = targetUnit.GetComponent<StatusEffectManager>();
             if (statusManager != null)
             {
                 float damageReduction = statusManager.CalculateDamageReduction();
                 finalDamage = Mathf.RoundToInt(finalDamage * (1f - damageReduction));
+                finalDamage = Mathf.Max(0, finalDamage);
 
                 if (statusManager.HasEffect(StatusEffectType.DraconicStance))
                 {
@@ -435,19 +699,19 @@ public class BuffDebuffAttackController : MonoBehaviour
                 PushUnit(targetUnit, buffDebuffAttack.pushDistance);
             }
         }
-        
+
         if (attackerStatusManager != null && currentAttack.damage > 0)
         {
             var effectsToTrigger = attackerStatusManager.GetActiveEffects()
                 .Where(e => e.triggers.Contains(EffectTrigger.OnAttack))
                 .ToList();
-            
+
             foreach (var effect in effectsToTrigger)
             {
                 attackerStatusManager.TriggerEffect(effect, EffectTrigger.OnAttack);
             }
         }
-        
+
         // Return the final damage dealt for HUD updates
         if (currentAttack.damage > 0)
         {
@@ -463,10 +727,10 @@ public class BuffDebuffAttackController : MonoBehaviour
     {
         var currentTile = targetUnit.FindCenterTile();
         if (currentTile == null) return;
-        
+
         Vector2Int pushDirection = GetPushDirection(currentUnit.FindCenterTile(), currentTile);
         Vector2Int newPosition = currentTile.grid2DLocation + pushDirection * distance;
-        
+
         if (MapManager.Instance.map.TryGetValue(newPosition, out OverlayTile newTile) && !newTile.isBlocked)
         {
             targetUnit.transform.position = newTile.transform.position;
@@ -562,9 +826,19 @@ public class BuffDebuffAttackController : MonoBehaviour
                     .FirstOrDefault(t => Vector2.Distance((Vector2)t.transform.position, (Vector2)currentUnit.transform.position) < OriginThreshold);
                 area = GetBoomerangArea(playerTile, center);
                 break;
+            case AreaShape.Perpendicular:
+                area = rangeFinder.GetTilesInRange(center, size, currentAttack);
+                break;
         }
+        
+        if (currentAttack.effectShape == AreaShape.Perpendicular)
+        {
+            Debug.Log($"[GetEffectArea] Perpendicular area tiles: {string.Join(", ", area.Select(t => $"({t.grid2DLocation.x},{t.grid2DLocation.y})"))}");
+        }
+        
         return area;
     }
+
 
     // All facing and directional methods
     Facing4 DetermineFacingFromTiles(OverlayTile playerTile, OverlayTile targetTile)
@@ -601,12 +875,37 @@ public class BuffDebuffAttackController : MonoBehaviour
         var sr = unit.GetComponentInChildren<SpriteRenderer>();
         if (sr != null)
         {
-            if (facing == Facing4.ArribaDer || facing == Facing4.AbajoDer)
-                sr.flipX = true;
-            else
-                sr.flipX = false;
+            bool shouldFlip = (facing == Facing4.ArribaDer || facing == Facing4.AbajoDer);
+            sr.flipX = shouldFlip;
+
+            Transform effectsTransform = unit.transform.Find("Effects");
+            if (effectsTransform != null)
+            {
+                var effectController = effectsTransform.GetComponent<EffectMirrorController>();
+                if (effectController == null)
+                {
+                    effectController = effectsTransform.gameObject.AddComponent<EffectMirrorController>();
+                }
+
+                // Animation position/scale flip - original logic
+                bool animationShouldFlip = (facing == Facing4.ArribaDer || facing == Facing4.AbajoDer);
+                effectController.shouldMirrorAnimation = animationShouldFlip;
+
+                // Sprite visual flip - NEW logic
+                //bool spriteShouldFlip = (facing == Facing4.ArribaIzq || facing == Facing4.ArribaDer);
+                //effectController.shouldFlipSprite = spriteShouldFlip;
+            }
+
         }
+
     }
+
+
+
+
+
+
+
 
     Vector2Int FacingToVector(Facing4 f)
     {
@@ -725,7 +1024,15 @@ public class BuffDebuffAttackController : MonoBehaviour
 
     public void ExitAttackMode()
     {
-        
+        mouseController.attackBools.ResetAllSamuraiAttacks();
+        mouseController.attackBools.ResetAllNinjaAttacks();
+        mouseController.attackBools.ResetAllGeishaAttacks();
+        mouseController.animatorSamurai.SetBool("idleBatallaUp", false);
+        mouseController.animatorNinja.SetBool("idleBatallaUp", false);
+        mouseController.animatorGeisha.SetBool("idleBatallaUp", false);
+        mouseController.animatorSamurai.SetBool("idleBatalla", false);
+        mouseController.animatorNinja.SetBool("idleBatalla", false);
+        mouseController.animatorGeisha.SetBool("idleBatalla", false);
 
         if (!inAttackMode) return;
 
@@ -742,7 +1049,7 @@ public class BuffDebuffAttackController : MonoBehaviour
             mouseController.enabled = true;
             mouseController.canAttack = true;
             mouseController.showPanelAcciones = true;
-            
+
         }
 
         var panels = Object.FindObjectsByType<PanelAcciones>(
@@ -752,7 +1059,7 @@ public class BuffDebuffAttackController : MonoBehaviour
         foreach (var p in panels)
         {
             p.Show();
-            p.panelBatalla.SetActive(true);
+            p.panelBatalla.SetActive(false);
 
             var turnable = p.ownerCharacter.GetComponent<Turnable>();
             if (turnable != null && turnable.btnBatalla != null)
@@ -785,7 +1092,7 @@ public class BuffDebuffAttackController : MonoBehaviour
             var hitMarker = enemy.transform.Find("HitMarker");
             if (hitMarker != null)
                 hitMarker.gameObject.SetActive(false);
-        }        
+        }
     }
 
     IEnumerator ShowImpactAndFinish(List<OverlayTile> area)
@@ -849,7 +1156,7 @@ public class BuffDebuffAttackController : MonoBehaviour
         mouseController.DeselectCharacter();
         attackUI.SetButtonsInteractable(true);
         attackExecuted = false;
-        
+
 
         foreach (var hud in hudsToReset)
             hud?.Hide();

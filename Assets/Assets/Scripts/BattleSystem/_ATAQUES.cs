@@ -65,11 +65,13 @@ public class AttackButtonProxy : MonoBehaviour, IPointerEnterHandler, IPointerEx
     public void OnPointerEnter(PointerEventData eventData)
     {
         ShowDescription();
+        AudioManager.Instance.PlaySFX("UI");
     }
 
     public void OnSelect(BaseEventData eventData)
     {
         ShowDescription();
+        AudioManager.Instance.PlaySFX("UI");
     }
 
     // Called when button loses highlight (mouse exit OR keyboard/gamepad deselection)

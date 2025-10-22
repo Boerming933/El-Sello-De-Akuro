@@ -29,7 +29,7 @@ public class StatusEffect
     public float damageReduction = 0f;
     public int counterDamageMin = 0;
     public int counterDamageMax = 0;
-    public int attackBonus = 0;
+    public float attackBonusPercent = 0f;
     public float attackReduction = 0f;
     public bool blockMovement = false;
     public bool blockAttack = false;
