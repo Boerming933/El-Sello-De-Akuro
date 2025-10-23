@@ -107,7 +107,7 @@ public class BattleHUD : MonoBehaviour
         var statusManager = currentUnit.GetComponent<StatusEffectManager>();
         if (statusManager != null)
         {
-            int attackBonus = statusManager.CalculateAttackBonus();
+            float attackBonus = statusManager.CalculateAttackBonusPercent();
             if (attackBonus > 0)
             {
                 AttackBonusText.text = $"+{attackBonus} ATK";

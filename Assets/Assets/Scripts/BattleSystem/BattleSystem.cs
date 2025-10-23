@@ -418,7 +418,13 @@ public class BattleSystem : MonoBehaviour
         if (MapManager.Instance != null) MapManager.Instance.HideAllTiles();
         if (mouseController != null) mouseController.ClearRangeTiles();
 
-        // Asegurar allUnits no sea null
+        const int MANA_REGEN_PER_TURN = 5;
+        if (current != null)
+        {
+            current.currentMana = Mathf.Min(current.currentMana + MANA_REGEN_PER_TURN, current.maxMana);
+            Debug.Log($"{current.Name} regenerated +{MANA_REGEN_PER_TURN} mana. Current: {current.currentMana}/{current.maxMana}");
+        }
+
         if (allUnits == null) allUnits = new List<Unit>();
 
         foreach (var u in allUnits)
@@ -434,7 +440,6 @@ public class BattleSystem : MonoBehaviour
                 turnable.DeactivateTurn();
         }
 
-        // Informa al MouseController sobre el current
         if (current != null && mouseController != null)
         {
             var ci = current.GetComponent<CharacterInfo>();
@@ -443,26 +448,34 @@ public class BattleSystem : MonoBehaviour
                 mouseController.SetActiveCharacter(ci, unit);
         }
 
-        // ✅ CHECK: Should this unit skip their turn due to status effects?
         var statusManager = current.GetComponent<StatusEffectManager>();
         if (statusManager != null && statusManager.ShouldSkipTurn())
         {
             Debug.Log($"[BattleSystem] {current.name} is skipping turn due to status effects (Stun, etc.)!");
             
-            // Skip this turn immediately by setting turnEnded = true
             mouseController.turnEnded = true;
             return;
         }
 
         if (attackController != null) attackController.SetCurrentUnit(current);
-        // >>> Forzamos refrescar el HUD de detalles:
         if (detailsUI != null)
             detailsUI.ShowDetails(current);
+
+        RefreshAllBattlePanelButtons();
 
         var zoom = Camera.main.GetComponent<Zoom>();
         if (zoom != null)
         {
             zoom.SetTarget(current.transform);
+        }
+    }
+
+    void RefreshAllBattlePanelButtons()
+    {
+        PanelBatalla[] allPanels = Object.FindObjectsByType<PanelBatalla>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (var panel in allPanels)
+        {
+            panel.RefreshButtonsBasedOnMana();
         }
     }
 

@@ -5152,7 +5152,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &391266299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5410,9 +5410,14 @@ MonoBehaviour:
   inAttackMode: 0
   playerHit: 0
   impactColor: {r: 1, g: 0, b: 0, a: 0.5}
+  Player1: {fileID: 0}
+  Player2: {fileID: 0}
+  Player3: {fileID: 0}
   Atkcooldowns: []
   actualCD: []
   onCooldown: 
+  finalMove: {fileID: 0}
+  attackOrigin: {fileID: 0}
   currentAttack: {fileID: 0}
   currentAttackIndex: -1
   currentUnit: {fileID: 0}
@@ -6537,11 +6542,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2833248937685886121, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2833248937685886121, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3148537555915435557, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
       propertyPath: m_Value
@@ -6649,11 +6654,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8466112271599107105, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8466112271599107105, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8985757521950441697, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
       propertyPath: m_Name
@@ -6661,11 +6666,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9063723987160476162, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9063723987160476162, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9093666939340009467, guid: 1d92465f4b2402a4e9a74477d677ba05, type: 3}
       propertyPath: m_Value
@@ -17420,9 +17425,14 @@ MonoBehaviour:
   inAttackMode: 0
   playerHit: 0
   impactColor: {r: 1, g: 0, b: 0, a: 0.5}
+  Player1: {fileID: 0}
+  Player2: {fileID: 0}
+  Player3: {fileID: 0}
   Atkcooldowns: []
   actualCD: []
   onCooldown: 
+  finalMove: {fileID: 0}
+  attackOrigin: {fileID: 0}
   currentAttack: {fileID: 0}
   currentAttackIndex: -1
   currentUnit: {fileID: 0}
@@ -20713,6 +20723,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3008686058552030912, guid: ba7f4ff0dbdc0a24ab8d93abc4662e12, type: 3}
+      propertyPath: mouseController
+      value: 
+      objectReference: {fileID: 117182018}
     - target: {fileID: 3309406994304021282, guid: ba7f4ff0dbdc0a24ab8d93abc4662e12, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
@@ -34697,9 +34711,14 @@ MonoBehaviour:
   inAttackMode: 0
   playerHit: 0
   impactColor: {r: 1, g: 0, b: 0, a: 0.5}
+  Player1: {fileID: 0}
+  Player2: {fileID: 0}
+  Player3: {fileID: 0}
   Atkcooldowns: []
   actualCD: []
   onCooldown: 
+  finalMove: {fileID: 0}
+  attackOrigin: {fileID: 0}
   currentAttack: {fileID: 0}
   currentAttackIndex: -1
   currentUnit: {fileID: 0}
@@ -35234,6 +35253,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3008686058552030912, guid: ba7f4ff0dbdc0a24ab8d93abc4662e12, type: 3}
+      propertyPath: mouseController
+      value: 
+      objectReference: {fileID: 117182018}
     - target: {fileID: 3309406994304021282, guid: ba7f4ff0dbdc0a24ab8d93abc4662e12, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
@@ -35899,7 +35922,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.1302185, y: 2.8257446}
+  m_AnchoredPosition: {x: 1.130249, y: 2.8257446}
   m_SizeDelta: {x: 50.967804, y: 43.6933}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1863668132
@@ -37842,6 +37865,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3008686058552030912, guid: ba7f4ff0dbdc0a24ab8d93abc4662e12, type: 3}
+      propertyPath: mouseController
+      value: 
+      objectReference: {fileID: 117182018}
     - target: {fileID: 3309406994304021282, guid: ba7f4ff0dbdc0a24ab8d93abc4662e12, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25

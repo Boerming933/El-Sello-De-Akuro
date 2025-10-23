@@ -49,7 +49,7 @@ public class BuffDebuffAttackController : MonoBehaviour
 
     void EnterAttackMode(AttackData atkData)
     {
-
+        
 
 
         if (attackExecuted) return;
@@ -60,7 +60,7 @@ public class BuffDebuffAttackController : MonoBehaviour
         ClearPreview();
 
         currentAttack = atkData;
-
+        
         // if (currentUnit == null) 
         // {
         //     Debug.LogError("No current unit set for attack!");
@@ -68,7 +68,7 @@ public class BuffDebuffAttackController : MonoBehaviour
         // }
 
         if (mouseController != null) mouseController.enabled = false;
-
+        
         float threshold = 0.1f;
         var centerTile = MapManager.Instance.map.Values.FirstOrDefault(t => Vector2.Distance((Vector2)t.transform.position, (Vector2)currentUnit.transform.position) < threshold);          ////Intentar optimizar esto
 
@@ -77,19 +77,39 @@ public class BuffDebuffAttackController : MonoBehaviour
             Debug.LogError($"No se encontró OverlayTile bajo {currentUnit.name}");
             return;
         }
-
-        validTiles = rangeFinder.GetTilesInRange(centerTile, currentAttack.selectionRange);                 ////Intentar optimizar esto
-
-        var buffDebuffAttack = currentAttack as BuffDebuffAttackData;                           /////
-        if (buffDebuffAttack != null && currentAttack.selectionRange == 0)                      /////
+        bool isSelfTargeting = ShouldAffectSelf();
+        
+        if (currentAttack.selectionRange == 0 || isSelfTargeting)
         {
-            bool hasSelfTargeting = buffDebuffAttack.statusEffects.Any(e => e.targetSelf);      /////
-            if (hasSelfTargeting && !validTiles.Contains(centerTile))                           /////                     
+            ConfirmAttack(centerTile);
+            return;
+        }
+        
+        validTiles = rangeFinder.GetTilesInRange(centerTile, currentAttack.selectionRange, currentAttack);
+        
+        var buffDebuffAttack = currentAttack as BuffDebuffAttackData;
+        bool allowSelfTargeting = false;
+        
+        if (buffDebuffAttack != null && currentAttack.selectionRange == 0)
+        {
+            bool hasSelfTargeting = buffDebuffAttack.statusEffects.Any(e => e.targetSelf);
+            if (hasSelfTargeting && !validTiles.Contains(centerTile))
             {
                 validTiles.Add(centerTile);
+                allowSelfTargeting = true;
             }
         }
-
+        
+        if (!allowSelfTargeting && validTiles.Contains(centerTile))
+        {
+            validTiles.Remove(centerTile);
+        }
+        
+        if (currentAttack.effectShape == AreaShape.Perpendicular)
+        {
+            Debug.Log($"[EnterAttackMode] Valid selection tiles: {string.Join(", ", validTiles.Select(t => $"({t.grid2DLocation.x},{t.grid2DLocation.y})"))}");
+        }
+        
         foreach (var tile in validTiles)
         {
             tile.ShowOverlay(rangeColor);
@@ -210,12 +230,13 @@ public class BuffDebuffAttackController : MonoBehaviour
                         if (isInArea)
                         {
                             gabiteHUD.SetHUD(unit);
-                            // ✅ NEW: Include attack bonus in damage preview
                             int baseDamage = Mathf.RoundToInt(currentAttack.damage + currentUnit.Fue * currentAttack.scalingFactor);
                             var attackerStatusManager = currentUnit.GetComponent<StatusEffectManager>();
                             if (attackerStatusManager != null)
                             {
-                                baseDamage += attackerStatusManager.CalculateAttackBonus();
+                                float bonusPercent = attackerStatusManager.CalculateAttackBonusPercent();
+                                baseDamage = Mathf.RoundToInt(baseDamage * (1f + bonusPercent));
+                                baseDamage = Mathf.Max(0, baseDamage);
                             }
                             gabiteHUD.PreviewDamage(baseDamage);
                             gabiteHUD.Show();
@@ -437,6 +458,21 @@ public class BuffDebuffAttackController : MonoBehaviour
         mouseController.canPocion = false;
         if (attackExecuted) return;
 
+        if (currentAttack.manaCost > currentUnit.currentMana)
+        {
+            Debug.LogWarning($"[Safety Guard] {currentUnit.Name} attempted attack without enough mana! This shouldn't happen. Cost: {currentAttack.manaCost}, Current: {currentUnit.currentMana}");
+            ExitAttackMode();
+            attackBools.ResetDirectionStates();
+            return;
+        }
+
+        currentUnit.currentMana -= currentAttack.manaCost;
+        Debug.Log($"{currentUnit.Name} spent {currentAttack.manaCost} mana. Remaining: {currentUnit.currentMana}/{currentUnit.maxMana}");
+
+        var detailsUI = UnityEngine.Object.FindFirstObjectByType<CharacterDetailsUI>();
+        if (detailsUI != null)
+            detailsUI.UpdateAllUI();
+
         if (currentUnit != null)
         {
             var statusManager = currentUnit.GetComponent<StatusEffectManager>();
@@ -588,29 +624,36 @@ public class BuffDebuffAttackController : MonoBehaviour
 
         if (currentAttack.damage > 0)
         {
-            // ✅ NEW: Include attack bonus from status effects
             int baseAttackDamage = currentAttack.damage + Mathf.RoundToInt(currentUnit.Fue * currentAttack.scalingFactor);
 
             if (attackerStatusManager != null)
             {
-                baseAttackDamage += attackerStatusManager.CalculateAttackBonus();
-
-                // ✅ NEW: Apply outgoing damage penalty (for Hypnotic Chant)
+                float bonusPercent = attackerStatusManager.CalculateAttackBonusPercent();
+                if (bonusPercent != 0f)
+                {
+                    baseAttackDamage = Mathf.RoundToInt(baseAttackDamage * (1f + bonusPercent));
+                    baseAttackDamage = Mathf.Max(0, baseAttackDamage);
+                    Debug.Log($"{currentUnit.name} attack bonus: +{bonusPercent * 100}% (base damage with bonus: {baseAttackDamage})");
+                }
+                
                 float outgoingPenalty = attackerStatusManager.CalculateOutgoingDamagePenalty();
                 if (outgoingPenalty > 0)
                 {
                     baseAttackDamage = Mathf.RoundToInt(baseAttackDamage * (1f - outgoingPenalty));
+                    baseAttackDamage = Mathf.Max(0, baseAttackDamage);
                     Debug.Log($"{currentUnit.name} damage reduced by {outgoingPenalty * 100}% due to status effects");
                 }
             }
-
+            
             finalDamage = Mathf.RoundToInt(baseAttackDamage * damageMultiplier);
+            finalDamage = Mathf.Max(0, finalDamage);
 
             var statusManager = targetUnit.GetComponent<StatusEffectManager>();
             if (statusManager != null)
             {
                 float damageReduction = statusManager.CalculateDamageReduction();
                 finalDamage = Mathf.RoundToInt(finalDamage * (1f - damageReduction));
+                finalDamage = Mathf.Max(0, finalDamage);
 
                 if (statusManager.HasEffect(StatusEffectType.DraconicStance))
                 {
@@ -783,9 +826,19 @@ public class BuffDebuffAttackController : MonoBehaviour
                     .FirstOrDefault(t => Vector2.Distance((Vector2)t.transform.position, (Vector2)currentUnit.transform.position) < OriginThreshold);
                 area = GetBoomerangArea(playerTile, center);
                 break;
+            case AreaShape.Perpendicular:
+                area = rangeFinder.GetTilesInRange(center, size, currentAttack);
+                break;
         }
+        
+        if (currentAttack.effectShape == AreaShape.Perpendicular)
+        {
+            Debug.Log($"[GetEffectArea] Perpendicular area tiles: {string.Join(", ", area.Select(t => $"({t.grid2DLocation.x},{t.grid2DLocation.y})"))}");
+        }
+        
         return area;
     }
+
 
     // All facing and directional methods
     Facing4 DetermineFacingFromTiles(OverlayTile playerTile, OverlayTile targetTile)

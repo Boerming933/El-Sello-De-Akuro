@@ -35,12 +35,16 @@ public class PanelAcciones : MonoBehaviour
         if (panelBatalla.gameObject.activeInHierarchy)
         {
             panelBatalla.SetActive(false);
-            //letreroPj.SetActive(true);
         }
         else
         {
             panelBatalla.SetActive(true);
-            //letreroPj.SetActive(false);
+
+            PanelBatalla panelBatallaScript = panelBatalla.GetComponent<PanelBatalla>();
+            if (panelBatallaScript != null)
+            {
+                panelBatallaScript.RefreshButtonsBasedOnMana();
+            }
         }
         
     }

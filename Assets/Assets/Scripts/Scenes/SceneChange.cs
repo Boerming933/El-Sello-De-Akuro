@@ -4,9 +4,11 @@ using UnityEngine.SceneManagement;
 
 public class SceneChange : MonoBehaviour
 {
-    private Scene escenaActiva;
+    public Scene escenaActiva;
     public GameObject player;
     public Animator transitionAnimator;
+
+    public bool canTP = true;
 
     void Awake()
     {
@@ -17,15 +19,8 @@ public class SceneChange : MonoBehaviour
     {
         Scene escenaActiva = SceneManager.GetActiveScene();
 
-        if (escenaActiva.name == "NormalGameScene")
-        {
-            if (Input.GetKeyDown(KeyCode.Joystick1Button9) || Input.GetKeyDown(KeyCode.L))
-            {
-                transitionAnimator.SetTrigger("FadeIn");
-                StartCoroutine(SavePositionAndChangeScene());
-            }
-        }
-        else if (escenaActiva.name == "SampleScene")
+        
+         if (escenaActiva.name == "SampleScene")
         {
             if (Input.GetKeyDown(KeyCode.Joystick1Button8) || Input.GetKeyDown(KeyCode.L))
             {
@@ -35,20 +30,11 @@ public class SceneChange : MonoBehaviour
         }
     }
 
-    private IEnumerator SavePositionAndChangeScene()
-    {
-        yield return new WaitForSeconds(1f);
+    
 
-        if (PlayerScenePos.Instance != null && player != null)
-        {
-            PlayerScenePos.Instance.lastPositionBeforeSceneChange = player.transform.position;
-        }
+    
 
-        AudioManager.Instance.PlayMusic("BattleMusic");
-        SceneManager.LoadScene(0);
-    }
-
-    private IEnumerator ChangeScene()
+    public IEnumerator ChangeScene()
     {
         yield return new WaitForSeconds(1f);
 

@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class MovimientoJugador : MonoBehaviour
 {
@@ -12,6 +14,8 @@ public class MovimientoJugador : MonoBehaviour
     public Zoom zoom;
     public Animator animator;
     public SpriteRenderer spriteRenderer;
+
+    public SceneChange sceneChange;
 
     private const string ANIM_DOWN = "isDown";
     private const string ANIM_DOWN_LEFT = "isDownLeft";
@@ -110,5 +114,33 @@ public class MovimientoJugador : MonoBehaviour
 
             currentAnimState = newAnimState;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        
+            if (other.gameObject.CompareTag("TP") && sceneChange.canTP)
+            {
+                Debug.Log("Collision with TP detected");
+                sceneChange.transitionAnimator.SetTrigger("FadeIn");
+                StartCoroutine(SavePositionAndChangeScene());
+            }
+        
+    }
+
+    public IEnumerator SavePositionAndChangeScene()
+    {
+        yield return new WaitForSeconds(1f);
+
+        transform.position = new Vector3(38.16f, 13.5f);
+
+        if (PlayerScenePos.Instance != null)
+        {
+            PlayerScenePos.Instance.lastPositionBeforeSceneChange = transform.position;
+        }
+
+        AudioManager.Instance.PlayMusic("BattleMusic");
+        
+        SceneManager.LoadScene(0);
     }
 }
