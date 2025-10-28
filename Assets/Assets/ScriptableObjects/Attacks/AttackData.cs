@@ -30,5 +30,9 @@ public class AttackData : ScriptableObject
     public int initiativeBonus;     // +destreza temporal
     public int initiativeDuration;  // turnos que dura ese bonus
 
+    [Header("Target Filtering")] //
+    public bool canTargetEnemies = true; //
+    public bool canTargetAllies = false; //
+
     [TextArea] public string description;
 }

@@ -155,33 +155,58 @@ public class StatusEffectManager : MonoBehaviour
     
     private void HandleGuardTrigger(StatusEffect effect, EffectTrigger trigger)
     {
-        if (trigger == EffectTrigger.OnDamageReceived && lastAttacker != null)
+        if (trigger == EffectTrigger.OnDamageReceived)
         {
+            if (lastAttacker == null)
+            {
+                Debug.LogWarning($"{unit.name} Guard counter triggered but no attacker reference!");
+                return;
+            }
+
+            if (lastAttacker.currentHP <= 0)
+            {
+                Debug.Log($"{unit.name} Guard counter skipped - attacker {lastAttacker.name} is already dead.");
+                return;
+            }
+
             int counterDamage = UnityEngine.Random.Range(effect.counterDamageMin, effect.counterDamageMax + 1);
-            Debug.Log($"{unit.name} counters {lastAttacker.name} for {counterDamage} damage!");
+            Debug.Log($"{unit.name} counters {lastAttacker.name} for {counterDamage} damage with Guard!");
             lastAttacker.TakeDamage(counterDamage);
         }
     }
     
     private void HandleDraconicStanceTrigger(StatusEffect effect, EffectTrigger trigger)
     {
-        if (trigger == EffectTrigger.OnDamageReceived && lastAttacker != null)
+        if (trigger == EffectTrigger.OnDamageReceived)
         {
+            if (lastAttacker == null)
+            {
+                Debug.LogWarning($"{unit.name} Draconic Stance counter triggered but no attacker reference!");
+                RemoveEffect(StatusEffectType.DraconicStance);
+                return;
+            }
+
+            if (lastAttacker.currentHP <= 0)
+            {
+                Debug.Log($"{unit.name} Draconic Stance counter skipped - attacker {lastAttacker.name} is already dead.");
+                RemoveEffect(StatusEffectType.DraconicStance);
+                return;
+            }
+
             int counterDamage = UnityEngine.Random.Range(effect.counterDamageMin, effect.counterDamageMax + 1);
-            Debug.Log($"{unit.name} completely negates attack and counters {lastAttacker.name} for {counterDamage} damage!");
+            Debug.Log($"{unit.name} completely negates attack and counters {lastAttacker.name} for {counterDamage} damage with Draconic Stance!");
             lastAttacker.TakeDamage(counterDamage);
             
-            // Apply "must attack next turn" effect
             var mustAttackEffect = new StatusEffect(StatusEffectType.DamageBoost, 1)
             {
                 effectName = "Must Attack",
                 mustAttackNextTurn = true,
-                turnApplied = turnNumber // ✅ NEW: Track when this effect was applied
+                turnApplied = turnNumber
             };
             ApplyEffect(mustAttackEffect);
             
-            // Remove Draconic Stance after use
             RemoveEffect(StatusEffectType.DraconicStance);
+            Debug.Log($"{unit.name} Draconic Stance consumed after first counter!");
         }
     }
     

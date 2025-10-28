@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
+using NUnit.Framework;
 
 public class DecorationManager : MonoBehaviour
 {
@@ -35,15 +36,26 @@ public class DecorationManager : MonoBehaviour
                 .Select(d => (d.Renderer, d.EffectiveY))
         );
 
+        float characterX = characterRenderers[0].transform.position.x;
+
+        dynamicItems.AddRange(
+            _decorations
+                .Where(d => d.sortGroup == Decoraciones.SortGroup.Houses)
+                .Select(d => {
+                    float houseX = d.transform.position.x;
+                    float chosenY = characterX < houseX ? d.EffectiveY : d.EffectiveY2;
+                    return (d.Renderer, chosenY);
+                })
+        );
+
         var sorted = dynamicItems
-            .OrderByDescending(item => item.key)
-            .ToList();
+            .OrderByDescending(item => item.key).ToList();
 
         for (int i = 0; i < sorted.Count; i++)
         {
             sorted[i].sr.sortingOrder = i + 1;
         }
-
+        
         int frontBase = sorted.Count + 1;
 
         foreach (var dec in _decorations

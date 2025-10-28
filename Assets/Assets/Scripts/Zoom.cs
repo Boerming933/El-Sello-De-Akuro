@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Zoom : MonoBehaviour
@@ -14,6 +15,9 @@ public class Zoom : MonoBehaviour
     public float minZoom = 1.2f;
     public float maxZoom = 5f;
     public float returnSpeed = 5f;
+
+    public float[] CameraLimitX;
+    public float[] CameraLimitY;
 
     private float joystickSensitivity;
     public float sensitivity;
@@ -167,11 +171,14 @@ public class Zoom : MonoBehaviour
         );
 
         Vector3 worldDelta = lastWorldPos - currentWorldPos;
+
         transform.position += worldDelta;
 
         lastMousePosition = currentMouseScreenPos;
+
+        transform.position = ClampCameraPosition(transform.position);
     }
-    
+
     void MoveCameraWithJoystick(Vector2 input)
     {
         // Convertir input del stick en desplazamiento en el mundo
@@ -180,7 +187,36 @@ public class Zoom : MonoBehaviour
 
         Vector3 moveDirection = (right * input.x + up * -input.y) * joystickSensitivity * Time.deltaTime;
 
-        transform.position += moveDirection;
+        transform.position += moveDirection;        
+        
+        transform.position = ClampCameraPosition(transform.position);
+
+    }
+    
+    Vector3 ClampCameraPosition(Vector3 pos)
+    {
+        float halfHeight = cam.orthographicSize;
+        float halfWidth = halfHeight * cam.aspect;
+        
+        float minX = CameraLimitX[0] + halfWidth;
+        float maxX = CameraLimitX[1] - halfWidth;
+        float minY = CameraLimitY[0] + halfHeight;
+        float maxY = CameraLimitY[1] - halfHeight;
+
+        if (minX > maxX)
+        {
+            float centerX = (CameraLimitX[0] + CameraLimitX[1]) * 0.5f;
+            minX = maxX = centerX;
+        }
+        if (minY > maxY)
+        {
+            float centerY = (CameraLimitY[0] + CameraLimitY[1]) * 0.5f;
+            minY = maxY = centerY;
+        }
+
+        pos.x = Mathf.Clamp(pos.x, minX, maxX);
+        pos.y = Mathf.Clamp(pos.y, minY, maxY);
+        return pos;
     }
 
 }

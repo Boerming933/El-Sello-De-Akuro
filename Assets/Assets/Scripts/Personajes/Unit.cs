@@ -33,6 +33,8 @@ public class Unit : MonoBehaviour
     public Sprite turnerIcon;
 
     public CharacterDetailsUI hud;
+    
+    [HideInInspector] public bool MovimientoRelampagoCaminata = false; //
 
     public event Action<int> OnDamageTaken;
     public event Action OnDeath;
@@ -84,6 +86,16 @@ public class Unit : MonoBehaviour
     private void Die()
     {
         OnDeath?.Invoke();
+        
+        foreach (var attackData in equippedAttacks) //
+        { //
+            var buffDebuffAttack = attackData as BuffDebuffAttackData; //
+            if (buffDebuffAttack != null) //
+            { //
+                buffDebuffAttack.ClearCooldown(this); //
+            } //
+        } //
+        
         // GetComponent<Animator>()?.SetTrigger("Die");
         // collider.enabled = false;
         // this.enabled = false;
