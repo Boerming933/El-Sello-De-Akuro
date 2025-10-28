@@ -35,8 +35,8 @@ public static class StatusEffectFactory
         return new StatusEffect(StatusEffectType.MartialRhythm, 1)
         {
             effectName = "Martial Rhythm",
-            description = "Grants +1 attack damage for next turn",
-            attackBonus = 1
+            description = "Grants +10% attack damage for next turn",
+            attackBonusPercent = 0.10f
         };
     }
     
@@ -45,8 +45,8 @@ public static class StatusEffectFactory
         return new StatusEffect(StatusEffectType.MartialRhythm, 1)
         {
             effectName = "Martial Rhythm (Enhanced)",
-            description = "Removes stun and grants +2 attack damage",
-            attackBonus = 2
+            description = "Removes stun and grants +20% attack damage",
+            attackBonusPercent = 0.20f
         };
     }
     
@@ -77,8 +77,9 @@ public static class StatusEffectFactory
         return new StatusEffect(StatusEffectType.DamageBoost, 1)
         {
             effectName = "Prepared Strike",
-            description = "Next attack deals +1 damage",
-            attackBonus = 1
+            description = "Next attack deals +50% damage",
+            attackBonusPercent = 0.50f,
+            triggers = { EffectTrigger.OnAttack }
         };
     }
 }

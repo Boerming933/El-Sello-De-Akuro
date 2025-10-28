@@ -327,23 +327,29 @@ public class AttackControllerEnemy : MonoBehaviour
 
         if (currentAttack.damage > 0)
         {
-            // ✅ NEW: Include attack bonus from status effects
             int baseAttackDamage = currentAttack.damage + Mathf.RoundToInt(currentUnit.Fue * currentAttack.scalingFactor);
 
             var attackerStatusManager = currentUnit.GetComponent<StatusEffectManager>();
             if (attackerStatusManager != null)
             {
-                baseAttackDamage += attackerStatusManager.CalculateAttackBonus();
-                Debug.Log($"{currentUnit.name} attack bonus: +{attackerStatusManager.CalculateAttackBonus()}");
+                float bonusPercent = attackerStatusManager.CalculateAttackBonusPercent();
+                if (bonusPercent != 0f)
+                {
+                    baseAttackDamage = Mathf.RoundToInt(baseAttackDamage * (1f + bonusPercent));
+                    baseAttackDamage = Mathf.Max(0, baseAttackDamage);
+                    Debug.Log($"{currentUnit.name} attack bonus: +{bonusPercent * 100}% (base damage with bonus: {baseAttackDamage})");
+                }
             }
 
             finalDamage = Mathf.RoundToInt(baseAttackDamage * damageMultiplier);
+            finalDamage = Mathf.Max(0, finalDamage);
 
             var statusManager = targetUnit.GetComponent<StatusEffectManager>();
             if (statusManager != null)
             {
                 float damageReduction = statusManager.CalculateDamageReduction();
                 finalDamage = Mathf.RoundToInt(finalDamage * (1f - damageReduction));
+                finalDamage = Mathf.Max(0, finalDamage);
 
                 if (statusManager.HasEffect(StatusEffectType.DraconicStance))
                 {
@@ -382,7 +388,6 @@ public class AttackControllerEnemy : MonoBehaviour
 
                     var effectToApply = attackEffect.statusEffect.Clone();
                     effectToApply.caster = currentUnit;
-                    Debug.Log($"Applying {effectToApply.effectName} to {targetUnit.name} for {effectToApply.duration} turns with attack bonus {effectToApply.attackBonus}");
                     statusManager.ApplyEffect(effectToApply);
                     Debug.Log($"Successfully applied {effectToApply.effectName} to {targetUnit.name}");
                 }

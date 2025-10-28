@@ -67,6 +67,7 @@
     <Compile Include="Assets\Assets\Scripts\Zoom.cs" />
     <Compile Include="Assets\Assets\Scripts\BattleSystem\BattleSystem.cs" />
     <Compile Include="Assets\Assets\Scripts\HUD\BattleHUD.cs" />
+    <Compile Include="Assets\Assets\Scripts\Scenes\PlayerScenePos.cs" />
     <Compile Include="Assets\Assets\Scripts\BattleSystem\Enemy\Enemy IA.cs" />
     <Compile Include="Assets\Assets\ScriptableObjects\Attacks\AttackUsesRuntimeManager.cs" />
     <Compile Include="Assets\Assets\Scripts\BattleSystem\Turnable.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Assets\Assets\ScriptableObjects\Attacks\AttackUsesManager.cs" />
     <Compile Include="Assets\Assets\ScriptableObjects\Attacks\AttackUsesResetMenu.cs" />
     <Compile Include="Assets\Assets\Scripts\Grid\PathFinder.cs" />
+    <Compile Include="Assets\Assets\ScriptableObjects\Attacks\EffectMirrorController.cs" />
     <Compile Include="Assets\Assets\Scripts\Audio\Sound.cs" />
     <Compile Include="Assets\Assets\Scripts\Grid\RangeFinderPlayer.cs" />
     <Compile Include="Assets\Assets\Scripts\Grid\MouseController.cs" />
@@ -600,32 +602,12 @@
       <HintPath>D:\Program Files(x86)\6000.0.47f1\Editor\Data\Managed\UnityEngine\UnityEditor.XRModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="SharpToken">
-      <HintPath>Packages\com.bezi.sidekick\Plugins\SharpToken.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>Packages\com.bezi.sidekick\Plugins\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
       <HintPath>Library\PackageCache\com.unity.collections@56bff8827a7e\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library\PackageCache\com.unity.ext.nunit@031a54704bff\net40\unity-custom\nunit.framework.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="bezi-websocket-sharp">
-      <HintPath>Packages\com.bezi.sidekick\Plugins\bezi-websocket-sharp.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Microsoft.CodeAnalysis">
-      <HintPath>Packages\com.bezi.sidekick\Plugins\Microsoft.CodeAnalysis.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Collections.Immutable">
-      <HintPath>Packages\com.bezi.sidekick\Plugins\System.Collections.Immutable.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
@@ -638,14 +620,6 @@
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@d6f9955a5d5f\Mono.Cecil.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Reflection.Metadata">
-      <HintPath>Packages\com.bezi.sidekick\Plugins\System.Reflection.Metadata.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Microsoft.CodeAnalysis.CSharp">
-      <HintPath>Packages\com.bezi.sidekick\Plugins\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="netstandard">
@@ -1402,6 +1376,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Bezi.Editor.csproj" />
   </ItemGroup>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
   <ItemGroup>

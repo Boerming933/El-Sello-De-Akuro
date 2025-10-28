@@ -39,7 +39,10 @@ public class MouseControler : MonoBehaviour
     [SerializeField] public Animator animatorSamurai;
     [SerializeField] public Animator animatorGeisha;
     [SerializeField] public Animator animatorNinja;
+
+    [SerializeField] public GameObject SamuraiShield;
     [SerializeField] public Animator geishaEffects;
+    [SerializeField] public Animator ninjaEffects;
 
     public AttackBools attackBools;
 
@@ -59,7 +62,7 @@ public class MouseControler : MonoBehaviour
     {
         character = ci;
         myUnit = unit;
-        
+
         // ✅ For player characters, check status effects when activated
         if (unit != null && unit.CompareTag("Aliado"))
         {
@@ -94,24 +97,24 @@ public class MouseControler : MonoBehaviour
         {
             if (showPanelAcciones && character != null && cantidadPociones > 0 && canPocion)
             {
-            var unit = character.GetComponent<Unit>();
-            if (unit != null)
-            {
-                canPocion = false;
-                cantidadPociones--;
-                pocionOn.SetActive(false);
-                bgIconoPocion.SetActive(false);
-                pociones.text = cantidadPociones.ToString();
-                unit.Heal();
-
-                var turnable = character.GetComponent<Turnable>();
-                if (turnable != null && turnable.btnBatalla != null)
+                var unit = character.GetComponent<Unit>();
+                if (unit != null)
                 {
-                    turnable.btnBatalla.interactable = false;
+                    canPocion = false;
+                    cantidadPociones--;
+                    pocionOn.SetActive(false);
+                    bgIconoPocion.SetActive(false);
+                    pociones.text = cantidadPociones.ToString();
+                    unit.Heal();
+
+                    var turnable = character.GetComponent<Turnable>();
+                    if (turnable != null && turnable.btnBatalla != null)
+                    {
+                        turnable.btnBatalla.interactable = false;
+                    }
+                    TryAutoEndTurn();
                 }
-                TryAutoEndTurn();
-            }
-                
+
             }
         }
 
@@ -139,7 +142,7 @@ public class MouseControler : MonoBehaviour
             bgIconoPocion.SetActive(false);
         }
 
-        
+
 
         pocionOn.SetActive(canPocion && cantidadPociones > 0 && showPanelAcciones);
         bgIconoPocion.SetActive(canPocion && cantidadPociones > 0 && showPanelAcciones);
@@ -250,7 +253,7 @@ public class MouseControler : MonoBehaviour
                 }
 
                 DeselectCharacter();
-                return;  
+                return;
             }
         }
 
@@ -307,7 +310,7 @@ public class MouseControler : MonoBehaviour
         foreach (var item in inRangeTiles)
         {
             item.ShowTile();
-        }       
+        }
     }
 
     public void ClearRangeTiles()
@@ -326,7 +329,7 @@ public class MouseControler : MonoBehaviour
             if (animatorGeisha)
             {
                 animatorGeisha.SetBool("idleBatallaUp", false);
-                animatorGeisha.SetBool("idleBatalla", false);  
+                animatorGeisha.SetBool("idleBatalla", false);
             }
             if (animatorNinja)
             {
@@ -336,7 +339,7 @@ public class MouseControler : MonoBehaviour
             if (animatorSamurai)
             {
                 animatorSamurai.SetBool("idleBatallaUp", false);
-                animatorSamurai.SetBool("idleBatalla", false);      
+                animatorSamurai.SetBool("idleBatalla", false);
             }
         }
 
@@ -378,13 +381,13 @@ public class MouseControler : MonoBehaviour
 
     private void TryAutoEndTurn()
     {
-        
+
 
         if (myUnit.Name == "Riku Takeda")
         {
             animatorSamurai.SetBool("isMovingDown", false);
             animatorSamurai.SetBool("isMovingUp", false);
-            
+
         }
 
         if (myUnit.Name == "Sayuri")
@@ -410,7 +413,7 @@ public class MouseControler : MonoBehaviour
 
         if (!puedeMoverse && !puedeAtacar)
         {
-            
+
             DeselectCharacter();
         }
     }
@@ -545,7 +548,7 @@ public class MouseControler : MonoBehaviour
 
             character.tilesMoved++;
             battleSystem.CharacterPosition(myUnit);
-            
+
             Debug.Log("Tiles moved: " + character.tilesMoved);
 
             if (character.tilesMoved >= character.maxTiles)
@@ -636,55 +639,55 @@ public class MouseControler : MonoBehaviour
         tile.occupant = character;
         character.activeTile = tile;
     }
-    
+
     public void StartMoveMode()
-{
-    // ✅ Check if character should skip their entire turn
-    if (character != null)
     {
-        var statusManager = character.GetComponent<StatusEffectManager>();
-        if (statusManager != null && statusManager.ShouldSkipTurn())
+        // ✅ Check if character should skip their entire turn
+        if (character != null)
         {
-            Debug.Log($"{character.name} should skip turn - cannot start move mode!");
-            
-            // Show a message that the turn is skipped
-            canMove = false;
-            showPanelAcciones = false;
-            turnEnded = true; // End turn immediately
-            return;
-        }
-        
-        // Check if character can move due to status effects (but not full skip)
-        if (statusManager != null && !statusManager.CanMove())
-        {
-            Debug.Log($"{character.name} cannot move due to status effects (Hypnotic Chant)!");
-            
-            // Show a message or visual indicator that movement is blocked
-            canMove = false;
-            showPanelAcciones = true;
-            
-            // Reactivate turn panel but keep movement disabled
-            var turnable = character.GetComponent<Turnable>();
-            if (turnable != null)
+            var statusManager = character.GetComponent<StatusEffectManager>();
+            if (statusManager != null && statusManager.ShouldSkipTurn())
             {
-                turnable.ActivateTurn();
-                if (turnable.btnMoverse != null)
-                    turnable.btnMoverse.interactable = false; // Disable move button visually
+                Debug.Log($"{character.name} should skip turn - cannot start move mode!");
+
+                // Show a message that the turn is skipped
+                canMove = false;
+                showPanelAcciones = false;
+                turnEnded = true; // End turn immediately
+                return;
             }
-            
-            return; // Don't allow movement
+
+            // Check if character can move due to status effects (but not full skip)
+            if (statusManager != null && !statusManager.CanMove())
+            {
+                Debug.Log($"{character.name} cannot move due to status effects (Hypnotic Chant)!");
+
+                // Show a message or visual indicator that movement is blocked
+                canMove = false;
+                showPanelAcciones = true;
+
+                // Reactivate turn panel but keep movement disabled
+                var turnable = character.GetComponent<Turnable>();
+                if (turnable != null)
+                {
+                    turnable.ActivateTurn();
+                    if (turnable.btnMoverse != null)
+                        turnable.btnMoverse.interactable = false; // Disable move button visually
+                }
+
+                return; // Don't allow movement
+            }
         }
+
+        // Original StartMoveMode logic (if movement is allowed)
+        canMove = true;
+        prevCanMove = false;
+        showPanelAcciones = false;
+
+        ClearRangeTiles();
+
+        if (character != null)
+            GetInRangeTiles();
     }
-
-    // Original StartMoveMode logic (if movement is allowed)
-    canMove = true;
-    prevCanMove = false;
-    showPanelAcciones = false;
-
-    ClearRangeTiles();
-
-    if (character != null)
-        GetInRangeTiles();
-}
 
 }
