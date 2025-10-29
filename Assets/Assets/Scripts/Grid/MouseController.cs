@@ -381,13 +381,10 @@ public class MouseControler : MonoBehaviour
 
     private void TryAutoEndTurn()
     {
-
-
         if (myUnit.Name == "Riku Takeda")
         {
             animatorSamurai.SetBool("isMovingDown", false);
             animatorSamurai.SetBool("isMovingUp", false);
-
         }
 
         if (myUnit.Name == "Sayuri")
@@ -413,7 +410,6 @@ public class MouseControler : MonoBehaviour
 
         if (!puedeMoverse && !puedeAtacar)
         {
-
             DeselectCharacter();
         }
     }

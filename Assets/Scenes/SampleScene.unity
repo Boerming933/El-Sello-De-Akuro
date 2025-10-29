@@ -369,10 +369,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: baa7292cdc2d0d849b83cf813d932470, type: 2}
   - {fileID: 11400000, guid: da5f495ff1af981409de3b3d68dcc64d, type: 2}
   - {fileID: 11400000, guid: 1c3ed3501fe27d44fb31e14a9a487178, type: 2}
+  animator: {fileID: 0}
+  sr: {fileID: 0}
   maxEquipped: 3
   Name: Riku Takeda
   Level: 1
   isEnemy: 0
+  deathXCoords:
+  - -5
+  - -3
+  deathYCoords:
+  - -1.75
+  - -2.75
+  minXDistance: 0
+  minYDistance: 0
   Fue: 14
   movement: 3
   Des: 8
@@ -386,6 +396,7 @@ MonoBehaviour:
   portrait: {fileID: 262729413360307799, guid: d24f417df462f8b49b138f6b74e7f7c4, type: 3}
   turnerIcon: {fileID: 262729413360307799, guid: d24f417df462f8b49b138f6b74e7f7c4, type: 3}
   hud: {fileID: 863480413}
+  active: {fileID: 0}
 --- !u!114 &6920274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -661,9 +672,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1957207592}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 710, y: -50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &37895979
@@ -1128,9 +1139,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1957207592}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 380, y: -50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &87196569
@@ -2628,7 +2639,7 @@ MonoBehaviour:
   Characters: []
   SRCha: []
   sr: {fileID: 0}
-  renderers: []
+  _decorations: []
 --- !u!1 &205496995
 GameObject:
   m_ObjectHideFlags: 0
@@ -4868,9 +4879,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1957207592}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 270, y: -50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &370823025
@@ -5245,10 +5256,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allAttacks: []
   equippedAttacks: []
+  animator: {fileID: 0}
+  sr: {fileID: 0}
   maxEquipped: 3
   Name: Oni3
   Level: 1
   isEnemy: 1
+  deathXCoords:
+  - -5
+  - -3
+  deathYCoords:
+  - -1.75
+  - -2.75
+  minXDistance: 0
+  minYDistance: 0
   Fue: 10
   movement: 4
   Des: 10
@@ -5262,6 +5283,7 @@ MonoBehaviour:
   portrait: {fileID: -1820036083835372325, guid: f91f66e86a298c448bdc44790320ad68, type: 3}
   turnerIcon: {fileID: -7660979142769561414, guid: d7cdd47ee03a234439c3c40f0ed50464, type: 3}
   hud: {fileID: 863480413}
+  active: {fileID: 0}
 --- !u!114 &391266303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5841,9 +5863,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1957207592}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 600, y: -50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &411191798
@@ -6479,9 +6501,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1957207592}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 160, y: -50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &484276659
@@ -17182,10 +17204,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allAttacks: []
   equippedAttacks: []
+  animator: {fileID: 0}
+  sr: {fileID: 0}
   maxEquipped: 3
   Name: Oni2
   Level: 1
   isEnemy: 1
+  deathXCoords:
+  - -5
+  - -3
+  deathYCoords:
+  - -1.75
+  - -2.75
+  minXDistance: 0
+  minYDistance: 0
   Fue: 10
   movement: 4
   Des: 10
@@ -17199,6 +17231,7 @@ MonoBehaviour:
   portrait: {fileID: 8892889418820053409, guid: b3c34f0d1759e6e4cabd19b7870cd4d4, type: 3}
   turnerIcon: {fileID: 6108655663098407346, guid: a3788e10be50b60458011576e4803fdc, type: 3}
   hud: {fileID: 863480413}
+  active: {fileID: 0}
 --- !u!114 &548752740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22987,7 +23020,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8005493730088606526, guid: 0dea4a3f61b52d9469ed4c4d6ec4b026, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 350
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8005493730088606526, guid: 0dea4a3f61b52d9469ed4c4d6ec4b026, type: 3}
       propertyPath: m_SizeDelta.y
@@ -24322,10 +24355,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c9ccd8cc0b7fa014baef7f9afc52c145, type: 2}
   equippedAttacks:
   - {fileID: 11400000, guid: c9ccd8cc0b7fa014baef7f9afc52c145, type: 2}
+  animator: {fileID: 0}
+  sr: {fileID: 0}
   maxEquipped: 3
   Name: Sayuri
   Level: 1
   isEnemy: 0
+  deathXCoords:
+  - -5
+  - -3
+  deathYCoords:
+  - -1.75
+  - -2.75
+  minXDistance: 0
+  minYDistance: 0
   Fue: 6
   movement: 4
   Des: 12
@@ -24339,6 +24382,7 @@ MonoBehaviour:
   portrait: {fileID: 1500682985060248425, guid: 279839f8eeaf913419f9595eeb4ed575, type: 3}
   turnerIcon: {fileID: 1500682985060248425, guid: 279839f8eeaf913419f9595eeb4ed575, type: 3}
   hud: {fileID: 863480413}
+  active: {fileID: 0}
 --- !u!114 &1083553805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24979,6 +25023,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1106537576}
   m_CullTransparentMesh: 1
+--- !u!1 &1113327903
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1113327904}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1113327904
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113327903}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.07, y: -2.73, z: -2.9036665}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1116554891
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27779,11 +27854,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7338144979150455018, guid: 351450264f32f3348a57f37689c12f19, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7338144979150455018, guid: 351450264f32f3348a57f37689c12f19, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7388829869333490903, guid: 351450264f32f3348a57f37689c12f19, type: 3}
       propertyPath: m_IsActive
@@ -27971,11 +28046,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8909733365615172219, guid: 351450264f32f3348a57f37689c12f19, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8909733365615172219, guid: 351450264f32f3348a57f37689c12f19, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7770864120373869074, guid: 351450264f32f3348a57f37689c12f19, type: 3}
@@ -31565,10 +31640,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allAttacks: []
   equippedAttacks: []
+  animator: {fileID: 0}
+  sr: {fileID: 0}
   maxEquipped: 3
   Name: Raiden
   Level: 1
   isEnemy: 0
+  deathXCoords:
+  - -5
+  - -3
+  deathYCoords:
+  - -1.75
+  - -2.75
+  minXDistance: 0
+  minYDistance: 0
   Fue: 10
   movement: 5
   Des: 16
@@ -31582,6 +31667,7 @@ MonoBehaviour:
   portrait: {fileID: 5390911783444328779, guid: 44c90998ab486174587562fe0436fcd1, type: 3}
   turnerIcon: {fileID: 5390911783444328779, guid: 44c90998ab486174587562fe0436fcd1, type: 3}
   hud: {fileID: 863480413}
+  active: {fileID: 0}
 --- !u!114 &1633231251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32688,9 +32774,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1957207592}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1696044843
@@ -34597,10 +34683,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allAttacks: []
   equippedAttacks: []
+  animator: {fileID: 0}
+  sr: {fileID: 0}
   maxEquipped: 3
   Name: Oni1
   Level: 1
   isEnemy: 1
+  deathXCoords:
+  - -5
+  - -3
+  deathYCoords:
+  - -1.75
+  - -2.75
+  minXDistance: 0
+  minYDistance: 0
   Fue: 10
   movement: 4
   Des: 10
@@ -34614,6 +34710,7 @@ MonoBehaviour:
   portrait: {fileID: -1419381550283157397, guid: 8b99c79c8c684b044a2afbfdaeb87147, type: 3}
   turnerIcon: {fileID: -804993441942215955, guid: 0a3b9e17d1a36f74696ce69b9520f67b, type: 3}
   hud: {fileID: 863480413}
+  active: {fileID: 0}
 --- !u!114 &1796309829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36097,9 +36194,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1957207592}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 490, y: -50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1887512143
@@ -37250,7 +37347,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1995960701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39295,3 +39392,4 @@ SceneRoots:
   - {fileID: 1116554891}
   - {fileID: 201604180}
   - {fileID: 232449977}
+  - {fileID: 1113327904}

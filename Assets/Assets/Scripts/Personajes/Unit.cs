@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using System.Collections;
 using System.Linq;
+using NUnit.Framework;
 
 public class Unit : MonoBehaviour
 {
@@ -12,11 +13,22 @@ public class Unit : MonoBehaviour
     [Header("Ataques equipados")]
     public List<AttackData> equippedAttacks = new List<AttackData>();
 
+    public Animator animator;
+    public SpriteRenderer sr;
+
     public int maxEquipped = 3;
     public string Name;
     public int Level;
 
     public bool isEnemy;
+
+    public float[] deathXCoords;
+    public float[] deathYCoords;
+
+    private Vector3 deathPosition;
+
+    public float minXDistance;
+    public float minYDistance;
 
     public int Fue;
     public int movement;
@@ -34,6 +46,8 @@ public class Unit : MonoBehaviour
 
     public CharacterDetailsUI hud;
 
+    public OverlayTile active;
+
     public event Action<int> OnDamageTaken;
     public event Action OnDeath;
 
@@ -46,27 +60,11 @@ public class Unit : MonoBehaviour
             Debug.Log($"Added StatusEffectManager to {Name}");
         }
 
-        // Inicializa HUD al comenzar el combate
+        animator = GetComponent<Animator>();
+        sr = GetComponent<SpriteRenderer>();
+
         hud.ShowDetails(this);
     }
-
-
-    // public void TakeDamage(int amount)
-    // {
-    //     // 1) Ajusta HP
-    //     currentHP = Mathf.Max(0, currentHP - amount);
-
-    //     // 2) Actualiza HUD
-    //     var ui = UnityEngine.Object.FindFirstObjectByType<CharacterDetailsUI>();
-    //     if (ui != null)
-    //         ui.UpdateAllUI();
-    //     // 3) Dispara evento de daño
-    //     OnDamageTaken?.Invoke(amount);
-
-    //     // 4) Comprueba muerte
-    //     if (currentHP == 0)
-    //         Die();
-    // }
 
     public bool EquipAttack(AttackData attack)
     {
@@ -83,10 +81,74 @@ public class Unit : MonoBehaviour
 
     private void Die()
     {
-        OnDeath?.Invoke();
-        // GetComponent<Animator>()?.SetTrigger("Die");
-        // collider.enabled = false;
-        // this.enabled = false;
+        if (isEnemy)
+        {
+            float best = int.MaxValue;
+            int ind = 0;
+
+            for (int i = 0; i < deathXCoords.Count(); i++)
+            {
+                var activePosition = active.transform.position;
+                float d = Mathf.Abs(activePosition.x - deathXCoords[i]) + Mathf.Abs(activePosition.y - deathYCoords[i]);
+                if (d < best)
+                {
+                    best = d;
+                    ind = i;
+                }
+            }
+
+            deathPosition = new Vector3(deathXCoords[ind], deathYCoords[ind], 0f);
+
+            Debug.LogError("La mejor posicion de muerte es " + deathPosition);
+        }
+        else Destroy(gameObject);
+    }
+
+    void Update()
+    {
+        float speed = 4f;
+        if (isEnemy)
+        {
+            var activePosition = ActiveTile();
+            active = activePosition.Value.collider.GetComponent<OverlayTile>();
+        }
+        else
+        {
+            active = FindCenterTile();
+        }
+
+        var comparation = new Vector3(0f, 0f, 0f);
+
+        if (deathPosition != comparation)
+        {
+            if (Name == "Oni1")
+            {
+                animator.SetTrigger("escape");
+                if (deathPosition.x > transform.position.x)
+                {
+                    sr.flipX = true;
+                }
+            }
+            else if (Name == "Oni2")
+            {
+                animator.SetTrigger("escape");
+                if (deathPosition.x > transform.position.x)
+                {
+                    sr.flipX = true;
+                }
+            }
+            else if (Name == "Oni3")
+            {
+                animator.SetTrigger("escape");
+                if (deathPosition.x > transform.position.x)
+                {
+                    sr.flipX = true;
+                }
+            }
+            
+            transform.position = Vector2.MoveTowards(transform.position, deathPosition, speed * Time.deltaTime);
+        }
+        if(transform.position == deathPosition) Destroy(gameObject);
     }
 
     //para enemigos

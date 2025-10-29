@@ -11,32 +11,54 @@ public class ObstacleManager : MonoBehaviour
     public List<SpriteRenderer> SRCha = new List<SpriteRenderer>();
     public SpriteRenderer sr;
 
-    public List<SpriteRenderer> renderers;
+    public List<DecoracionCombate> _decorations;
     private Vector3[] lastPositions;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     private IEnumerator Start()
     {
         yield return new WaitUntil(() => MapManager.Instance != null
                                    && MapManager.Instance.map != null);
 
+        // Clear lists to avoid duplicates
+        Characters.Clear();
+        SRCha.Clear();
+
+        // Add players with null checking
         for (int i = 0; i < battleSystem.PlayersPrefab.Count; i++)
         {
-            Characters.Add(battleSystem.PlayersPrefab[i]);
-            SRCha.Add(battleSystem.PlayersPrefab[i].GetComponent<SpriteRenderer>());
+            var playerObj = battleSystem.PlayersPrefab[i];
+            if (playerObj != null)
+            {
+                var spriteRenderer = playerObj.GetComponent<SpriteRenderer>();
+                if (spriteRenderer != null)
+                {
+                    Characters.Add(playerObj);
+                    SRCha.Add(spriteRenderer);
+                }
+            }
         }
 
+        // Add enemies with null checking
         for (int i = 0; i < battleSystem.EnemiesPrefab.Count; i++)
         {
-            Characters.Add(battleSystem.EnemiesPrefab[i]);
-            SRCha.Add(battleSystem.EnemiesPrefab[i].GetComponent<SpriteRenderer>());
+            var enemyObj = battleSystem.EnemiesPrefab[i];
+            if (enemyObj != null)
+            {
+                var spriteRenderer = enemyObj.GetComponent<SpriteRenderer>();
+                if (spriteRenderer != null)
+                {
+                    Characters.Add(enemyObj);
+                    SRCha.Add(spriteRenderer);
+                }
+            }
         }
 
-        renderers = depthContainer.GetComponentsInChildren<SpriteRenderer>().ToList();
+        _decorations = GetComponentsInChildren<DecoracionCombate>().ToList();
 
         lastPositions = new Vector3[SRCha.Count];
         for (int i = 0; i < SRCha.Count; i++)
             lastPositions[i] = SRCha[i].transform.position;
+        
         SortRenderers();
     }
 
@@ -47,19 +69,55 @@ public class ObstacleManager : MonoBehaviour
 
     void SortRenderers()
     {
-        // Combina ambas listas
-        int Size = 0;
-        var allRenderers = renderers
-        .Concat(SRCha)
-        .OrderByDescending(r => r.transform.position.y)
-        .ToList();
+        // Clean up null references first
+        SRCha.RemoveAll(sr => sr == null);
 
-        // Asigna sortingOrder secuencial
-        for (int i = 0; i < allRenderers.Count; i++)
+        // Handle background decorations
+        foreach (var dec in _decorations
+                 .Where(d => d.sortGroup == DecoracionCombate.SortGroup.Background))
         {
-            Size++;
+            if (dec.Renderer != null)
+                dec.Renderer.sortingOrder = 0;
         }
-        for (int i = 0; i < allRenderers.Count; i++)
-        allRenderers[i].sortingOrder = i+1;
+
+        // Create dynamic items list similar to DecorationManager
+        var dynamicItems = new List<(SpriteRenderer sr, float key)>();
+
+        // Add character renderers
+        dynamicItems.AddRange(
+            SRCha
+                .Where(sr => sr != null) // Extra safety check
+                .Select(sr => (sr, sr.transform.position.y))
+        );
+
+        // Add dynamic decorations
+        dynamicItems.AddRange(
+            _decorations
+                .Where(d => d.sortGroup == DecoracionCombate.SortGroup.Dynamic && d.Renderer != null)
+                .Select(d => (d.Renderer, d.transform.position.y)) // Use transform.position.y like characters
+        );
+
+        // Sort by Y position (higher Y = lower sorting order)
+        var sorted = dynamicItems
+            .OrderByDescending(item => item.key)
+            .ToList();
+
+        // Assign sorting orders
+        for (int i = 0; i < sorted.Count; i++)
+        {
+            sorted[i].sr.sortingOrder = i + 1;
+        }
+
+        // Handle foreground decorations if needed (similar to DecorationManager)
+        int frontBase = sorted.Count + 1;
+        foreach (var dec in _decorations
+                 .Where(d => d.sortGroup == DecoracionCombate.SortGroup.Foreground))
+        {
+            if (dec.Renderer != null)
+            {
+                dec.Renderer.sortingOrder = frontBase;
+                frontBase++;
+            }
+        }
     }
 }
