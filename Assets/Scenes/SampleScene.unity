@@ -5291,15 +5291,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   Active: {fileID: 0}
-  moveTo: {fileID: 0}
-  select: {fileID: 0}
-  attack: {fileID: 0}
   speed: 2
   inAttackMode: 0
   isMyTurn: 0
   Player1: {fileID: 6920266}
   Player2: {fileID: 1633231243}
   Player3: {fileID: 1083553797}
+  PlayerPosition: []
   battleSystem: {fileID: 909774828}
   mouseController: {fileID: 117182018}
   attackControllerEnemy: {fileID: 391266308}
@@ -7186,6 +7184,8 @@ MonoBehaviour:
   minZoom: 1.2
   maxZoom: 5
   returnSpeed: 1.3
+  CameraLimitX: []
+  CameraLimitY: []
   sensitivity: 2
   targetToFollow: {fileID: 0}
   followSpeed: 5
@@ -17306,15 +17306,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   Active: {fileID: 0}
-  moveTo: {fileID: 0}
-  select: {fileID: 0}
-  attack: {fileID: 0}
   speed: 2
   inAttackMode: 0
   isMyTurn: 0
   Player1: {fileID: 6920266}
   Player2: {fileID: 1633231243}
   Player3: {fileID: 1083553797}
+  PlayerPosition: []
   battleSystem: {fileID: 909774828}
   mouseController: {fileID: 117182018}
   attackControllerEnemy: {fileID: 548752748}
@@ -25959,11 +25957,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1511456042998864667, guid: 0d764126832ff2241b75f37f25f49c93, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.72
+      value: 2.633
       objectReference: {fileID: 0}
     - target: {fileID: 1511456042998864667, guid: 0d764126832ff2241b75f37f25f49c93, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.9699998
+      value: 3.012
       objectReference: {fileID: 0}
     - target: {fileID: 1511456042998864667, guid: 0d764126832ff2241b75f37f25f49c93, type: 3}
       propertyPath: m_LocalPosition.z
@@ -34546,15 +34544,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   Active: {fileID: 0}
-  moveTo: {fileID: 0}
-  select: {fileID: 0}
-  attack: {fileID: 0}
   speed: 2
   inAttackMode: 0
   isMyTurn: 0
   Player1: {fileID: 6920266}
   Player2: {fileID: 1633231243}
   Player3: {fileID: 1083553797}
+  PlayerPosition: []
   battleSystem: {fileID: 909774828}
   mouseController: {fileID: 117182018}
   attackControllerEnemy: {fileID: 1796309833}
