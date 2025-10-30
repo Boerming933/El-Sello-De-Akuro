@@ -20,7 +20,10 @@ public class MouseControler : MonoBehaviour
 
     private List<OverlayTile> path = new List<OverlayTile>();
     private List<OverlayTile> inRangeTiles = new List<OverlayTile>();
+
     public Unit myUnit;
+    public Camera cam;
+
     private OverlayTile previousTile;
     public BattleSystem battleSystem;
 
@@ -32,7 +35,10 @@ public class MouseControler : MonoBehaviour
     public TextMeshProUGUI pociones;
     public int cantidadPociones = 10;
     public bool canPocion = true;
+
     public GameObject bgIconoPocion;
+    public GameObject e;
+    public GameObject fDialogue;
 
     public CharacterInfo CurrentCharacter => character;
 
@@ -57,6 +63,7 @@ public class MouseControler : MonoBehaviour
 
     private void Start()
     {
+        cam = Camera.main;
         pathFinder = new PathFinder();
         rangeFinder = new RangeFinderPlayer();
         myUnit = GetComponent<Unit>();
@@ -403,8 +410,6 @@ public class MouseControler : MonoBehaviour
 
     private void TryAutoEndTurn()
     {
-
-
         if (myUnit.Name == "Riku Takeda")
         {
             animatorSamurai.SetBool("isMovingDown", false);
@@ -739,7 +744,7 @@ public class MouseControler : MonoBehaviour
     { //
         if (myUnit == null) //
             return; //
-        
+
         foreach (var attackData in myUnit.equippedAttacks) //
         { //
             var movimientoAttack = attackData as MovimientoRelampagoAttackData; //
@@ -750,5 +755,13 @@ public class MouseControler : MonoBehaviour
             } //
         } //
     } //
-
+    
+    public void FinalDialogue(Unit unit)
+    {
+        cam.orthographicSize = 1.5f;
+        cam.transform.position = new Vector3(-2.5f, -2.5f, cam.transform.position.z);
+        var dialogue = fDialogue.GetComponent<DialogueBattle>();
+        if(!dialogue.didDialogueStart) dialogue.StartDialogue();
+        fDialogue.SetActive(true);
+    }
 }

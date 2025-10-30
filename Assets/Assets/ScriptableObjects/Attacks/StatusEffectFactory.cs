@@ -8,7 +8,6 @@ public class StatusEffectManager : MonoBehaviour
     [Header("Active Effects")]
     public List<StatusEffect> activeEffects = new List<StatusEffect>();
 
-
     public event Action<StatusEffect> OnEffectApplied;
     public event Action<StatusEffect> OnEffectRemoved;
     public event Action<StatusEffect> OnEffectTriggered;
@@ -119,10 +118,16 @@ public class StatusEffectManager : MonoBehaviour
                 TriggerEffect(effect, EffectTrigger.OnTurnStart);
             }
         }
-        
+
         foreach (var effect in effectsToRemove)
         {
             RemoveEffect(effect.effectType);
+
+            if(currentUnit.Name == "Riku Takeda")
+            {
+                mouseController.animatorSamurai.SetBool("attack4", false);
+                mouseController.SamuraiShield.SetActive(false);
+            }
         }
     }
     
@@ -256,7 +261,6 @@ public class StatusEffectManager : MonoBehaviour
         }
         return totalPenalty;
     }
-
     
     // Movement/action restriction checks
     public bool CanMove()
@@ -321,22 +325,20 @@ public class StatusEffectManager : MonoBehaviour
     }
 
     private void Update()
-{
-    // Debug display active effects (remove this later)
-    if (Input.GetKeyDown(KeyCode.F1) && activeEffects.Count > 0)
     {
-        Debug.Log($"{unit.name} active effects:");
-        foreach (var effect in activeEffects)
+        // Debug display active effects (remove this later)
+        if (Input.GetKeyDown(KeyCode.F1) && activeEffects.Count > 0)
         {
-            Debug.Log($"  - {effect.effectName}: {effect.duration} turns left, CanMove: {CanMove()}");
+            Debug.Log($"{unit.name} active effects:");
+            foreach (var effect in activeEffects)
+            {
+                Debug.Log($"  - {effect.effectName}: {effect.duration} turns left, CanMove: {CanMove()}");
+            }
         }
     }
-}
 
-public List<StatusEffect> GetActiveEffects()
-{
-    return activeEffects.Where(e => e.IsActive).ToList();
-}
-
-
+    public List<StatusEffect> GetActiveEffects()
+    {
+        return activeEffects.Where(e => e.IsActive).ToList();
+    }
 }

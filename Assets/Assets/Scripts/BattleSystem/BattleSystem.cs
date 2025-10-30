@@ -56,7 +56,6 @@ public class BattleSystem : MonoBehaviour
 
         StartBattle();
     }
-    
 
     void Update()
     {
@@ -82,6 +81,8 @@ public class BattleSystem : MonoBehaviour
                 EnemyIAs.RemoveAt(i);
             }
         }
+
+
     }
 
     void StartBattle()
@@ -437,8 +438,6 @@ public class BattleSystem : MonoBehaviour
         //yield return null;
     }
 
-    /// <summary>
-    /// Activa el turno de 'current' y desactiva a todos los demás.
     /// </summary>
     void SetActiveUnit(Unit current)
     {
@@ -493,7 +492,7 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    bool BattleOver()
+    public bool BattleOver()
     {
         bool allDeadEnemies = initiativeManager.enemies.All(e => e.currentHP <= 0);
         bool allDeadAllies = initiativeManager.allies.All(a => a.currentHP <= 0);
