@@ -44,6 +44,14 @@ public class MouseControler : MonoBehaviour
     [SerializeField] public Animator geishaEffects;
     [SerializeField] public Animator ninjaEffects;
 
+    [SerializeField] public Animator animatorOni1;
+    [SerializeField] public Animator animatorOni2;
+    [SerializeField] public Animator animatorOni3;
+
+    [SerializeField] public Animator oni1Effects;
+    [SerializeField] public Animator oni2Effects;
+    [SerializeField] public Animator oni3Effects;
+
     public AttackBools attackBools;
 
 
@@ -324,6 +332,20 @@ public class MouseControler : MonoBehaviour
 
     public void DeselectCharacter()
     {
+        DeactivateMovimientoRelampagoOnTurnEnd(); //
+        
+        if (character != null) //
+        { //
+            foreach (var attackData in myUnit.equippedAttacks) //
+            { //
+                var buffDebuffAttack = attackData as BuffDebuffAttackData; //
+                if (buffDebuffAttack != null) //
+                { //
+                    buffDebuffAttack.OnTurnPassed(myUnit); //
+                } //
+            } //
+        } //
+
         if (character != null)
         {
             if (animatorGeisha)
@@ -381,10 +403,13 @@ public class MouseControler : MonoBehaviour
 
     private void TryAutoEndTurn()
     {
+
+
         if (myUnit.Name == "Riku Takeda")
         {
             animatorSamurai.SetBool("isMovingDown", false);
             animatorSamurai.SetBool("isMovingUp", false);
+
         }
 
         if (myUnit.Name == "Sayuri")
@@ -410,6 +435,7 @@ public class MouseControler : MonoBehaviour
 
         if (!puedeMoverse && !puedeAtacar)
         {
+
             DeselectCharacter();
         }
     }
@@ -544,6 +570,8 @@ public class MouseControler : MonoBehaviour
 
             character.tilesMoved++;
             battleSystem.CharacterPosition(myUnit);
+
+            CheckMovimientoRelampagoOnMove(reachedTile); //
 
             Debug.Log("Tiles moved: " + character.tilesMoved);
 
@@ -685,5 +713,42 @@ public class MouseControler : MonoBehaviour
         if (character != null)
             GetInRangeTiles();
     }
+
+    private void CheckMovimientoRelampagoOnMove(OverlayTile reachedTile) //
+    { //
+        if (myUnit == null || reachedTile == null) //
+            return; //
+        
+        if (!myUnit.MovimientoRelampagoCaminata) //
+            return; //
+        
+        Debug.LogError($"[MR-MouseController] Paso de movimiento completado: {myUnit.Name} llegó a tile {reachedTile.grid2DLocation} (world: {reachedTile.transform.position})"); //
+        
+        foreach (var attackData in myUnit.equippedAttacks) //
+        { //
+            var movimientoAttack = attackData as MovimientoRelampagoAttackData; //
+            if (movimientoAttack != null && movimientoAttack.IsActive(myUnit)) //
+            { //
+                movimientoAttack.CheckAdjacentEnemiesOnMove(myUnit, reachedTile.grid2DLocation); //
+                break; //
+            } //
+        } //
+    } //
+
+    private void DeactivateMovimientoRelampagoOnTurnEnd() //
+    { //
+        if (myUnit == null) //
+            return; //
+        
+        foreach (var attackData in myUnit.equippedAttacks) //
+        { //
+            var movimientoAttack = attackData as MovimientoRelampagoAttackData; //
+            if (movimientoAttack != null && movimientoAttack.IsActive(myUnit)) //
+            { //
+                movimientoAttack.OnTurnEnd(myUnit); //
+                break; //
+            } //
+        } //
+    } //
 
 }

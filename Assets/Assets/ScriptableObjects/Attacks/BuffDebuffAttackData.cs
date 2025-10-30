@@ -40,6 +40,11 @@ public class BuffDebuffAttackData : AttackData
     public float criticalChance = 0.0f;
     public float criticalMultiplier = 2.0f;
     
+    [Header("Turn-Based Cooldown")] //
+    public int cooldownMax = 0; //
+    
+    private Dictionary<int, int> unitCooldowns = new Dictionary<int, int>(); //
+    
     public bool CanUse()
     {
         return maxUses == -1 || currentUses < maxUses;
@@ -54,4 +59,53 @@ public class BuffDebuffAttackData : AttackData
     {
         currentUses = 0;
     }
+    
+    public bool IsOnCooldown(Unit unit) //
+    { //
+        if (unit == null || cooldownMax <= 0) return false; //
+        int unitID = unit.GetInstanceID(); //
+        return unitCooldowns.ContainsKey(unitID) && unitCooldowns[unitID] > 0; //
+    } //
+    
+    public int GetRemainingCooldown(Unit unit) //
+    { //
+        if (unit == null || cooldownMax <= 0) return 0; //
+        int unitID = unit.GetInstanceID(); //
+        return unitCooldowns.ContainsKey(unitID) ? unitCooldowns[unitID] : 0; //
+    } //
+    
+    public void StartCooldown(Unit unit) //
+    { //
+        if (unit == null || cooldownMax <= 0) return; //
+        int unitID = unit.GetInstanceID(); //
+        unitCooldowns[unitID] = cooldownMax; //
+        Debug.Log($"[Cooldown] {attackName} cooldown started for {unit.Name}: {cooldownMax} turns"); //
+    } //
+    
+    public void OnTurnPassed(Unit unit) //
+    { //
+        if (unit == null || cooldownMax <= 0) return; //
+        int unitID = unit.GetInstanceID(); //
+        if (unitCooldowns.ContainsKey(unitID) && unitCooldowns[unitID] > 0) //
+        { //
+            unitCooldowns[unitID]--; //
+            Debug.Log($"[Cooldown] {attackName} cooldown for {unit.Name}: {unitCooldowns[unitID]} turns remaining"); //
+            if (unitCooldowns[unitID] <= 0) //
+            { //
+                unitCooldowns.Remove(unitID); //
+                Debug.Log($"[Cooldown] {attackName} is now available for {unit.Name}"); //
+            } //
+        } //
+    } //
+    
+    public void ClearCooldown(Unit unit) //
+    { //
+        if (unit == null) return; //
+        int unitID = unit.GetInstanceID(); //
+        if (unitCooldowns.ContainsKey(unitID)) //
+        { //
+            unitCooldowns.Remove(unitID); //
+            Debug.Log($"[Cooldown] {attackName} cooldown cleared for {unit.Name}"); //
+        } //
+    } //
 }

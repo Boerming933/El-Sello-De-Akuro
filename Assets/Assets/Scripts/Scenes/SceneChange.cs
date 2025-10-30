@@ -19,8 +19,7 @@ public class SceneChange : MonoBehaviour
     {
         Scene escenaActiva = SceneManager.GetActiveScene();
 
-        
-         if (escenaActiva.name == "SampleScene")
+        if (escenaActiva.name == "SampleScene")
         {
             if (Input.GetKeyDown(KeyCode.Joystick1Button8) || Input.GetKeyDown(KeyCode.L))
             {
@@ -29,17 +28,12 @@ public class SceneChange : MonoBehaviour
             }
         }
     }
-
     
-
-    
-
     public IEnumerator ChangeScene()
     {
         yield return new WaitForSeconds(1f);
-
         
         AudioManager.Instance.PlayMusic("WorldMusic");
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 }

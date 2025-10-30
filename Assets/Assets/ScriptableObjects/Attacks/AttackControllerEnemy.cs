@@ -67,6 +67,7 @@ public class AttackControllerEnemy : MonoBehaviour
         currentAttack = null; attackOrigin = null; finalMove = null;
         currentAttackIndex = -1;
 
+
        var players = new List<OverlayTile>{ Player1, Player2, Player3 };
 
         for (int i = 0; i < players.Count; i++)
@@ -94,14 +95,16 @@ public class AttackControllerEnemy : MonoBehaviour
                 if (onCooldown[i]) continue;
                 // 1) Tiles desde donde seleccionar 
                 var selectTiles = rangeFinder.GetTilesInRange(move, atk.selectionRange) ?? new List<OverlayTile>();
+                var attackerTile = currentUnit?.FindCenterTile();
+                if (attackerTile != null)
+                    selectTiles.RemoveAll(t => t.grid2DLocation == attackerTile.grid2DLocation); // ← ADD //
                 foreach (var tile in selectTiles)
                 {
                     var area = GetEffectArea(tile, atk) ?? new List<OverlayTile>();
                     if (area.Count == 0) continue;
 
                     // 3) Comprueba si alguno de los playerTiles está en el área 
-
-                    if (players.Any(area.Contains))
+                                        if (players.Any(area.Contains))
                     {
                         if (finalMove == Active)
                         {
@@ -116,6 +119,7 @@ public class AttackControllerEnemy : MonoBehaviour
             }
         }
 
+
         Player1 = null; Player2 = null; Player3 = null;
 
         if (finalMove != Active && finalMove != null) return true;
@@ -128,14 +132,12 @@ public class AttackControllerEnemy : MonoBehaviour
     public List<OverlayTile> GetEffectArea(OverlayTile center, AttackData attack)
     {
         if (center == null || attack == null) return new List<OverlayTile>();
-
-        var mapTiles = MapManager.Instance.map.Values;
+                var mapTiles = MapManager.Instance.map.Values;
         var area = new List<OverlayTile>();
         Vector2 origin = center.transform.position;
         float threshold = 0.1f;
         int size = attack.areaSize;
-
-        switch (attack.effectShape)
+                switch (attack.effectShape)
         {
             case AreaShape.Circle:
                 area = rangeFinder.GetTilesInRange(center, size);
@@ -184,25 +186,24 @@ public class AttackControllerEnemy : MonoBehaviour
         return area;
     }
 
+    
     public void ConfirmAttack(OverlayTile targetTile, AttackData attack)
     {
+        
+
         if (targetTile == null || attack == null)
         {
             Debug.LogError("attack es null by Gabite");
             return;
         }
-
-        if (currentAttackIndex >= 0 && currentAttackIndex < onCooldown.Length)
+                if (currentAttackIndex >= 0 && currentAttackIndex < onCooldown.Length)
         {
             onCooldown[currentAttackIndex] = true;
             actualCD[currentAttackIndex] = Atkcooldowns[currentAttackIndex];
             Debug.LogError($"Attack {currentAttack.name} put on cooldown for {actualCD[currentAttackIndex]} turns");
         }
-
         var unitDamageMap = new Dictionary<Unit, int>();
-
         var area = GetEffectArea(targetTile, attack);
-
         hudsToReset.Clear();
 
         foreach (var tile in area)
@@ -211,6 +212,7 @@ public class AttackControllerEnemy : MonoBehaviour
             Collider2D[] hits = Physics2D.OverlapCircleAll(center, 0.2f);
             foreach (var col in hits)
             {
+                if (col.isTrigger) continue; //
                 if (col.CompareTag("Aliado") || col.CompareTag("Aliado2"))
                 {
                     var u = col.GetComponent<Unit>();
@@ -246,6 +248,7 @@ public class AttackControllerEnemy : MonoBehaviour
             Collider2D[] hits = Physics2D.OverlapCircleAll(center, 0.2f);
             foreach (var col in hits)
             {
+                if (col.isTrigger) continue; //
                 if (col.TryGetComponent<Unit>(out Unit u) && u.CompareTag("Player"))
                     u.TakeDamage(Mathf.RoundToInt(currentAttack.damage + currentUnit.Fue * currentAttack.scalingFactor));                                                    /////
             }
@@ -253,6 +256,7 @@ public class AttackControllerEnemy : MonoBehaviour
 
         StartCoroutine(ShowImpactAndFinish(area));
     }
+
 
     IEnumerator ShowImpactAndFinish(List<OverlayTile> area)
     {
@@ -285,6 +289,7 @@ public class AttackControllerEnemy : MonoBehaviour
         foreach (var hud in hudsToReset)
         {
             if(hud != null) hud?.Hide();
+
         }
         hudsToReset.Clear();
 
@@ -350,6 +355,8 @@ public class AttackControllerEnemy : MonoBehaviour
                 float damageReduction = statusManager.CalculateDamageReduction();
                 finalDamage = Mathf.RoundToInt(finalDamage * (1f - damageReduction));
                 finalDamage = Mathf.Max(0, finalDamage);
+
+                statusManager.SetLastAttacker(currentUnit);
 
                 if (statusManager.HasEffect(StatusEffectType.DraconicStance))
                 {

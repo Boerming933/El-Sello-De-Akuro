@@ -11,11 +11,18 @@ public class Turnable : MonoBehaviour
     public PanelAcciones panelScript;
     public GameObject iconoEspacio;
     public GameObject panelBatalla;
+    public MouseControler mouseController;
 
 
     /// <summary>
     /// Invocar cuando comience el turno de este personaje.
     /// </summary>
+    /// 
+
+    private void Start()
+    {
+        mouseController = Object.FindFirstObjectByType<MouseControler>();
+    }
     public void ActivateTurn()
     {
         // Etiquetado para interceptar clicks sólo a este
