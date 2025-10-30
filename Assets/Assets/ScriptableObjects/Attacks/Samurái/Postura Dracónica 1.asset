@@ -18,18 +18,21 @@ MonoBehaviour:
   scalingFactor: 0
   manaCost: 5
   cooldown: 0
+  onCooldown: 0
   selectionRange: 0
   areaSize: 0
   effectShape: 0
   initiativeBonus: 0
   initiativeDuration: 0
+  canTargetEnemies: 1
+  canTargetAllies: 0
   description: "Reduce el da\xF1o recibido, devuelve el ataque, y se queda en pose
     defensiva, y en el siguiente ataque que le hagan este no sufrir\xE1 da\xF1o.
     Pero tendr\xE1 que elegir si o si uno de los ataques en su siguiente turno"
   attackType: 1
   statusEffects:
   - statusEffect:
-      effectType: 0
+      effectType: 1
       effectName: "Postura Drac\xF3nica"
       description: 
       duration: 1
@@ -38,11 +41,13 @@ MonoBehaviour:
       damageReduction: 1
       counterDamageMin: 6
       counterDamageMax: 8
-      attackBonus: 0
+      attackBonusPercent: 0
+      attackReduction: 0
       blockMovement: 0
       blockAttack: 0
       skipTurn: 0
       mustAttackNextTurn: 1
+      turnApplied: 0
       effectIcon: {fileID: 0}
       visualEffectPrefab: {fileID: 0}
       animatorParameterName: 
@@ -63,3 +68,4 @@ MonoBehaviour:
   pushDistance: 1
   criticalChance: 0
   criticalMultiplier: 2
+  cooldownMax: 0

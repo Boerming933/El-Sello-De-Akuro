@@ -56,6 +56,33 @@ public class BattleSystem : MonoBehaviour
 
         StartBattle();
     }
+    
+
+    void Update()
+    {
+        for (int i = 0; i < PlayersPrefab.Count; i++)
+        {
+            if (PlayersPrefab[i] == null)
+            {
+                PositionPlayer[i].isBlocked = false;
+                PositionPlayer.RemoveAt(i);
+                playerHUD.RemoveAt(i);
+                PlayersPrefab.RemoveAt(i);
+                PlayerUnity.RemoveAt(i);
+            }
+        }
+        for (int i = 0; i < EnemiesPrefab.Count; i++)
+        {
+            if (EnemiesPrefab[i] == null)
+            {
+                EnemiesPrefab.RemoveAt(i);
+                PositionEnemy[i].isBlocked = false;
+                PositionEnemy.RemoveAt(i);
+                EnemyUnity.RemoveAt(i);
+                EnemyIAs.RemoveAt(i);
+            }
+        }
+    }
 
     void StartBattle()
     {
@@ -160,7 +187,6 @@ public class BattleSystem : MonoBehaviour
 
             PositionPlayer[PlayerUnity.Count] = overlay;
             overlay.isBlocked = true;
-
         }
     }
 
@@ -265,13 +291,13 @@ public class BattleSystem : MonoBehaviour
     {
         while (!BattleOver())
         {
-
             // 4) Siguiente unidad en orden prefijado
             _currentUnit = initiativeManager.GetNextUnit();
             if (_currentUnit == null)
             {
-                yield break;
+                continue;
             }
+            
             OnTurnStart?.Invoke(_currentUnit);
 
             var detailsUI = FindAnyObjectByType<CharacterDetailsUI>();
@@ -356,6 +382,7 @@ public class BattleSystem : MonoBehaviour
                 break;
             }
         }
+        EnemyIAs[n].currentUnit = enemy;
         EnemyIAs[n].LogicAI();
 
         float timeLeft = 5f;
@@ -418,13 +445,7 @@ public class BattleSystem : MonoBehaviour
         if (MapManager.Instance != null) MapManager.Instance.HideAllTiles();
         if (mouseController != null) mouseController.ClearRangeTiles();
 
-        const int MANA_REGEN_PER_TURN = 5;
-        if (current != null)
-        {
-            current.currentMana = Mathf.Min(current.currentMana + MANA_REGEN_PER_TURN, current.maxMana);
-            Debug.Log($"{current.Name} regenerated +{MANA_REGEN_PER_TURN} mana. Current: {current.currentMana}/{current.maxMana}");
-        }
-
+        // Asegurar allUnits no sea null
         if (allUnits == null) allUnits = new List<Unit>();
 
         foreach (var u in allUnits)
@@ -440,6 +461,7 @@ public class BattleSystem : MonoBehaviour
                 turnable.DeactivateTurn();
         }
 
+        // Informa al MouseController sobre el current
         if (current != null && mouseController != null)
         {
             var ci = current.GetComponent<CharacterInfo>();
@@ -448,34 +470,26 @@ public class BattleSystem : MonoBehaviour
                 mouseController.SetActiveCharacter(ci, unit);
         }
 
+        // ✅ CHECK: Should this unit skip their turn due to status effects?
         var statusManager = current.GetComponent<StatusEffectManager>();
         if (statusManager != null && statusManager.ShouldSkipTurn())
         {
             Debug.Log($"[BattleSystem] {current.name} is skipping turn due to status effects (Stun, etc.)!");
             
+            // Skip this turn immediately by setting turnEnded = true
             mouseController.turnEnded = true;
             return;
         }
 
         if (attackController != null) attackController.SetCurrentUnit(current);
+        // >>> Forzamos refrescar el HUD de detalles:
         if (detailsUI != null)
             detailsUI.ShowDetails(current);
-
-        RefreshAllBattlePanelButtons();
 
         var zoom = Camera.main.GetComponent<Zoom>();
         if (zoom != null)
         {
             zoom.SetTarget(current.transform);
-        }
-    }
-
-    void RefreshAllBattlePanelButtons()
-    {
-        PanelBatalla[] allPanels = Object.FindObjectsByType<PanelBatalla>(FindObjectsInactive.Include, FindObjectsSortMode.None);
-        foreach (var panel in allPanels)
-        {
-            panel.RefreshButtonsBasedOnMana();
         }
     }
 
@@ -486,13 +500,6 @@ public class BattleSystem : MonoBehaviour
         return allDeadEnemies || allDeadAllies;
     }
 
-    /// <summary>
-    /// Actualiza la casilla ocupada por un enemigo de forma segura:
-    /// - encuentra el índice del Unit en EnemyUnity
-    /// - libera la casilla previa si existía
-    /// - marca la nueva casilla como ocupada y actualiza PositionEnemy[index]
-    /// - si la unidad no estaba registrada, la registra (RegisterUnits)
-    /// </summary>
     public void UpdateEnemyPosition(Unit enemyUnit, OverlayTile newTile)
     {
         if (enemyUnit == null || newTile == null) return;

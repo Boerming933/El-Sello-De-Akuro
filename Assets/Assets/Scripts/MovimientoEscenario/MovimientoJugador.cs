@@ -25,13 +25,13 @@ public class MovimientoJugador : MonoBehaviour
 
     void Start()
     {
-        if (PlayerScenePos.Instance != null)
-        {
-            if (PlayerScenePos.Instance.lastPositionBeforeSceneChange != Vector3.zero)
-            {
-                transform.position = PlayerScenePos.Instance.lastPositionBeforeSceneChange;
-            }
-        }
+        //if (PlayerScenePos.Instance != null)
+        //{
+        //    if (PlayerScenePos.Instance.lastPositionBeforeSceneChange != Vector3.zero)
+        //    {
+        //        transform.position = PlayerScenePos.Instance.lastPositionBeforeSceneChange;
+        //    }
+        //}
     }
 
     void Update()
@@ -141,6 +141,6 @@ public class MovimientoJugador : MonoBehaviour
 
         AudioManager.Instance.PlayMusic("BattleMusic");
         
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(2);
     }
 }

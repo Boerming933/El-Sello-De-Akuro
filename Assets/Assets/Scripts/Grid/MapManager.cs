@@ -55,16 +55,29 @@ public class MapManager : MonoBehaviour
                             var cellWorldPosition = _tilemap.GetCellCenterWorld(tileLocation);
                             Vector3 position = new Vector3(cellWorldPosition.x, cellWorldPosition.y + 0.75f, cellWorldPosition.z + 1);
 
-                            for (int i = 0; i < overlayTiles.Count; i++)
+                            if (overlayTiles.Count != 0)
                             {
-                                n = i;
-                                if (overlayTiles[i].transform.position == position)
+                                for (int i = 0; i < overlayTiles.Count; i++)
                                 {
-                                    Debug.Log("Hay Duplicado");
-                                    break;
+                                    n = i;
+                                    if (overlayTiles[i].transform.position == position)
+                                    {
+                                        Debug.Log("Hay Duplicado");
+                                        break;
+                                    }
+                                }
+                                if (overlayTiles[n].transform.position != position)
+                                {
+                                    var OverlayTile = Instantiate(overlayTilePrefab, OverlayContainer.transform);
+                                    OverlayTile.HideTile();
+                                    OverlayTile.transform.position = position;
+                                    OverlayTile.GetComponent<SpriteRenderer>().sortingOrder = _tilemap.GetComponent<TilemapRenderer>().sortingOrder + 1;
+                                    OverlayTile.gridLocation = tileLocation;
+                                    map.Add(tileKey, OverlayTile);
+                                    Debug.Log(blockedTiles[0]);
                                 }
                             }
-                            if (overlayTiles[n].transform.position != position)
+                            else
                             {
                                 var OverlayTile = Instantiate(overlayTilePrefab, OverlayContainer.transform);
                                 OverlayTile.HideTile();

@@ -15,7 +15,6 @@ public class PathfinderEnemy
 
         if (targets.Count == 0)
         {
-            // Sin objetivos: podés devolver null o lista vacía según tu juego
             Debug.LogWarning("[PathfinderEnemy] no hay objetivos válidos");
             return null;
         }
@@ -114,17 +113,10 @@ public class PathfinderEnemy
         return finishedList;
     }
 
-    public int GetManhattenDistance(OverlayTile start, OverlayTile neighbours)
-    {
-        if (start == null) Debug.LogError("El start es nulo");
-        if (neighbours == null) Debug.LogError("El error esta en Neighbours");
-        return Mathf.Abs(start.gridLocation.x - neighbours.gridLocation.x) + Mathf.Abs(start.gridLocation.y - neighbours.gridLocation.y);
-    }
-
     public int GetManhattenDistanceSafe(OverlayTile a, OverlayTile b)
     {
-        if (a == null || b == null) return int.MaxValue / 2; // grande pero sin overflow
-        var da = a.gridLocation; // si usás grid2DLocation, cámbialo aquí
+        if (a == null || b == null) return int.MaxValue / 2; 
+        var da = a.gridLocation;
         var db = b.gridLocation;
         return Mathf.Abs(da.x - db.x) + Mathf.Abs(da.y - db.y);
     }

@@ -33,6 +33,9 @@ public class Unit : MonoBehaviour
     public Sprite turnerIcon;
 
     public CharacterDetailsUI hud;
+    
+    [HideInInspector] public bool MovimientoRelampagoCaminata = false; //
+
 
     public event Action<int> OnDamageTaken;
     public event Action OnDeath;
@@ -84,6 +87,15 @@ public class Unit : MonoBehaviour
     private void Die()
     {
         OnDeath?.Invoke();
+
+        foreach (var attackData in equippedAttacks) //
+        { //
+            var buffDebuffAttack = attackData as BuffDebuffAttackData; //
+            if (buffDebuffAttack != null) //
+            { //
+                buffDebuffAttack.ClearCooldown(this); //
+            } //
+        } //
         // GetComponent<Animator>()?.SetTrigger("Die");
         // collider.enabled = false;
         // this.enabled = false;
@@ -135,7 +147,7 @@ public class Unit : MonoBehaviour
         Debug.Log($"{Name} curó {pocionHeal} HP. Vida actual: {currentHP}/{maxHP}");
     }
 
-    public void TakeDamage(int amount, Unit attacker = null)
+    public void TakeDamage(int amount, Unit attacker = null, bool skipStatusEffects = false)
     {
         // Get status effect manager
         var statusManager = GetComponent<StatusEffectManager>();
@@ -143,45 +155,55 @@ public class Unit : MonoBehaviour
         {
             statusManager = gameObject.AddComponent<StatusEffectManager>();
         }
-        
+
         // Set who attacked us for counter effects
         if (attacker != null)
         {
             statusManager.SetLastAttacker(attacker);
         }
-        
-        // Check for damage negation (Draconic Stance)
-        if (statusManager.HasEffect(StatusEffectType.DraconicStance))
+
+        // Only process status effects if not already handled by attack controller
+        if (!skipStatusEffects)
         {
-            Debug.Log($"{Name} negates all damage with Draconic Stance!");
-            statusManager.TriggerEffect(statusManager.GetEffect(StatusEffectType.DraconicStance), EffectTrigger.OnDamageReceived);
-            return; // No damage taken
+            // Check for damage negation (Draconic Stance)
+            if (statusManager.HasEffect(StatusEffectType.DraconicStance))
+            {
+                Debug.Log($"{Name} negates all damage with Draconic Stance!");
+                statusManager.TriggerEffect(statusManager.GetEffect(StatusEffectType.DraconicStance), EffectTrigger.OnDamageReceived);
+                return; // No damage taken
+            }
+
+            // Apply damage reduction (Guard)
+            float damageReduction = statusManager.CalculateDamageReduction();
+            int finalDamage = Mathf.RoundToInt(amount * (1f - damageReduction));
+
+            // Apply damage
+            currentHP = Mathf.Max(0, currentHP - finalDamage);
+
+            // Trigger counter effects if we took damage
+            if (finalDamage > 0 && statusManager.HasEffect(StatusEffectType.Guard))
+            {
+                statusManager.TriggerEffect(statusManager.GetEffect(StatusEffectType.Guard), EffectTrigger.OnDamageReceived);
+            }
         }
-        
-        // Apply damage reduction (Guard)
-        float damageReduction = statusManager.CalculateDamageReduction();
-        int finalDamage = Mathf.RoundToInt(amount * (1f - damageReduction));
-        
-        // Apply damage
-        currentHP = Mathf.Max(0, currentHP - finalDamage);
-        
-        // Trigger counter effects if we took damage
-        if (finalDamage > 0 && statusManager.HasEffect(StatusEffectType.Guard))
+        else
         {
-            statusManager.TriggerEffect(statusManager.GetEffect(StatusEffectType.Guard), EffectTrigger.OnDamageReceived);
+            // Just apply the damage without processing effects
+            currentHP = Mathf.Max(0, currentHP - amount);
         }
-        
+
         // Update HUD
         var ui = UnityEngine.Object.FindFirstObjectByType<CharacterDetailsUI>();
         if (ui != null)
             ui.UpdateAllUI();
-            
+
         // Dispatch events
-        OnDamageTaken?.Invoke(finalDamage);
-        
+        OnDamageTaken?.Invoke(amount);
+
         // Check death
         if (currentHP == 0)
             Die();
     }
+
 
 }

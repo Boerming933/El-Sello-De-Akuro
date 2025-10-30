@@ -49,7 +49,12 @@ public class BuffDebuffAttackController : MonoBehaviour
 
     void EnterAttackMode(AttackData atkData)
     {
-        
+        var movimientoAttack = atkData as MovimientoRelampagoAttackData; //
+        if (movimientoAttack != null) //
+        { //
+            movimientoAttack.ActivateSkill(currentUnit); //
+            if (mouseController != null) mouseController.enabled = true; //
+        } //
 
 
         if (attackExecuted) return;
@@ -81,6 +86,7 @@ public class BuffDebuffAttackController : MonoBehaviour
         
         if (currentAttack.selectionRange == 0 || isSelfTargeting)
         {
+            SetAttackBoolForAutoSelect();
             ConfirmAttack(centerTile);
             return;
         }
@@ -104,6 +110,8 @@ public class BuffDebuffAttackController : MonoBehaviour
         {
             validTiles.Remove(centerTile);
         }
+        
+        validTiles = FilterInvalidTargetTiles(validTiles); //
         
         if (currentAttack.effectShape == AreaShape.Perpendicular)
         {
@@ -145,6 +153,13 @@ public class BuffDebuffAttackController : MonoBehaviour
             lastHoverTile = null;
             return;
         }
+        
+        if (ShouldFilterOutTile(hovered)) //
+        { //
+            ClearPreview(); //
+            lastHoverTile = null; //
+            return; //
+        } //
 
         if (hovered != lastHoverTile)
         {
@@ -312,22 +327,22 @@ public class BuffDebuffAttackController : MonoBehaviour
             if (mouseController.attackBools.samuraiAttack4)               // ATAQUE 4
             {
                 
-                    mouseController.animatorSamurai.SetTrigger("attack4");
+                    mouseController.animatorSamurai.SetBool("attack4", true);
                 
 
                 AudioManager.Instance.PlaySFX("SamuraiAttack4");
-                mouseController.attackBools.ResetAllSamuraiAttacks();
+                mouseController.attackBools.ResetAllSamuraiAttacks();             
             }
 
             if (mouseController.attackBools.samuraiAttack5)               // ATAQUE 5
             {
                 
-                    mouseController.animatorSamurai.SetTrigger("attack4");
-                mouseController.SamuraiShield.SetActive(true);       // convertir en false cuando de el contraataque
+                    mouseController.animatorSamurai.SetBool("attack4", true);
+                mouseController.SamuraiShield.SetActive(true);    
 
 
                 AudioManager.Instance.PlaySFX("SamuraiAttack5");
-                mouseController.attackBools.ResetAllSamuraiAttacks();
+                mouseController.attackBools.ResetAllSamuraiAttacks();         
             }
         }
 
@@ -444,13 +459,18 @@ public class BuffDebuffAttackController : MonoBehaviour
                 mouseController.attackBools.ResetAllNinjaAttacks();
             }
 
-            if (mouseController.attackBools.ninjaAttack4)              // ATAQUE 4
+            if (mouseController.attackBools.ninjaAttack4)
             {
                
                 mouseController.animatorNinja.SetTrigger("attack4");
                     
 
                 AudioManager.Instance.PlaySFX("NinjaAttack4");
+                mouseController.attackBools.ResetAllNinjaAttacks();
+            }
+            
+            if (mouseController.attackBools.ninjaAttack5)
+            {             
                 mouseController.attackBools.ResetAllNinjaAttacks();
             }
         }
@@ -469,6 +489,18 @@ public class BuffDebuffAttackController : MonoBehaviour
         currentUnit.currentMana -= currentAttack.manaCost;
         Debug.Log($"{currentUnit.Name} spent {currentAttack.manaCost} mana. Remaining: {currentUnit.currentMana}/{currentUnit.maxMana}");
 
+        var movimientoAttack = currentAttack as MovimientoRelampagoAttackData; //
+        if (movimientoAttack != null) //
+        { //
+            movimientoAttack.ActivateSkill(currentUnit); //
+        } //
+        
+        var buffDebuffAttack = currentAttack as BuffDebuffAttackData; //
+        if (buffDebuffAttack != null && buffDebuffAttack.cooldownMax > 0) //
+        { //
+            buffDebuffAttack.StartCooldown(currentUnit); //
+        } //
+
         var detailsUI = UnityEngine.Object.FindFirstObjectByType<CharacterDetailsUI>();
         if (detailsUI != null)
             detailsUI.UpdateAllUI();
@@ -482,7 +514,6 @@ public class BuffDebuffAttackController : MonoBehaviour
             }
         }
 
-        var buffDebuffAttack = currentAttack as BuffDebuffAttackData;
         if (buffDebuffAttack != null)
         {
             if (!buffDebuffAttack.CanUse()) return;
@@ -503,6 +534,7 @@ public class BuffDebuffAttackController : MonoBehaviour
         hudsToReset.Clear();
 
         ExecuteAttackEffects(area);
+        
         StartCoroutine(ShowImpactAndFinish(area));
     }
 
@@ -515,10 +547,11 @@ public class BuffDebuffAttackController : MonoBehaviour
         foreach (var tile in area)
         {
             Vector2 center = tile.transform.position;
-            Collider2D[] hits = Physics2D.OverlapCircleAll(center, 0.3f);
+            Collider2D[] hits = Physics2D.OverlapCircleAll(center, 0.1f);
 
             foreach (var col in hits)
             {
+                if (col.isTrigger) continue; //
                 var unit = col.GetComponent<Unit>();
                 if (unit == null)
                 {
@@ -580,9 +613,10 @@ public class BuffDebuffAttackController : MonoBehaviour
         foreach (var tile in area)
         {
             Vector2 center = tile.transform.position;
-            Collider2D[] hits = Physics2D.OverlapCircleAll(center, 0.3f);
+            Collider2D[] hits = Physics2D.OverlapCircleAll(center, 0.1f);
             foreach (var col in hits)
             {
+                if (col.isTrigger) continue; //
                 if (col.CompareTag("Enemy"))
                 {
                     var u = col.GetComponent<Unit>();
@@ -655,6 +689,8 @@ public class BuffDebuffAttackController : MonoBehaviour
                 finalDamage = Mathf.RoundToInt(finalDamage * (1f - damageReduction));
                 finalDamage = Mathf.Max(0, finalDamage);
 
+                statusManager.SetLastAttacker(currentUnit);
+
                 if (statusManager.HasEffect(StatusEffectType.DraconicStance))
                 {
                     Debug.Log($"{targetUnit.name} negates all damage with Draconic Stance!");
@@ -669,9 +705,10 @@ public class BuffDebuffAttackController : MonoBehaviour
 
             if (finalDamage > 0)
             {
-                targetUnit.TakeDamage(finalDamage);
+                targetUnit.TakeDamage(finalDamage, currentUnit, skipStatusEffects: true); // Skip status effects since we already handled them
                 if (isCritical) Debug.Log($"Critical hit! {finalDamage} damage to {targetUnit.name}");
             }
+
         }
 
         // Apply status effects (only if this is a BuffDebuffAttackData)
@@ -765,6 +802,118 @@ public class BuffDebuffAttackController : MonoBehaviour
         var buffDebuffAttack = currentAttack as BuffDebuffAttackData;
         return buffDebuffAttack != null && buffDebuffAttack.statusEffects.Any(e => e.targetSelf);
     }
+
+    void SetAttackBoolForAutoSelect()
+    {
+        if (attackBools == null || currentAttack == null || currentUnit == null)
+            return;
+
+        string attackName = currentAttack.attackName;
+        string characterName = currentUnit.Name;
+
+        if (characterName == "Riku Takeda")
+        {
+            switch (attackName)
+            {
+                case "Guardia Escamada": attackBools.samuraiAttack4 = true; break;
+                case "Postura Dracónica": attackBools.samuraiAttack5 = true; break;
+            }
+        }
+        else if (characterName == "Sayuri")
+        {
+            switch (attackName)
+            {
+                case "Danza del Viento": 
+                case "Filo de Seda": attackBools.geishaAttack1 = true; break;
+                case "Boomerang": attackBools.geishaAttack3 = true; break;
+                case "Ritmo Marcial": attackBools.geishaAttack4 = true; break;
+                case "Canto Hipnótico": attackBools.geishaAttack5 = true; break;
+            }
+        }
+        else if (characterName == "Raiden")
+        {
+            switch (attackName)
+            {
+                case "Golpe Preparado": attackBools.ninjaAttack4 = true; break;
+                case "Movimiento Relámpago": attackBools.ninjaAttack5 = true; break;
+            }
+        }
+    }
+
+    bool IsValidTarget(AttackData attack, Unit unit) //
+    { //
+        if (attack == null || unit == null) //
+            return false; //
+        
+        bool isEnemy = unit.CompareTag("Enemy"); //
+        bool isAlly = unit.CompareTag("Aliado") || unit.CompareTag("Aliado2"); //
+        bool isSelf = unit == currentUnit; //
+        
+        if (isSelf || ShouldAffectSelf()) //
+            return true; //
+        
+        if (isEnemy || attack.canTargetEnemies) //
+            return true; //
+        
+        if (isAlly || !isSelf || attack.canTargetAllies) //
+            return true; //
+        
+        return false; //
+    } //
+    
+    bool ShouldFilterOutTile(OverlayTile tile) //
+    { //
+        if (tile == null || currentAttack == null) //
+            return false; //
+        
+        Vector2 center = tile.transform.position; //
+        Collider2D[] hits = Physics2D.OverlapCircleAll(center, 0.1f); //
+        
+        foreach (var col in hits) //
+        { //
+            if (col.isTrigger) continue; //
+            var unit = col.GetComponent<Unit>(); //
+            if (unit == null) continue; //
+            
+            if (!IsValidTarget(currentAttack, unit)) //
+                return true; //
+        } //
+        
+        return false; //
+    } //
+    
+    List<OverlayTile> FilterInvalidTargetTiles(List<OverlayTile> tiles) //
+    { //
+        if (currentAttack == null) //
+            return tiles; //
+        
+        var buffDebuffAttack = currentAttack as BuffDebuffAttackData; //
+        if (buffDebuffAttack != null) //
+        { //
+            bool affectsEnemies = ShouldAffectEnemies(); //
+            bool affectsAllies = ShouldAffectAllies(); //
+            bool affectsSelf = ShouldAffectSelf(); //
+            
+            if (!affectsEnemies && currentAttack.canTargetEnemies) //
+                currentAttack.canTargetEnemies = false; //
+            
+            if (!affectsAllies && !affectsSelf && currentAttack.canTargetAllies) //
+                currentAttack.canTargetAllies = false; //
+            
+            if ((affectsAllies || affectsSelf) && !currentAttack.canTargetAllies) //
+                currentAttack.canTargetAllies = true; //
+        } //
+        
+        var filteredTiles = new List<OverlayTile>(); //
+        
+        foreach (var tile in tiles) //
+        { //
+            if (!ShouldFilterOutTile(tile)) //
+                filteredTiles.Add(tile); //
+        } //
+        
+        return filteredTiles; //
+    } //
 
     // All the area calculation methods (GetEffectArea, facing methods, etc.)
     List<OverlayTile> GetEffectArea(OverlayTile center)                              //////// ver de optimizarlo un poco
@@ -1037,6 +1186,7 @@ public class BuffDebuffAttackController : MonoBehaviour
         if (!inAttackMode) return;
 
         inAttackMode = false;
+        ResetAttackTargetFilters(); //
         currentAttack = null;
 
         validTiles.ForEach(t => t.HideTile());
@@ -1095,11 +1245,18 @@ public class BuffDebuffAttackController : MonoBehaviour
         }
     }
 
+    void ResetAttackTargetFilters() //
+    { //
+        if (currentAttack == null) return; //
+        
+        currentAttack.canTargetEnemies = true; //
+        currentAttack.canTargetAllies = false; //
+    } //
+
     IEnumerator ShowImpactAndFinish(List<OverlayTile> area)
     {
         area.ForEach(t => t.ShowOverlay(impactColor));
 
-        // Initiative bonus handling
         if (currentAttack.initiativeBonus != 0)
         {
             var im = FindAnyObjectByType<InitiativeManager>();
@@ -1110,9 +1267,11 @@ public class BuffDebuffAttackController : MonoBehaviour
             );
         }
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
+        
         MapManager.Instance.HideAllTiles();
         attackBools.ResetDirectionStates();
+        ResetAttackTargetFilters(); //
 
         if (mouseController != null) mouseController.enabled = true;
 
@@ -1152,6 +1311,35 @@ public class BuffDebuffAttackController : MonoBehaviour
 
             yield break;
         }
+
+        var movimientoAttack = currentAttack as MovimientoRelampagoAttackData; //
+        if (movimientoAttack != null && movimientoAttack.IsActive(currentUnit)) //
+        { //
+            Debug.Log("[Movimiento Relámpago] No moves left but skill is active. Refreshing movement UI and keeping turn active."); //
+            mouseController.canMove = true; //
+            mouseController.canAttack = false; //
+            mouseController.showPanelAcciones = true; //
+            var panel = Object.FindObjectsByType<PanelAcciones>( //
+                FindObjectsInactive.Include, //
+                FindObjectsSortMode.None //
+            ).FirstOrDefault(p => p.ownerCharacter == ci); //
+            if (panel != null) //
+            { //
+                panel.Show(); //
+                panel.panelBatalla.SetActive(false); //
+            } //
+            var turnable = ci.GetComponent<Turnable>(); //
+            if (turnable != null && turnable.btnMoverse != null) //
+            { //
+                turnable.btnMoverse.interactable = true; //
+            } //
+            attackUI.SetButtonsInteractable(true); //
+            attackExecuted = false; //
+            foreach (var hud in hudsToReset) //
+                hud?.Hide(); //
+            hudsToReset.Clear(); //
+            yield break; //
+        } //
 
         mouseController.DeselectCharacter();
         attackUI.SetButtonsInteractable(true);

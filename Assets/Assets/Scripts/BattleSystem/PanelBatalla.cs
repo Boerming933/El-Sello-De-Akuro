@@ -34,12 +34,25 @@ public class PanelBatalla : MonoBehaviour
             if (btn == null) continue;
 
             bool canAfford = currentMana >= proxy.attackData.manaCost;
-            btn.interactable = canAfford;
+            
+            bool onCooldown = false; //
+            var buffDebuffAttack = proxy.attackData as BuffDebuffAttackData; //
+            if (buffDebuffAttack != null) //
+            { //
+                onCooldown = buffDebuffAttack.IsOnCooldown(activeUnit); //
+            } //
+            
+            btn.interactable = canAfford && !onCooldown; //
 
             if (!canAfford)
             {
                 Debug.Log($"[PanelBatalla] Button {proxy.gameObject.name} disabled. Cost: {proxy.attackData.manaCost}, Available: {currentMana}");
             }
+            if (onCooldown) //
+            { //
+                int remaining = buffDebuffAttack.GetRemainingCooldown(activeUnit); //
+                Debug.Log($"[PanelBatalla] Button {proxy.gameObject.name} disabled. On cooldown: {remaining} turns remaining"); //
+            } //
         }
     }
 }

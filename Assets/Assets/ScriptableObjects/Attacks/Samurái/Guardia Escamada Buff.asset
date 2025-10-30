@@ -18,11 +18,14 @@ MonoBehaviour:
   scalingFactor: 0
   manaCost: 3
   cooldown: 0
+  onCooldown: 0
   selectionRange: 0
   areaSize: 0
   effectShape: 0
   initiativeBonus: 0
   initiativeDuration: 0
+  canTargetEnemies: 0
+  canTargetAllies: 1
   description: " Reduce el da\xF1o recibido y devuelve el espadazo."
   attackType: 1
   statusEffects:
@@ -36,11 +39,13 @@ MonoBehaviour:
       damageReduction: 0.5
       counterDamageMin: 3
       counterDamageMax: 5
-      attackBonus: 0
+      attackBonusPercent: 0
+      attackReduction: 0
       blockMovement: 0
       blockAttack: 0
       skipTurn: 0
       mustAttackNextTurn: 0
+      turnApplied: 0
       effectIcon: {fileID: 0}
       visualEffectPrefab: {fileID: 0}
       animatorParameterName: 
@@ -61,3 +66,4 @@ MonoBehaviour:
   pushDistance: 1
   criticalChance: 0
   criticalMultiplier: 2
+  cooldownMax: 0

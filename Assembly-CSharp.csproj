@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{334A7D81-440B-4D1E-8508-2EC3A852255B}</ProjectGuid>
+    <ProjectGuid>{0F4BC39C-6EC0-433F-1F6D-9D9A5381AA63}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -64,6 +64,7 @@
     <Compile Include="Assets\Assets\ScriptableObjects\Attacks\BuffDebuffAttackController.cs" />
     <Compile Include="Assets\Assets\Scripts\Grid\MapManager.cs" />
     <Compile Include="Assets\Assets\Scripts\Grid\CharacterInfo.cs" />
+    <Compile Include="Assets\Assets\Scripts\HUD\DialogueBattle.cs" />
     <Compile Include="Assets\Assets\Scripts\HUD\Dialogue.cs" />
     <Compile Include="Assets\Assets\Scripts\BattleSystem\InitiativeManager.cs" />
     <Compile Include="Assets\Assets\Scripts\MovimientoEscenario\Decoraciones.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="Assets\Assets\Scripts\Grid\RangeFinder.cs" />
     <Compile Include="Assets\Assets\Scripts\MovimientoEscenario\DecorationManager.cs" />
     <Compile Include="Assets\Assets\Scripts\HUD\UnitSelection.cs" />
+    <Compile Include="Assets\Assets\Scripts\MovimientoEscenario\ANTILAG.cs" />
     <Compile Include="Assets\Assets\Scripts\Grid\OverlayTile.cs" />
     <Compile Include="Assets\Assets\Scripts\MovimientoEscenario\MovimientoJugador.cs" />
     <Compile Include="Assets\Assets\ScriptableObjects\Attacks\AttackUsesManager.cs" />
@@ -107,6 +109,7 @@
     <Compile Include="Assets\Assets\Scripts\Grid\RangeFinderPlayer.cs" />
     <Compile Include="Assets\Assets\Scripts\Grid\MouseController.cs" />
     <Compile Include="Assets\Assets\Scripts\Obstaculos\DecoracionCombate.cs" />
+    <Compile Include="Assets\Assets\Scripts\Scenes\MenuInicial.cs" />
     <Compile Include="Assets\Assets\ScriptableObjects\Attacks\AttackControllerEnemy.cs" />
     <Compile Include="Assets\Assets\ScriptableObjects\Attacks\AttackController.cs" />
     <Compile Include="Assets\Assets\ScriptableObjects\Attacks\PlayModeAttackUsesReset.cs" />
@@ -122,6 +125,7 @@
     <Compile Include="Assets\Assets\ScriptableObjects\Attacks\AttackBools.cs" />
     <Compile Include="Assets\Assets\Scripts\Personajes\InitiativeEntry.cs" />
     <Compile Include="Assets\Assets\ScriptableObjects\Attacks\PlayModeAttackReset.cs" />
+    <Compile Include="Assets\Assets\ScriptableObjects\Attacks\MovimientoRelampagoAttackData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -1390,7 +1394,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Bezi.Editor.csproj">
-      <Project>{1CD7B01E-2622-3A2C-6957-33E3B7C9893A}</Project>
+      <Project>{93904A9B-82CB-4298-5796-062D64EA3561}</Project>
       <Name>Bezi.Editor</Name>
     </ProjectReference>
   </ItemGroup>
