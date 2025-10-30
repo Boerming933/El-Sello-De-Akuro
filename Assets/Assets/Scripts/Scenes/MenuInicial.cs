@@ -21,9 +21,6 @@ public class MenuInicial : MonoBehaviour
     public IEnumerator ChangeScene()
     {
         yield return new WaitForSeconds(1f);
-
-
-        //AudioManager.Instance.PlayMusic("WorldMusic");
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(3);
     }
 }

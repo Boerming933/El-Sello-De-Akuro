@@ -76,6 +76,7 @@ public class Zoom : MonoBehaviour
         {
             Vector3 targetPos = new Vector3(targetToFollow.position.x, targetToFollow.position.y, cam.transform.position.z);
             cam.transform.position = Vector3.Lerp(cam.transform.position, targetPos, Time.deltaTime * followSpeed);
+            transform.position = ClampCameraPosition(transform.position);
         }
 
         //Z = seguir al personaje

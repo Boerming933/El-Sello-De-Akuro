@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{0F4BC39C-6EC0-433F-1F6D-9D9A5381AA63}</ProjectGuid>
+    <ProjectGuid>{EF989945-F836-4FC7-3A53-BB7E61F09E0E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\Assets\ScriptableObjects\Attacks\BuffDebuffAttackController.cs" />
     <Compile Include="Assets\Assets\Scripts\Grid\MapManager.cs" />
+    <Compile Include="Assets\Assets\Scripts\Scenes\Cutscene.cs" />
     <Compile Include="Assets\Assets\Scripts\Grid\CharacterInfo.cs" />
     <Compile Include="Assets\Assets\Scripts\HUD\DialogueBattle.cs" />
     <Compile Include="Assets\Assets\Scripts\HUD\Dialogue.cs" />
@@ -619,12 +620,24 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.47f1\Editor\Data\Managed\UnityEngine\UnityEditor.XRModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="SharpToken">
+      <HintPath>Packages\com.bezi.sidekick\Plugins\SharpToken.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>Packages\com.bezi.sidekick\Plugins\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
       <HintPath>Library\PackageCache\com.unity.collections@56bff8827a7e\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library\PackageCache\com.unity.ext.nunit@031a54704bff\net40\unity-custom\nunit.framework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Collections.Immutable">
+      <HintPath>Packages\com.bezi.sidekick\Plugins\System.Collections.Immutable.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
@@ -1394,7 +1407,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Bezi.Editor.csproj">
-      <Project>{93904A9B-82CB-4298-5796-062D64EA3561}</Project>
+      <Project>{D81383A2-A0C1-A184-9C69-D8316BA6FE07}</Project>
       <Name>Bezi.Editor</Name>
     </ProjectReference>
   </ItemGroup>
