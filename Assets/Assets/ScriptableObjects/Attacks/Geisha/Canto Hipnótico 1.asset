@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 518b7078c3ba5f143a6b92aa5fb2a413, type: 3}
+  m_Name: "Canto Hipn\xF3tico 1"
+  m_EditorClassIdentifier: 
+  attackName: "Canto Hipn\xF3tico"
+  icon: {fileID: 0}
+  damage: 0
+  scalingFactor: 0
+  manaCost: 5
+  cooldown: 0
+  onCooldown: 0
+  selectionRange: 10
+  areaSize: 0
+  effectShape: 0
+  initiativeBonus: 0
+  initiativeDuration: 0
+  description: Con un canto suave distrae al enemigo.
+  attackType: 2
+  statusEffects:
+  - statusEffect:
+      effectType: 3
+      effectName: "Canto Hipn\xF3tico"
+      description: 
+      duration: 2
+      canStack: 0
+      decrementOnTurnStart: 1
+      damageReduction: 0
+      counterDamageMin: 0
+      counterDamageMax: 0
+      attackBonus: 0
+      attackReduction: 0.5
+      blockMovement: 1
+      blockAttack: 0
+      skipTurn: 0
+      mustAttackNextTurn: 0
+      turnApplied: 0
+      effectIcon: {fileID: 0}
+      visualEffectPrefab: {fileID: 0}
+      animatorParameterName: 
+      overlayColor: {r: 0, g: 0, b: 0, a: 0}
+      triggers: 
+      caster: {fileID: 0}
+      target: {fileID: 0}
+    probability: 100
+    targetSelf: 0
+    targetAllies: 0
+    targetEnemies: 1
+  requiresBehindTarget: 0
+  requiresEmptyPath: 0
+  maxUses: -1
+  currentUses: 0
+  canPushTarget: 0
+  pushChance: 0.5
+  pushDistance: 1
+  criticalChance: 0
+  criticalMultiplier: 2
