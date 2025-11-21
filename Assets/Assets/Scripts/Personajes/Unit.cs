@@ -27,9 +27,14 @@ public class Unit : MonoBehaviour
 
     private Vector3 deathPosition;
 
+    public GameObject hudCanva;
+
     public float[] finalXDistance;
     public float[] finalYDistance;
 
+    private bool battleEnd = false;
+
+    public float speed = 4f;
     public int Fue;
     public int movement;
     public int Des;
@@ -52,6 +57,9 @@ public class Unit : MonoBehaviour
 
     public event Action<int> OnDamageTaken;
     public event Action OnDeath;
+    
+    public MouseControler mouseControler;
+    public BattleSystem battleSystem;
 
     private void Start()
     {
@@ -61,6 +69,8 @@ public class Unit : MonoBehaviour
             gameObject.AddComponent<StatusEffectManager>();
             Debug.Log($"Added StatusEffectManager to {Name}");
         }
+
+        battleSystem = BattleSystem.Instance.GetComponent<BattleSystem>();
 
         animator = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
@@ -81,8 +91,10 @@ public class Unit : MonoBehaviour
         return equippedAttacks.Remove(attack);
     }
 
-    private void Die()
+    private IEnumerator Die()
     {
+        yield return new WaitForSeconds(0.75f);
+
         if (isEnemy)
         {
             float best = int.MaxValue;
@@ -108,7 +120,6 @@ public class Unit : MonoBehaviour
 
     void Update()
     {
-        float speed = 4f;
         if (isEnemy)
         {
             var activePosition = ActiveTile();
@@ -130,6 +141,7 @@ public class Unit : MonoBehaviour
                 {
                     sr.flipX = true;
                 }
+                else sr.flipX = false;
             }
             else if (Name == "Oni2")
             {
@@ -138,6 +150,7 @@ public class Unit : MonoBehaviour
                 {
                     sr.flipX = true;
                 }
+                else sr.flipX = false;
             }
             else if (Name == "Oni3")
             {
@@ -146,13 +159,60 @@ public class Unit : MonoBehaviour
                 {
                     sr.flipX = true;
                 }
+                else sr.flipX = false;
             }
-            
+
             transform.position = Vector2.MoveTowards(transform.position, deathPosition, speed * Time.deltaTime);
         }
-        if(transform.position == deathPosition) Destroy(gameObject);
+        if (transform.position == deathPosition) Destroy(gameObject);
+
+        if (battleSystem.BattleOver())
+        {
+            StartCoroutine(EndCombat());       
+        }
     }
 
+    private IEnumerator EndCombat()
+    {
+        yield return new WaitForSeconds(2f);
+
+        var FirstMovement = new Vector3(finalXDistance[0], finalYDistance[0], transform.position.z);
+
+        foreach (Transform children in transform)
+        {
+            children.gameObject.SetActive(false);
+        }
+        hudCanva.SetActive(false);
+
+        if (transform.position.x < FirstMovement.x)
+        {
+            sr.flipX = true;
+            animator.SetBool("isMovingDown", true);
+        }
+        else
+        {
+            sr.flipX = false;
+            animator.SetBool("isMovingDown", true);
+        }
+
+        transform.position = Vector2.MoveTowards(transform.position, FirstMovement, speed * Time.deltaTime);
+
+        if (transform.position == FirstMovement)
+        {
+            StartCoroutine(waitUntilEndPosition());
+        }
+    }
+    
+    IEnumerator waitUntilEndPosition()
+    {
+        yield return new WaitForSeconds(1f);
+        animator.SetBool("isMovingDown", false);
+        animator.SetBool("isMovingUp", false);
+        if (Name == "Riku Takeda") sr.flipX = true;
+        else sr.flipX = false;
+        if (Name == "Riku Takeda") mouseControler.FinalDialogue(this);
+    }
+    
     //para enemigos
 
     public RaycastHit2D? ActiveTile()
@@ -253,7 +313,23 @@ public class Unit : MonoBehaviour
         OnDamageTaken?.Invoke(amount);
 
         // Check death
-        if (currentHP == 0)
-            Die();
+        if (currentHP == 0) StartCoroutine(Die());
+    }
+
+    public void GainMana()
+    {
+        if (currentMana <= maxMana - 2)
+        {
+            currentMana = currentMana + 2;
+            // Actualiza el HUD si está asignado
+            if (hud != null)
+                hud.ShowDetails(this);
+            // fuerza actualización general
+            var ui = UnityEngine.Object.FindFirstObjectByType<CharacterDetailsUI>();
+            if (ui != null)
+                ui.UpdateAllUI();
+            Debug.Log("MANA CONSEGUIDO");
+        }
+
     }
 }

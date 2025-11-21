@@ -29,6 +29,8 @@ public class AttackControllerEnemy : MonoBehaviour
     public Unit currentUnit;
     public EnemyIA enemyIA;
 
+    public Animator animator;
+
     private List<BattleHUD> hudsToReset = new();
 
     public OverlayTile AttackTile() => attackOrigin;  // select/center del ataque
@@ -38,6 +40,8 @@ public class AttackControllerEnemy : MonoBehaviour
     private void Awake()
     {
         if (rangeFinder == null) rangeFinder = new RangeFinder();
+
+        animator = GetComponent<Animator>();
 
         int attackCount = allAttacks.Count;
         Atkcooldowns = new float[attackCount];
@@ -186,10 +190,28 @@ public class AttackControllerEnemy : MonoBehaviour
         return area;
     }
 
-    
     public void ConfirmAttack(OverlayTile targetTile, AttackData attack)
     {
-        
+        if (attack.name == "Golpe de Garra")
+        {
+            animator.SetTrigger("attack");
+            AudioManager.Instance.PlaySFX("LilOniAttack");
+        }
+        else if (attack.name == "Grito")
+        {
+            animator.SetTrigger("scream");
+            AudioManager.Instance.PlaySFX("LilOniScream");
+        }
+        else if (attack.name == "Pisotón")
+        {
+            animator.SetTrigger("scream");
+            AudioManager.Instance.PlaySFX("BigOniAttack");
+        }
+        else if (attack.name == "Rugido")
+        {
+            animator.SetTrigger("scream");
+            AudioManager.Instance.PlaySFX("BigOniRoar");
+        }
 
         if (targetTile == null || attack == null)
         {
@@ -257,7 +279,6 @@ public class AttackControllerEnemy : MonoBehaviour
         StartCoroutine(ShowImpactAndFinish(area));
     }
 
-
     IEnumerator ShowImpactAndFinish(List<OverlayTile> area)
     {
         area.ForEach(t => t.ShowOverlay(impactColor));
@@ -272,7 +293,7 @@ public class AttackControllerEnemy : MonoBehaviour
             );
         }
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
         MapManager.Instance.HideAllTiles();
         if (enemyIA != null && enemyIA.currentUnit == currentUnit)
         {

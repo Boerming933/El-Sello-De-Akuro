@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Zoom : MonoBehaviour
 {
@@ -36,6 +37,8 @@ public class Zoom : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.P)) SceneManager.LoadScene(2);
+        
         Vector2 rightStickInput = new Vector2(
         Input.GetAxis("RightStickX"),
         Input.GetAxis("RightStickY")

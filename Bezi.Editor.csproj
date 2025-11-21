@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{D81383A2-A0C1-A184-9C69-D8316BA6FE07}</ProjectGuid>
+    <ProjectGuid>{A10976EC-8BD7-F594-DCA4-358A3B9881C9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Bezi.Editor</AssemblyName>
@@ -67,10 +67,10 @@
     <None Include="Packages\com.bezi.sidekick\Editor\Plugins\Microsoft.CodeAnalysis.dll" />
     <None Include="Packages\com.bezi.sidekick\Editor\Plugins\Microsoft.CodeAnalysis.CSharp.dll" />
     <None Include="Packages\com.bezi.sidekick\Editor\Plugins\System.Runtime.CompilerServices.Unsafe.dll" />
+    <None Include="Packages\com.bezi.sidekick\Editor\Plugins\bezi-websocket-sharp.dll" />
     <None Include="Packages\com.bezi.sidekick\Editor\Plugins\System.Reflection.Metadata.dll" />
     <None Include="Packages\com.bezi.sidekick\Editor\Bezi.Editor.asmdef" />
     <None Include="Packages\com.bezi.sidekick\Editor\Plugins\Microsoft.CSharp.dll" />
-    <None Include="Packages\com.bezi.sidekick\Editor\Plugins\bezi-websocket-sharp.dll" />
     <None Include="Packages\com.bezi.sidekick\Editor\Plugins\SharpToken.dll" />
     <None Include="Packages\com.bezi.sidekick\Editor\Plugins\BeziSidekickInternal.dll" />
     <None Include="Packages\com.bezi.sidekick\Editor\Plugins\System.Collections.Immutable.dll" />
@@ -585,6 +585,10 @@
       <HintPath>Library\PackageCache\com.unity.ext.nunit@031a54704bff\net40\unity-custom\nunit.framework.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="bezi-websocket-sharp">
+      <HintPath>Packages\com.bezi.sidekick\Editor\Plugins\bezi-websocket-sharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System.Reflection.Metadata">
       <HintPath>Packages\com.bezi.sidekick\Editor\Plugins\System.Reflection.Metadata.dll</HintPath>
       <Private>False</Private>
@@ -607,10 +611,6 @@
     </Reference>
     <Reference Include="unityplastic">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@8a82222c5449\Lib\Editor\unityplastic.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="bezi-websocket-sharp">
-      <HintPath>Packages\com.bezi.sidekick\Editor\Plugins\bezi-websocket-sharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Collections.Immutable">

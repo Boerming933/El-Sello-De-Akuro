@@ -13,12 +13,15 @@ public class DialogueBattle : MonoBehaviour
     public GameObject hud;
     [SerializeField, TextArea(4, 8)] private string[] dialogueLines;
 
+    public bool finalDialogue = false;
     private bool isPlayerInRange = true;
-    private bool didDialogueStart;
+    public bool didDialogueStart;
     private int lineIndex;
     public float typingSpeed = 0.06f;
 
     private AudioSource audioSource;
+    public Animator blackScreen;
+    public GameObject finalText;
     [SerializeField] private AudioClip NPCVoice;
 
     void Start()
@@ -26,15 +29,16 @@ public class DialogueBattle : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-
     void Update()
     {
-        if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
+        if (isPlayerInRange && Input.GetKeyDown(KeyCode.E) /*|| finalDialogue*/)
         {
+            finalDialogue = false;
+
             if (!didDialogueStart)
             {
+                e.SetActive(false);
                 StartDialogue();
-
             }
             else if (dialogueText.text == dialogueLines[lineIndex])
             {
@@ -48,16 +52,15 @@ public class DialogueBattle : MonoBehaviour
         }
     }
 
-    private void StartDialogue()
+    public void StartDialogue()
     {
         didDialogueStart = true;
         dialoguePanel.SetActive(true);
         hud.SetActive(false);
-        e.SetActive(false);
         NPCName.text = nameTxt;
         lineIndex = 0;
         Time.timeScale = 0f;
-        //audioSource.PlayOneShot(NPCVoice);          //Borrar esta wea cuando se use el script en otros NPCs XD
+        //audioSource.PlayOneShot(NPCVoice);
         StartCoroutine(ShowLine());
     }
 
@@ -72,9 +75,10 @@ public class DialogueBattle : MonoBehaviour
         else
         {
             dialoguePanel.SetActive(false);
-            didDialogueStart = false;
             hud.SetActive(true);
             Time.timeScale = 1f;
+            blackScreen.SetTrigger("FadeIn");
+            finalText.SetActive(true);
         }
     }
 
@@ -87,6 +91,4 @@ public class DialogueBattle : MonoBehaviour
             yield return new WaitForSecondsRealtime(typingSpeed);
         }
     }
-
-   
 }
