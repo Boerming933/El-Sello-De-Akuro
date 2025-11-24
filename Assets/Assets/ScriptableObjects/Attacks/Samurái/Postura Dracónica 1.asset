@@ -24,15 +24,15 @@ MonoBehaviour:
   effectShape: 0
   initiativeBonus: 0
   initiativeDuration: 0
-  canTargetEnemies: 0
-  canTargetAllies: 1
+  canTargetEnemies: 1
+  canTargetAllies: 0
   description: "Reduce el da\xF1o recibido, devuelve el ataque, y se queda en pose
     defensiva, y en el siguiente ataque que le hagan este no sufrir\xE1 da\xF1o.
     Pero tendr\xE1 que elegir si o si uno de los ataques en su siguiente turno"
   attackType: 1
   statusEffects:
   - statusEffect:
-      effectType: 0
+      effectType: 1
       effectName: "Postura Drac\xF3nica"
       description: 
       duration: 1

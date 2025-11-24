@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Sentencia del cielo
   icon: {fileID: 0}
-  damage: 18
-  scalingFactor: 0
+  damage: 8
+  scalingFactor: 1
   manaCost: 8
   cooldown: 0
   onCooldown: 0
@@ -24,4 +24,6 @@ MonoBehaviour:
   effectShape: 0
   initiativeBonus: 0
   initiativeDuration: 0
+  canTargetEnemies: 1
+  canTargetAllies: 0
   description: "El samur\xE1i alza la katana y la baja con fuerza en un tajo vertical."

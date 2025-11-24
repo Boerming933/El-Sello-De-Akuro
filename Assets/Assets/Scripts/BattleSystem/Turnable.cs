@@ -11,11 +11,18 @@ public class Turnable : MonoBehaviour
     public PanelAcciones panelScript;
     public GameObject iconoEspacio;
     public GameObject panelBatalla;
-
+    public MouseControler mouseController;
+    public Unit myUnit;
 
     /// <summary>
     /// Invocar cuando comience el turno de este personaje.
     /// </summary>
+    /// 
+
+    private void Start()
+    {
+        mouseController = Object.FindFirstObjectByType<MouseControler>();
+    }
     public void ActivateTurn()
     {
         // Etiquetado para interceptar clicks sólo a este
@@ -26,19 +33,21 @@ public class Turnable : MonoBehaviour
         else
         {
             gameObject.tag = "Aliado";
-            
+            myUnit.GainMana();
         }
         if (aura != null) aura.SetActive(true);
         //if (panelAcciones != null) panelAcciones.SetActive(true);
         if (panelScript != null) panelScript.Show();
-        
 
+
+        
+        
         
 
         if (letreroPj != null) letreroPj.SetActive(true);
         if (iconoEspacio != null) iconoEspacio.SetActive(true);
         if (panelBatalla != null) panelBatalla.SetActive(false);
-
+        
         
     }
 

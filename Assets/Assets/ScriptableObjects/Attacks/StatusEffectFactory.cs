@@ -8,7 +8,6 @@ public class StatusEffectManager : MonoBehaviour
     [Header("Active Effects")]
     public List<StatusEffect> activeEffects = new List<StatusEffect>();
 
-
     public event Action<StatusEffect> OnEffectApplied;
     public event Action<StatusEffect> OnEffectRemoved;
     public event Action<StatusEffect> OnEffectTriggered;
@@ -16,12 +15,15 @@ public class StatusEffectManager : MonoBehaviour
     private Unit unit;
     private BattleSystem battleSystem;
     private Unit lastAttacker; // Track who last attacked this unit
-    
+
+    public MouseControler mouseController;
+
     private void Awake()
     {
+        mouseController = FindFirstObjectByType<MouseControler>(); // Updated to use FindFirstObjectByType
         unit = GetComponent<Unit>();
-        battleSystem = FindFirstObjectByType<BattleSystem>();
-        
+        battleSystem = FindFirstObjectByType<BattleSystem>(); // Updated to use FindFirstObjectByType
+
         if (battleSystem != null)
         {
             battleSystem.OnTurnStart += HandleTurnStart;
@@ -116,10 +118,16 @@ public class StatusEffectManager : MonoBehaviour
                 TriggerEffect(effect, EffectTrigger.OnTurnStart);
             }
         }
-        
+
         foreach (var effect in effectsToRemove)
         {
             RemoveEffect(effect.effectType);
+
+            if(currentUnit.Name == "Riku Takeda")
+            {
+                mouseController.animatorSamurai.SetBool("attack4", false);
+                mouseController.SamuraiShield.SetActive(false);
+            }
         }
     }
     
@@ -171,6 +179,10 @@ public class StatusEffectManager : MonoBehaviour
 
             int counterDamage = UnityEngine.Random.Range(effect.counterDamageMin, effect.counterDamageMax + 1);
             Debug.Log($"{unit.name} counters {lastAttacker.name} for {counterDamage} damage with Guard!");
+            
+            mouseController.animatorSamurai.SetTrigger("contraataque4");
+            AudioManager.Instance.PlaySFX("SamuraiAttack1");
+
             lastAttacker.TakeDamage(counterDamage);
         }
     }
@@ -195,6 +207,14 @@ public class StatusEffectManager : MonoBehaviour
 
             int counterDamage = UnityEngine.Random.Range(effect.counterDamageMin, effect.counterDamageMax + 1);
             Debug.Log($"{unit.name} completely negates attack and counters {lastAttacker.name} for {counterDamage} damage with Draconic Stance!");
+
+            
+            AudioManager.Instance.PlaySFX("SamuraiAttack1");
+            mouseController.SamuraiShield.SetActive(false);
+            mouseController.animatorSamurai.SetBool("attack4", false);
+            mouseController.animatorSamurai.SetTrigger("contraataque5");
+            
+            
             lastAttacker.TakeDamage(counterDamage);
             
             var mustAttackEffect = new StatusEffect(StatusEffectType.DamageBoost, 1)
@@ -241,7 +261,6 @@ public class StatusEffectManager : MonoBehaviour
         }
         return totalPenalty;
     }
-
     
     // Movement/action restriction checks
     public bool CanMove()
@@ -306,22 +325,20 @@ public class StatusEffectManager : MonoBehaviour
     }
 
     private void Update()
-{
-    // Debug display active effects (remove this later)
-    if (Input.GetKeyDown(KeyCode.F1) && activeEffects.Count > 0)
     {
-        Debug.Log($"{unit.name} active effects:");
-        foreach (var effect in activeEffects)
+        // Debug display active effects (remove this later)
+        if (Input.GetKeyDown(KeyCode.F1) && activeEffects.Count > 0)
         {
-            Debug.Log($"  - {effect.effectName}: {effect.duration} turns left, CanMove: {CanMove()}");
+            Debug.Log($"{unit.name} active effects:");
+            foreach (var effect in activeEffects)
+            {
+                Debug.Log($"  - {effect.effectName}: {effect.duration} turns left, CanMove: {CanMove()}");
+            }
         }
     }
-}
 
-public List<StatusEffect> GetActiveEffects()
-{
-    return activeEffects.Where(e => e.IsActive).ToList();
-}
-
-
+    public List<StatusEffect> GetActiveEffects()
+    {
+        return activeEffects.Where(e => e.IsActive).ToList();
+    }
 }

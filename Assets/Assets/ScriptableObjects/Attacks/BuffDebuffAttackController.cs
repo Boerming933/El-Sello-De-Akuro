@@ -327,22 +327,22 @@ public class BuffDebuffAttackController : MonoBehaviour
             if (mouseController.attackBools.samuraiAttack4)               // ATAQUE 4
             {
                 
-                    mouseController.animatorSamurai.SetTrigger("attack4");
+                    mouseController.animatorSamurai.SetBool("attack4", true);
                 
 
                 AudioManager.Instance.PlaySFX("SamuraiAttack4");
-                mouseController.attackBools.ResetAllSamuraiAttacks();
+                mouseController.attackBools.ResetAllSamuraiAttacks();             
             }
 
             if (mouseController.attackBools.samuraiAttack5)               // ATAQUE 5
             {
                 
-                    mouseController.animatorSamurai.SetTrigger("attack4");
-                mouseController.SamuraiShield.SetActive(true);       // convertir en false cuando de el contraataque
+                    mouseController.animatorSamurai.SetBool("attack4", true);
+                mouseController.SamuraiShield.SetActive(true);    
 
 
                 AudioManager.Instance.PlaySFX("SamuraiAttack5");
-                mouseController.attackBools.ResetAllSamuraiAttacks();
+                mouseController.attackBools.ResetAllSamuraiAttacks();         
             }
         }
 
@@ -705,9 +705,10 @@ public class BuffDebuffAttackController : MonoBehaviour
 
             if (finalDamage > 0)
             {
-                targetUnit.TakeDamage(finalDamage);
+                targetUnit.TakeDamage(finalDamage, currentUnit, skipStatusEffects: true); // Skip status effects since we already handled them
                 if (isCritical) Debug.Log($"Critical hit! {finalDamage} damage to {targetUnit.name}");
             }
+
         }
 
         // Apply status effects (only if this is a BuffDebuffAttackData)

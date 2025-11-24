@@ -25,13 +25,13 @@ public class MovimientoJugador : MonoBehaviour
 
     void Start()
     {
-        if (PlayerScenePos.Instance != null)
-        {
-            if (PlayerScenePos.Instance.lastPositionBeforeSceneChange != Vector3.zero)
-            {
-                transform.position = PlayerScenePos.Instance.lastPositionBeforeSceneChange;
-            }
-        }
+        //if (PlayerScenePos.Instance != null)
+        //{
+        //    if (PlayerScenePos.Instance.lastPositionBeforeSceneChange != Vector3.zero)
+        //    {
+        //        transform.position = PlayerScenePos.Instance.lastPositionBeforeSceneChange;
+        //    }
+        //}
     }
 
     void Update()
@@ -41,8 +41,8 @@ public class MovimientoJugador : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) moveX = -1f;
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) moveX = 1f;
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) moveY = 1f;
-        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) moveY = -1f;
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) moveY = 0.5f;
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) moveY = -0.5f;
 
         input = new Vector3(moveX, moveY, 0f);
         if (input.magnitude > 1f) input.Normalize();
@@ -141,6 +141,6 @@ public class MovimientoJugador : MonoBehaviour
 
         AudioManager.Instance.PlayMusic("BattleMusic");
         
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(2);
     }
 }

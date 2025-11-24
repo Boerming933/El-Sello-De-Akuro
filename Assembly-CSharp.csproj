@@ -50,7 +50,9 @@
   <ItemGroup>
     <Compile Include="Assets\Assets\ScriptableObjects\Attacks\BuffDebuffAttackController.cs" />
     <Compile Include="Assets\Assets\Scripts\Grid\MapManager.cs" />
+    <Compile Include="Assets\Assets\Scripts\Scenes\Cutscene.cs" />
     <Compile Include="Assets\Assets\Scripts\Grid\CharacterInfo.cs" />
+    <Compile Include="Assets\Assets\Scripts\HUD\DialogueBattle.cs" />
     <Compile Include="Assets\Assets\Scripts\HUD\Dialogue.cs" />
     <Compile Include="Assets\Assets\Scripts\BattleSystem\InitiativeManager.cs" />
     <Compile Include="Assets\Assets\Scripts\MovimientoEscenario\Decoraciones.cs" />
@@ -84,6 +86,7 @@
     <Compile Include="Assets\Assets\Scripts\Grid\RangeFinder.cs" />
     <Compile Include="Assets\Assets\Scripts\MovimientoEscenario\DecorationManager.cs" />
     <Compile Include="Assets\Assets\Scripts\HUD\UnitSelection.cs" />
+    <Compile Include="Assets\Assets\Scripts\MovimientoEscenario\ANTILAG.cs" />
     <Compile Include="Assets\Assets\Scripts\Grid\OverlayTile.cs" />
     <Compile Include="Assets\Assets\Scripts\MovimientoEscenario\MovimientoJugador.cs" />
     <Compile Include="Assets\Assets\ScriptableObjects\Attacks\AttackUsesManager.cs" />
@@ -94,6 +97,7 @@
     <Compile Include="Assets\Assets\Scripts\Grid\RangeFinderPlayer.cs" />
     <Compile Include="Assets\Assets\Scripts\Grid\MouseController.cs" />
     <Compile Include="Assets\Assets\Scripts\Obstaculos\DecoracionCombate.cs" />
+    <Compile Include="Assets\Assets\Scripts\Scenes\MenuInicial.cs" />
     <Compile Include="Assets\Assets\ScriptableObjects\Attacks\AttackControllerEnemy.cs" />
     <Compile Include="Assets\Assets\ScriptableObjects\Attacks\AttackController.cs" />
     <Compile Include="Assets\Assets\ScriptableObjects\Attacks\PlayModeAttackUsesReset.cs" />
@@ -605,6 +609,10 @@
     </Reference>
     <Reference Include="SharpToken">
       <HintPath>Packages\com.bezi.sidekick\Plugins\SharpToken.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="bezi-websocket-sharp">
+      <HintPath>Packages\com.bezi.sidekick\Plugins\bezi-websocket-sharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe">

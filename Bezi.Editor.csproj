@@ -57,10 +57,10 @@
     <None Include="Packages\com.bezi.sidekick\Editor\Plugins\System.Reflection.Metadata.dll" />
     <None Include="Packages\com.bezi.sidekick\Editor\Bezi.Editor.asmdef" />
     <None Include="Packages\com.bezi.sidekick\Editor\Plugins\Microsoft.CSharp.dll" />
-    <None Include="Packages\com.bezi.sidekick\Editor\Plugins\bezi-websocket-sharp.dll" />
     <None Include="Packages\com.bezi.sidekick\Editor\Plugins\SharpToken.dll" />
     <None Include="Packages\com.bezi.sidekick\Editor\Plugins\BeziSidekickInternal.dll" />
     <None Include="Packages\com.bezi.sidekick\Editor\Plugins\System.Collections.Immutable.dll" />
+    <None Include="Packages\com.bezi.sidekick\Editor\Plugins\bezi-websocket-sharp.dll" />
     <None Include="Packages\com.bezi.sidekick\Editor\BeziSidekickInternal.dll" />
   </ItemGroup>
   <ItemGroup>
@@ -560,6 +560,10 @@
       <HintPath>Library\PackageCache\com.unity.visualscripting@7dcdc439b230\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="bezi-websocket-sharp">
+      <HintPath>Packages\com.bezi.sidekick\Plugins\bezi-websocket-sharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe">
       <HintPath>Packages\com.bezi.sidekick\Plugins\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>False</Private>
@@ -606,10 +610,6 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.visualscripting@7dcdc439b230\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="bezi-websocket-sharp">
-      <HintPath>Packages\com.bezi.sidekick\Editor\Plugins\bezi-websocket-sharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="BeziSidekickInternal">
