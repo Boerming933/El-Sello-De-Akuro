@@ -15,12 +15,15 @@ MonoBehaviour:
   attackName: Estrella Silenciosa
   icon: {fileID: 0}
   damage: 8
-  scalingFactor: 0
+  scalingFactor: 0.5
   manaCost: 2
   cooldown: 0
+  onCooldown: 0
   selectionRange: 3
   areaSize: 0
   effectShape: 0
   initiativeBonus: 0
   initiativeDuration: 0
+  canTargetEnemies: 1
+  canTargetAllies: 0
   description: "Lanza una shuriken con precisi\xF3n hacia un objetivo a distancia."

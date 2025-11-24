@@ -15,13 +15,16 @@ MonoBehaviour:
   attackName: Boomerang
   icon: {fileID: 0}
   damage: 6
-  scalingFactor: 0
+  scalingFactor: 0.5
   manaCost: 0
   cooldown: 0
+  onCooldown: 0
   selectionRange: 1
   areaSize: 1
   effectShape: 4
   initiativeBonus: 0
   initiativeDuration: 0
+  canTargetEnemies: 1
+  canTargetAllies: 0
   description: Lanza el abanico a mas distancia en forma de bumerang, atacando a
     varios enemigos

@@ -315,4 +315,21 @@ public class Unit : MonoBehaviour
         // Check death
         if (currentHP == 0) StartCoroutine(Die());
     }
+
+    public void GainMana()
+    {
+        if (currentMana <= maxMana - 2)
+        {
+            currentMana = currentMana + 2;
+            // Actualiza el HUD si está asignado
+            if (hud != null)
+                hud.ShowDetails(this);
+            // fuerza actualización general
+            var ui = UnityEngine.Object.FindFirstObjectByType<CharacterDetailsUI>();
+            if (ui != null)
+                ui.UpdateAllUI();
+            Debug.Log("MANA CONSEGUIDO");
+        }
+
+    }
 }
