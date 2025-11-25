@@ -42,7 +42,7 @@
     <UnityVersion>6000.0.47f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Users\maxim\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.1.3\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\maxim\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.2.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="F:\Unity\6000.0.47f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="F:\Unity\6000.0.47f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
     <Analyzer Include="F:\Unity\6000.0.47f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
@@ -61,7 +61,6 @@
     <None Include="Packages\com.bezi.sidekick\Editor\Plugins\BeziSidekickInternal.dll" />
     <None Include="Packages\com.bezi.sidekick\Editor\Plugins\System.Collections.Immutable.dll" />
     <None Include="Packages\com.bezi.sidekick\Editor\Plugins\bezi-websocket-sharp.dll" />
-    <None Include="Packages\com.bezi.sidekick\Editor\BeziSidekickInternal.dll" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -553,7 +552,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="SharpToken">
-      <HintPath>Packages\com.bezi.sidekick\Plugins\SharpToken.dll</HintPath>
+      <HintPath>Packages\com.bezi.sidekick\Editor\Plugins\SharpToken.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.YamlDotNet">
@@ -561,11 +560,11 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="bezi-websocket-sharp">
-      <HintPath>Packages\com.bezi.sidekick\Plugins\bezi-websocket-sharp.dll</HintPath>
+      <HintPath>Packages\com.bezi.sidekick\Editor\Plugins\bezi-websocket-sharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>Packages\com.bezi.sidekick\Plugins\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+      <HintPath>Packages\com.bezi.sidekick\Editor\Plugins\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.CodeAnalysis.CSharp">
@@ -605,7 +604,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Collections.Immutable">
-      <HintPath>Packages\com.bezi.sidekick\Plugins\System.Collections.Immutable.dll</HintPath>
+      <HintPath>Packages\com.bezi.sidekick\Editor\Plugins\System.Collections.Immutable.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
