@@ -46,13 +46,17 @@ public class AttackButtonProxy : MonoBehaviour, IPointerEnterHandler, IPointerEx
                 buttonComponent.interactable = false;
             }
             var bd = attackData as BuffDebuffAttackData;
-            if (bd.maxUses != -1 && bd.currentUses >= bd.maxUses)
+            if (bd != null)
             {
-                buttonComponent.interactable = false;
+                if (bd.maxUses != -1 && bd.currentUses == bd.maxUses)
+                {
+                    buttonComponent.interactable = false;
+                }
             }
+
             else
             {
-                buttonComponent.interactable = true;
+               buttonComponent.interactable = true;
             }
         }
     }

@@ -19811,6 +19811,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  zoom: {fileID: 0}
+  animator: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  sceneChange: {fileID: 0}
 --- !u!212 &1561927679
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20032,10 +20036,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zoomSpeed: 0.6
+  triggerZoomSpeed: 3
   zoomFactor: 1.8
   minZoom: 1.2
   maxZoom: 5
   returnSpeed: 5
+  CameraLimitX: []
+  CameraLimitY: []
+  sensitivity: 0
   targetToFollow: {fileID: 0}
   followSpeed: 5
   zoomHintUI: {fileID: 0}
