@@ -24,6 +24,8 @@ MonoBehaviour:
   effectShape: 0
   initiativeBonus: 0
   initiativeDuration: 0
+  canTargetEnemies: 1
+  canTargetAllies: 0
   description: Con un canto suave distrae al enemigo.
   attackType: 2
   statusEffects:
@@ -37,11 +39,11 @@ MonoBehaviour:
       damageReduction: 0
       counterDamageMin: 0
       counterDamageMax: 0
-      attackBonus: 0
-      attackReduction: 0.5
-      blockMovement: 1
+      attackBonusPercent: 0
+      attackReduction: 0
+      blockMovement: 0
       blockAttack: 0
-      skipTurn: 0
+      skipTurn: 1
       mustAttackNextTurn: 0
       turnApplied: 0
       effectIcon: {fileID: 0}
@@ -64,3 +66,4 @@ MonoBehaviour:
   pushDistance: 1
   criticalChance: 0
   criticalMultiplier: 2
+  cooldownMax: 0
