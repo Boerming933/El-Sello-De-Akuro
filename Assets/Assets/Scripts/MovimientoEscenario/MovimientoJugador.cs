@@ -17,6 +17,8 @@ public class MovimientoJugador : MonoBehaviour
 
     public SceneChange sceneChange;
 
+    private bool horizontalMov = false;
+
     private const string ANIM_DOWN = "isDown";
     private const string ANIM_DOWN_LEFT = "isDownLeft";
     private const string ANIM_LEFT = "isLeft";
@@ -41,16 +43,43 @@ public class MovimientoJugador : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
+            horizontalMov = true;
             moveX = -1f;
             spriteRenderer.flipX = false;
         }
+        else if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.LeftArrow))
+        {
+            horizontalMov = false;
+        }
+
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
+            horizontalMov = true;
             moveX = 1f;
             spriteRenderer.flipX = true;
         }
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) moveY = 0.5f;
-        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) moveY = -0.5f;
+        else if (Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            horizontalMov = false;
+        }
+
+        if (Input.GetKey(KeyCode.W) && horizontalMov || Input.GetKey(KeyCode.UpArrow) && horizontalMov)
+        {
+            moveY = 0.5f;
+        }
+        else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        {
+            moveY = 1f;
+        }
+
+        if (Input.GetKey(KeyCode.S) && horizontalMov || Input.GetKey(KeyCode.DownArrow) && horizontalMov)
+        {
+            moveY = -0.5f;
+        }
+        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        {
+            moveY = -1f;
+        }
 
         input = new Vector3(moveX, moveY, 0f);
         if (input.magnitude > 1f) input.Normalize();
@@ -70,8 +99,6 @@ public class MovimientoJugador : MonoBehaviour
 
     void HandleAnimationKeys()
     {
-        
-
         bool up = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
         bool down = Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow);
         bool left = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow);
@@ -123,14 +150,12 @@ public class MovimientoJugador : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        
-            if (other.gameObject.CompareTag("TP") && sceneChange.canTP)
-            {
-                Debug.Log("Collision with TP detected");
-                sceneChange.transitionAnimator.SetTrigger("FadeIn");
-                StartCoroutine(SavePositionAndChangeScene());
-            }
-        
+        if (other.gameObject.CompareTag("TP") && sceneChange.canTP)
+        {
+            Debug.Log("Collision with TP detected");
+            sceneChange.transitionAnimator.SetTrigger("FadeIn");
+            StartCoroutine(SavePositionAndChangeScene());
+        }
     }
 
     public IEnumerator SavePositionAndChangeScene()

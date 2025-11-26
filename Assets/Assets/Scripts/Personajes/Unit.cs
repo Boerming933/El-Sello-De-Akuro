@@ -245,7 +245,9 @@ public class Unit : MonoBehaviour
 
     public void Heal()
     {
-        currentHP = Mathf.Min(currentHP + pocionHeal, maxHP);
+        int potionheal = Mathf.RoundToInt(maxHP * (pocionHeal/100f));
+
+        currentHP = Mathf.Min(currentHP + potionheal, maxHP);
 
         // Actualiza el HUD si está asignado
         if (hud != null)
