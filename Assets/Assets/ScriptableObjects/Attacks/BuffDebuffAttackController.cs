@@ -1176,12 +1176,12 @@ public class BuffDebuffAttackController : MonoBehaviour
         mouseController.attackBools.ResetAllSamuraiAttacks();
         mouseController.attackBools.ResetAllNinjaAttacks();
         mouseController.attackBools.ResetAllGeishaAttacks();
-        mouseController.animatorSamurai.SetBool("idleBatallaUp", false);
-        mouseController.animatorNinja.SetBool("idleBatallaUp", false);
-        mouseController.animatorGeisha.SetBool("idleBatallaUp", false);
-        mouseController.animatorSamurai.SetBool("idleBatalla", false);
-        mouseController.animatorNinja.SetBool("idleBatalla", false);
-        mouseController.animatorGeisha.SetBool("idleBatalla", false);
+        if (mouseController.animatorSamurai != null) mouseController.animatorSamurai.SetBool("idleBatallaUp", false);
+        if (mouseController.animatorNinja != null) mouseController.animatorNinja.SetBool("idleBatallaUp", false);
+        if (mouseController.animatorGeisha != null) mouseController.animatorGeisha.SetBool("idleBatallaUp", false);
+        if (mouseController.animatorSamurai != null) mouseController.animatorSamurai.SetBool("idleBatalla", false);
+        if (mouseController.animatorNinja != null) mouseController.animatorNinja.SetBool("idleBatalla", false);
+        if (mouseController.animatorGeisha != null) mouseController.animatorGeisha.SetBool("idleBatalla", false);
 
         if (!inAttackMode) return;
 

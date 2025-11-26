@@ -39,8 +39,16 @@ public class MovimientoJugador : MonoBehaviour
         float moveX = 0f;
         float moveY = 0f;
 
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) moveX = -1f;
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) moveX = 1f;
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        {
+            moveX = -1f;
+            spriteRenderer.flipX = false;
+        }
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
+            moveX = 1f;
+            spriteRenderer.flipX = true;
+        }
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) moveY = 0.5f;
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) moveY = -0.5f;
 
@@ -62,10 +70,7 @@ public class MovimientoJugador : MonoBehaviour
 
     void HandleAnimationKeys()
     {
-        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-            spriteRenderer.flipX = true;
-        else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
-            spriteRenderer.flipX = false;
+        
 
         bool up = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
         bool down = Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow);

@@ -14,13 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Tajo Frontal
   icon: {fileID: 0}
-  damage: 10
-  scalingFactor: 0
+  damage: 8
+  scalingFactor: 0.5
   manaCost: 0
   cooldown: 0
+  onCooldown: 0
   selectionRange: 1
   areaSize: 0
   effectShape: 0
   initiativeBonus: 0
   initiativeDuration: 0
+  canTargetEnemies: 1
+  canTargetAllies: 0
   description: "Un corte directo y r\xE1pido hacia el enemigo de frente."
