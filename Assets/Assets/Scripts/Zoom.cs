@@ -137,6 +137,8 @@ public class Zoom : MonoBehaviour
         
         cam.orthographicSize -= zoomInput * currentSpeed;
         cam.orthographicSize = Mathf.Clamp(cam.orthographicSize, minZoom, maxZoom);
+        
+        transform.position = ClampCameraPosition(transform.position);
     }
 
     public void ForceZoomOut()
@@ -194,7 +196,6 @@ public class Zoom : MonoBehaviour
         transform.position += moveDirection;        
         
         transform.position = ClampCameraPosition(transform.position);
-
     }
     
     Vector3 ClampCameraPosition(Vector3 pos)
@@ -222,5 +223,4 @@ public class Zoom : MonoBehaviour
         pos.y = Mathf.Clamp(pos.y, minY, maxY);
         return pos;
     }
-
 }
