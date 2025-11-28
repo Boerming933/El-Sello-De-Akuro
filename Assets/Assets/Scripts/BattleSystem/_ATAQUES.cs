@@ -39,21 +39,25 @@ public class AttackButtonProxy : MonoBehaviour, IPointerEnterHandler, IPointerEx
     {
         // Corrected the syntax for accessing the Button component and setting interactable
         Button buttonComponent = gameObject.GetComponent<Button>();
+
+        bool interactable = true;
+
         if (buttonComponent != null)
         {
             if (attackData.manaCost > mouseController.myUnit.currentMana)
             {
-                buttonComponent.interactable = false;
+                interactable = false;
             }
             var bd = attackData as BuffDebuffAttackData;
-            //if (bd.maxUses != -1 && bd.currentUses >= bd.maxUses)
-            //{
-            //    buttonComponent.interactable = false;
-            //}
-            //else
-            //{
-            //    buttonComponent.interactable = true;
-            //}
+            if (bd != null)
+            {
+                if (bd.maxUses != -1 && bd.currentUses == bd.maxUses)
+                {
+                    interactable = false;
+                }
+            }
+
+            buttonComponent.interactable = interactable;
         }
     }
 

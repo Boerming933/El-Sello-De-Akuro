@@ -93,6 +93,7 @@ public class BuffDebuffAttackData : AttackData
             if (unitCooldowns[unitID] <= 0) //
             { //
                 unitCooldowns.Remove(unitID); //
+                ResetUses();
                 Debug.Log($"[Cooldown] {attackName} is now available for {unit.Name}"); //
             } //
         } //

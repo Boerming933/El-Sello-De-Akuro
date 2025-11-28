@@ -24,8 +24,8 @@ MonoBehaviour:
   effectShape: 0
   initiativeBonus: 0
   initiativeDuration: 0
-  canTargetEnemies: 0
-  canTargetAllies: 1
+  canTargetEnemies: 1
+  canTargetAllies: 0
   description: Hace un corto baile, que inspira a sus aliados.
   attackType: 1
   statusEffects:
@@ -39,7 +39,7 @@ MonoBehaviour:
       damageReduction: 0
       counterDamageMin: 0
       counterDamageMax: 0
-      attackBonusPercent: 0.75
+      attackBonusPercent: 0.5
       attackReduction: 0
       blockMovement: 0
       blockAttack: 0

@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{05A46C1B-0D47-B9D2-BC88-44A856239121}</ProjectGuid>
+    <ProjectGuid>{9850615A-0172-DE3C-F093-D738AB020EDE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -650,6 +650,10 @@
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@d6f9955a5d5f\Mono.Cecil.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="bezi-websocket-sharp">
+      <HintPath>Packages\com.bezi.sidekick\Plugins\bezi-websocket-sharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="netstandard">
@@ -1407,7 +1411,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Bezi.Editor.csproj">
-      <Project>{36067E2D-5692-8F40-E706-97EBA1E60085}</Project>
+      <Project>{5639D3EE-3106-740C-5401-BAC3C56A4CB8}</Project>
       <Name>Bezi.Editor</Name>
     </ProjectReference>
   </ItemGroup>
