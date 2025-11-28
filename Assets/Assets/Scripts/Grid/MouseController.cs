@@ -39,6 +39,7 @@ public class MouseControler : MonoBehaviour
     public GameObject bgIconoPocion;
     public GameObject e;
     public GameObject fDialogue;
+    public GameObject loseDialogue;
 
     public CharacterInfo CurrentCharacter => character;
 
@@ -763,5 +764,10 @@ public class MouseControler : MonoBehaviour
         var dialogue = fDialogue.GetComponent<DialogueBattle>();
         if(!dialogue.didDialogueStart) dialogue.StartDialogue();
         fDialogue.SetActive(true);
+    }
+
+    public void defeatDialogue()
+    {
+        loseDialogue.SetActive(true);
     }
 }

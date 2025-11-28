@@ -172,36 +172,43 @@ public class Unit : MonoBehaviour
 
     private IEnumerator EndCombat()
     {
-        yield return new WaitForSeconds(2f);
-
-        var FirstMovement = new Vector3(finalXDistance[0], finalYDistance[0], transform.position.z);
-
-        foreach (Transform children in transform)
+        if(!isEnemy)
         {
-            children.gameObject.SetActive(false);
+            yield return new WaitForSeconds(2f);
+
+            var FirstMovement = new Vector3(finalXDistance[0], finalYDistance[0], transform.position.z);
+
+            foreach (Transform children in transform)
+            {
+                children.gameObject.SetActive(false);
+            }
+            hudCanva.SetActive(false);
+
+            if (transform.position.x < FirstMovement.x)
+            {
+                sr.flipX = true;
+                animator.SetBool("isMovingDown", true);
+            }
+            else
+            {
+                sr.flipX = false;
+                animator.SetBool("isMovingDown", true);
+            }
+
+            transform.position = Vector2.MoveTowards(transform.position, FirstMovement, speed * Time.deltaTime);
+
+            if (transform.position == FirstMovement && !endCombat)
+            {
+                battleSystem.finalPosition();
+                animator.SetBool("isMovingDown", false);
+                animator.SetBool("isMovingUp", false);
+                if (Name == "Riku Takeda") sr.flipX = false;
+                else sr.flipX = true;
+            }
         }
-        hudCanva.SetActive(false);
-
-        if (transform.position.x < FirstMovement.x)
+        else if(!endCombat)
         {
-            sr.flipX = true;
-            animator.SetBool("isMovingDown", true);
-        }
-        else
-        {
-            sr.flipX = false;
-            animator.SetBool("isMovingDown", true);
-        }
-
-        transform.position = Vector2.MoveTowards(transform.position, FirstMovement, speed * Time.deltaTime);
-
-        if (transform.position == FirstMovement && !endCombat)
-        {
-            battleSystem.finalPosition();
-            animator.SetBool("isMovingDown", false);
-            animator.SetBool("isMovingUp", false);
-            if (Name == "Riku Takeda") sr.flipX = false;
-            else sr.flipX = true;
+            
         }
     }
     
