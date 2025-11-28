@@ -15,7 +15,7 @@ D:/Proyectos/Unity/TechProofRPG
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-63251
+60081
 -job-worker-count
 7
 -background-job-worker-count
@@ -59,12 +59,14 @@ D:/Proyectos/Unity/TechProofRPG
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [192184]  Target information:
+Player connection [139696]  Target information:
 
-Player connection [192184]  * "[IP] 192.168.100.128 [Port] 0 [Flags] 2 [Guid] 3203258973 [EditorId] 3203258973 [Version] 1048832 [Id] WindowsEditor(7,Matias) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [139696]  * "[IP] 192.168.100.128 [Port] 0 [Flags] 2 [Guid] 1538188196 [EditorId] 1538188196 [Version] 1048832 [Id] WindowsEditor(7,Matias) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [192184] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [192184] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [139696]  * "[IP] 172.26.30.230 [Port] 0 [Flags] 2 [Guid] 1538188196 [EditorId] 1538188196 [Version] 1048832 [Id] WindowsEditor(7,Matias) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [139696] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [139696] Host joined alternative multi-casting on [225.0.0.222:34997]...
 JobSystem: Creating JobQueue using job-worker-count value 7
 Input System module state changed to: Initialized.
 [Physics::Module] Initialized fallback backend.
@@ -76,7 +78,7 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
-Refreshing native plugins compatible for Editor in 2.13 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 2.64 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 6000.0.47f1 (2ad1ed33fd3b)
 [Subsystems] Discovering subsystems at path D:/Program Files(x86)/6000.0.47f1/Editor/Data/Resources/UnitySubsystems
@@ -92,43 +94,43 @@ Initialize mono
 Mono path[0] = 'D:/Program Files(x86)/6000.0.47f1/Editor/Data/Managed'
 Mono path[1] = 'D:/Program Files(x86)/6000.0.47f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'D:/Program Files(x86)/6000.0.47f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56976
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56456
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: D:/Program Files(x86)/6000.0.47f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.002035 seconds.
-- Loaded All Assemblies, in  0.299 seconds
+Registered in 0.001529 seconds.
+- Loaded All Assemblies, in  0.322 seconds
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.251 seconds
-Domain Reload Profiling: 549ms
-	BeginReloadAssembly (117ms)
+- Finished resetting the current domain, in  0.266 seconds
+Domain Reload Profiling: 587ms
+	BeginReloadAssembly (126ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (27ms)
-	RebuildNativeTypeToScriptingClass (8ms)
-	initialDomainReloadingComplete (33ms)
-	LoadAllAssembliesAndSetupDomain (113ms)
-		LoadAssemblies (117ms)
+	RebuildCommonClasses (29ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (37ms)
+	LoadAllAssembliesAndSetupDomain (121ms)
+		LoadAssemblies (126ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (110ms)
-			TypeCache.Refresh (109ms)
-				TypeCache.ScanAssembly (99ms)
+		AnalyzeDomain (118ms)
+			TypeCache.Refresh (117ms)
+				TypeCache.ScanAssembly (106ms)
 			BuildScriptInfoCaches (0ms)
 			ResolveRequiredComponents (0ms)
-	FinalizeReload (251ms)
+	FinalizeReload (266ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (218ms)
+		SetupLoadedEditorAssemblies (229ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (18ms)
+			InitializePlatformSupportModulesInManaged (19ms)
 			SetLoadedEditorAssemblies (5ms)
-			BeforeProcessingInitializeOnLoad (41ms)
-			ProcessInitializeOnLoadAttributes (115ms)
-			ProcessInitializeOnLoadMethodAttributes (38ms)
+			BeforeProcessingInitializeOnLoad (44ms)
+			ProcessInitializeOnLoadAttributes (120ms)
+			ProcessInitializeOnLoadMethodAttributes (41ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -138,96 +140,120 @@ Worker process is ready to serve import requests
 Import Worker Mode flag is 0x00
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  0.752 seconds
-Refreshing native plugins compatible for Editor in 1.18 ms, found 4 plugins.
+- Loaded All Assemblies, in  0.893 seconds
+Refreshing native plugins compatible for Editor in 1.15 ms, found 4 plugins.
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.810 seconds
-Domain Reload Profiling: 1562ms
-	BeginReloadAssembly (135ms)
+- Finished resetting the current domain, in  0.973 seconds
+Domain Reload Profiling: 1865ms
+	BeginReloadAssembly (145ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (4ms)
+		DisableScriptedObjects (5ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (22ms)
-	RebuildCommonClasses (28ms)
-	RebuildNativeTypeToScriptingClass (8ms)
-	initialDomainReloadingComplete (28ms)
-	LoadAllAssembliesAndSetupDomain (551ms)
-		LoadAssemblies (364ms)
+		CreateAndSetChildDomain (23ms)
+	RebuildCommonClasses (31ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (36ms)
+	LoadAllAssembliesAndSetupDomain (670ms)
+		LoadAssemblies (411ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (273ms)
-			TypeCache.Refresh (215ms)
-				TypeCache.ScanAssembly (201ms)
-			BuildScriptInfoCaches (45ms)
-			ResolveRequiredComponents (9ms)
-	FinalizeReload (811ms)
+		AnalyzeDomain (350ms)
+			TypeCache.Refresh (281ms)
+				TypeCache.ScanAssembly (263ms)
+			BuildScriptInfoCaches (54ms)
+			ResolveRequiredComponents (11ms)
+	FinalizeReload (974ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (700ms)
+		SetupLoadedEditorAssemblies (841ms)
 			LogAssemblyErrors (0ms)
 			InitializePlatformSupportModulesInManaged (2ms)
 			SetLoadedEditorAssemblies (6ms)
-			BeforeProcessingInitializeOnLoad (139ms)
-			ProcessInitializeOnLoadAttributes (460ms)
-			ProcessInitializeOnLoadMethodAttributes (91ms)
+			BeforeProcessingInitializeOnLoad (174ms)
+			ProcessInitializeOnLoadAttributes (548ms)
+			ProcessInitializeOnLoadMethodAttributes (108ms)
 			AfterProcessingInitializeOnLoad (1ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
 		AwakeInstancesAfterBackupRestoration (5ms)
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
-Refreshing native plugins compatible for Editor in 1.14 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 1.36 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 220 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6756 unused Assets / (4.2 MB). Loaded Objects now: 7451.
-Memory consumption went from 183.9 MB to 179.7 MB.
-Total: 6.621600 ms (FindLiveObjects: 0.411400 ms CreateObjectMapping: 0.308900 ms MarkObjects: 4.489500 ms  DeleteObjects: 1.409800 ms)
+Unloading 6756 unused Assets / (4.5 MB). Loaded Objects now: 7451.
+Memory consumption went from 182.3 MB to 177.8 MB.
+Total: 7.219500 ms (FindLiveObjects: 0.419600 ms CreateObjectMapping: 0.303900 ms MarkObjects: 4.556000 ms  DeleteObjects: 1.937500 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 885149.628482 seconds.
-  path: Assets/Assets/ScriptableObjects/Attacks/Ninja/Puñalada Rapida Buff.asset
-  artifactKey: Guid(a7da76e8d52df62459a7f0f67147797e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/ScriptableObjects/Attacks/Ninja/Puñalada Rapida Buff.asset using Guid(a7da76e8d52df62459a7f0f67147797e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '33a8e8142b80eb7b2c666696ee23a8f9') in 0.0156787 seconds
+  Time since last request: 1171855.936174 seconds.
+  path: Assets/Scenes/SampleScene.unity
+  artifactKey: Guid(8c9cfa26abfee488c85f1582747f6a02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/SampleScene.unity using Guid(8c9cfa26abfee488c85f1582747f6a02) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '9bfd227aac9f1f49a9f3e347e6e3b85a') in 0.0047521 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.049883 seconds.
+  path: Assets/Assets/ScriptableObjects
+  artifactKey: Guid(32a4adf52d20f4b4fa54112a56c9214d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/ScriptableObjects using Guid(32a4adf52d20f4b4fa54112a56c9214d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '155370f61c2dad4b0d5ec5b42e6a65a4') in 0.0005107 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.760216 seconds.
+  path: Assets/Assets/ScriptableObjects/Attacks
+  artifactKey: Guid(f12707e8996fbd64bbc51d2a87aa8a65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/ScriptableObjects/Attacks using Guid(f12707e8996fbd64bbc51d2a87aa8a65) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '7267c339c9a369118e167643b6950c9a') in 0.0003933 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.907596 seconds.
+  path: Assets/Assets/ScriptableObjects/Attacks/Enemigos
+  artifactKey: Guid(1b802b0de830c2143a66ad02084d8659) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/ScriptableObjects/Attacks/Enemigos using Guid(1b802b0de830c2143a66ad02084d8659) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c6fd3ad3c6b028c85b47a9aa0f387abd') in 0.0004328 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.035189 seconds.
+  path: Assets/Assets/ScriptableObjects/Attacks/Enemigos/Golpe de Garra.asset
+  artifactKey: Guid(bb62791ab79e1c24faeca80766c770aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/ScriptableObjects/Attacks/Enemigos/Golpe de Garra.asset using Guid(bb62791ab79e1c24faeca80766c770aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '93cb212060ff5230ccc3033b824b2abf') in 0.0125744 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Assets/ScriptableObjects/Attacks/Ninja/Emboscada Letal Buff.asset
-  artifactKey: Guid(c2ed56fd7654c0540ad4bb2fd00d4d41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/ScriptableObjects/Attacks/Ninja/Emboscada Letal Buff.asset using Guid(c2ed56fd7654c0540ad4bb2fd00d4d41) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '51bf074c8c8b13980d90daf109ca8600') in 0.0010036 seconds
+  Time since last request: 0.000014 seconds.
+  path: Assets/Assets/ScriptableObjects/Attacks/Enemigos/Pisotón.asset
+  artifactKey: Guid(de6a4e91b8f46d349a540f13a26423f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/ScriptableObjects/Attacks/Enemigos/Pisotón.asset using Guid(de6a4e91b8f46d349a540f13a26423f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '13f32bf8366d364c7121dcfbbd41469d') in 0.0009186 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000015 seconds.
-  path: Assets/Assets/ScriptableObjects/Attacks/Ninja/Emboscada Letal.asset
-  artifactKey: Guid(8a5f2f476c4390740a1b91adea6c5a15) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/ScriptableObjects/Attacks/Ninja/Emboscada Letal.asset using Guid(8a5f2f476c4390740a1b91adea6c5a15) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '8c446b7b745fd1c30564a8a42c13e341') in 0.0011671 seconds
+  Time since last request: 0.000014 seconds.
+  path: Assets/Assets/ScriptableObjects/Attacks/Enemigos/Rugido1.asset
+  artifactKey: Guid(d4af15d98959cc546b9885521de2539c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/ScriptableObjects/Attacks/Enemigos/Rugido1.asset using Guid(d4af15d98959cc546b9885521de2539c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '0f0aaf838efa170d5b22c69143fc36f9') in 0.0019114 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
 
 ========================================================================
 Received Import Request.
-  Time since last request: 26.310171 seconds.
-  path: Assets/Assets/ScriptableObjects/Attacks/Geisha/Canto Hipnótico.asset
-  artifactKey: Guid(87b2f60d86f17a4449cfe42948c0eb7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/ScriptableObjects/Attacks/Geisha/Canto Hipnótico.asset using Guid(87b2f60d86f17a4449cfe42948c0eb7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '11e9599be52995621c472fbbef369259') in 0.0009852 seconds
+  Time since last request: 39.182049 seconds.
+  path: Assets/Assets/ScriptableObjects/Attacks/Enemigos/Rugido.asset
+  artifactKey: Guid(d4af15d98959cc546b9885521de2539c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/ScriptableObjects/Attacks/Enemigos/Rugido.asset using Guid(d4af15d98959cc546b9885521de2539c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '22ef2079bb16544e52514b212351fb63') in 0.0010158 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
 
 ========================================================================
 Received Import Request.
-  Time since last request: 18.759602 seconds.
-  path: Assets/Assets/ScriptableObjects/Attacks/Samurái/Sentencia del Cielo.asset
-  artifactKey: Guid(6e5a1a9f3f5a71f46983230291569186) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/ScriptableObjects/Attacks/Samurái/Sentencia del Cielo.asset using Guid(6e5a1a9f3f5a71f46983230291569186) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '3212a089c55a17c2a7ea324ead545eae') in 0.0008232 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 19.157628 seconds.
-  path: Assets/Assets/ScriptableObjects/Attacks/Enemigos/Grito.asset
-  artifactKey: Guid(11bb3479389a5544eb796155187a3f8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Assets/ScriptableObjects/Attacks/Enemigos/Grito.asset using Guid(11bb3479389a5544eb796155187a3f8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '25df3eec8bc71c6f4d0566c8054f8711') in 0.0015062 seconds
+  Time since last request: 3.733818 seconds.
+  path: Assets/Assets/ScriptableObjects/Attacks/Enemigos/Rugido.asset
+  artifactKey: Guid(d4af15d98959cc546b9885521de2539c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/ScriptableObjects/Attacks/Enemigos/Rugido.asset using Guid(d4af15d98959cc546b9885521de2539c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '79c9fbf05d0caa2fc468544236eb3526') in 0.0010751 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
 

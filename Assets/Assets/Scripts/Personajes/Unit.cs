@@ -21,6 +21,7 @@ public class Unit : MonoBehaviour
     public int Level;
 
     public bool isEnemy;
+    public bool endCombat = false;
     
     public float[] deathXCoords;
     public float[] deathYCoords;
@@ -31,8 +32,6 @@ public class Unit : MonoBehaviour
 
     public float[] finalXDistance;
     public float[] finalYDistance;
-
-    public bool endCombat = false;
 
     public float speed = 4f;
     public int Fue;
@@ -63,7 +62,6 @@ public class Unit : MonoBehaviour
 
     private void Start()
     {
-        // Ensure StatusEffectManager is present
         if (GetComponent<StatusEffectManager>() == null)
         {
             gameObject.AddComponent<StatusEffectManager>();
@@ -208,6 +206,7 @@ public class Unit : MonoBehaviour
     }
     
     //para enemigos
+
     public RaycastHit2D? ActiveTile()
     {
         Vector2 origin = new Vector2(transform.position.x, transform.position.y);
@@ -222,6 +221,7 @@ public class Unit : MonoBehaviour
     }
 
     //para jugadores
+
     public OverlayTile FindCenterTile()
     {
         const float threshold = 0.1f;
@@ -255,31 +255,38 @@ public class Unit : MonoBehaviour
 
     public void TakeDamage(int amount, Unit attacker = null, bool skipStatusEffects = false)
     {
+        // Get status effect manager
         var statusManager = GetComponent<StatusEffectManager>();
         if (statusManager == null)
         {
             statusManager = gameObject.AddComponent<StatusEffectManager>();
         }
 
+        // Set who attacked us for counter effects
         if (attacker != null)
         {
             statusManager.SetLastAttacker(attacker);
         }
 
+        // Only process status effects if not already handled by attack controller
         if (!skipStatusEffects)
         {
+            // Check for damage negation (Draconic Stance)
             if (statusManager.HasEffect(StatusEffectType.DraconicStance))
             {
                 Debug.Log($"{Name} negates all damage with Draconic Stance!");
                 statusManager.TriggerEffect(statusManager.GetEffect(StatusEffectType.DraconicStance), EffectTrigger.OnDamageReceived);
-                return; 
+                return; // No damage taken
             }
 
+            // Apply damage reduction (Guard)
             float damageReduction = statusManager.CalculateDamageReduction();
             int finalDamage = Mathf.RoundToInt(amount * (1f - damageReduction));
 
+            // Apply damage
             currentHP = Mathf.Max(0, currentHP - finalDamage);
 
+            // Trigger counter effects if we took damage
             if (finalDamage > 0 && statusManager.HasEffect(StatusEffectType.Guard))
             {
                 statusManager.TriggerEffect(statusManager.GetEffect(StatusEffectType.Guard), EffectTrigger.OnDamageReceived);
@@ -287,15 +294,19 @@ public class Unit : MonoBehaviour
         }
         else
         {
+            // Just apply the damage without processing effects
             currentHP = Mathf.Max(0, currentHP - amount);
         }
 
+        // Update HUD
         var ui = UnityEngine.Object.FindFirstObjectByType<CharacterDetailsUI>();
         if (ui != null)
             ui.UpdateAllUI();
 
+        // Dispatch events
         OnDamageTaken?.Invoke(amount);
 
+        // Check death
         if (currentHP == 0) StartCoroutine(Die());
     }
 
@@ -313,5 +324,6 @@ public class Unit : MonoBehaviour
                 ui.UpdateAllUI();
             Debug.Log("MANA CONSEGUIDO");
         }
+
     }
 }

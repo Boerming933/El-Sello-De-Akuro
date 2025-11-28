@@ -339,19 +339,19 @@ public class MouseControler : MonoBehaviour
 
     public void DeselectCharacter()
     {
-        DeactivateMovimientoRelampagoOnTurnEnd();
+        DeactivateMovimientoRelampagoOnTurnEnd(); //
         
-        if (character != null)
-        {
-            foreach (var attackData in myUnit.equippedAttacks)
-            {
-                var buffDebuffAttack = attackData as BuffDebuffAttackData;
-                if (buffDebuffAttack != null) 
-                { 
-                    buffDebuffAttack.OnTurnPassed(myUnit);
-                } 
-            } 
-        } 
+        if (character != null) //
+        { //
+            foreach (var attackData in myUnit.equippedAttacks) //
+            { //
+                var buffDebuffAttack = attackData as BuffDebuffAttackData; //
+                if (buffDebuffAttack != null) //
+                { //
+                    buffDebuffAttack.OnTurnPassed(myUnit); //
+                } //
+            } //
+        } //
 
         if (character != null)
         {
@@ -372,6 +372,7 @@ public class MouseControler : MonoBehaviour
             }
         }
 
+        //canPocion = true;
         canSkip = true;
         if (character != null)
         {
@@ -398,6 +399,7 @@ public class MouseControler : MonoBehaviour
 
         }
         path.Clear();
+        // === REACTIVAR panelBatallaGeneral tras finalizar turno ===
         var allProxies = Object.FindObjectsByType<AttackButtonProxy>(
             FindObjectsInactive.Include,
             FindObjectsSortMode.None
@@ -412,6 +414,7 @@ public class MouseControler : MonoBehaviour
         {
             animatorSamurai.SetBool("isMovingDown", false);
             animatorSamurai.SetBool("isMovingUp", false);
+
         }
 
         if (myUnit.Name == "Sayuri")
@@ -437,6 +440,7 @@ public class MouseControler : MonoBehaviour
 
         if (!puedeMoverse && !puedeAtacar)
         {
+
             DeselectCharacter();
         }
     }
@@ -478,6 +482,7 @@ public class MouseControler : MonoBehaviour
                 }
             }
         }
+
 
         if (myUnit.Name == "Sayuri")
         {
@@ -550,6 +555,7 @@ public class MouseControler : MonoBehaviour
                 }
             }
         }
+
 
         canSkip = false;
 
@@ -654,6 +660,7 @@ public class MouseControler : MonoBehaviour
     private void PositionCharacterOnTile(OverlayTile tile)
     {
         character.transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y + 0.000001f, tile.transform.position.z);
+        // var tileOrder = tile.GetComponent<SpriteRenderer>().sortingOrder;
         character.GetComponent<SpriteRenderer>().sortingOrder = tile.GetComponent<SpriteRenderer>().sortingOrder + 1;
         if (character.activeTile != null)
             character.activeTile.occupant = null;
@@ -664,6 +671,7 @@ public class MouseControler : MonoBehaviour
 
     public void StartMoveMode()
     {
+        // ✅ Check if character should skip their entire turn
         if (character != null)
         {
             var statusManager = character.GetComponent<StatusEffectManager>();
@@ -671,31 +679,36 @@ public class MouseControler : MonoBehaviour
             {
                 Debug.Log($"{character.name} should skip turn - cannot start move mode!");
 
+                // Show a message that the turn is skipped
                 canMove = false;
                 showPanelAcciones = false;
-                turnEnded = true; 
+                turnEnded = true; // End turn immediately
                 return;
             }
 
+            // Check if character can move due to status effects (but not full skip)
             if (statusManager != null && !statusManager.CanMove())
             {
                 Debug.Log($"{character.name} cannot move due to status effects (Hypnotic Chant)!");
 
+                // Show a message or visual indicator that movement is blocked
                 canMove = false;
                 showPanelAcciones = true;
 
+                // Reactivate turn panel but keep movement disabled
                 var turnable = character.GetComponent<Turnable>();
                 if (turnable != null)
                 {
                     turnable.ActivateTurn();
                     if (turnable.btnMoverse != null)
-                        turnable.btnMoverse.interactable = false; 
+                        turnable.btnMoverse.interactable = false; // Disable move button visually
                 }
 
-                return; 
+                return; // Don't allow movement
             }
         }
 
+        // Original StartMoveMode logic (if movement is allowed)
         canMove = true;
         prevCanMove = false;
         showPanelAcciones = false;
@@ -706,42 +719,42 @@ public class MouseControler : MonoBehaviour
             GetInRangeTiles();
     }
 
-    private void CheckMovimientoRelampagoOnMove(OverlayTile reachedTile)
-    { 
-        if (myUnit == null || reachedTile == null) 
-            return;
+    private void CheckMovimientoRelampagoOnMove(OverlayTile reachedTile) //
+    { //
+        if (myUnit == null || reachedTile == null) //
+            return; //
         
-        if (!myUnit.MovimientoRelampagoCaminata) 
-            return;
+        if (!myUnit.MovimientoRelampagoCaminata) //
+            return; //
         
         Debug.LogError($"[MR-MouseController] Paso de movimiento completado: {myUnit.Name} llegó a tile {reachedTile.grid2DLocation} (world: {reachedTile.transform.position})"); //
         
-        foreach (var attackData in myUnit.equippedAttacks)
+        foreach (var attackData in myUnit.equippedAttacks) //
         { //
-            var movimientoAttack = attackData as MovimientoRelampagoAttackData;
-            if (movimientoAttack != null && movimientoAttack.IsActive(myUnit))
-            {
-                movimientoAttack.CheckAdjacentEnemiesOnMove(myUnit, reachedTile.grid2DLocation);
-                break;
-            }
-        }
-    }
+            var movimientoAttack = attackData as MovimientoRelampagoAttackData; //
+            if (movimientoAttack != null && movimientoAttack.IsActive(myUnit)) //
+            { //
+                movimientoAttack.CheckAdjacentEnemiesOnMove(myUnit, reachedTile.grid2DLocation); //
+                break; //
+            } //
+        } //
+    } //
 
-    private void DeactivateMovimientoRelampagoOnTurnEnd()
-    {
-        if (myUnit == null)
-            return;
+    private void DeactivateMovimientoRelampagoOnTurnEnd() //
+    { //
+        if (myUnit == null) //
+            return; //
 
-        foreach (var attackData in myUnit.equippedAttacks)
-        {
-            var movimientoAttack = attackData as MovimientoRelampagoAttackData;
-            if (movimientoAttack != null && movimientoAttack.IsActive(myUnit))
-            {
-                movimientoAttack.OnTurnEnd(myUnit);
-                break;
-            }
-        }
-    }
+        foreach (var attackData in myUnit.equippedAttacks) //
+        { //
+            var movimientoAttack = attackData as MovimientoRelampagoAttackData; //
+            if (movimientoAttack != null && movimientoAttack.IsActive(myUnit)) //
+            { //
+                movimientoAttack.OnTurnEnd(myUnit); //
+                break; //
+            } //
+        } //
+    } //
     
     public void FinalDialogue()
     {

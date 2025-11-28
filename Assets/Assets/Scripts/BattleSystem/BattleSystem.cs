@@ -27,6 +27,7 @@ public class BattleSystem : MonoBehaviour
     public InitiativeManager initiativeManager;
     public MouseControler mouseController;
     public List<EnemyIA> EnemyIAs = new List<EnemyIA>();
+    // Colección de todos los participantes
     private List<Unit> allUnits;
 
     public event System.Action<Unit> OnTurnStart;
@@ -42,6 +43,7 @@ public class BattleSystem : MonoBehaviour
     {
         Instance = this;
         
+        // ✅ Add AttackUsesRuntimeManager component if not present
         if (GetComponent<AttackUsesRuntimeManager>() == null)
         {
             gameObject.AddComponent<AttackUsesRuntimeManager>();
@@ -81,6 +83,7 @@ public class BattleSystem : MonoBehaviour
                 EnemyIAs.RemoveAt(i);
             }
         }
+
 
     }
 
@@ -222,6 +225,10 @@ public class BattleSystem : MonoBehaviour
         newPos.isBlocked = true;
     }
 
+    /// <summary>
+    /// Añade dinámicamente un GameObject enemigo (instanciado o activado) al BattleSystem.
+    /// Se encarga de sincronizar listas internas, bloquear tile y asignar HUD si hay slot.
+    /// </summary>
     public void AddEnemyToBattle(GameObject enemyGO)
     {
         if (enemyGO == null)
@@ -232,12 +239,14 @@ public class BattleSystem : MonoBehaviour
         Unit u = enemyGO.GetComponent<Unit>();
         if (u == null) { Debug.LogWarning("AddEnemyToBattle: no tiene Unit"); return; }
 
+        // 1) registrar en listas (tu código original)
         RegisterUnits(u);
         if (!EnemiesPrefab.Contains(enemyGO)) EnemiesPrefab.Add(enemyGO);
         if (!EnemyUnity.Contains(u)) EnemyUnity.Add(u);
         //int enemyCount = Mathf.Min(EnemyUnity.Count, enemyHUD.Count);
         //for (int i = 0; i < enemyCount; i++) enemyHUD[i].SetHUD(EnemyUnity[i]);
 
+        // 2) intentar resolver overlay tile de forma robusta
         OverlayTile resolvedOverlay = null;
         var maybe = u.ActiveTile();
         if (maybe.HasValue)
@@ -251,6 +260,7 @@ public class BattleSystem : MonoBehaviour
 
         if (resolvedOverlay != null)
         {
+            // Actualiza PositionEnemy / isBlocked via tu método (asegura consistencia)
             UpdateEnemyPosition(u, resolvedOverlay);
         }
         else
@@ -271,6 +281,7 @@ public class BattleSystem : MonoBehaviour
                 if (PlayersPrefab.Count > 2) enemyIA.Player3 = PlayersPrefab[2];
             }
 
+            // Llamada crítica: inicializar IA después de intentar fijar la casilla
             enemyIA.InitAfterSpawn(this, this.mouseController, enemyIA.Player1, enemyIA.Player2, enemyIA.Player3);
         }
         else
@@ -308,6 +319,7 @@ public class BattleSystem : MonoBehaviour
             // 7) Ejecuta el turno según sea aliado o enemigo
             if (_currentUnit.CompareTag("Aliado"))
             {
+                // arrancamos player turn con watchdog
                 yield return PlayerTurn(_currentUnit);
             }
             else
@@ -321,6 +333,7 @@ public class BattleSystem : MonoBehaviour
 
     private IEnumerator PlayerTurn(Unit ally)
     {
+        // ✅ Double-check: Should this player skip their turn?
         var statusManager = ally.GetComponent<StatusEffectManager>();
         if (statusManager != null && statusManager.ShouldSkipTurn())
         {
@@ -348,6 +361,7 @@ public class BattleSystem : MonoBehaviour
 
     private IEnumerator EnemyTurn(Unit enemy)
     {
+        // ✅ Double-check: Should this enemy skip their turn?
         var statusManager = enemy.GetComponent<StatusEffectManager>();
         if (statusManager != null && statusManager.ShouldSkipTurn())
         {
@@ -383,48 +397,50 @@ public class BattleSystem : MonoBehaviour
         }
 
         // después de que mouseController.turnEnded sea true:
-        for (int i = 0; i < EnemiesPrefab.Count; i++)
-        {
-            if (EnemiesPrefab[i] == null) continue;
-            Unit unit = EnemiesPrefab[i].GetComponent<Unit>();
-            if (unit == null) continue;
-
-            if (enemy == unit)
+            for (int i = 0; i < EnemiesPrefab.Count; i++)
             {
-                var positionMaybe = enemy.ActiveTile();
-                if (!positionMaybe.HasValue)
-                {
-                    Debug.LogWarning($"EnemyTurn: active tile nulo para {enemy.name}");
-                    continue;
-                }
+                if (EnemiesPrefab[i] == null) continue;
+                Unit unit = EnemiesPrefab[i].GetComponent<Unit>();
+                if (unit == null) continue;
 
-                OverlayTile newPosition = positionMaybe.Value.collider.GetComponent<OverlayTile>();
-                if (newPosition == null) continue;
-
-                // Asegurar capacidad
-                while (PositionEnemy.Count <= i)
-                    PositionEnemy.Add(null);
-
-                var prevPos = PositionEnemy[i];
-                if (prevPos == null)
+                if (enemy == unit)
                 {
-                    // Si estaba vacío, simplemente asignar
-                    PositionEnemy[i] = newPosition;
-                    newPosition.isBlocked = true;
-                }
-                else if (prevPos != newPosition)
-                {
-                    // liberar anterior y ocupar nuevo
-                    prevPos.isBlocked = false;
-                    newPosition.isBlocked = true;
-                    PositionEnemy[i] = newPosition;
+                    var positionMaybe = enemy.ActiveTile();
+                    if (!positionMaybe.HasValue)
+                    {
+                        Debug.LogWarning($"EnemyTurn: active tile nulo para {enemy.name}");
+                        continue;
+                    }
+
+                    OverlayTile newPosition = positionMaybe.Value.collider.GetComponent<OverlayTile>();
+                    if (newPosition == null) continue;
+
+                    // Asegurar capacidad
+                    while (PositionEnemy.Count <= i)
+                        PositionEnemy.Add(null);
+
+                    var prevPos = PositionEnemy[i];
+                    if (prevPos == null)
+                    {
+                        // Si estaba vacío, simplemente asignar
+                        PositionEnemy[i] = newPosition;
+                        newPosition.isBlocked = true;
+                    }
+                    else if (prevPos != newPosition)
+                    {
+                        // liberar anterior y ocupar nuevo
+                        prevPos.isBlocked = false;
+                        newPosition.isBlocked = true;
+                        PositionEnemy[i] = newPosition;
+                    }
                 }
             }
-        }
-        mouseController.turnEnded = true;
-        mouseController.DeselectCharacter();
+            mouseController.turnEnded = true;
+            mouseController.DeselectCharacter();
+        //yield return null;
     }
 
+    /// </summary>
     void SetActiveUnit(Unit current)
     {
         if (MapManager.Instance != null) MapManager.Instance.HideAllTiles();
@@ -455,12 +471,13 @@ public class BattleSystem : MonoBehaviour
                 mouseController.SetActiveCharacter(ci, unit);
         }
 
+        // ✅ CHECK: Should this unit skip their turn due to status effects?
         var statusManager = current.GetComponent<StatusEffectManager>();
-
         if (statusManager != null && statusManager.ShouldSkipTurn())
         {
             Debug.Log($"[BattleSystem] {current.name} is skipping turn due to status effects (Stun, etc.)!");
             
+            // Skip this turn immediately by setting turnEnded = true
             mouseController.turnEnded = true;
             return;
         }
