@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Linq;
 using NUnit.Framework;
+using UnityEngine.InputSystem;
 
 public class Unit : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class Unit : MonoBehaviour
     public int Level;
 
     public bool isEnemy;
+    public bool endCombat = false;
+    public bool combatEnded = false;
     
     public float[] deathXCoords;
     public float[] deathYCoords;
@@ -31,8 +34,6 @@ public class Unit : MonoBehaviour
 
     public float[] finalXDistance;
     public float[] finalYDistance;
-
-    private bool battleEnd = false;
 
     public float speed = 4f;
     public int Fue;
@@ -63,7 +64,6 @@ public class Unit : MonoBehaviour
 
     private void Start()
     {
-        // Ensure StatusEffectManager is present
         if (GetComponent<StatusEffectManager>() == null)
         {
             gameObject.AddComponent<StatusEffectManager>();
@@ -174,43 +174,47 @@ public class Unit : MonoBehaviour
 
     private IEnumerator EndCombat()
     {
-        yield return new WaitForSeconds(2f);
-
-        var FirstMovement = new Vector3(finalXDistance[0], finalYDistance[0], transform.position.z);
-
-        foreach (Transform children in transform)
+        if(battleSystem.EnemyUnity.Count <=0)
         {
-            children.gameObject.SetActive(false);
-        }
-        hudCanva.SetActive(false);
+            combatEnded = true;
+            yield return new WaitForSeconds(1f);
 
-        if (transform.position.x < FirstMovement.x)
-        {
-            sr.flipX = true;
-            animator.SetBool("isMovingDown", true);
-        }
-        else
-        {
-            sr.flipX = false;
-            animator.SetBool("isMovingDown", true);
-        }
+            var FirstMovement = new Vector3(finalXDistance[0], finalYDistance[0], transform.position.z);
 
-        transform.position = Vector2.MoveTowards(transform.position, FirstMovement, speed * Time.deltaTime);
+            foreach (Transform children in transform)
+            {
+                children.gameObject.SetActive(false);
+            }
+            hudCanva.SetActive(false);
 
-        if (transform.position == FirstMovement)
-        {
-            StartCoroutine(waitUntilEndPosition());
+            if (transform.position.x < FirstMovement.x)
+            {
+                sr.flipX = true;
+                animator.SetBool("isMovingDown", true);
+            }
+            else
+            {
+                sr.flipX = false;
+                animator.SetBool("isMovingDown", true);
+            }
+
+            transform.position = Vector2.MoveTowards(transform.position, FirstMovement, speed * Time.deltaTime);
+
+            if (transform.position == FirstMovement && !endCombat)
+            {
+                endCombat = true;
+                battleSystem.finalPosition();
+                animator.SetBool("isMovingDown", false);
+                animator.SetBool("isMovingUp", false);
+                if (Name == "Riku Takeda") sr.flipX = true;
+                else sr.flipX = false;
+            }
         }
-    }
-    
-    IEnumerator waitUntilEndPosition()
-    {
-        yield return new WaitForSeconds(1f);
-        animator.SetBool("isMovingDown", false);
-        animator.SetBool("isMovingUp", false);
-        if (Name == "Riku Takeda") sr.flipX = true;
-        else sr.flipX = false;
-        if (Name == "Riku Takeda") mouseControler.FinalDialogue(this);
+        else if(battleSystem.PlayerUnity.Count <=0 && !combatEnded)
+        {
+            yield return new WaitForSeconds(1f);
+            mouseControler.defeatDialogue();
+        }
     }
     
     //para enemigos
@@ -245,7 +249,9 @@ public class Unit : MonoBehaviour
 
     public void Heal()
     {
-        currentHP = Mathf.Min(currentHP + pocionHeal, maxHP);
+        int potionheal = Mathf.RoundToInt(maxHP * (pocionHeal/100f));
+
+        currentHP = Mathf.Min(currentHP + potionheal, maxHP);
 
         // Actualiza el HUD si está asignado
         if (hud != null)
@@ -314,5 +320,22 @@ public class Unit : MonoBehaviour
 
         // Check death
         if (currentHP == 0) StartCoroutine(Die());
+    }
+
+    public void GainMana()
+    {
+        if (currentMana <= maxMana - 2)
+        {
+            currentMana = currentMana + 2;
+            // Actualiza el HUD si está asignado
+            if (hud != null)
+                hud.ShowDetails(this);
+            // fuerza actualización general
+            var ui = UnityEngine.Object.FindFirstObjectByType<CharacterDetailsUI>();
+            if (ui != null)
+                ui.UpdateAllUI();
+            Debug.Log("MANA CONSEGUIDO");
+        }
+
     }
 }

@@ -14,16 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Emboscada Letal
   icon: {fileID: 0}
-  damage: 13
-  scalingFactor: 0
+  damage: 8
+  scalingFactor: 0.5
   manaCost: 5
-  cooldown: 0
-  onCooldown: 0
+  cooldown: 3
+  onCooldown: 1
   selectionRange: 2
   areaSize: 0
   effectShape: 5
   initiativeBonus: 0
   initiativeDuration: 0
+  canTargetEnemies: 1
+  canTargetAllies: 0
   description: 'Si el jugador esta detras del enemigo, le realizara un golpe con
     la daga. '
   attackType: 3
@@ -65,3 +67,4 @@ MonoBehaviour:
   pushDistance: 1
   criticalChance: 0
   criticalMultiplier: 2
+  cooldownMax: 3

@@ -30,6 +30,7 @@ public class AttackControllerEnemy : MonoBehaviour
     public EnemyIA enemyIA;
 
     public Animator animator;
+    public Animator effectAnimator;
 
     private List<BattleHUD> hudsToReset = new();
 
@@ -210,6 +211,7 @@ public class AttackControllerEnemy : MonoBehaviour
         else if (attack.name == "Rugido")
         {
             animator.SetTrigger("scream");
+            effectAnimator.SetTrigger("attackEffect");
             AudioManager.Instance.PlaySFX("BigOniRoar");
         }
 

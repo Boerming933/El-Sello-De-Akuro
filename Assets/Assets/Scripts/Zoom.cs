@@ -59,7 +59,7 @@ public class Zoom : MonoBehaviour
         if (Input.GetMouseButton(2))
         {
             MoveCamera();
-            isFollowingTarget = false; //mueves la c�mara, deja de seguir
+            isFollowingTarget = false;
         }
 
         HandleZoom();
@@ -74,7 +74,6 @@ public class Zoom : MonoBehaviour
             zoomHintUI.SetActive(!isFollowingTarget && dist > 0.2f);
         }
 
-        //Volver al personaje solo si isFollowingTarget est� activo
         if (isFollowingTarget && targetToFollow != null)
         {
             Vector3 targetPos = new Vector3(targetToFollow.position.x, targetToFollow.position.y, cam.transform.position.z);
@@ -137,6 +136,8 @@ public class Zoom : MonoBehaviour
         
         cam.orthographicSize -= zoomInput * currentSpeed;
         cam.orthographicSize = Mathf.Clamp(cam.orthographicSize, minZoom, maxZoom);
+        
+        transform.position = ClampCameraPosition(transform.position);
     }
 
     public void ForceZoomOut()
@@ -194,7 +195,6 @@ public class Zoom : MonoBehaviour
         transform.position += moveDirection;        
         
         transform.position = ClampCameraPosition(transform.position);
-
     }
     
     Vector3 ClampCameraPosition(Vector3 pos)
@@ -222,5 +222,4 @@ public class Zoom : MonoBehaviour
         pos.y = Mathf.Clamp(pos.y, minY, maxY);
         return pos;
     }
-
 }

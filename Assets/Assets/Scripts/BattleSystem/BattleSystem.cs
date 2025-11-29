@@ -37,6 +37,8 @@ public class BattleSystem : MonoBehaviour
 
     public CharacterDetailsUI detailsUI;
 
+    public float finalPositionPlayers;
+
     private void Awake()
     {
         Instance = this;
@@ -527,5 +529,15 @@ public class BattleSystem : MonoBehaviour
 
         PositionEnemy[idx] = newTile;
         newTile.isBlocked = true;
+    }
+
+    public void finalPosition()
+    {
+        if(finalPositionPlayers < PlayerUnity.Count) finalPositionPlayers++;
+
+        if(finalPositionPlayers >= PlayerUnity.Count)
+        {
+            mouseController.FinalDialogue();
+        }
     }
 }

@@ -49,6 +49,27 @@ public class StatusEffectManager : MonoBehaviour
             effect = StatusEffectFactory.CreateMartialRhythmStunRemoval();
             Debug.Log($"{unit.name} had stun removed and gains enhanced Martial Rhythm!");
         }
+
+        if (effect.effectType == StatusEffectType.Stun)
+        {
+            for (int i = activeEffects.Count - 1; i >= 0; i--)
+            {
+                var ef = activeEffects[i];
+
+                if (ef.effectType != StatusEffectType.MartialRhythm &&
+                    ef.effectType != StatusEffectType.Stun)
+                {
+                    Debug.Log($"{unit.name}: Eliminado efecto por STUN → {ef.effectName}");
+                    RemoveEffect(ef.effectType);
+
+                    if(unit.Name == "Riku Takeda")
+                    {
+                        mouseController.animatorSamurai.SetBool("attack4", false);
+                        mouseController.SamuraiShield.SetActive(false);
+                    }
+                }
+            }
+        }
         
         var existingEffect = activeEffects.FirstOrDefault(e => e.effectType == effect.effectType);
         

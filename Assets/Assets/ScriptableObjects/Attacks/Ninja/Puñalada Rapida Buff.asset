@@ -14,15 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: "Pu\xF1alada R\xE1pida"
   icon: {fileID: 0}
-  damage: 10
+  damage: 8
   scalingFactor: 0
   manaCost: 0
   cooldown: 0
+  onCooldown: 0
   selectionRange: 1
   areaSize: 0
   effectShape: 1
   initiativeBonus: 0
   initiativeDuration: 0
+  canTargetEnemies: 1
+  canTargetAllies: 0
   description: "Ataca con la daga de manera veloz, buscando puntos d\xE9biles."
   attackType: 0
   statusEffects: []
@@ -33,5 +36,6 @@ MonoBehaviour:
   canPushTarget: 0
   pushChance: 0
   pushDistance: 0
-  criticalChance: 0.85
+  criticalChance: 0.5
   criticalMultiplier: 2
+  cooldownMax: 0

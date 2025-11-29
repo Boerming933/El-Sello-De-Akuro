@@ -18,6 +18,7 @@ public class AttackButtonProxy : MonoBehaviour, IPointerEnterHandler, IPointerEx
     public Button botonBatalla;
 
     public GameObject descripcionAtaque;
+    public MouseControler mouseController;
 
     [Tooltip("Panel de acciones (optional) con el script PanelAcciones")]
     public PanelAcciones panelAcciones;
@@ -28,6 +29,39 @@ public class AttackButtonProxy : MonoBehaviour, IPointerEnterHandler, IPointerEx
     /// <summary>
     /// Asignar este método al OnClick() de tu botón en el Inspector.
     /// </summary>
+    /// 
+
+    void Start()
+    {
+        mouseController = Object.FindFirstObjectByType<MouseControler>();
+    }
+    void Update()
+    {
+        // Corrected the syntax for accessing the Button component and setting interactable
+        Button buttonComponent = gameObject.GetComponent<Button>();
+
+        bool interactable = true;
+
+        if (buttonComponent != null)
+        {
+            if (attackData.manaCost > mouseController.myUnit.currentMana)
+            {
+                interactable = false;
+            }
+            var bd = attackData as BuffDebuffAttackData;
+            if (bd != null)
+            {
+                if (bd.maxUses != -1 && bd.currentUses == bd.maxUses)
+                {
+                    interactable = false;
+                }
+            }
+
+            buttonComponent.interactable = interactable;
+        }
+    }
+
+
     public void OnClick()
     {
         botonDesactivado = true;
