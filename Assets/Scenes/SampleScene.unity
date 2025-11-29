@@ -2532,7 +2532,6 @@ MonoBehaviour:
   e: {fileID: 2005903315}
   fDialogue: {fileID: 328069467}
   loseDialogue: {fileID: 1564923440}
-  blackScreen: {fileID: 1440554735}
   animatorSamurai: {fileID: 6920276}
   animatorGeisha: {fileID: 1083553807}
   animatorNinja: {fileID: 1633231253}
@@ -6750,7 +6749,7 @@ MonoBehaviour:
   hud: {fileID: 863480413}
   active: {fileID: 0}
   MovimientoRelampagoCaminata: 0
-  mouseControler: {fileID: 117182018}
+  mouseControler: {fileID: 0}
   battleSystem: {fileID: 0}
 --- !u!114 &391266303
 MonoBehaviour:
@@ -10011,7 +10010,7 @@ MonoBehaviour:
   hud: {fileID: 863480413}
   active: {fileID: 0}
   MovimientoRelampagoCaminata: 0
-  mouseControler: {fileID: 117182018}
+  mouseControler: {fileID: 0}
   battleSystem: {fileID: 0}
 --- !u!114 &548752740
 MonoBehaviour:
@@ -47350,11 +47349,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5360612083651436153, guid: 4a241ad4bd5e4e04fb6fcdfe7b96c444, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.002
+      value: -1.014
       objectReference: {fileID: 0}
     - target: {fileID: 5360612083651436153, guid: 4a241ad4bd5e4e04fb6fcdfe7b96c444, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.118
+      value: -0.363
       objectReference: {fileID: 0}
     - target: {fileID: 5360612083651436153, guid: 4a241ad4bd5e4e04fb6fcdfe7b96c444, type: 3}
       propertyPath: m_LocalPosition.z
@@ -51462,6 +51461,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 80830009235339116, guid: f96c34a9c0fa542418c8234fd5eea442, type: 3}
   m_PrefabInstance: {fileID: 1111931184}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1113327903
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1113327904}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1113327904
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113327903}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.07, y: -2.73, z: -2.9036665}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1115389304
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56034,104 +56064,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1433332753}
-  m_CullTransparentMesh: 1
---- !u!1 &1440554735
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1440554736}
-  - component: {fileID: 1440554739}
-  - component: {fileID: 1440554738}
-  - component: {fileID: 1440554737}
-  m_Layer: 5
-  m_Name: DefeatBlackScreen
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &1440554736
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1440554735}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.97029704, y: 0.97029704, z: 0.97029704}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1995960704}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.1302185, y: 2.8257446}
-  m_SizeDelta: {x: 50.967773, y: 43.6933}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &1440554737
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1440554735}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bb64572796b753b438f189a2241b4f99, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1440554738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1440554735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1440554739
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1440554735}
   m_CullTransparentMesh: 1
 --- !u!1 &1446440569
 GameObject:
@@ -63092,7 +63024,7 @@ MonoBehaviour:
   hud: {fileID: 863480413}
   active: {fileID: 0}
   MovimientoRelampagoCaminata: 0
-  mouseControler: {fileID: 117182018}
+  mouseControler: {fileID: 0}
   battleSystem: {fileID: 0}
 --- !u!114 &1796309829
 MonoBehaviour:
@@ -67057,7 +66989,6 @@ RectTransform:
   - {fileID: 1863668131}
   - {fileID: 196895657}
   - {fileID: 2005903316}
-  - {fileID: 1440554736}
   - {fileID: 1564923441}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -69319,6 +69250,7 @@ SceneRoots:
   - {fileID: 869406337}
   - {fileID: 1116554891}
   - {fileID: 232449977}
+  - {fileID: 1113327904}
   - {fileID: 1050560692}
   - {fileID: 328069472}
   - {fileID: 1994365577}

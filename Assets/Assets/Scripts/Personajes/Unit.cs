@@ -4,7 +4,6 @@ using System;
 using System.Collections;
 using System.Linq;
 using NUnit.Framework;
-using UnityEngine.InputSystem;
 
 public class Unit : MonoBehaviour
 {
@@ -23,7 +22,6 @@ public class Unit : MonoBehaviour
 
     public bool isEnemy;
     public bool endCombat = false;
-    public bool combatEnded = false;
     
     public float[] deathXCoords;
     public float[] deathYCoords;
@@ -174,10 +172,9 @@ public class Unit : MonoBehaviour
 
     private IEnumerator EndCombat()
     {
-        if(battleSystem.EnemyUnity.Count <=0)
+        if(!isEnemy)
         {
-            combatEnded = true;
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
 
             var FirstMovement = new Vector3(finalXDistance[0], finalYDistance[0], transform.position.z);
 
@@ -202,18 +199,16 @@ public class Unit : MonoBehaviour
 
             if (transform.position == FirstMovement && !endCombat)
             {
-                endCombat = true;
                 battleSystem.finalPosition();
                 animator.SetBool("isMovingDown", false);
                 animator.SetBool("isMovingUp", false);
-                if (Name == "Riku Takeda") sr.flipX = true;
-                else sr.flipX = false;
+                if (Name == "Riku Takeda") sr.flipX = false;
+                else sr.flipX = true;
             }
         }
-        else if(battleSystem.PlayerUnity.Count <=0 && !combatEnded)
+        else if(!endCombat)
         {
-            yield return new WaitForSeconds(1f);
-            mouseControler.defeatDialogue();
+            
         }
     }
     

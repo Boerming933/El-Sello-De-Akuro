@@ -533,7 +533,7 @@ public class BattleSystem : MonoBehaviour
 
     public void finalPosition()
     {
-        if(finalPositionPlayers < PlayerUnity.Count) finalPositionPlayers++;
+        finalPositionPlayers++;
 
         if(finalPositionPlayers >= PlayerUnity.Count)
         {
