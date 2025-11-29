@@ -40,6 +40,7 @@ public class MouseControler : MonoBehaviour
     public GameObject e;
     public GameObject fDialogue;
     public GameObject loseDialogue;
+    public GameObject blackScreen;
 
     public CharacterInfo CurrentCharacter => character;
 
@@ -769,5 +770,6 @@ public class MouseControler : MonoBehaviour
     public void defeatDialogue()
     {
         loseDialogue.SetActive(true);
+        blackScreen.SetActive(true);
     }
 }
