@@ -210,7 +210,6 @@ public class AttackControllerEnemy : MonoBehaviour
         }
         else if (attack.name == "Rugido")
         {
-            Debug.Log("RUGIDO");
             animator.SetTrigger("scream");
             effectAnimator.SetTrigger("attackEffect");
             AudioManager.Instance.PlaySFX("BigOniRoar");

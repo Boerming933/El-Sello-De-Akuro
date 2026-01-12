@@ -39,6 +39,8 @@ public class MouseControler : MonoBehaviour
     public GameObject bgIconoPocion;
     public GameObject e;
     public GameObject fDialogue;
+    public GameObject loseDialogue;
+    public GameObject blackScreen;
 
     public CharacterInfo CurrentCharacter => character;
 
@@ -756,12 +758,18 @@ public class MouseControler : MonoBehaviour
         } //
     } //
     
-    public void FinalDialogue(Unit unit)
+    public void FinalDialogue()
     {
         cam.orthographicSize = 1.5f;
         cam.transform.position = new Vector3(-2.5f, -2.5f, cam.transform.position.z);
         var dialogue = fDialogue.GetComponent<DialogueBattle>();
         if(!dialogue.didDialogueStart) dialogue.StartDialogue();
         fDialogue.SetActive(true);
+    }
+
+    public void defeatDialogue()
+    {
+        loseDialogue.SetActive(true);
+        blackScreen.SetActive(true);
     }
 }
