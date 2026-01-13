@@ -7,6 +7,7 @@ public class SceneChange : MonoBehaviour
     public Scene escenaActiva;
     public GameObject player;
     public Animator transitionAnimator;
+    public GameObject ObjetoPaBorrar;
 
     public bool canTP = true;
 
@@ -25,6 +26,7 @@ public class SceneChange : MonoBehaviour
             {
                 transitionAnimator.SetTrigger("FadeIn");
                 StartCoroutine(ChangeScene());
+                Destroy(ObjetoPaBorrar);
             }
         }
     }

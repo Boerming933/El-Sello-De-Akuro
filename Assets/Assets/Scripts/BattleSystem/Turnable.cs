@@ -18,6 +18,7 @@ public class Turnable : MonoBehaviour
     /// Invocar cuando comience el turno de este personaje.
     /// </summary>
     /// 
+    /// Q
 
     private void Start()
     {
